@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:tag="layout/splash_activity_0" android:background="@mipmap/icon_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingLeft="19.0dip" android:paddingTop="19.0dip" android:paddingRight="19.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="3.0">
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.9">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_btn1_bg" android:layout_centerInParent="true" />
+            <TextView android:textSize="21.0sp" android:textColor="#fffefbff" android:gravity="center" android:id="@id/tv_camera" android:tag="binding_1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/myphoto" android:drawableTop="@mipmap/icon_gallery" android:drawablePadding="13.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.1">
+            <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@mipmap/icon_btn2_bg" android:layout_centerInParent="true" />
+            <TextView android:textSize="30.0sp" android:textColor="#fffefbff" android:gravity="center" android:id="@id/tv_connect" android:tag="binding_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/camera" android:drawableTop="@mipmap/icon_xiangji" android:drawablePadding="5.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.9">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_btn3_bg" android:layout_centerInParent="true" />
+            <TextView android:textSize="21.0sp" android:textColor="#fffefbff" android:gravity="center" android:id="@id/tv_help" android:tag="binding_3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/helcenter" android:drawableTop="@mipmap/icon_help" android:drawablePadding="13.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.serenegiant.usb.widget.UVCCameraTextureView android:layout_gravity="center" android:id="@id/camera_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

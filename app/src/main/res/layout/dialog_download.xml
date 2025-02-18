@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/dialog_bg" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/text_blue" android:id="@id/dialog_download_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:layout_alignParentTop="true" />
+    <View android:id="@id/dialog_download_start_line" android:background="@color/text_blue" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="5.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/dialog_download_title" />
+    <RelativeLayout android:id="@id/dialog_download_message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialog_download_start_line">
+        <TextView android:textSize="16.0sp" android:textColor="@color/text_black" android:gravity="start|center" android:id="@id/dialog_download_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="5.0dip" android:paddingEnd="5.0dip" />
+    </RelativeLayout>
+    <com.daimajia.numberprogressbar.NumberProgressBar android:id="@id/dialog_download_progress_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/dialog_download_message" />
+    <View android:id="@id/dialog_download_end_line" android:background="@color/text_blue" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/dialog_download_progress_bar" />
+    <Button android:id="@id/dialog_download_cancel_btn" android:background="@drawable/btn_bg_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/dialog_cancel" android:layout_below="@id/dialog_download_end_line" android:layout_centerHorizontal="true" android:paddingStart="30.0dip" android:paddingEnd="30.0dip" />
+</RelativeLayout>

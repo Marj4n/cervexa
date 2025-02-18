@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/vlc_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:background="@android:color/black" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <android.opengl.GLSurfaceView android:layout_gravity="center" android:id="@id/vlc_surface" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <FrameLayout android:id="@id/vlc_overlay" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center" android:orientation="vertical" android:background="#88000000" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <ImageButton android:id="@id/imgbtn_playpause" android:background="@mipmap/play_pause" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

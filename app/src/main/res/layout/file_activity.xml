@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/top_bg" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <ImageButton android:background="@drawable/back" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_centerVertical="true" android:onClick="back" />
+        <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:id="@id/file_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ImageButton android:id="@id/file_delete" android:background="@drawable/delete_button" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:onClick="delete" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ListView android:id="@id/file_image_list" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <Button android:textSize="20.0sp" android:textColor="#fffe0614" android:id="@id/setect_all" android:background="#ff808080" android:layout_width="80.0dip" android:layout_height="45.0dip" android:text="@string/language9" android:layout_alignParentRight="true" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/load" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <Button android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ProgressBar android:id="@id/progressBar1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="?android:progressBarStyleLarge" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

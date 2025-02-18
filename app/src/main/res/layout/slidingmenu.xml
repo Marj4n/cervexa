@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffd7dfe8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/text" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language15" />
+    <TextView android:background="#ffffffaa" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/text2" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language12" />
+    <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/text3" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language13" />
+    <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
+    <TextView android:background="#ffffffaa" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="20.0sp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="60.0dip" android:text="@string/language2" />
+        <ImageButton android:id="@id/set_mode" android:background="@drawable/off" android:layout_width="50.0dip" android:layout_height="25.0dip" android:layout_marginLeft="20.0dip" />
+    </LinearLayout>
+    <TextView android:background="#ffffffaa" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

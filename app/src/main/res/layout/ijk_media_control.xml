@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_background" android:layout_width="fill_parent" android:layout_height="70.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/rll_options" android:paddingTop="4.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_above="@id/ijkLib__relativeLayout" android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+        <ImageView android:id="@id/mediacontroller_play_pause" android:background="#00000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@android:style/MediaButton.Play" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ijkLib__relativeLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/mediacontroller_time_current" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <SeekBar android:id="@id/mediacontroller_seekbar" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:max="1000" android:thumb="@drawable/live_room_seek_bar_point" android:layout_toLeftOf="@id/mediacontroller_time_total" android:layout_toRightOf="@id/mediacontroller_time_current" android:layout_centerVertical="true" style="@style/MediaController_SeekBar" />
+        <TextView android:id="@id/mediacontroller_time_total" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/MediaController_Text" />
+    </RelativeLayout>
+    <Button android:gravity="center" android:id="@id/faster" android:background="#00000000" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="350.0dip" android:text="faster" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <Button android:gravity="center" android:id="@id/slower" android:background="#00000000" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="400.0dip" android:text="slower" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <Button android:gravity="center" android:id="@id/normal" android:background="#00000000" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="440.0dip" android:text="normal" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+</RelativeLayout>

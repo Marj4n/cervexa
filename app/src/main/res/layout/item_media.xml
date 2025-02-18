@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/item_media_thumb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_default_picture" android:layout_centerInParent="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/item_media_select_state" android:padding="3.0dip" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@mipmap/ic_uncheck_round" android:layout_alignTop="@id/item_media_thumb" android:layout_alignRight="@id/item_media_thumb" android:contentDescription="@null" />
+    <ImageView android:id="@id/item_media_picture_state" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/bg_download" android:layout_alignRight="@id/item_media_thumb" android:layout_alignBottom="@id/item_media_thumb" android:contentDescription="@null" />
+    <RelativeLayout android:id="@id/item_media_video_layout" android:background="@color/bg_video_state" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginRight="3.0dip" android:layout_alignBottom="@id/item_media_thumb" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@mipmap/ic_small_camera" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/text_smaller_x" android:textColor="@color/text_white" android:id="@id/item_media_duration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/item_media_video_state" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_player" android:layout_centerInParent="true" android:contentDescription="@null" />
+</RelativeLayout>

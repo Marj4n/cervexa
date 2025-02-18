@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab icon="@mipmap/ic_device_unselected" id="@id/tab_device" title="@string/tab_device" />
+    <tab icon="@mipmap/ic_gallery_unselected" id="@id/tab_gallery" title="@string/tab_gallery" />
+    <tab icon="@mipmap/ic_me_unselected" id="@id/tab_me" title="@string/tab_me" />
+</tabs>
