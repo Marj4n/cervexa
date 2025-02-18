@@ -1,0 +1,30 @@
+package com.baidu.lbsapi.auth.tracesdk;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/* loaded from: classes.dex */
+class ErrorMessage {
+    ErrorMessage() {
+    }
+
+    static String a(int i, String str) {
+        JSONObject jSONObject = new JSONObject();
+        try {
+            jSONObject.put("status", i);
+            jSONObject.put("message", str);
+        } catch (JSONException unused) {
+        }
+        return jSONObject.toString();
+    }
+
+    static String a(String str) {
+        JSONObject jSONObject = new JSONObject();
+        try {
+            jSONObject.put("status", -1);
+            jSONObject.put("message", str);
+        } catch (JSONException unused) {
+        }
+        return jSONObject.toString();
+    }
+}

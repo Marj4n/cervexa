@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/add_dev_top_layout" android:background="@mipmap/bg_top_bar" android:layout_width="fill_parent" android:layout_height="@dimen/top_bar_height">
+        <Button android:textSize="@dimen/text_small" android:textColor="@color/text_white" android:background="@color/background_transparent" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:drawableLeft="@drawable/ic_return_press" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="returnBtnClick" />
+        <TextView android:textSize="@dimen/text_normal_inc" android:textColor="@color/text_white" android:id="@id/device_setting_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/app_storage_manager" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/radiogroup" android:background="@color/bg_white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/full_screen_mode_rbtn" android:background="@color/bg_white" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total_capacity" />
+        <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/app_storage_tv" android:background="@color/bg_white" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <com.github.mikephil.charting.charts.PieChart android:id="@id/app_pie_chart" android:background="@color/bg_white" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="@dimen/setting_marginTop" />
+    <ListView android:id="@id/app_storage_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/text_transparent" />
+</LinearLayout>

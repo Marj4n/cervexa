@@ -1,0 +1,90 @@
+package com.jieli.lib.dv.control.utils;
+
+/* loaded from: classes.dex */
+public class Topic {
+    public static final String ANTI_TREMOR = "ANTI_TREMOR";
+    public static final String APP_ACCESS = "APP_ACCESS";
+
+    @Deprecated
+    public static final String APP_SET_PROJECTION = "APP_SET_PROJECTION";
+    public static final String AP_SSID_INFO = "AP_SSID_INFO";
+    public static final String AUTO_SHUTDOWN = "AUTO_SHUTDOWN";
+    public static final String BATTERY_STATUS = "BAT_STATUS";
+    public static final String BOARD_VOICE = "BOARD_VOICE";
+    public static final String BROWSE_MODE = "BROWSE_MODE";
+    public static final String BURST_SHOT = "BURST_SHOT";
+    public static final String CHECK_GRAVITY_SENSOR = "GEN_CHK";
+    public static final String CLOSE_AUDIO_RT_STREAM = "CLOSE_AUDIO_RT_STREAM";
+    public static final String CLOSE_PHONE_MODE = "CLOSE_PHONE_MODE";
+    public static final String CLOSE_PULL_RT_STREAM = "CLOSE_PULL_RT_STREAM";
+    public static final String CLOSE_RT_STREAM = "CLOSE_RT_STREAM";
+    public static final String CLOSE_WIFI = "CLOSE_WIFI";
+    public static final String COLLISION_DETECTION_VIDEO = "VIDEO_BUMPING";
+    public static final String CYC_SAVE_VIDEO = "VIDEO_CYC_SAVEFILE";
+    public static final String DATE_TIME = "DATE_TIME";
+    public static final String DEVICE_KEY_SOUND = "KEY_VOICE";
+    public static final String DEVICE_UPGRADE_SUCCESS = "DEVICE_UPGRADE_SUCCESS";
+    public static final String DEVICE_UUID = "UUID";
+
+    @Deprecated
+    public static final String DEV_REQ_PROJECTION = "DEV_REQ_PROJECTION";
+    public static final String DIGITAL_ZOOM = "DIGITAL_ZOOM";
+    public static final String DOUBLE_VIDEO = "DOUBLE_VIDEO";
+    public static final String FILES_DELETE = "FILES_DELETE";
+    public static final String FILE_LOCK = "FILE_LOCK";
+    public static final String FIRMWARE_UPDATE = "FIRMWARE_UPDATE";
+    public static final String FORMAT_TF_CARD = "FORMAT";
+    public static final String FRONT_MEDIA_FILE_LIST = "FORWARD_MEDIA_FILES_LIST";
+    public static final String GRA_SEN = "GRA_SEN";
+    public static final String KEEP_ALIVE = "CTP_KEEP_ALIVE";
+    public static final String KEEP_ALIVE_INTERVAL = "KEEP_ALIVE_INTERVAL";
+    public static final String LANGUAGE = "LANGUAGE";
+    public static final String LAST_PHOTO_NUMS = "LAST_PHOTO_NUMS";
+    public static final String LAST_VIDEO_TIME = "LAST_VIDEO_TIME";
+    public static final String LIGHT_FRE = "LIGHT_FRE";
+    public static final String MOVE_CHECK = "MOVE_CHECK";
+    public static final String MULTI_VIDEO_COVER = "MULTI_COVER_FIGURE";
+    public static final String MULTI_VIDEO_COVER_RESPONSE = "MULTI_COVER_FIGURE";
+    public static final String NET_SCR = "NET_SCR";
+    public static final String OPEN_AUDIO_RT_STREAM = "OPEN_AUDIO_RT_STREAM";
+    public static final String OPEN_FRONT_RTS = "OPEN_RT_STREAM";
+    public static final String OPEN_PHONE_MODE = "OPEN_PHONE_MODE";
+    public static final String OPEN_REAR_RTS = "OPEN_PULL_RT_STREAM";
+    public static final String PHOTO_CTRL = "PHOTO_CTRL";
+    public static final String PHOTO_DATE = "PHOTO_DATE";
+    public static final String PHOTO_EXP = "PHOTO_EXP";
+    public static final String PHOTO_ISO = "PHOTO_ISO";
+    public static final String PHOTO_QUALITY = "PHOTO_QUALITY";
+    public static final String PHOTO_RESO = "PHOTO_RESO";
+    public static final String PHOTO_SHARPNESS = "PHOTO_SHARPNESS";
+    public static final String PLAYBACK = "TIME_AXIS_PLAY";
+    public static final String PLAYBACK_CTRL = "TIME_AXIS_PLAY_CTRL";
+    public static final String PLAYBACK_FAST_FORWARD = "TIME_AXIS_FAST_PLAY";
+    public static final String PLAYBACK_STREAM = "TIME_AXIS_PLAY_STREAM";
+    public static final String PULL_VIDEO_PARAM = "PULL_VIDEO_PARAM";
+    public static final String PULL_VIDEO_STATUS = "PULL_VIDEO_STATUS";
+    public static final String REAR_MEDIA_FILE_LIST = "BEHIND_MEDIA_FILES_LIST";
+    public static final String RESET = "RESET";
+    public static final String RESET_SYSTEM = "SYSTEM_DEFAULT";
+    public static final String RT_TALK_CTL = "RT_TALK_CTL";
+    public static final String SCREEN_PRO = "SCREEN_PRO";
+    public static final String SELF_TIMER = "SELF_TIMER";
+    public static final String STA_SSID_INFO = "STA_SSID_INFO";
+    public static final String SYSTEM_DEFAULT = "SYSTEM_DEFAULT";
+    public static final String TF_CARD_CAPACITY = "TF_CAP";
+    public static final String TF_STATUS = "SD_STATUS";
+    public static final String TV_MODE = "TV_MODE";
+    public static final String VIDEO_CONTENT_THUMBNAILS = "THUMBNAILS";
+    public static final String VIDEO_CTRL = "VIDEO_CTRL";
+    public static final String VIDEO_DATE = "VIDEO_DATE";
+    public static final String VIDEO_EXP = "VIDEO_EXP";
+    public static final String VIDEO_FINISH = "VIDEO_FINISH";
+    public static final String VIDEO_INV = "VIDEO_INV";
+    public static final String VIDEO_LOOP = "VIDEO_LOOP";
+    public static final String VIDEO_MIC = "VIDEO_MIC";
+    public static final String VIDEO_PARAM = "VIDEO_PARAM";
+    public static final String VIDEO_PAR_CAR = "VIDEO_PAR_CAR";
+    public static final String VIDEO_THUMBNAILS_CTRL = "THUMBNAILS_CTRL";
+    public static final String VIDEO_WDR = "VIDEO_WDR";
+    public static final String WHITE_BALANCE = "WHITE_BALANCE";
+}

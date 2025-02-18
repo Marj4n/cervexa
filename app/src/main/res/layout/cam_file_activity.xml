@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/top_bg" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <ImageButton android:background="@drawable/back" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_centerVertical="true" android:onClick="back" />
+        <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/language1" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cam_lay" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/main_menu_file_1" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" />
+        <TextView android:textSize="18.0sp" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/language19" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/vid_lay" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/main_menu_file_1" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" />
+        <TextView android:textSize="18.0sp" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/language20" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

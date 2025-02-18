@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dev_photo_top_bar" android:background="@mipmap/bg_top_bar" android:layout_width="fill_parent" android:layout_height="@dimen/top_bar_height">
+        <RelativeLayout android:id="@id/dev_photo_edit_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_white" android:id="@id/dev_photo_select_all" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/all_select" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_white" android:id="@id/dev_photo_exit_mode" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="@string/dialog_exit" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_white" android:gravity="center" android:id="@id/dev_photo_select_num" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/selected_num" android:layout_toLeftOf="@id/dev_photo_exit_mode" android:layout_toRightOf="@id/dev_photo_select_all" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/dev_photo_normal_layout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/dev_photo_return" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_return_press" android:layout_centerVertical="true" android:contentDescription="@null" android:layout_marginStart="5.0dip" />
+            <ImageView android:id="@id/dev_photo_edit" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@mipmap/ic_edit_white" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+            <TextView android:textSize="@dimen/text_normal" android:textColor="@color/text_white" android:gravity="center" android:id="@id/dev_photo_title" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/dev_gallery" android:layout_toLeftOf="@id/dev_photo_edit" android:layout_toRightOf="@id/dev_photo_return" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include android:id="@id/dev_photo_bottom_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/top_bar_height" android:layout_alignParentBottom="true" layout="@layout/pop_bottom_bar" />
+    <com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.PullRefreshLayout android:id="@id/dev_photo_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/setting_marginTop" android:layout_above="@id/dev_photo_bottom_bar" android:layout_below="@id/dev_photo_top_bar">
+        <include android:id="@id/view_empty" android:visibility="gone" layout="@layout/view_empty" />
+        <ListView android:id="@id/dev_photo_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="5.0dip" android:listSelector="@color/text_transparent" android:divider="@color/text_transparent" />
+        <com.jieli.stream.dv.running2.ui.widget.pullrefreshview.view.ExpandFooterView android:id="@id/dev_photo_footer" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.PullRefreshLayout>
+</RelativeLayout>

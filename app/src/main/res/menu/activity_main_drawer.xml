@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:icon="@mipmap/ic_videogame_asset_black_48dp" android:id="@id/nav_camera" android:title="@string/menu_Control" />
+        <item android:icon="@mipmap/ic_videocam_black_48dp" android:id="@id/nav_gallery" android:title="@string/menu_Streaming" />
+        <item android:icon="@mipmap/ic_photo_library_black_48dp" android:id="@id/nav_slideshow" android:title="@string/menu_Gallery" />
+    </group>
+</menu>

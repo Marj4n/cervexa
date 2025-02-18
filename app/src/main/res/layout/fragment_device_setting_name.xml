@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/add_dev_top_layout" android:background="@mipmap/bg_top_bar" android:layout_width="fill_parent" android:layout_height="@dimen/top_bar_height">
+        <Button android:textSize="@dimen/text_small" android:textColor="@color/text_white" android:id="@id/device_setting_return_btn" android:background="@color/background_transparent" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:drawableLeft="@drawable/ic_return_press" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="returnBtnClick" />
+        <TextView android:textSize="@dimen/text_normal_inc" android:textColor="@color/text_white" android:id="@id/device_setting_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/device_name" android:layout_centerInParent="true" />
+        <Button android:textSize="@dimen/text_small" android:textColor="@color/text_white" android:id="@id/device_setting_name_save_btn" android:background="@color/background_transparent" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/save" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:background="@color/bg_white" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_marginTop" android:paddingStart="10.0dip">
+        <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/wifi_ssid_prefix_tv" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <EditText android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/device_setting_name_et" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:maxLength="31" android:inputType="textNoSuggestions" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_press_gray" android:id="@id/tip_tv" android:background="@color/background_transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/device_name_input_limit" android:layout_marginStart="10.0dip" />
+</LinearLayout>

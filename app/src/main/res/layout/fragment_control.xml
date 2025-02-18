@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#ff000000" android:paddingLeft="0.0dip" android:paddingTop="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.opengl.GLSurfaceView android:layout_gravity="center" android:id="@id/surfaceView" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:layout_gravity="bottom|center|left" android:id="@id/tvName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/main_name" />
+    <Button android:layout_gravity="bottom|center" android:id="@id/button_start" android:visibility="invisible" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="start" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/relativeLayout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center_horizontal" android:id="@id/bnHide" android:background="#00ffffff" android:padding="10.0dip" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:src="@mipmap/play" android:text="Hide" android:layout_alignParentTop="true" android:onClick="pressHide" />
+            <ImageButton android:layout_gravity="center_horizontal" android:id="@id/bnCapture" android:background="#00ffffff" android:padding="10.0dip" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:src="@mipmap/camera" android:text="Capture" android:layout_toRightOf="@id/bnHide" android:layout_alignParentTop="true" android:onClick="pressCapture" android:layout_toEndOf="@id/bnHide" />
+            <ImageButton android:layout_gravity="center_horizontal" android:id="@id/bnRecord" android:background="#00ffffff" android:padding="10.0dip" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:src="@mipmap/video" android:text="Record" android:layout_toRightOf="@id/bnCapture" android:layout_alignParentTop="true" android:onClick="pressRecord" android:layout_toEndOf="@id/bnCapture" />
+            <ImageButton android:layout_gravity="center_horizontal" android:id="@id/btnTest" android:background="#00ffffff" android:padding="10.0dip" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:src="@mipmap/video" android:text="Record" android:layout_toRightOf="@id/bnRecord" android:layout_alignParentTop="true" android:onClick="pressRecord" android:layout_toEndOf="@id/bnRecord" />
+            <ImageButton android:layout_gravity="center_horizontal" android:id="@id/bnGallery" android:background="#00ffffff" android:padding="10.0dip" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:src="@mipmap/gallery" android:text="Gallery" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:onClick="pressGallery" android:layout_alignParentEnd="true" />
+            <TextView android:textColor="#ff000000" android:id="@id/tvSpeed" android:background="#ffffffff" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/rlControlLayout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/relativeLayout">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="10.0">
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="4.0">
+                        <ImageButton android:id="@id/bnTakeOff" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_take_off" android:layout_weight="1.0" />
+                        <ImageButton android:id="@id/bnGravity" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_gravity" android:layout_weight="1.0" />
+                        <ImageButton android:id="@id/bnLandOn" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_land_on" android:layout_weight="1.0" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="4.0">
+                    <com.generalplus.GoPlusDrone.View.JoystickView android:id="@id/joystickViewLeft" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="4.0">
+                    <com.generalplus.GoPlusDrone.View.JoystickView android:id="@id/joystickViewRight" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="4.0">
+                        <ImageButton android:id="@id/bnUp" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_up" android:layout_weight="1.0" />
+                        <ImageButton android:id="@id/bnDown" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_down" android:layout_weight="1.0" />
+                        <ImageButton android:id="@id/bnLeft" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_left" android:text="&lt;" android:layout_weight="1.0" />
+                        <ImageButton android:id="@id/bnRight" android:background="#00ffffff" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/btn_right" android:layout_weight="1.0" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView android:textColor="#ffff0000" android:layout_gravity="bottom|center|left" android:id="@id/tvRecordTime" android:paddingLeft="10.0dip" android:paddingBottom="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="00:00:00" />
+    <ImageView android:layout_gravity="center" android:id="@id/ivBroken" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/broken" />
+</FrameLayout>

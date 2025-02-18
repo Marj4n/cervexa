@@ -1,0 +1,55 @@
+package com.jieli.lib.dv.control.utils;
+
+/* loaded from: classes.dex */
+public class TopicKey {
+    public static final String ACU = "acu";
+    public static final String AFF = "aff";
+    public static final String BVO = "bvo";
+    public static final String CYC = "cyc";
+    public static final String CYT = "cyt";
+    public static final String DAT = "dat";
+    public static final String DEF = "def";
+    public static final String DESC = "desc";
+    public static final String DURATION = "t";
+    public static final String EXP = "exp";
+    public static final String FILE_NUM = "path_";
+    public static final String FORMAT = "format";
+    public static final String FRAME_RATE = "fps";
+    public static final String FREQUENCY = "fre";
+    public static final String GAP = "gap";
+    public static final String GRA = "gra";
+    public static final String HEIGHT = "h";
+    public static final String ISO = "iso";
+    public static final String KEY_DATE = "date";
+    public static final String KVO = "kvo";
+    public static final String LAG = "lag";
+    public static final String LEFT = "left";
+    public static final String LEVEL = "level";
+    public static final String MIC = "mic";
+    public static final String MOT = "mot";
+    public static final String NUMBER = "num";
+    public static final String OFFSET = "offset";
+    public static final String ONLINE = "online";
+    public static final String PAR = "par";
+    public static final String PATH = "path";
+    public static final String PHM = "phm";
+    public static final String PRO = "pro";
+    public static final String PWD = "pwd";
+    public static final String QUA = "qua";
+    public static final String RESOLUTION = "res";
+    public static final String SAMPLE = "rate";
+    public static final String SOK = "sok";
+    public static final String SSID = "ssid";
+    public static final String STATUS = "status";
+    public static final String TIMELEFT = "timeleft";
+    public static final String TIMEOUT = "timeout";
+    public static final String TIME_INTERVAL = "timeinv";
+    public static final String TOTAL = "total";
+    public static final String TV_MODE = "tvm";
+    public static final String TWO = "two";
+    public static final String TYPE = "type";
+    public static final String UUID = "uuid";
+    public static final String VERSION = "ver";
+    public static final String WDR = "wdr";
+    public static final String WIDTH = "w";
+}

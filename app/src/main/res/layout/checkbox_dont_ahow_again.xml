@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="@dimen/dialog_dont_show_again_checkbox_left_margin" android:paddingTop="@dimen/dialog_dont_show_again_checkbox_top_margin" android:paddingRight="@dimen/dialog_dont_show_again_checkbox_right_margin" android:paddingBottom="@dimen/dialog_dont_show_again_checkbox_bottom_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/dialog_dont_show_again_checkbox_left_margin" android:paddingEnd="@dimen/dialog_dont_show_again_checkbox_right_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/checkBox_dont_show_again" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/dialog_dont_show_again" />
+</FrameLayout>

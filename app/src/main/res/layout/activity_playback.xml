@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/video_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.jieli.stream.dv.running2.ui.widget.media.IjkVideoView android:id="@id/playback_rt_stream_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TableLayout android:id="@id/hud_view" android:background="@color/transparent_dark" android:padding="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    <ProgressBar android:id="@id/playback_rt_stream_loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageButton android:id="@id/rts_play" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_player" android:layout_centerInParent="true" />
+    <include android:id="@id/playback_top_bar" layout="@layout/view_playback_top_bar" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/playback_top_bar">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.5">
+            <include android:id="@id/playback_preview_mode" android:visibility="visible" layout="@layout/view_playback_preview_mode" />
+            <include android:id="@id/playback_browse_mode" android:visibility="invisible" layout="@layout/view_playback_browse_mode" />
+        </RelativeLayout>
+        <com.jieli.stream.dv.running2.ui.widget.PlaybackSeekbar android:id="@id/time_seekbar" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

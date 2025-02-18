@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/button_bg_press" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/item_bg_view" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip">
+        <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/item_setting_one_tv1" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toLeftOf="@id/item_setting_one_tv2" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/text_smaller_x" android:id="@id/item_setting_one_tv2" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/item_setting_one_icon" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/item_setting_one_icon" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:src="@mipmap/ic_right_arrow" android:layout_alignParentRight="true" android:contentDescription="@string/company" />
+    </RelativeLayout>
+</RelativeLayout>

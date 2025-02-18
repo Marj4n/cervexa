@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/button_bg_press" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/item_bg_view" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/item_setting_one_tv1" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/item_setting_one_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@mipmap/ic_right_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/company" android:layout_marginEnd="5.0dip" android:layout_alignParentEnd="true" />
+        <TextView android:textSize="@dimen/text_smaller_x" android:textColor="@color/text_gray" android:ellipsize="end" android:gravity="right" android:id="@id/item_setting_one_tv2" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@id/item_setting_one_icon" android:layout_toRightOf="@id/item_setting_one_tv1" android:layout_centerVertical="true" android:layout_toStartOf="@id/item_setting_one_icon" android:layout_toEndOf="@id/item_setting_one_tv1" />
+    </RelativeLayout>
+</RelativeLayout>

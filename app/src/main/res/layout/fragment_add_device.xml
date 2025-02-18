@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/bg_gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/add_dev_top_layout" android:background="@mipmap/bg_top_bar" android:layout_width="fill_parent" android:layout_height="@dimen/top_bar_height">
+        <ImageView android:id="@id/add_dev_return_btn" android:padding="4.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/ic_return_press" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/company" />
+        <TextView android:textSize="@dimen/text_normal_inc" android:textColor="@color/text_white" android:id="@id/add_dev_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/nearby_device" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/add_dev_refresh_btn" android:padding="4.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="10.0dip" android:src="@mipmap/ic_refresh" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/company" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/add_dev_wifi_msg_layout" android:background="@color/text_white" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/add_dev_top_layout">
+        <TextView android:textSize="@dimen/text_normal" android:id="@id/add_dev_wifi_name" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/device_wifi_ssid" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/add_dev_password_icon" android:padding="4.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@mipmap/ic_password" android:contentDescription="@string/company" />
+            <TextView android:textSize="@dimen/text_normal" android:textColor="@color/text_white" android:id="@id/add_dev_btn" android:background="@drawable/btn_bg_blue" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="@string/add" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <EditText android:id="@id/add_dev_wifi_pwd_edit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/device_wifi_pwd" android:layout_toLeftOf="@id/add_dev_btn" android:layout_toRightOf="@id/add_dev_password_icon" android:inputType="textPassword" />
+        </RelativeLayout>
+    </LinearLayout>
+    <ListView android:id="@id/add_dev_list_view" android:background="@color/text_white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/add_dev_wifi_msg_layout" />
+</RelativeLayout>

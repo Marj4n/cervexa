@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:layout_gravity="center" android:background="@mipmap/bg_top_bar" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_top_height">
+        <TextView android:textSize="@dimen/text_large" android:textColor="@color/text_white" android:gravity="center" android:id="@id/tv_title" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0">
+        <ProgressBar android:id="@id/progressBar" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/Widget.ProgressBar.Inverse" />
+        <ProgressBar android:id="@id/progressBar_horizon" android:layout_width="fill_parent" android:layout_height="6.0dip" android:max="100" android:progressDrawable="@drawable/brown_horizon_progress" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" style="@android:style/Widget.ProgressBar.Horizontal" />
+        <TextView android:textSize="@dimen/text_small" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:id="@id/tv_content" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:paddingStart="6.0dip" android:paddingEnd="6.0dip" />
+        <CheckBox android:textSize="@dimen/text_smaller" android:id="@id/checkbox" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/delete_all_files" />
+    </LinearLayout>
+    <View android:id="@id/line_id" android:background="@android:color/darker_gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/text_normal" android:textColor="@android:color/black" android:gravity="center" android:id="@id/tv_left" android:background="@drawable/bg_dialog_cancel_selector" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="48.0dip" android:text="@string/dialog_confirm" android:layout_weight="1.0" />
+        <View android:id="@id/divider_id" android:background="@android:color/darker_gray" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/text_normal" android:textColor="@android:color/black" android:gravity="center" android:id="@id/tv_middle" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="48.0dip" android:text="@string/dialog_return" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_normal" android:textColor="@android:color/black" android:gravity="center" android:id="@id/tv_right" android:background="@drawable/bg_dialog_confirm_selector" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="48.0dip" android:text="@string/dialog_cancel" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

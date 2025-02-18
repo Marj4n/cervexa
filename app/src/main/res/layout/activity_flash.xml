@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/welcome_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@mipmap/bg_flash" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:id="@id/agreement_layout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="bottom|center" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@mipmap/ic_logo" android:layout_weight="1.0" android:contentDescription="@null" />
+        <RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0">
+            <Button android:textSize="@dimen/text_large" android:textColor="@drawable/text_white_selector" android:gravity="center" android:id="@id/start_button" android:background="@drawable/bg_gray_gradient" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/start_using" android:layout_marginStart="30.0dip" android:layout_marginEnd="30.0dip" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/start_button">
+                <CheckBox android:textSize="@dimen/text_small" android:gravity="center" android:id="@id/agreement_checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/agree_with" />
+                <TextView android:textSize="@dimen/text_small" android:textStyle="italic" android:textColor="@android:color/black" android:gravity="center" android:id="@id/user_agreement_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/user_agreement" android:paddingStart="4.0dip" android:paddingEnd="4.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
