@@ -3,6 +3,7 @@ package com.github.mikephil.charting.renderer;
 import android.graphics.Canvas;
 import android.util.Log;
 import com.github.mikephil.charting.animation.ChartAnimator;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.dataprovider.ScatterDataProvider;
@@ -54,7 +55,7 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
         }
         int min = (int) Math.min(Math.ceil(iScatterDataSet.getEntryCount() * this.mAnimator.getPhaseX()), iScatterDataSet.getEntryCount());
         for (int i = 0; i < min; i++) {
-            ?? entryForIndex = iScatterDataSet.getEntryForIndex(i);
+            Entry entryForIndex = iScatterDataSet.getEntryForIndex(i);
             this.mPixelBuffer[0] = entryForIndex.getX();
             this.mPixelBuffer[1] = entryForIndex.getY() * phaseY;
             transformer.pointValuesToPixel(this.mPixelBuffer);
@@ -90,7 +91,7 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
                             int i4 = i3 + 1;
                             if (this.mViewPortHandler.isInBoundsY(generateTransformedValuesScatter[i4])) {
                                 int i5 = i3 / 2;
-                                ?? entryForIndex = iScatterDataSet.getEntryForIndex(this.mXBounds.min + i5);
+                                Entry entryForIndex = iScatterDataSet.getEntryForIndex(this.mXBounds.min + i5);
                                 i = i3;
                                 drawValue(canvas, iScatterDataSet.getValueFormatter(), entryForIndex.getY(), entryForIndex, i2, generateTransformedValuesScatter[i3], generateTransformedValuesScatter[i4] - convertDpToPixel, iScatterDataSet.getValueTextColor(i5 + this.mXBounds.min));
                                 i3 = i + 2;
@@ -112,7 +113,7 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
         for (Highlight highlight : highlightArr) {
             IScatterDataSet iScatterDataSet = (IScatterDataSet) scatterData.getDataSetByIndex(highlight.getDataSetIndex());
             if (iScatterDataSet != null && iScatterDataSet.isHighlightEnabled()) {
-                ?? entryForXValue = iScatterDataSet.getEntryForXValue(highlight.getX(), highlight.getY());
+                Entry entryForXValue = iScatterDataSet.getEntryForXValue(highlight.getX(), highlight.getY());
                 if (isInBoundsX(entryForXValue, iScatterDataSet)) {
                     MPPointD pixelForValues = this.mChart.getTransformer(iScatterDataSet.getAxisDependency()).getPixelForValues(entryForXValue.getX(), entryForXValue.getY() * this.mAnimator.getPhaseY());
                     highlight.setDraw((float) pixelForValues.x, (float) pixelForValues.y);

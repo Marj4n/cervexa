@@ -494,7 +494,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         int i2;
         boolean z;
         boolean z2;
-        ?? r6;
+        int r6;
         this.mX = 0;
         this.mY = 0;
         this.mWidthMeasuredTooSmall = false;

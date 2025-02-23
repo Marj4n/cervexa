@@ -82,7 +82,7 @@ final class MaterialCalendarGridView extends GridView {
     @Override // android.widget.AdapterView
     public final void setAdapter(ListAdapter listAdapter) {
         if (!(listAdapter instanceof MonthAdapter)) {
-            throw new IllegalArgumentException(String.format("%1$s must have its Adapter set to a %2$s", MaterialCalendarGridView.class.getCanonicalName(), MonthAdapter.class.getCanonicalName()));
+            throw new IllegalArgumentException(String.format("must have its Adapter set to a", MaterialCalendarGridView.class.getCanonicalName(), MonthAdapter.class.getCanonicalName()));
         }
         super.setAdapter(listAdapter);
     }

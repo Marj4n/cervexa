@@ -1,5 +1,6 @@
 package com.google.zxing.datamatrix.detector;
 
+import com.github.mikephil.charting.data.Entry;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.common.BitMatrix;
@@ -11,6 +12,8 @@ import com.google.zxing.common.detector.WhiteRectangleDetector;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+
+import kotlinx.coroutines.flow.FlowKt__BuildersKt$asFlow$$inlined$unsafeFlow$10;
 
 /* loaded from: classes.dex */
 public final class Detector {
@@ -188,11 +191,11 @@ public final class Detector {
         vector.addElement(transitionsBetween(resultPoint5, resultPoint7));
         vector.addElement(transitionsBetween(resultPoint6, resultPoint8));
         vector.addElement(transitionsBetween(resultPoint7, resultPoint8));
-        AnonymousClass1 anonymousClass1 = null;
+        Entry anonymousClass1 = null;
         Collections.insertionSort(vector, new ResultPointsAndTransitionsComparator());
         ResultPointsAndTransitions resultPointsAndTransitions = (ResultPointsAndTransitions) vector.elementAt(0);
         ResultPointsAndTransitions resultPointsAndTransitions2 = (ResultPointsAndTransitions) vector.elementAt(1);
-        ?? hashtable = new Hashtable();
+        Hashtable hashtable = new Hashtable();
         increment(hashtable, resultPointsAndTransitions.getFrom());
         increment(hashtable, resultPointsAndTransitions.getTo());
         increment(hashtable, resultPointsAndTransitions2.getFrom());
@@ -201,7 +204,7 @@ public final class Detector {
         Object obj = null;
         Object obj2 = null;
         while (keys.hasMoreElements()) {
-            ?? r15 = (ResultPoint) keys.nextElement();
+            Entry r15 = (Entry) keys.nextElement();
             if (((Integer) hashtable.get(r15)).intValue() == 2) {
                 obj = r15;
             } else if (anonymousClass1 == null) {
@@ -213,11 +216,11 @@ public final class Detector {
         if (anonymousClass1 == null || obj == null || obj2 == null) {
             throw NotFoundException.getNotFoundInstance();
         }
-        ?? r4 = {anonymousClass1, obj, obj2};
+        int r4 = new Entry[]{anonymousClass1, obj, obj2};
         ResultPoint.orderBestPatterns(r4);
-        ?? r12 = r4[0];
-        ?? r14 = r4[1];
-        ?? r152 = r4[2];
+        int r12 = r4[0];
+        int r14 = r4[1];
+        int r152 = r4[2];
         ResultPoint resultPoint9 = !hashtable.containsKey(resultPoint5) ? resultPoint5 : !hashtable.containsKey(resultPoint6) ? resultPoint6 : !hashtable.containsKey(resultPoint7) ? resultPoint7 : resultPoint8;
         int transitions = transitionsBetween(r152, resultPoint9).getTransitions();
         int transitions2 = transitionsBetween(r12, resultPoint9).getTransitions();

@@ -113,7 +113,7 @@ public class ActionMenuView extends LinearLayoutCompat implements MenuBuilder.It
     protected void onMeasure(int i, int i2) {
         MenuBuilder menuBuilder;
         boolean z = this.mFormatItems;
-        boolean z2 = View.MeasureSpec.getMode(i) == 1073741824;
+        boolean z2 = View.MeasureSpec.getMode(i) == MeasureSpec.EXACTLY;
         this.mFormatItems = z2;
         if (z != z2) {
             this.mFormatItemsWidth = 0;
@@ -147,7 +147,7 @@ public class ActionMenuView extends LinearLayoutCompat implements MenuBuilder.It
         boolean z2;
         boolean z3;
         int i6;
-        ?? r14;
+        int r14;
         int mode = View.MeasureSpec.getMode(i2);
         int size = View.MeasureSpec.getSize(i);
         int size2 = View.MeasureSpec.getSize(i2);

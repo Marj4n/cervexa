@@ -64,7 +64,7 @@
         <item>@string/tab_gallery</item>
         <item>@string/tab_me</item>
     </string-array>
-    <string-array name="photo_qulity">
+    <string-array name="photo_quality">
         <item>@string/photo_qulity_lo</item>
         <item>@string/photo_qulity_md</item>
         <item>@string/photo_qulity_hi</item>

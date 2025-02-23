@@ -27,7 +27,7 @@
     <string name="abc_searchview_description_submit">Submit query</string>
     <string name="abc_searchview_description_voice">Voice search</string>
     <string name="abc_shareactionprovider_share_with">Share with</string>
-    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with   </string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="about_app">关于</string>
     <string name="action_Select">Select</string>
@@ -41,11 +41,11 @@
     <string name="all_select">全选</string>
     <string name="allow_to_save_traffic_data">允许保存行车数据</string>
     <string name="appName">HVCAMWiFi</string>
-    <string name="app_advanced_settings">APP高级设置</string>
+    <string name="app_advanced_settings">APP</string>
     <string name="app_name">libusbcamera</string>
     <string name="app_storage_manager">APP存储管理</string>
     <string name="app_version">App版本</string>
-    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout\$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior</string>
     <string name="audio_decoder">a_dec</string>
     <string name="audio_sample_rate">a_rate</string>
     <string name="auto_download_the_photo_files">自动下载拍照文件</string>
@@ -62,9 +62,9 @@
     <string name="cancel">CANCEL</string>
     <string name="cancel_all_select">取消全选</string>
     <string name="capture_successfully">Capture successfully!</string>
-    <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
-    <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
-    <string name="character_counter_pattern">%1$d/%2$d</string>
+    <string name="character_counter_content_description">Characters entered 1 of 2</string>
+    <string name="character_counter_overflowed_content_description">Character limit exceeded 1 of 2</string>
+    <string name="character_counter_pattern">1/2</string>
     <string name="check_app_upgrade">检查升级</string>
     <string name="chip_text">Chip text</string>
     <string name="clean_cache">清理缓存</string>
@@ -74,27 +74,27 @@
     <string name="color_picker_cancel">Cancel</string>
     <string name="color_picker_default_title">Select a Color</string>
     <string name="color_picker_select">Select</string>
-    <string name="color_swatch_description">Color %1$d</string>
-    <string name="color_swatch_description_selected">Color %1$d selected</string>
+    <string name="color_swatch_description">Color 1</string>
+    <string name="color_swatch_description_selected">Color 1 selected</string>
     <string name="comfirm">确定</string>
     <string name="company">ZH-JL</string>
     <string name="connect_device_in_wlan">连接失败！请到手机设置中连接设备</string>
-    <string name="connected_wifi_tip">连接Wifi[%1$s]成功</string>
+    <string name="connected_wifi_tip">连接Wifi[ ]成功</string>
     <string name="connecting">正在连接</string>
     <string name="connection_failed">连接失败</string>
     <string name="connection_timeout">连接超时，请确认网络环境并重新连接</string>
-    <string name="counter_format">%1$d / %2$d</string>
+    <string name="counter_format">1 / 2</string>
     <string name="create_dir_success">创建文件夹成功</string>
     <string name="create_file_failed">创建输出文件失败</string>
     <string name="curr_dev_not_support">当前设备不支持</string>
     <string name="current_path_is_root">当前是根目录</string>
-    <string name="current_version">当前版本：%1$s</string>
+    <string name="current_version">当前版本： </string>
     <string name="cyc_save_video_failed">循环保存失败</string>
-    <string name="default_time_format">00:00</string>
+    <string name="default_time_format">00.00</string>
     <string name="delete_all_files">删除全部</string>
     <string name="delete_dir_failed">删除文件夹失败</string>
     <string name="delete_dir_success">删除文件夹成功</string>
-    <string name="delete_dir_tip">确定删除文件夹[%1$s]？</string>
+    <string name="delete_dir_tip">确定删除文件夹[ ]？</string>
     <string name="delete_emergency_video_tip">是否删除紧急视频？</string>
     <string name="deleting_tip">删除文件中，请等待</string>
     <string name="dev_gallery">设备图库</string>
@@ -103,14 +103,14 @@
     <string name="device_diaconnected">设备连接已断开</string>
     <string name="device_media">设备文件</string>
     <string name="device_name">记录仪名称</string>
-    <string name="device_name_input_limit">名字必须为1-%1$d个非空字符,中文占2-3个字符,当前字符数：%2$d</string>
+    <string name="device_name_input_limit">名字必须为1-1个非空字符,中文占2-3个字符,当前字符数：2</string>
     <string name="device_name_length_error">wifi名字过长</string>
     <string name="device_no_media_files">设备没有媒体文件</string>
     <string name="device_no_videos">设备没有视频文件</string>
     <string name="device_password">记录仪密码</string>
     <string name="device_setting">记录仪设置</string>
     <string name="device_storage_manage">记录仪储存管理</string>
-    <string name="device_volume_value">记录仪音量(%1$d)</string>
+    <string name="device_volume_value">记录仪音量(1)</string>
     <string name="device_wifi_pwd">Wifi密码</string>
     <string name="device_wifi_ssid">设备Wifi名</string>
     <string name="dialod_wait">Please later</string>
@@ -133,11 +133,11 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">"DUMMY
 CONTENT"</string>
-    <string name="end_crash_video_task">碰撞检测视频保存成功，路径：%1$s</string>
+    <string name="end_crash_video_task">碰撞检测视频保存成功，路径： </string>
     <string name="enter_sta_wifi_msg_tip">请输入需要连接的网络信息</string>
-    <string name="error_crash_video_task">碰撞检测视频保存失败，原因: %1$s</string>
+    <string name="error_crash_video_task">碰撞检测视频保存失败，原因  </string>
     <string name="error_icon_content_description">Error</string>
-    <string name="executing_step">正在执行：%1$s</string>
+    <string name="executing_step">正在执行： </string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
@@ -157,7 +157,7 @@ CONTENT"</string>
     <string name="fps">fps</string>
     <string name="front_camera">前摄像头</string>
     <string name="front_view">前视</string>
-    <string name="full_screeen_mode">全屏模式(16:9)</string>
+    <string name="full_screeen_mode">全屏模式(16.9)</string>
     <string name="generate_qr_code">生成二维码</string>
     <string name="go_to_wifi_settings">先进入-手机设置-WLAN并连接设备</string>
     <string name="go_to_wlan">点击去连接设备</string>
@@ -167,7 +167,7 @@ CONTENT"</string>
     <string name="help">帮助</string>
     <string name="hide_bottom_view_on_scroll_behavior">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="hig">高</string>
-    <string name="hour">%1$s小时</string>
+    <string name="hour"> 小时</string>
     <string name="icon_content_description">Dialog Icon</string>
     <string name="ijkplayer_dummy" />
     <string name="immediate_effect">是否立即生效，是则会重启设备，否则重启设备后生效</string>
@@ -208,37 +208,37 @@ CONTENT"</string>
     <string name="language29">Null</string>
     <string name="language295">APP Version：</string>
     <string name="language3">APP version：</string>
-    <string name="language30">Website: www.WeiOA.com</string>
-    <string name="language31">&lt;font color=#000000 face=黑体>1.Start equipment:&lt;/font>Long Press the on/ off button of the equipment, and we can see the equipment light blinks for 1 second and the on/ off light and shooting light blink for 2 seconds; and then the shooting light goes out but the on/ off light blinks. The equipment is totally started after the on/ off light is normally on&lt;font color=#FF0000>(it lasts about 15- 20 seconds)&lt;/font></string>
-    <string name="language32">&lt;font color=#000000 face=黑体>2.Connect equipment wifi:&lt;/font>Open the mobile phone wifi setting; open wifi to find out a wifi hotspot (no encryption) with the prefix of “Cam- *******” and click connection; return back to the mobile phone home after successful connection.</string>
+    <string name="language30">Website www.WeiOA.com</string>
+    <string name="language31">&lt;font color=#000000 face=黑体>1.Start equipment&lt;/font>Long Press the on/ off button of the equipment, and we can see the equipment light blinks for 1 second and the on/ off light and shooting light blink for 2 seconds; and then the shooting light goes out but the on/ off light blinks. The equipment is totally started after the on/ off light is normally on&lt;font color=#FF0000>(it lasts about 15- 20 seconds)&lt;/font></string>
+    <string name="language32">&lt;font color=#000000 face=黑体>2.Connect equipment wifi&lt;/font>Open the mobile phone wifi setting; open wifi to find out a wifi hotspot (no encryption) with the prefix of “Cam- *******” and click connection; return back to the mobile phone home after successful connection.</string>
     <string name="language33">&lt;font color=#000000 face=黑体>3.APP interface introduction and use&lt;/font></string>
     <string name="language34">&lt;font color=#000000 face=黑体>3.1 Open APP&lt;/font></string>
     <string name="language35">&lt;font color=#000000 face=黑体>to enter the home of APP; &lt;font></string>
     <string name="language36">&lt;font color=#000000 face=黑体>3.APP interface introduction and use&lt;/font></string>
-    <string name="language37">&lt;p>Help: Click it to check the company information, APP edition, FW edition and product instructions.&lt;/p> &lt;p>Preview: Click to watch the equipment real-time images and operating equipment.&lt;/p> File: Click to check the shot pictures and videos</string>
+    <string name="language37">&lt;p>Help. Click it to check the company information, APP edition, FW edition and product instructions.&lt;/p> &lt;p>Preview Click to watch the equipment real-time images and operating equipment.&lt;/p> File Click to check the shot pictures and videos</string>
     <string name="language38">&lt;font color=#000000 face=黑体>3.2 Preview menu interface&lt;/font></string>
     <string name="language39">&lt;font color=#000000 face=黑体>3.2.1 Introduction of key functions &lt;/font></string>
     <string name="language4">F/W：</string>
-    <string name="language40">Return:</string>
+    <string name="language40">Return</string>
     <string name="language41">Click to return to the previous page</string>
-    <string name="language42">Exposure decrease:</string>
+    <string name="language42">Exposure decrease</string>
     <string name="language43">Click to decrease exposure (used during excessive light)</string>
-    <string name="language44">Automatic exposure:</string>
+    <string name="language44">Automatic exposure</string>
     <string name="language45">Click to realize automatic exposure;</string>
-    <string name="language46">Exposure increase:</string>
+    <string name="language46">Exposure increase</string>
     <string name="language47">Click to enhance exposure (used during inadequate light);</string>
-    <string name="language48">Zoom out:</string>
+    <string name="language48">Zoom out</string>
     <string name="language49">Click to shrink the image (used while the image is too big;&lt;font color=#FF0000> it defaults to minimum during open each time&lt;/font>)</string>
     <string name="language5">Please Select</string>
-    <string name="language50">Zoom in:</string>
+    <string name="language50">Zoom in</string>
     <string name="language51">Click to magnify the image (used while the image is too small)</string>
-    <string name="language52">Central label:</string>
+    <string name="language52">Central label</string>
     <string name="language53">Click to mark the central point of the image with a cross;</string>
-    <string name="language54">Shoot:</string>
+    <string name="language54">Shoot</string>
     <string name="language55">Click to take pictures;</string>
-    <string name="language56">Recording:</string>
+    <string name="language56">Recording</string>
     <string name="language57">Click to record a video or to finish recording a video;</string>
-    <string name="language58">File:</string>
+    <string name="language58">File</string>
     <string name="language59">Click to check the shot pictures or videos</string>
     <string name="language6">Photo</string>
     <string name="language60">&lt;font color=#000000 face=黑体>3.2.2 Press the screen and slide towards the left in preview interface, and the device resolution and picture comparative mode setting will appear in the right side:&lt;/font></string>
@@ -262,12 +262,12 @@ CONTENT"</string>
     <string name="lock_file_tip">是否加锁此文件？</string>
     <string name="low">低</string>
     <string name="main_name">Camera V2.6</string>
-    <string name="material_clock_display_divider">:</string>
+    <string name="material_clock_display_divider">.</string>
     <string name="material_clock_toggle_content_description">Select AM or PM</string>
     <string name="material_hour_selection">Select hour</string>
-    <string name="material_hour_suffix">"%1$s oclock"</string>
+    <string name="material_hour_suffix">"  oclock"</string>
     <string name="material_minute_selection">Select minutes</string>
-    <string name="material_minute_suffix">%1$s minutes</string>
+    <string name="material_minute_suffix">  minutes</string>
     <string name="material_slider_range_end">Range end,</string>
     <string name="material_slider_range_start">Range start,</string>
     <string name="material_timepicker_am">AM</string>
@@ -285,41 +285,6 @@ CONTENT"</string>
     <string name="modify_storage_url_failed">修改存储位置失败，请选择其他文件夹</string>
     <string name="modify_storage_url_success">修改存储位置成功</string>
     <string name="moving_dir_tip">正在修改存储位置，请稍等</string>
-    <string name="mtrl_badge_numberless_content_description">New notification</string>
-    <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
-    <string name="mtrl_exceed_max_badge_number_content_description">More than %1$d new notifications</string>
-    <string name="mtrl_exceed_max_badge_number_suffix">%1$d%2$s</string>
-    <string name="mtrl_picker_a11y_next_month">Change to next month</string>
-    <string name="mtrl_picker_a11y_prev_month">Change to previous month</string>
-    <string name="mtrl_picker_announce_current_selection">Current selection: %1$s</string>
-    <string name="mtrl_picker_cancel">@android:string/cancel</string>
-    <string name="mtrl_picker_confirm">@android:string/ok</string>
-    <string name="mtrl_picker_date_header_selected">%1$s</string>
-    <string name="mtrl_picker_date_header_title">Select Date</string>
-    <string name="mtrl_picker_date_header_unselected">Selected date</string>
-    <string name="mtrl_picker_day_of_week_column_header">Column of days: %1$s</string>
-    <string name="mtrl_picker_invalid_format">Invalid format.</string>
-    <string name="mtrl_picker_invalid_format_example">Example: %1$s</string>
-    <string name="mtrl_picker_invalid_format_use">Use: %1$s</string>
-    <string name="mtrl_picker_invalid_range">Invalid range.</string>
-    <string name="mtrl_picker_navigate_to_year_description">Navigate to year %1$s</string>
-    <string name="mtrl_picker_out_of_range">Out of range: %1$s</string>
-    <string name="mtrl_picker_range_header_only_end_selected">Start date – %1$s</string>
-    <string name="mtrl_picker_range_header_only_start_selected">%1$s – End date</string>
-    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
-    <string name="mtrl_picker_range_header_title">Select Range</string>
-    <string name="mtrl_picker_range_header_unselected">Start date – End date</string>
-    <string name="mtrl_picker_save">Save</string>
-    <string name="mtrl_picker_text_input_date_hint">Date</string>
-    <string name="mtrl_picker_text_input_date_range_end_hint">End date</string>
-    <string name="mtrl_picker_text_input_date_range_start_hint">Start date</string>
-    <string name="mtrl_picker_text_input_day_abbr">d</string>
-    <string name="mtrl_picker_text_input_month_abbr">m</string>
-    <string name="mtrl_picker_text_input_year_abbr">y</string>
-    <string name="mtrl_picker_toggle_to_calendar_input_mode">Switch to calendar input mode</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Tap to switch to selecting a day</string>
-    <string name="mtrl_picker_toggle_to_text_input_mode">Switch to text input mode</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
     <string name="myphoto">My Photo</string>
     <string name="name_empty_error">用户名错误</string>
     <string name="name_format_error">wifi名输入格式不符合要求</string>
@@ -328,10 +293,10 @@ CONTENT"</string>
     <string name="nearby_device">附近记录仪</string>
     <string name="new_and_old_pwd_consistent">新旧密码一致</string>
     <string name="no_card_record_tip">TF卡不在线，录制到本地吗？</string>
-    <string name="no_card_take_photo_failed">拍照失败, 原因: %1$s</string>
-    <string name="no_card_take_photo_success">拍照成功, 路径 : %1$s</string>
-    <string name="no_card_video_failed">录像失败, 原因: %1$s</string>
-    <string name="no_card_video_success">录像成功, 文件名: %1$s</string>
+    <string name="no_card_take_photo_failed">拍照失败, 原因:  </string>
+    <string name="no_card_take_photo_success">拍照成功, 路径 :  </string>
+    <string name="no_card_video_failed">录像失败, 原因:  </string>
+    <string name="no_card_video_success">录像成功, 文件名:  </string>
     <string name="no_data_tip">当前没有数据</string>
     <string name="no_device">未搜索到可用USB Camera设备</string>
     <string name="no_more_data">没有更多数据</string>
@@ -342,7 +307,7 @@ CONTENT"</string>
     <string name="open">打开</string>
     <string name="open_debug">打开调试模式</string>
     <string name="open_debug_ok">设置调试成功</string>
-    <string name="open_debug_tip">设置调试，还需要%1$d次点击</string>
+    <string name="open_debug_tip">设置调试，还需要1次点击</string>
     <string name="open_gpg_tip">应用需要GPS功能，请打开定位服务才可继续。</string>
     <string name="open_rts_tip">请打开实时流</string>
     <string name="open_video_tip">打开录像中，请等待</string>
@@ -355,31 +320,31 @@ CONTENT"</string>
     <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
-    <string name="permission_audio">"No audio recording permission. 
+    <string name="permission_audio">"No audio recording permission.
 All audio function is disabled"</string>
     <string name="permission_audio_recording_reason">Audio recording permission is necessary for movie capture with audio.</string>
     <string name="permission_audio_recording_request">Audio recording permission is necessary for movie capture with audio.</string>
     <string name="permission_audio_streaming_reason">Audio recording permission is necessary for streaming with audio.</string>
     <string name="permission_audio_streaming_request">Audio recording permission is necessary for streaming with audio.</string>
     <string name="permission_camera">No camera access permission</string>
-    <string name="permission_camera_finish">"No camera access permission. 
+    <string name="permission_camera_finish">"No camera access permission.
 App will finish soon"</string>
     <string name="permission_camera_reason">Camera access permission is necessary for fallback to built in camera.</string>
     <string name="permission_camera_request">Camera access permission is necessary for fallback to built in camera.</string>
-    <string name="permission_ext_storage">"No permission of writing external storage. 
+    <string name="permission_ext_storage">"No permission of writing external storage.
 Movie/still image capturing are disabled."</string>
-    <string name="permission_ext_storage_finish">"No writing external storage permission. 
+    <string name="permission_ext_storage_finish">"No writing external storage permission.
 App will finish soon"</string>
     <string name="permission_ext_storage_reason">Permission of writing external storage is necessary for movie/still image capturing.</string>
     <string name="permission_ext_storage_request">Permission of writing external storage is necessary for movie/still image capturing.</string>
     <string name="permission_hardware_id_request">Permission to access phone state/hardware id necessary for calling.</string>
     <string name="permission_location">No location access permission</string>
-    <string name="permission_location_finish">"No location access permission. 
+    <string name="permission_location_finish">"No location access permission.
 App will finish soon"</string>
-    <string name="permission_location_reason">Location access permission is necessary for %s</string>
-    <string name="permission_location_request">Location access permission is necessary for %s</string>
+    <string name="permission_location_reason">Location access permission is necessary for   </string>
+    <string name="permission_location_request">Location access permission is necessary for   </string>
     <string name="permission_network">No network access permission.</string>
-    <string name="permission_network_finish">"No network access permission. 
+    <string name="permission_network_finish">"No network access permission.
 App will finish soon"</string>
     <string name="permission_network_reason">Network access permission is necessary for streaming.</string>
     <string name="permission_network_request">Network access permission is necessary for streaming.</string>
@@ -390,7 +355,7 @@ App will finish soon"</string>
     <string name="photo_qulity_hi">高清</string>
     <string name="photo_qulity_lo">流畅</string>
     <string name="photo_qulity_md">标清</string>
-    <string name="photo_qulity_value">图象质量:%1$s(%2$dP)</string>
+    <string name="photo_qulity_value">图象质量: (2P)</string>
     <string name="photos_success">Take photos success</string>
     <string name="picture_flip">图像左右反转</string>
     <string name="pictures_failed">Pictures failed</string>
@@ -416,7 +381,7 @@ App will finish soon"</string>
     <string name="rear_view">后视</string>
     <string name="record_fail">录制失败</string>
     <string name="record_success">录制成功</string>
-    <string name="recorded_time">大约可录制:(%1$s)</string>
+    <string name="recorded_time">大约可录制:( )</string>
     <string name="recording_will_stop">录像将会停止，是否要继续？</string>
     <string name="refresh">刷新</string>
     <string name="remaining_storage">剩余</string>
@@ -430,8 +395,8 @@ App will finish soon"</string>
     <string name="res_vga">VGA</string>
     <string name="resolution">RESOLUTION</string>
     <string name="rest_capacity">剩余</string>
-    <string name="rest_photo_accout">当前照片%1$d张，最多还能储存%2$d张</string>
-    <string name="rest_video_accout">当前视频%1$d个，最多还能储存%2$d个</string>
+    <string name="rest_photo_accout">当前照片1张，最多还能储存2张</string>
+    <string name="rest_video_accout">当前视频1个，最多还能储存2个</string>
     <string name="resume_normal_playback_speed">请先恢复正常播放速度</string>
     <string name="save">保存</string>
     <string name="save_fail">保存失败</string>
@@ -456,7 +421,7 @@ App will finish soon"</string>
     <string name="select_dir_tip">请选择空文件夹</string>
     <string name="select_wifi">选择WiFi</string>
     <string name="selected_file_empty_tip">请选择文件</string>
-    <string name="selected_num">已选择 : %1$d</string>
+    <string name="selected_num">已选择 : 1</string>
     <string name="service_name">Background Service</string>
     <string name="service_start">Started</string>
     <string name="service_stop">Stopped</string>
@@ -518,13 +483,13 @@ App will finish soon"</string>
     <string name="tcp_speed">tcp_speed</string>
     <string name="tencent_qq_appid">222222</string>
     <string name="text1">"My photo Can browse the
-photos and video files have 
+photos and video files have
 been taken
 
-Camera Can watch the video 
-page and operate device 
+Camera Can watch the video
+page and operate device
 
-Help center Can browse the 
+Help center Can browse the
 Product feathe introduction"</string>
     <string name="thumbnail_load_fail">图片加载错误</string>
     <string name="time_chose_tip">选择时长，当停车达到该时长后自动关机，从而保护车辆电池</string>
@@ -548,7 +513,7 @@ Product feathe introduction"</string>
     <string name="upgrade_step_5">设备正在升级，请勿断电</string>
     <string name="upgrade_step_6">升级完成</string>
     <string name="upgrade_step_7">升级APK</string>
-    <string name="upgrade_version">更新版本：%1$s</string>
+    <string name="upgrade_version">更新版本： </string>
     <string name="upload_failed">上传失败</string>
     <string name="upload_firmware">上传固件</string>
     <string name="uploading">正在上传</string>

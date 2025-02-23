@@ -18,7 +18,7 @@ public class MaterialAttributes {
     public static int resolveOrThrow(Context context, int i, String str) {
         TypedValue resolve = resolve(context, i);
         if (resolve == null) {
-            throw new IllegalArgumentException(String.format("%1$s requires a value for the %2$s attribute to be set in your app theme. You can either set the attribute in your theme or update your theme to inherit from Theme.MaterialComponents (or a descendant).", str, context.getResources().getResourceName(i)));
+            throw new IllegalArgumentException(String.format("requires a value for the %2$s attribute to be set in your app theme. You can either set the attribute in your theme or update your theme to inherit from Theme.MaterialComponents (or a descendant).", str, context.getResources().getResourceName(i)));
         }
         return resolve.data;
     }
