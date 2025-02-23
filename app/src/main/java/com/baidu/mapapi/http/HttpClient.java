@@ -100,7 +100,7 @@ public class HttpClient {
         InputStream inputStream;
         BufferedReader bufferedReader2;
         Exception e;
-        ?? r1;
+        int r1;
         this.b = str;
         if (!checkNetwork()) {
             this.g.onFailed(HttpStateError.NETWORK_ERROR);

@@ -374,7 +374,7 @@ public final class WithLifecycleStateKt {
         CancellableContinuationImpl cancellableContinuationImpl = new CancellableContinuationImpl(IntrinsicsKt.intercepted(continuation), 1);
         cancellableContinuationImpl.initCancellability();
         final CancellableContinuationImpl cancellableContinuationImpl2 = cancellableContinuationImpl;
-        final ?? r10 = new LifecycleEventObserver() { // from class: androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$$inlined$suspendCancellableCoroutine$lambda$1
+        final int r10 = new LifecycleEventObserver() { // from class: androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$$inlined$suspendCancellableCoroutine$lambda$1
             @Override // androidx.lifecycle.LifecycleEventObserver
             public void onStateChanged(LifecycleOwner source, Lifecycle.Event event) {
                 Object m21constructorimpl;

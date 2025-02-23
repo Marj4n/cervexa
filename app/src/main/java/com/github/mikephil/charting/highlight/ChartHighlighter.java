@@ -66,7 +66,7 @@ public class ChartHighlighter<T extends BarLineScatterCandleBubbleDataProvider> 
         }
         int dataSetCount = data.getDataSetCount();
         for (int i = 0; i < dataSetCount; i++) {
-            ?? dataSetByIndex = data.getDataSetByIndex(i);
+            IDataSet dataSetByIndex = data.getDataSetByIndex(i);
             if (dataSetByIndex.isHighlightEnabled()) {
                 this.mHighlightBuffer.addAll(buildHighlights(dataSetByIndex, i, f, DataSet.Rounding.CLOSEST));
             }

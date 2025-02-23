@@ -3,18 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:versionCode="129"
     android:versionName="2.9"
-    android:compileSdkVersion="29"
-    android:compileSdkVersionCodename="10"
-    package="com.marjan.cervexa"
-    android:platformBuildVersionCode="29"
-    android:platformBuildVersionName="10">
+    package="com.marjan.cervexa">
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="34"
         tools:ignore="GradleOverrides" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
@@ -30,7 +26,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -60,7 +55,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:requestLegacyExternalStorage="true"
-        tools:targetApi="m">
+        tools:targetApi="p"
+        tools:ignore="DiscouragedApi">
         <activity
             android:name="com.gizthon.camera.SplashActivity"
             android:exported="true"
@@ -128,11 +124,11 @@
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.FlashActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.GenericActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <service android:name="com.jieli.stream.dv.running2.ui.service.CommunicationService"/>
         <activity
@@ -141,30 +137,31 @@
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.me.DeviceSettingActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.me.LanguageActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.me.APPAdvancedSettingActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.me.AppStorageManageActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity
             android:name="com.jieli.stream.dv.running2.wxapi.WXEntryActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity android:name="com.jieli.stream.dv.running2.ui.activity.UserAgreementActivity"/>
         <service
             android:name="com.baidu.trace.LBSTraceService"
             android:enabled="true"
             android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
             android:process=":remote"/>
         <activity
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
@@ -172,7 +169,7 @@
             android:screenOrientation="landscape"/>
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.CameraActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="fullSensor"/>
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.MenuActivity"
             android:screenOrientation="landscape"
@@ -217,14 +214,14 @@
             android:theme="@style/ShareDialogTheme"
             android:name="com.xyzlf.share.library.ShareDialogActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:exported="true"
             android:theme="@android:style/Theme.Translucent"
             android:name="com.xyzlf.share.library.ShareHandlerActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>

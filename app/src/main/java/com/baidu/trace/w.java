@@ -38,7 +38,7 @@ final class w implements Runnable {
         StringBuffer stringBuffer2;
         int i;
         StringBuffer stringBuffer3;
-        ?? r3;
+        int r3;
         StringBuffer stringBuffer4;
         int i2;
         StringBuffer stringBuffer5;

@@ -41,7 +41,7 @@ public final class InputConnectionCompat {
     static boolean handlePerformPrivateCommand(String str, Bundle bundle, OnCommitContentListener onCommitContentListener) {
         boolean z;
         ResultReceiver resultReceiver;
-        ?? r0 = 0;
+        int r0 = 0;
         r0 = 0;
         if (bundle == null) {
             return false;

@@ -127,12 +127,12 @@ public class LineChartRenderer extends LineRadarRenderer {
         this.mXBounds.set(this.mChart, iLineDataSet);
         this.cubicPath.reset();
         if (this.mXBounds.range >= 1) {
-            ?? entryForIndex = iLineDataSet.getEntryForIndex(this.mXBounds.min);
+            Entry entryForIndex = iLineDataSet.getEntryForIndex(this.mXBounds.min);
             this.cubicPath.moveTo(entryForIndex.getX(), entryForIndex.getY() * phaseY);
             int i = this.mXBounds.min + 1;
             Entry entry = entryForIndex;
             while (i <= this.mXBounds.range + this.mXBounds.min) {
-                ?? entryForIndex2 = iLineDataSet.getEntryForIndex(i);
+                Entry entryForIndex2 = iLineDataSet.getEntryForIndex(i);
                 float x = entry.getX() + ((entryForIndex2.getX() - entry.getX()) / 2.0f);
                 this.cubicPath.cubicTo(x, entry.getY() * phaseY, x, entryForIndex2.getY() * phaseY, entryForIndex2.getX(), entryForIndex2.getY() * phaseY);
                 i++;
@@ -166,7 +166,7 @@ public class LineChartRenderer extends LineRadarRenderer {
             int i2 = this.mXBounds.min;
             int i3 = this.mXBounds.range;
             T entryForIndex = iLineDataSet.getEntryForIndex(Math.max(i - 2, 0));
-            ?? entryForIndex2 = iLineDataSet.getEntryForIndex(Math.max(i - 1, 0));
+            Entry entryForIndex2 = iLineDataSet.getEntryForIndex(Math.max(i - 1, 0));
             int i4 = -1;
             if (entryForIndex2 != 0) {
                 this.cubicPath.moveTo(entryForIndex2.getX(), entryForIndex2.getY() * phaseY);
@@ -186,7 +186,7 @@ public class LineChartRenderer extends LineRadarRenderer {
                     if (i6 < iLineDataSet.getEntryCount()) {
                         i5 = i6;
                     }
-                    ?? entryForIndex3 = iLineDataSet.getEntryForIndex(i5);
+                    Entry entryForIndex3 = iLineDataSet.getEntryForIndex(i5);
                     this.cubicPath.cubicTo(entry.getX() + ((entry4.getX() - entry3.getX()) * cubicIntensity), (entry.getY() + ((entry4.getY() - entry3.getY()) * cubicIntensity)) * phaseY, entry4.getX() - ((entryForIndex3.getX() - entry.getX()) * cubicIntensity), (entry4.getY() - ((entryForIndex3.getY() - entry.getY()) * cubicIntensity)) * phaseY, entry4.getX(), entry4.getY() * phaseY);
                     entry3 = entry;
                     entry = entry4;
@@ -249,12 +249,12 @@ public class LineChartRenderer extends LineRadarRenderer {
                 this.mLineBuffer = new float[i * 4];
             }
             for (int i3 = this.mXBounds.min; i3 <= this.mXBounds.range + this.mXBounds.min; i3++) {
-                ?? entryForIndex = iLineDataSet.getEntryForIndex(i3);
+                Entry entryForIndex = iLineDataSet.getEntryForIndex(i3);
                 if (entryForIndex != 0) {
                     this.mLineBuffer[0] = entryForIndex.getX();
                     this.mLineBuffer[1] = entryForIndex.getY() * phaseY;
                     if (i3 < this.mXBounds.max) {
-                        ?? entryForIndex2 = iLineDataSet.getEntryForIndex(i3 + 1);
+                        Entry entryForIndex2 = iLineDataSet.getEntryForIndex(i3 + 1);
                         if (entryForIndex2 == 0) {
                             break;
                         }
@@ -294,8 +294,8 @@ public class LineChartRenderer extends LineRadarRenderer {
                 int i5 = this.mXBounds.min;
                 int i6 = 0;
                 while (i5 <= this.mXBounds.range + this.mXBounds.min) {
-                    ?? entryForIndex3 = iLineDataSet.getEntryForIndex(i5 == 0 ? 0 : i5 - 1);
-                    ?? entryForIndex4 = iLineDataSet.getEntryForIndex(i5);
+                    Entry entryForIndex3 = iLineDataSet.getEntryForIndex(i5 == 0 ? 0 : i5 - 1);
+                    Entry entryForIndex4 = iLineDataSet.getEntryForIndex(i5);
                     if (entryForIndex3 != 0 && entryForIndex4 != 0) {
                         int i7 = i6 + 1;
                         this.mLineBuffer[i6] = entryForIndex3.getX();
@@ -363,7 +363,7 @@ public class LineChartRenderer extends LineRadarRenderer {
         float phaseY = this.mAnimator.getPhaseY();
         boolean z = iLineDataSet.getMode() == LineDataSet.Mode.STEPPED;
         path.reset();
-        ?? entryForIndex = iLineDataSet.getEntryForIndex(i);
+        Entry entryForIndex = iLineDataSet.getEntryForIndex(i);
         path.moveTo(entryForIndex.getX(), fillLinePosition);
         path.lineTo(entryForIndex.getX(), entryForIndex.getY() * phaseY);
         int i3 = i + 1;
@@ -373,7 +373,7 @@ public class LineChartRenderer extends LineRadarRenderer {
             if (i3 > i2) {
                 break;
             }
-            ?? entryForIndex2 = iLineDataSet.getEntryForIndex(i3);
+            Entry entryForIndex2 = iLineDataSet.getEntryForIndex(i3);
             if (z && entry2 != null) {
                 path.lineTo(entryForIndex2.getX(), entry2.getY() * phaseY);
             }
@@ -415,7 +415,7 @@ public class LineChartRenderer extends LineRadarRenderer {
                         }
                         if (this.mViewPortHandler.isInBoundsLeft(f) && this.mViewPortHandler.isInBoundsY(f2)) {
                             int i5 = i4 / 2;
-                            ?? entryForIndex = iLineDataSet.getEntryForIndex(this.mXBounds.min + i5);
+                            Entry entryForIndex = iLineDataSet.getEntryForIndex(this.mXBounds.min + i5);
                             i = i4;
                             drawValue(canvas, iLineDataSet.getValueFormatter(), entryForIndex.getY(), entryForIndex, i2, f, f2 - i3, iLineDataSet.getValueTextColor(i5));
                         } else {
@@ -468,7 +468,7 @@ public class LineChartRenderer extends LineRadarRenderer {
                 int i2 = this.mXBounds.range + this.mXBounds.min;
                 int i3 = this.mXBounds.min;
                 while (i3 <= i2) {
-                    ?? entryForIndex = iLineDataSet.getEntryForIndex(i3);
+                    Entry entryForIndex = iLineDataSet.getEntryForIndex(i3);
                     if (entryForIndex == 0) {
                         break;
                     }
@@ -500,7 +500,7 @@ public class LineChartRenderer extends LineRadarRenderer {
         for (Highlight highlight : highlightArr) {
             ILineDataSet iLineDataSet = (ILineDataSet) lineData.getDataSetByIndex(highlight.getDataSetIndex());
             if (iLineDataSet != null && iLineDataSet.isHighlightEnabled()) {
-                ?? entryForXValue = iLineDataSet.getEntryForXValue(highlight.getX(), highlight.getY());
+                Entry entryForXValue = iLineDataSet.getEntryForXValue(highlight.getX(), highlight.getY());
                 if (isInBoundsX(entryForXValue, iLineDataSet)) {
                     MPPointD pixelForValues = this.mChart.getTransformer(iLineDataSet.getAxisDependency()).getPixelForValues(entryForXValue.getX(), entryForXValue.getY() * this.mAnimator.getPhaseY());
                     highlight.setDraw((float) pixelForValues.x, (float) pixelForValues.y);

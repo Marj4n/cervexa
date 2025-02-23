@@ -54,7 +54,7 @@ public class FileUtils {
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:42:0x0081 -> B:19:0x0088). Please report as a decompilation issue!!! */
     public static List<Entry> loadEntriesFromAssets(AssetManager assetManager, String str) {
         BufferedReader bufferedReader;
-        ?? r2;
+        int r2;
         ArrayList arrayList = new ArrayList();
         BufferedReader bufferedReader2 = null;
         BufferedReader bufferedReader3 = null;

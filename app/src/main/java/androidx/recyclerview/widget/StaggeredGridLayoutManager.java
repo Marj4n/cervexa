@@ -1140,7 +1140,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         int i4;
         int decoratedMeasurement2;
         boolean areAllStartsEqual;
-        ?? r9 = 0;
+        int r9 = 0;
         this.mRemainingSpans.set(0, this.mSpanCount, true);
         if (this.mLayoutState.mInfinite) {
             i2 = layoutState.mLayoutDirection == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;

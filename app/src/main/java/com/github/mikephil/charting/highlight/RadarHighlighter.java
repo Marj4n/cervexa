@@ -2,6 +2,7 @@ package com.github.mikephil.charting.highlight;
 
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
@@ -43,7 +44,7 @@ public class RadarHighlighter extends PieRadarHighlighter<RadarChart> {
         int i3 = 0;
         while (i3 < ((RadarData) ((RadarChart) this.mChart).getData()).getDataSetCount()) {
             IRadarDataSet dataSetByIndex = ((RadarData) ((RadarChart) this.mChart).getData()).getDataSetByIndex(i3);
-            ?? entryForIndex = dataSetByIndex.getEntryForIndex(i2);
+            RadarEntry entryForIndex = dataSetByIndex.getEntryForIndex(i2);
             float f = i2;
             Utils.getPosition(((RadarChart) this.mChart).getCenterOffsets(), (entryForIndex.getY() - ((RadarChart) this.mChart).getYChartMin()) * factor * phaseY, (sliceAngle * f * phaseX) + ((RadarChart) this.mChart).getRotationAngle(), mPPointF);
             this.mHighlightBuffer.add(new Highlight(f, entryForIndex.getY(), mPPointF.x, mPPointF.y, i3, dataSetByIndex.getAxisDependency()));

@@ -8,8 +8,10 @@ import android.graphics.Typeface;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.data.ChartData;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ICandleDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IPieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.FSize;
@@ -60,7 +62,7 @@ public class LegendRenderer extends Renderer {
             this.computedEntries.clear();
             int i = 0;
             while (i < chartData.getDataSetCount()) {
-                ?? dataSetByIndex = chartData3.getDataSetByIndex(i);
+                IDataSet<? extends Entry> dataSetByIndex = chartData3.getDataSetByIndex(i);
                 List<Integer> colors = dataSetByIndex.getColors();
                 int entryCount = dataSetByIndex.getEntryCount();
                 if (dataSetByIndex instanceof IBarDataSet) {
@@ -124,7 +126,7 @@ public class LegendRenderer extends Renderer {
         float f;
         float f2;
         float f3;
-        float f4;
+        float f4 = 0;
         float f5;
         float f6;
         List<Boolean> list;

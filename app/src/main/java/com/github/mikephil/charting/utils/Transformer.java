@@ -4,6 +4,7 @@ import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
 import com.github.mikephil.charting.data.CandleEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IBubbleDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ICandleDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
@@ -60,7 +61,7 @@ public class Transformer {
         }
         float[] fArr = this.valuePointsForGenerateTransformedValuesScatter;
         for (int i4 = 0; i4 < i3; i4 += 2) {
-            ?? entryForIndex = iScatterDataSet.getEntryForIndex((i4 / 2) + i);
+            Entry entryForIndex = iScatterDataSet.getEntryForIndex((i4 / 2) + i);
             if (entryForIndex != 0) {
                 fArr[i4] = entryForIndex.getX();
                 fArr[i4 + 1] = entryForIndex.getY() * f2;
@@ -81,7 +82,7 @@ public class Transformer {
         }
         float[] fArr = this.valuePointsForGenerateTransformedValuesBubble;
         for (int i4 = 0; i4 < i3; i4 += 2) {
-            ?? entryForIndex = iBubbleDataSet.getEntryForIndex((i4 / 2) + i);
+            Entry entryForIndex = iBubbleDataSet.getEntryForIndex((i4 / 2) + i);
             if (entryForIndex != 0) {
                 fArr[i4] = entryForIndex.getX();
                 fArr[i4 + 1] = entryForIndex.getY() * f;
@@ -102,7 +103,7 @@ public class Transformer {
         }
         float[] fArr = this.valuePointsForGenerateTransformedValuesLine;
         for (int i4 = 0; i4 < i3; i4 += 2) {
-            ?? entryForIndex = iLineDataSet.getEntryForIndex((i4 / 2) + i);
+            Entry entryForIndex = iLineDataSet.getEntryForIndex((i4 / 2) + i);
             if (entryForIndex != 0) {
                 fArr[i4] = entryForIndex.getX();
                 fArr[i4 + 1] = entryForIndex.getY() * f2;
