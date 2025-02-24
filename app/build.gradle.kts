@@ -51,7 +51,10 @@ dependencies {
     implementation(libs.util)
     implementation(libs.api.explorer.sdk)
     implementation(libs.databinding.runtime)
+    implementation(libs.swiperefreshlayout)
+    implementation(libs.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
+    implementation(libs.material)
     androidTestImplementation(libs.espresso.core)
 }

@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.preference.Preference;
 import androidx.preference.R;
 
 /* loaded from: classes2.dex */

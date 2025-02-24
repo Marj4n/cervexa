@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /* loaded from: classes.dex */
-public class BluetoothDeviceInfoRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class BluetoothDeviceInfoRecyclerAdapter extends RecyclerView.Adapter<BluetoothDeviceInfoRecyclerAdapter.ViewHolder> {
     private static final boolean DEBUG = true;
     private static final String TAG = BluetoothDeviceInfoRecyclerAdapter.class.getSimpleName();
     private final int mLayoutId;

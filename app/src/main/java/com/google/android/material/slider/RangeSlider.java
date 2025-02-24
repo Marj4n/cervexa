@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* loaded from: classes.dex */
-public class RangeSlider extends BaseSlider<RangeSlider, OnChangeListener, OnSliderTouchListener> {
+public class RangeSlider extends BaseSlider<RangeSlider, RangeSlider.OnChangeListener, RangeSlider.OnSliderTouchListener> {
     private float minSeparation;
     private int separationUnit;
 
@@ -418,7 +418,7 @@ public class RangeSlider extends BaseSlider<RangeSlider, OnChangeListener, OnSli
         }
 
         private RangeSliderState(Parcel parcel) {
-            super(parcel.readParcelable(RangeSliderState.class.getClassLoader()));
+            super((Parcelable) parcel.readParcelable(RangeSliderState.class.getClassLoader()));
             this.minSeparation = parcel.readFloat();
             this.separationUnit = parcel.readInt();
         }
