@@ -1,5 +1,6 @@
 package com.gizthon.camera.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* loaded from: classes.dex */
-public class ResolutionListAdapter extends RecyclerView.Adapter<RecyclerHolder> {
+public class ResolutionListAdapter extends RecyclerView.Adapter<ResolutionListAdapter.RecyclerHolder> {
     private List<String> dataList = new ArrayList();
     private Context mContext;
     private OnClickItem onClickItem;
@@ -45,7 +46,7 @@ public class ResolutionListAdapter extends RecyclerView.Adapter<RecyclerHolder> 
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
-    public void onBindViewHolder(final RecyclerHolder recyclerHolder, final int i) {
+    public void onBindViewHolder(final RecyclerHolder recyclerHolder, @SuppressLint("RecyclerView") final int i) {
         recyclerHolder.bind(this.dataList.get(i), this.position == i);
         recyclerHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.adapter.ResolutionListAdapter.1
             @Override // android.view.View.OnClickListener

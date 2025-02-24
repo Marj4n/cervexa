@@ -32,7 +32,7 @@ public final class CollectionToArray {
         }
         Object[] invoke = function1.invoke(Integer.valueOf(size));
         int i = 0;
-        ?? r3 = invoke;
+        Object[] r3 = invoke;
         while (true) {
             int i2 = i + 1;
             r3[i] = it.next();

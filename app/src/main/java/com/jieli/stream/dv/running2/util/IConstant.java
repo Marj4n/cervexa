@@ -173,7 +173,7 @@ public interface IConstant {
     public static final int RESULT_SUCCESS = 1;
     public static final int RES_HD_HEIGHT = 720;
     public static final int RES_HD_WIDTH = 1280;
-    public static String ROOT_PATH = "";
+    public static String ROOT_PATH = Environment.getExternalStorageDirectory().getPath();
     public static final int RTP_AUDIO_PORT1 = 1234;
     public static final int RTP_AUDIO_PORT2 = 1236;
     public static final int RTP_VIDEO_PORT1 = 6666;
@@ -232,12 +232,7 @@ public interface IConstant {
     public static final int WIFI_CONNECTED = 1;
     public static final int WIFI_CONNECTING = 0;
     public static final int WIFI_CONNECT_FAILED = 2;
-    public static String WIFI_PREFIX = "";
+    public static String WIFI_PREFIX = MainApplication.isFactoryMode ? "" : "wifi_camera_";
     public static final int WIFI_UNKNOWN_ERROR = -1;
     public static final boolean isWifiP2pEnable = true;
-
-    static {
-        WIFI_PREFIX = MainApplication.isFactoryMode ? "" : "wifi_camera_";
-        ROOT_PATH = Environment.getExternalStorageDirectory().getPath();
-    }
 }

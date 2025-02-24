@@ -263,7 +263,7 @@ public final class b {
         }
         File file = new File(str, "rqd_record.eup");
         if (file.exists()) {
-            ?? canRead = file.canRead();
+            boolean canRead = file.canRead();
             try {
                 if (canRead != 0) {
                     try {

@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -240,10 +241,10 @@ class FilesKt__FileReadWriteKt extends FilesKt__FilePathComponentsKt {
 
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r4v2, types: [byte[], java.lang.Object] */
-    public static final void forEachBlock(File forEachBlock, int i, Function2<? super byte[], ? super Integer, Unit> action) {
+    public static final void forEachBlock(File forEachBlock, int i, Function2<? super byte[], ? super Integer, Unit> action) throws FileNotFoundException {
         Intrinsics.checkNotNullParameter(forEachBlock, "$this$forEachBlock");
         Intrinsics.checkNotNullParameter(action, "action");
-        ?? r4 = new byte[RangesKt.coerceAtLeast(i, 512)];
+        byte[] r4 = new byte[RangesKt.coerceAtLeast(i, 512)];
         FileInputStream fileInputStream = new FileInputStream(forEachBlock);
         Throwable th = (Throwable) null;
         try {

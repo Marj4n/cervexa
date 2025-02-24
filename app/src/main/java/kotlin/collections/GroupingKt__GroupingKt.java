@@ -23,7 +23,7 @@ class GroupingKt__GroupingKt extends GroupingKt__GroupingJVMKt {
         LinkedHashMap linkedHashMap = new LinkedHashMap();
         Iterator<T> sourceIterator = aggregate.sourceIterator();
         while (sourceIterator.hasNext()) {
-            ?? next = sourceIterator.next();
+T next = sourceIterator.next();
             Object keyOf = aggregate.keyOf(next);
             R.bool boolVar = (Object) linkedHashMap.get(keyOf);
             linkedHashMap.put(keyOf, operation.invoke(keyOf, boolVar, next, Boolean.valueOf(boolVar == null && !linkedHashMap.containsKey(keyOf))));
@@ -38,7 +38,7 @@ class GroupingKt__GroupingKt extends GroupingKt__GroupingJVMKt {
         Intrinsics.checkNotNullParameter(operation, "operation");
         Iterator<T> sourceIterator = aggregateTo.sourceIterator();
         while (sourceIterator.hasNext()) {
-            ?? next = sourceIterator.next();
+            T next = sourceIterator.next();
             Object keyOf = aggregateTo.keyOf(next);
             R.bool boolVar = (Object) destination.get(keyOf);
             destination.put(keyOf, operation.invoke(keyOf, boolVar, next, Boolean.valueOf(boolVar == null && !destination.containsKey(keyOf))));
@@ -69,9 +69,9 @@ class GroupingKt__GroupingKt extends GroupingKt__GroupingJVMKt {
         LinkedHashMap linkedHashMap = new LinkedHashMap();
         Iterator<T> sourceIterator = fold.sourceIterator();
         while (sourceIterator.hasNext()) {
-            ?? next = sourceIterator.next();
+            T next = sourceIterator.next();
             Object keyOf = fold.keyOf(next);
-            R r = (Object) linkedHashMap.get(keyOf);
+            R r = (R) linkedHashMap.get(keyOf);
             if (r == null && !linkedHashMap.containsKey(keyOf)) {
                 r = initialValueSelector.invoke(keyOf, next);
             }
@@ -88,9 +88,9 @@ class GroupingKt__GroupingKt extends GroupingKt__GroupingJVMKt {
         Intrinsics.checkNotNullParameter(operation, "operation");
         Iterator<T> sourceIterator = foldTo.sourceIterator();
         while (sourceIterator.hasNext()) {
-            ?? next = sourceIterator.next();
+            T next = sourceIterator.next();
             Object keyOf = foldTo.keyOf(next);
-            R r = (Object) destination.get(keyOf);
+            R r = (R) destination.get(keyOf);
             if (r == null && !destination.containsKey(keyOf)) {
                 r = initialValueSelector.invoke(keyOf, next);
             }
@@ -106,7 +106,7 @@ class GroupingKt__GroupingKt extends GroupingKt__GroupingJVMKt {
         LinkedHashMap linkedHashMap = new LinkedHashMap();
         Iterator<T> sourceIterator = fold.sourceIterator();
         while (sourceIterator.hasNext()) {
-            ?? next = sourceIterator.next();
+            T next = sourceIterator.next();
             K keyOf = fold.keyOf(next);
             R.color colorVar = (Object) linkedHashMap.get(keyOf);
             if (colorVar == null && !linkedHashMap.containsKey(keyOf)) {
@@ -124,7 +124,7 @@ class GroupingKt__GroupingKt extends GroupingKt__GroupingJVMKt {
         Intrinsics.checkNotNullParameter(operation, "operation");
         Iterator<T> sourceIterator = foldTo.sourceIterator();
         while (sourceIterator.hasNext()) {
-            ?? next = sourceIterator.next();
+            T next = sourceIterator.next();
             K keyOf = foldTo.keyOf(next);
             R.color colorVar = (Object) destination.get(keyOf);
             if (colorVar == null && !destination.containsKey(keyOf)) {

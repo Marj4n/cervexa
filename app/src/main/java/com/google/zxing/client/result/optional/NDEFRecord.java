@@ -3,7 +3,7 @@ package com.google.zxing.client.result.optional;
 import kotlin.UByte;
 
 /* loaded from: classes.dex */
-final class NDEFRecord {
+public final class NDEFRecord {
     public static final String ACTION_WELL_KNOWN_TYPE = "act";
     public static final String SMART_POSTER_WELL_KNOWN_TYPE = "Sp";
     private static final int SUPPORTED_HEADER = 17;

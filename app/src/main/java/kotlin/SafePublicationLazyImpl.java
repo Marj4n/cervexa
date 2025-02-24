@@ -12,14 +12,15 @@ import kotlin.jvm.internal.Intrinsics;
 final class SafePublicationLazyImpl<T> implements Lazy<T>, Serializable {
     private static final AtomicReferenceFieldUpdater<SafePublicationLazyImpl<?>, Object> valueUpdater = AtomicReferenceFieldUpdater.newUpdater(SafePublicationLazyImpl.class, Object.class, "_value");
     private volatile Object _value;
-    private final Object final;
+    private final Object finalValue;
     private volatile Function0<? extends T> initializer;
 
-    public SafePublicationLazyImpl(Function0<? extends T> initializer) {
+    public SafePublicationLazyImpl(Object finalValue, Function0<? extends T> initializer) {
+        this.finalValue = finalValue;
         Intrinsics.checkNotNullParameter(initializer, "initializer");
         this.initializer = initializer;
         this._value = UNINITIALIZED_VALUE.INSTANCE;
-        this.final = UNINITIALIZED_VALUE.INSTANCE;
+        UNINITIALIZED_VALUE finalValue = UNINITIALIZED_VALUE.INSTANCE;
     }
 
     @Override // kotlin.Lazy
