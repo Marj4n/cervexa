@@ -627,7 +627,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             structure.invoke(Integer.valueOf(this.head), new Object[0]);
             return;
         }
-        ?? r0 = new Object[size()];
+        Object[] r0 = new Object[size()];
         int i = this.head;
         if (i < positiveMod) {
             ArraysKt.copyInto$default(this.elementData, (Object[]) r0, 0, i, positiveMod, 2, (Object) null);

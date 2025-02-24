@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* loaded from: classes.dex */
-public class ResolutionAdapter extends RecyclerView.Adapter<RecyclerHolder> {
+public class ResolutionAdapter extends RecyclerView.Adapter<ResolutionAdapter.RecyclerHolder> {
     private List<String> dataList = new ArrayList();
     private Context mContext;
     private OnClickItem onClickItem;

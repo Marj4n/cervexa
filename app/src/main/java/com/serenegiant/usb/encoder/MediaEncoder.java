@@ -471,9 +471,6 @@ public abstract class MediaEncoder implements Runnable {
                 }
             }
             return;
-            bArr2 = new byte[this.mBufferInfo.size];
-            byteBuffer.get(bArr2);
-            this.mMediaCodec.releaseOutputBuffer(dequeueOutputBuffer, false);
         }
     }
 

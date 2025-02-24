@@ -12,7 +12,7 @@ import com.gizthon.camera.model.PhotoBean;
 import java.util.List;
 
 /* loaded from: classes.dex */
-public class BindAdapter<T> extends RecyclerView.Adapter<ViewHolder<T>> {
+public class BindAdapter<T> extends RecyclerView.Adapter<BindAdapter.ViewHolder<T>> {
     public List<T> dataModelList;
     public int layoutId;
 

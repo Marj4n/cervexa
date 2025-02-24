@@ -91,7 +91,7 @@ public final class OnSubscribeUsing<T, Resource> implements Observable.OnSubscri
         @Override // rx.functions.Action0
         public void call() {
             if (compareAndSet(false, true)) {
-                ?? r0 = (Resource) null;
+                Resource r0 = (Resource) null;
                 try {
                     this.dispose.call(this.resource);
                 } finally {

@@ -32,6 +32,10 @@ android {
     aaptOptions {
         noCompress(".*")
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -39,6 +43,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.media)
+    implementation(libs.volley)
+    //noinspection DuplicatePlatformClasses
+    implementation(libs.httpclient)
+    implementation(libs.constraintlayout.solver)
+    implementation(libs.util)
+    implementation(libs.api.explorer.sdk)
+    implementation(libs.databinding.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -27,7 +27,7 @@ public final class ThreadsKt {
     /* JADX WARN: Type inference failed for: r0v1, types: [kotlin.concurrent.ThreadsKt$thread$thread$1] */
     public static final Thread thread(boolean z, boolean z2, ClassLoader classLoader, String str, int i, final Function0<Unit> block) {
         Intrinsics.checkNotNullParameter(block, "block");
-        ?? r0 = new Thread() { // from class: kotlin.concurrent.ThreadsKt$thread$thread$1
+        Thread r0 = new Thread() { // from class: kotlin.concurrent.ThreadsKt$thread$thread$1
             @Override // java.lang.Thread, java.lang.Runnable
             public void run() {
                 Function0.this.invoke();
