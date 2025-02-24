@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* loaded from: classes2.dex */
-public class ValueSelectorAdapter extends ArrayAdapter<ValueEntry> {
+public class ValueSelectorAdapter extends ArrayAdapter<ValueSelectorAdapter.ValueEntry> {
     private static final boolean DEBUG = false;
     private static final String TAG = ValueSelectorAdapter.class.getSimpleName();
     private final LayoutInflater mInflater;

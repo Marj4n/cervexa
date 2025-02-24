@@ -21,7 +21,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /* loaded from: classes.dex */
-public class CoverAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> {
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
     private List<ThumbnailInfo> mDataList = new ArrayList();

@@ -3,7 +3,6 @@ package com.nineoldandroids.view;
 import android.animation.Animator;
 import android.view.View;
 import android.view.animation.Interpolator;
-import com.nineoldandroids.animation.Animator;
 import java.lang.ref.WeakReference;
 
 /* loaded from: classes.dex */
@@ -60,7 +59,6 @@ class ViewPropertyAnimatorICS extends ViewPropertyAnimator {
         return this;
     }
 
-    @Override // com.nineoldandroids.view.ViewPropertyAnimator
     public ViewPropertyAnimator setListener(final Animator.AnimatorListener animatorListener) {
         android.view.ViewPropertyAnimator viewPropertyAnimator = this.mNative.get();
         if (viewPropertyAnimator != null) {

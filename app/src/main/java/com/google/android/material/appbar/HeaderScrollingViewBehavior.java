@@ -24,7 +24,8 @@ abstract class HeaderScrollingViewBehavior extends ViewOffsetBehavior<View> {
         return i == 0 ? BadgeDrawable.TOP_START : i;
     }
 
-    abstract View findFirstDependency(List<View> list);
+    abstract // com.google.android.material.appbar.HeaderScrollingViewBehavior
+    AppBarLayout findFirstDependency(List<View> list);
 
     float getOverlapRatioForOffset(View view) {
         return 1.0f;

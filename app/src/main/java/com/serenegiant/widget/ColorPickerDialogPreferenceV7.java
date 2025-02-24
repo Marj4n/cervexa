@@ -1,5 +1,6 @@
 package com.serenegiant.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -22,6 +23,7 @@ public class ColorPickerDialogPreferenceV7 extends DialogPreferenceV7 {
         this(context, attributeSet, 0);
     }
 
+    @SuppressLint("RestrictedApi")
     public ColorPickerDialogPreferenceV7(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         this.mColor = SupportMenu.CATEGORY_MASK;

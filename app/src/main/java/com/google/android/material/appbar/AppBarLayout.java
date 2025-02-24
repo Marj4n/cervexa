@@ -24,7 +24,6 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.math.MathUtils;
 import androidx.core.util.ObjectsCompat;
 import androidx.core.view.NestedScrollingChild;
-import androidx.core.view.OnApplyWindowInsetsListener;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
@@ -130,12 +129,8 @@ public class AppBarLayout extends LinearLayout implements CoordinatorLayout.Atta
         this.liftOnScrollTargetViewId = obtainStyledAttributes.getResourceId(R.styleable.AppBarLayout_liftOnScrollTargetViewId, -1);
         setStatusBarForeground(obtainStyledAttributes.getDrawable(R.styleable.AppBarLayout_statusBarForeground));
         obtainStyledAttributes.recycle();
-        ViewCompat.setOnApplyWindowInsetsListener(this, new OnApplyWindowInsetsListener() { // from class: com.google.android.material.appbar.AppBarLayout.1
-            @Override // androidx.core.view.OnApplyWindowInsetsListener
-            public WindowInsetsCompat onApplyWindowInsets(View view, WindowInsetsCompat windowInsetsCompat) {
-                return AppBarLayout.this.onWindowInsetChanged(windowInsetsCompat);
-            }
-        });
+        // from class: com.google.android.material.appbar.AppBarLayout.1
+        ViewCompat.setOnApplyWindowInsetsListener(this, (OnApplyWindowInsetsListener) (view, windowInsetsCompat) -> AppBarLayout.this.onWindowInsetChanged(windowInsetsCompat));
     }
 
     public void addOnOffsetChangedListener(BaseOnOffsetChangedListener baseOnOffsetChangedListener) {
@@ -1525,17 +1520,16 @@ public class AppBarLayout extends LinearLayout implements CoordinatorLayout.Atta
             return 0;
         }
 
-        @Override // com.google.android.material.appbar.HeaderScrollingViewBehavior
-        AppBarLayout findFirstDependency(List<View> list) {
-            int size = list.size();
-            for (int i = 0; i < size; i++) {
-                View view = list.get(i);
-                if (view instanceof AppBarLayout) {
-                    return (AppBarLayout) view;
-                }
-            }
-            return null;
-        }
+//        AppBarLayout findFirstDependency(List<View> list) {
+//            int size = list.size();
+//            for (int i = 0; i < size; i++) {
+//                View view = list.get(i);
+//                if (view instanceof AppBarLayout) {
+//                    return (AppBarLayout) view;
+//                }
+//            }
+//            return null;
+//        }
 
         @Override // com.google.android.material.appbar.HeaderScrollingViewBehavior
         int getScrollRange(View view) {

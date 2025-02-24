@@ -10,10 +10,14 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
-import androidx.appcompat.graphics.drawable.DrawableWrapper;
+import android.graphics.drawable.DrawableWrapper;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import com.google.android.material.R;
 
+@RequiresApi(api = Build.VERSION_CODES.M)
 @Deprecated
 /* loaded from: classes.dex */
 public class ShadowDrawableWrapper extends DrawableWrapper {

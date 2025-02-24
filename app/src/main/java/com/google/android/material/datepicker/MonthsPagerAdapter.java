@@ -8,13 +8,15 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.R;
 import com.google.android.material.datepicker.MaterialCalendar;
 
 /* loaded from: classes.dex */
-class MonthsPagerAdapter extends RecyclerView.Adapter<ViewHolder> {
+class MonthsPagerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final CalendarConstraints calendarConstraints;
     private final Context context;
     private final DateSelector<?> dateSelector;
@@ -68,7 +70,11 @@ class MonthsPagerAdapter extends RecyclerView.Adapter<ViewHolder> {
         return new ViewHolder(linearLayout, false);
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+    }
+
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Month monthsLater = this.calendarConstraints.getStart().monthsLater(i);
         viewHolder.monthTitle.setText(monthsLater.getLongName(viewHolder.itemView.getContext()));

@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import com.google.android.material.R;
 
 /* loaded from: classes.dex */
-public class Slider extends BaseSlider<Slider, OnChangeListener, OnSliderTouchListener> {
+public class Slider extends BaseSlider<Slider, Slider.OnChangeListener, Slider.OnSliderTouchListener> {
 
     public interface OnChangeListener extends BaseOnChangeListener<Slider> {
     }

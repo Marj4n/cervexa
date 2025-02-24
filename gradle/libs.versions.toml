@@ -7,6 +7,7 @@ appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.2.0"
+materialVersion = "1.6.1"
 media = "1.7.0"
 volley = "1.2.1"
 httpclient = "4.5.14"
@@ -14,6 +15,8 @@ constraintlayoutSolver = "2.0.4"
 util = "3.7.1"
 apiExplorerSdk = "1.0.4.1"
 databindingRuntime = "8.8.1"
+swiperefreshlayout = "1.2.0-beta01"
+preference = "1.2.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -23,6 +26,7 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-v161 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 media = { group = "androidx.media", name = "media", version.ref = "media" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 httpclient = { group = "org.apache.httpcomponents", name = "httpclient", version.ref = "httpclient" }
@@ -30,6 +34,8 @@ constraintlayout-solver = { group = "androidx.constraintlayout", name = "constra
 util = { group = "com.baidu.mapapi", name = "util", version.ref = "util" }
 api-explorer-sdk = { group = "com.baidubce", name = "api-explorer-sdk", version.ref = "apiExplorerSdk" }
 databinding-runtime = { group = "androidx.databinding", name = "databinding-runtime", version = "8.0.0" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

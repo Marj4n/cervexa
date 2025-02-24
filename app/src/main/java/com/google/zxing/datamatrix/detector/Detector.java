@@ -13,8 +13,6 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import kotlinx.coroutines.flow.FlowKt__BuildersKt$asFlow$$inlined$unsafeFlow$10;
-
 /* loaded from: classes.dex */
 public final class Detector {
     private static final Integer[] INTEGERS = {new Integer(0), new Integer(1), new Integer(2), new Integer(3), new Integer(4)};

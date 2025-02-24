@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.Locale;
 
 /* loaded from: classes.dex */
-class YearGridAdapter extends RecyclerView.Adapter<ViewHolder> {
+class YearGridAdapter extends RecyclerView.Adapter<YearGridAdapter.ViewHolder> {
     private final MaterialCalendar<?> materialCalendar;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
