@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.dialog;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.fragment.app.DialogFragment;
+
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.SDFileInfo;
 import com.jieli.stream.dv.running2.ui.MainApplication;
@@ -82,7 +86,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
     @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setStyle(1, android.R.style.Theme.Light.NoTitleBar);
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.Theme_Light_NoTitleBar);
         setCancelable(false);
     }
 
@@ -291,7 +295,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
         if (getActivity() == null) {
             return;
         }
-        String format = String.format(getString(R.string.delete_dir_tip), str);
+        @SuppressLint({"StringFormatInvalid", "LocalSuppress"}) String format = String.format(getString(R.string.delete_dir_tip), str);
         if (this.deleteDirDialog == null) {
             this.deleteDirDialog = NotifyDialog.newInstance(getString(R.string.dialog_tips), format, R.string.dialog_cancel, R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.dialog.BrowseFileDialog.4
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener

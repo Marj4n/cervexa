@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.MainApplication;
@@ -42,7 +43,7 @@ public class DeviceStaModeFragment extends BaseFragment {
             if (id == R.id.switch_sta_btn) {
                 DeviceStaModeFragment.this.sendRouterInformation();
             } else if (id == R.id.show_or_hide_pwd) {
-                DeviceStaModeFragment.this.isShowPwd = !r2.isShowPwd;
+                DeviceStaModeFragment.this.isShowPwd = !DeviceStaModeFragment.this.isShowPwd;
                 DeviceStaModeFragment.this.handlerPwdUI();
             }
         }
@@ -81,7 +82,7 @@ public class DeviceStaModeFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void sendRouterInformation() {
         final String trim = this.editWifiSSID.getText().toString().trim();
-        final String trim2 = this.editWifiPwd.getText().toString().trim();
+        String trim2 = this.editWifiPwd.getText().toString().trim();
         this.isSaveMsg = this.mSaveSTAMsgCheckbox.isChecked();
         if (TextUtils.isEmpty(trim)) {
             ToastUtil.showToastShort(getString(R.string.wifi_ssid_empty_tip));
@@ -93,6 +94,7 @@ public class DeviceStaModeFragment extends BaseFragment {
             ToastUtil.showToastShort(getString(R.string.pwd_lenth_limits));
             return;
         }
+        String finalTrim = trim2;
         ClientManager.getClient().tryToSetSTAAccount(trim, trim2, this.isSaveMsg, new SendResponse() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStaModeFragment.2
             @Override // com.jieli.lib.dv.control.connect.response.Response
             public void onResponse(Integer num) {
@@ -105,7 +107,7 @@ public class DeviceStaModeFragment extends BaseFragment {
                             @Override // java.lang.Runnable
                             public void run() {
                                 DeviceStaModeFragment.this.mApplication.setSearchMode(1);
-                                DeviceStaModeFragment.this.mWifiHelper.connectWifi(DeviceStaModeFragment.this.mApplication, trim, trim2);
+                                DeviceStaModeFragment.this.mWifiHelper.connectWifi(DeviceStaModeFragment.this.mApplication, trim, finalTrim);
                                 if (DeviceStaModeFragment.this.getActivity() != null) {
                                     DeviceStaModeFragment.this.getActivity().finish();
                                 }

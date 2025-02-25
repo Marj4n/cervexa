@@ -184,6 +184,7 @@ public class VideoRecord {
             movWrapper.close();
             this.mMovWrapper = null;
         }
+        Object r0 = null;
         int i = availableExternalMemorySize / DEFAULT_VIDEO_SIZE > 35 ? 30 : ((int) r0) - 5;
         MovWrapper movWrapper2 = new MovWrapper();
         this.mMovWrapper = movWrapper2;

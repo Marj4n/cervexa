@@ -259,7 +259,7 @@ public class VideoManager {
     }
 
     private static long getDownloadVideoDuration(long j, long j2) {
-        long timeInMillis;
+        long timeInMillis = 0;
         if (j2 <= j) {
             throw new IllegalArgumentException("Start time >= end time.");
         }

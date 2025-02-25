@@ -210,12 +210,6 @@ public class ClientImpl implements Handler.Callback, IClient, ProxyInterceptor {
         Iterator<OnConnectStateListener> it = hashSet.iterator();
         while (it.hasNext()) {
             final OnConnectStateListener next = it.next();
-            ClientContext.post(new Runnable() { // from class: com.jieli.lib.dv.control.ClientImpl.1
-                @Override // java.lang.Runnable
-                public void run() {
-                    next.onStateChanged(Integer.valueOf(i));
-                }
-            });
         }
     }
 

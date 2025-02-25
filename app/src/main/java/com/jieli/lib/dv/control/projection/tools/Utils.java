@@ -8,10 +8,12 @@ import java.io.IOException;
 
 /* loaded from: classes.dex */
 public class Utils {
-    public static boolean byte2File(byte[] bArr, String str, String str2) {
+    public static boolean byte2File(byte[] bArr, String str, String str2) throws Throwable {
         FileOutputStream fileOutputStream;
-        BufferedOutputStream bufferedOutputStream;
+        BufferedOutputStream bufferedOutputStream = null;
         BufferedOutputStream bufferedOutputStream2 = null;
+        Exception e;
+        Throwable th;
         try {
             File file = new File(str);
             if (!file.exists() && file.mkdirs()) {
@@ -21,11 +23,97 @@ public class Utils {
             try {
                 try {
                     bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-                } catch (Exception e) {
-                    e = e;
+                } catch (Exception e2) {
+                    e = e2;
+                    try {
+                        e.printStackTrace();
+                        if (bufferedOutputStream != null) {
+                            try {
+                                bufferedOutputStream.close();
+                            } catch (IOException e3) {
+                                e3.printStackTrace();
+                            }
+                        }
+                        if (fileOutputStream != null) {
+                            try {
+                                fileOutputStream.close();
+                            } catch (IOException e4) {
+                                e4.printStackTrace();
+                            }
+                        }
+                        return false;
+                    } catch (Throwable th2) {
+                        th = th2;
+                        if (bufferedOutputStream != null) {
+                            try {
+                                bufferedOutputStream.close();
+                            } catch (IOException e5) {
+                                e5.printStackTrace();
+                            }
+                        }
+                        if (fileOutputStream != null) {
+                            try {
+                                fileOutputStream.close();
+                            } catch (IOException e6) {
+                                e6.printStackTrace();
+                            }
+                        }
+                        throw th;
+                    }
+                } catch (Throwable th3) {
+                    th = th3;
+                    if (bufferedOutputStream != null) {
+                    }
+                    if (fileOutputStream != null) {
+                    }
+                    throw th;
                 }
-            } catch (Throwable th) {
-                th = th;
+            } catch (Exception e2) {
+                e = e2;
+                fileOutputStream = null;
+                try {
+                    e.printStackTrace();
+                    if (bufferedOutputStream != null) {
+                        try {
+                            bufferedOutputStream.close();
+                        } catch (IOException e3) {
+                            e3.printStackTrace();
+                        }
+                    }
+                    if (fileOutputStream != null) {
+                        try {
+                            fileOutputStream.close();
+                        } catch (IOException e4) {
+                            e4.printStackTrace();
+                        }
+                    }
+                    return false;
+                } catch (Throwable th2) {
+                    th = th2;
+                    if (bufferedOutputStream != null) {
+                        try {
+                            bufferedOutputStream.close();
+                        } catch (IOException e5) {
+                            e5.printStackTrace();
+                        }
+                    }
+                    if (fileOutputStream != null) {
+                        try {
+                            fileOutputStream.close();
+                        } catch (IOException e6) {
+                            e6.printStackTrace();
+                        }
+                    }
+                    throw th;
+                }
+            } catch (Throwable th3) {
+                th = th3;
+                fileOutputStream = null;
+                if (bufferedOutputStream != null) {
+                }
+                if (fileOutputStream != null) {
+                }
+                throw th;
             }
         } catch (Exception e2) {
             e = e2;
@@ -80,7 +168,7 @@ public class Utils {
                 try {
                     fileOutputStream.close();
                     throw th;
-                } catch (IOException e9) {
+                } catch (Throwable e9) {
                     e9.printStackTrace();
                     throw th;
                 }
@@ -94,7 +182,7 @@ public class Utils {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static byte[] file2Bytes(java.lang.String r5) {
+    public static byte[] file2Bytes(String r5) {
         /*
             java.io.File r0 = new java.io.File
             r0.<init>(r5)

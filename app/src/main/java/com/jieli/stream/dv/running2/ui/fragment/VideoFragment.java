@@ -441,7 +441,6 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                             ToastUtil.showToastShort(VideoFragment.this.getString(R.string.open_rts_tip));
                             break;
                         }
-                        break;
                     case VideoFragment.MSG_LOAD_DEV_THUMBS /* 2562 */:
                         if (message.arg1 == 1) {
                             VideoFragment.this.cancelSaveThread();

@@ -8,7 +8,7 @@ import java.io.InputStream;
 /* loaded from: classes.dex */
 public class VersionHelper {
     public static String getSdkVersionName(Context context) {
-        byte[] bArr;
+        byte[] bArr = new byte[0];
         InputStream openRawResource = context.getResources().openRawResource(R.raw.version);
         try {
             try {

@@ -8,17 +8,21 @@ import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.LruCache;
+
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.lib.dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
+import com.jieli.media.codec.bean.MediaMeta;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.interfaces.OnAviThumbListener;
 import com.jieli.stream.dv.running2.ui.MainApplication;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -150,10 +154,14 @@ public class ThumbLoader {
                             if (decodeByteArray != null) {
                                 Bitmap extractThumbnail = ThumbnailUtils.extractThumbnail(decodeByteArray, i, i2, 2);
                                 ThumbLoader.this.mThumbnailCache.put(str, extractThumbnail);
-                                if (AppUtils.bitmapToFile(extractThumbnail, str2, 100)) {
-                                    Dbug.d(ThumbLoader.TAG, "save thumdNail ok");
-                                } else {
-                                    Dbug.d(ThumbLoader.TAG, "save thumdNail fail");
+                                try {
+                                    if (AppUtils.bitmapToFile(extractThumbnail, str2, 100)) {
+                                        Dbug.d(ThumbLoader.TAG, "save thumdNail ok");
+                                    } else {
+                                        Dbug.d(ThumbLoader.TAG, "save thumdNail fail");
+                                    }
+                                } catch (Throwable e) {
+                                    throw new RuntimeException(e);
                                 }
                                 handler.post(ThumbLoader.this.new OnCompleteRunnable(extractThumbnail, onLoadThumbListener));
                             } else {
@@ -215,7 +223,7 @@ public class ThumbLoader {
     }
 
     public void loadLocalVideoThumb(Context context, String str, int i, int i2, OnLoadVideoThumbListener onLoadVideoThumbListener) {
-        String str2;
+        String str2 = "";
         Handler handler = new Handler(context.getMainLooper());
         if (TextUtils.isEmpty(str)) {
             Bitmap bitmap = this.mThumbnailCache.get(IConstant.DEFAULT_PATH);
@@ -229,7 +237,7 @@ public class ThumbLoader {
         Bitmap bitmap2 = this.mThumbnailCache.get(str);
         if (bitmap2 == null) {
             if (str.contains("/")) {
-                str2 = str.split("/")[r1.length - 1];
+                String[] r1 = str.split("/");
             } else {
                 str2 = "";
             }
@@ -334,8 +342,12 @@ public class ThumbLoader {
                 if (response.code() == 200 && (body = response.body()) != null) {
                     byte[] bytes = body.bytes();
                     Dbug.i(ThumbLoader.TAG, "downloadWebImage:saveUrl=" + str2);
-                    if (AppUtils.bytesToFile(bytes, str2)) {
-                        handler.post(ThumbLoader.this.new OnResultRunnable(true, str2, onDownloadListener));
+                    try {
+                        if (AppUtils.bytesToFile(bytes, str2)) {
+                            handler.post(ThumbLoader.this.new OnResultRunnable(true, str2, onDownloadListener));
+                        }
+                    } catch (Throwable e) {
+                        throw new RuntimeException(e);
                     }
                 }
                 response.close();
@@ -445,7 +457,7 @@ public class ThumbLoader {
                 Code decompiled incorrectly, please refer to instructions dump.
                 To view partially-correct add '--show-bad-code' argument
             */
-            public void onCompleted(byte[] r8, com.jieli.media.codec.bean.MediaMeta r9) {
+            public void onCompleted(byte[] r8, MediaMeta r9) {
                 /*
                     r7 = this;
                     if (r8 == 0) goto Lee
@@ -593,7 +605,7 @@ public class ThumbLoader {
                 Code decompiled incorrectly, please refer to instructions dump.
                 To view partially-correct add '--show-bad-code' argument
             */
-            public void onCompleted(byte[] r8, com.jieli.media.codec.bean.MediaMeta r9) {
+            public void onCompleted(byte[] r8, MediaMeta r9) {
                 /*
                     Method dump skipped, instructions count: 241
                     To view this dump add '--comments-level debug' option

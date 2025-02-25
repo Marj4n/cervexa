@@ -27,12 +27,6 @@ public class InputContentDialog extends BaseDialogFragment implements View.OnCli
         this.onContentListener = onContentListener;
     }
 
-    @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        setStyle(1, R.style.Theme.Translucent.NoTitleBar.Fullscreen);
-        setCancelable(false);
-    }
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {

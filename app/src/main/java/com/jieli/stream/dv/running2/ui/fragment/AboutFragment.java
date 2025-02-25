@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
@@ -39,6 +41,7 @@ import com.jieli.stream.dv.running2.util.IConstant;
 import com.jieli.stream.dv.running2.util.PreferencesHelper;
 import com.jieli.stream.dv.running2.util.ToastUtil;
 import com.serenegiant.net.SocketChannelDataLink;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -161,6 +164,7 @@ public class AboutFragment extends BaseFragment {
         }
     };
     private View.OnClickListener mOnClickListener = new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.10
+        @SuppressLint("StringFormatInvalid")
         @Override // android.view.View.OnClickListener
         public void onClick(View view) {
             if (view == AboutFragment.this.tvAppVersionName) {
@@ -329,7 +333,8 @@ public class AboutFragment extends BaseFragment {
     public void showUpgradeCompleteDialog() {
         if (this.mUpgradeCompleteDialog == null) {
             this.mUpgradeCompleteDialog = NotifyDialog.newInstance(R.string.dialog_tips, R.string.upgrade_step_6, R.string.comfirm, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.6
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnConfirmClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnConfirmClickListener
                 public void onClick() {
                     AboutFragment.this.mUpgradeCompleteDialog.dismiss();
                 }
@@ -345,12 +350,14 @@ public class AboutFragment extends BaseFragment {
     public void showNotifyDialog(String str, Bundle bundle) {
         if (this.upgradeNotifyDialog == null) {
             NotifyDialog newInstance = NotifyDialog.newInstance(getString(R.string.upgrade_desc), str, R.string.dialog_cancel, R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.7
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     AboutFragment.this.dismissNotifyDialog();
                 }
             }, new NotifyDialog.OnPositiveClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.8
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
                 public void onClick() {
                     Bundle bundle2 = AboutFragment.this.upgradeNotifyDialog.getBundle();
                     if (bundle2 != null && AboutFragment.this.getActivity() != null) {
@@ -431,7 +438,7 @@ public class AboutFragment extends BaseFragment {
         /* JADX INFO: Access modifiers changed from: protected */
         @Override // android.os.AsyncTask
         public void onPostExecute(ArrayList<String> arrayList) {
-            super.onPostExecute((CheckAppUpgrade) arrayList);
+            super.onPostExecute(arrayList);
             AboutFragment.this.dismissWaitingDialog();
             AboutFragment.this.mCheckAppUpgrade = null;
             if (arrayList != null && arrayList.size() > 0) {

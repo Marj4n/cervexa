@@ -18,6 +18,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.SettingItem;
@@ -78,7 +79,7 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
         this.mChart.setDrawHoleEnabled(false);
         this.mChart.setRotationAngle(-90.0f);
         this.mChart.setRotationEnabled(false);
-        this.mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        this.mChart.animateY(1400, Easing.EaseInOutQuad);
         this.mChart.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
     }
 
@@ -95,9 +96,9 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
         arrayList2.add(Integer.valueOf(getResources().getColor(R.color.bg_pie_chart_used)));
         pieDataSet.setColors(arrayList2);
         PieData pieData = new PieData(pieDataSet);
-        pieData.setValueFormatter(new IValueFormatter() { // from class: com.jieli.stream.dv.running2.ui.activity.me.AppStorageManageActivity.1
-            @Override // com.github.mikephil.charting.formatter.IValueFormatter
-            public String getFormattedValue(float f3, Entry entry, int i, ViewPortHandler viewPortHandler) {
+        pieData.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float f3) {
                 return Formatter.formatFileSize(AppStorageManageActivity.this.getApplicationContext(), (long) f3);
             }
         });

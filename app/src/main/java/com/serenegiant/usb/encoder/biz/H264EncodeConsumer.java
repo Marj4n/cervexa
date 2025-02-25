@@ -127,7 +127,7 @@ public class H264EncodeConsumer extends Thread {
     @Override // java.lang.Thread, java.lang.Runnable
     public void run() {
         ByteBuffer byteBuffer;
-        byte[] bArr;
+        byte[] bArr = new byte[0];
         boolean z;
         WeakReference<Mp4MediaMuxer> weakReference;
         Mp4MediaMuxer mp4MediaMuxer;

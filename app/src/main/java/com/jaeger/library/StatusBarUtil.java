@@ -75,8 +75,7 @@ public class StatusBarUtil {
                         coordinatorLayout.post(new Runnable() { // from class: com.jaeger.library.StatusBarUtil.1
                             @Override // java.lang.Runnable
                             public void run() {
-                                CoordinatorLayout.this.requestLayout();
-                            }
+                            coordinatorLayout.requestLayout(); }
                         });
                     }
                 } else {

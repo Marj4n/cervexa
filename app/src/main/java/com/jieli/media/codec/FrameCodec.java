@@ -4,8 +4,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.jieli.media.codec.bean.MediaMeta;
 import com.serenegiant.usb.UVCCamera;
+
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -16,7 +18,7 @@ public class FrameCodec extends AbstractCodec {
     private Handler mHandler = new Handler(Looper.getMainLooper());
 
     public interface OnFrameCodecListener {
-        void onCompleted(byte[] bArr, MediaMeta mediaMeta);
+        void onCompleted(byte[] bArr, MediaMeta mediaMeta) throws Throwable;
 
         void onError(String str);
     }
@@ -82,7 +84,11 @@ public class FrameCodec extends AbstractCodec {
                 public void run() {
                     OnFrameCodecListener onFrameCodecListener = next;
                     if (onFrameCodecListener != null) {
-                        onFrameCodecListener.onCompleted(bArr, mediaMeta);
+                        try {
+                            onFrameCodecListener.onCompleted(bArr, mediaMeta);
+                        } catch (Throwable t) {
+                            Log.e(FrameCodec.this.tag, "Error in onCompleted", t);
+                        }
                     } else {
                         Log.w(FrameCodec.this.tag, "OnFrameCodecListener is null.");
                     }
