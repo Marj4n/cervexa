@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.jvm.internal.LongCompanionObject;
+
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.exceptions.Exceptions;
@@ -28,11 +29,6 @@ public final class OperatorToMultimap<T, K, V> implements Observable.Operator<Ma
 
     public static final class DefaultMultimapCollectionFactory<K, V> implements Func1<K, Collection<V>> {
         /* JADX WARN: Multi-variable type inference failed */
-        @Override // rx.functions.Func1
-        public /* bridge */ /* synthetic */ Object call(Object obj) {
-            return call((DefaultMultimapCollectionFactory<K, V>) obj);
-        }
-
         @Override // rx.functions.Func1
         public Collection<V> call(K k) {
             return new ArrayList();
@@ -67,7 +63,7 @@ public final class OperatorToMultimap<T, K, V> implements Observable.Operator<Ma
 
                 @Override // rx.Subscriber
                 public void onStart() {
-                    request(LongCompanionObject.MAX_VALUE);
+                    request(Long.MAX_VALUE);
                 }
 
                 @Override // rx.Observer

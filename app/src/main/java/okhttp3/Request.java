@@ -2,13 +2,13 @@ package okhttp3;
 
 import com.android.volley.toolbox.HttpClientStack;
 import com.jieli.lib.dv.control.utils.Operation;
-import com.tencent.connect.common.Constants;
 import java.net.URL;
 import java.util.List;
 import javax.annotation.Nullable;
 import okhttp3.Headers;
 import okhttp3.internal.Util;
 import okhttp3.internal.http.HttpMethod;
+import tencent.connect.common.Constants;
 
 /* loaded from: classes2.dex */
 public final class Request {

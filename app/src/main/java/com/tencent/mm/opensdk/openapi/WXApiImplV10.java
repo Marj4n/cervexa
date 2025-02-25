@@ -36,7 +36,6 @@ import com.tencent.mm.opensdk.modelpay.PayResp;
 import com.tencent.mm.opensdk.utils.ILog;
 import com.tencent.mm.opensdk.utils.Log;
 import com.tencent.mm.opensdk.utils.d;
-import com.tencent.tauth.AuthActivity;
 import java.net.URLEncoder;
 
 /* loaded from: classes2.dex */
@@ -84,8 +83,8 @@ final class WXApiImplV10 implements IWXAPI {
     }
 
     private boolean handleWxInternalRespType(String str, IWXAPIEventHandler iWXAPIEventHandler) {
-        Uri parse;
-        String queryParameter;
+        Uri parse = null;
+        String queryParameter = "";
         Log.i(TAG, "handleWxInternalRespType, extInfo = " + str);
         try {
             parse = Uri.parse(str);
@@ -103,7 +102,6 @@ final class WXApiImplV10 implements IWXAPI {
             resp.openId = parse.getQueryParameter("openid");
             resp.templateID = parse.getQueryParameter("template_id");
             resp.scene = d.b(parse.getQueryParameter("scene"));
-            resp.action = parse.getQueryParameter(AuthActivity.ACTION_KEY);
             resp.reserved = parse.getQueryParameter("reserved");
             iWXAPIEventHandler.onResp(resp);
             return true;

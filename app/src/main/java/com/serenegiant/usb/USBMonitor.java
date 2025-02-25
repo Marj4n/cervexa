@@ -227,7 +227,7 @@ public final class USBMonitor {
             throw new IllegalArgumentException("OnDeviceConnectListener should not null.");
         }
         this.mWeakContext = new WeakReference<>(context);
-        this.mUsbManager = (UsbManager) context.getSystemService("usb");
+        this.mUsbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
         this.mOnDeviceConnectListener = onDeviceConnectListener;
         this.mAsyncHandler = HandlerThreadHandler.createHandler(TAG);
         this.destroyed = false;
@@ -299,7 +299,7 @@ public final class USBMonitor {
     }
 
     public synchronized boolean isRegistered() {
-        boolean z;
+        boolean z = false;
         if (!this.destroyed) {
             z = this.mPermissionIntent != null;
         }
@@ -538,7 +538,7 @@ public final class USBMonitor {
             if (usbControlBlock != null) {
                 return usbControlBlock;
             }
-            UsbControlBlock usbControlBlock2 = new UsbControlBlock(usbDevice);
+            UsbControlBlock usbControlBlock2 = new UsbControlBlock(this, usbDevice);
             this.mCtrlBlocks.put(usbDevice, usbControlBlock2);
             return usbControlBlock2;
         }
@@ -557,7 +557,7 @@ public final class USBMonitor {
                 boolean z;
                 UsbControlBlock usbControlBlock = (UsbControlBlock) USBMonitor.this.mCtrlBlocks.get(usbDevice);
                 if (usbControlBlock == null) {
-                    usbControlBlock = new UsbControlBlock(usbDevice);
+                    usbControlBlock = new UsbControlBlock(USBMonitor.this, usbDevice);
                     USBMonitor.this.mCtrlBlocks.put(usbDevice, usbControlBlock);
                     z = true;
                 } else {
@@ -728,14 +728,10 @@ public final class USBMonitor {
             if (controlTransfer > 2 && bArr2[0] == controlTransfer && bArr2[1] == 3) {
                 try {
                     String str2 = new String(bArr2, 2, controlTransfer - 2, "UTF-16LE");
-                    try {
-                        if (!"Љ".equals(str2)) {
-                            return str2;
-                        }
-                        str = null;
-                    } catch (UnsupportedEncodingException unused) {
-                        str = str2;
+                    if (!"Љ".equals(str2)) {
+                        return str2;
                     }
+                    str = null;
                 } catch (UnsupportedEncodingException unused2) {
                     continue;
                 }
@@ -749,7 +745,7 @@ public final class USBMonitor {
     }
 
     public static UsbDeviceInfo getDeviceInfo(Context context, UsbDevice usbDevice) {
-        return updateDeviceInfo((UsbManager) context.getSystemService("usb"), usbDevice, new UsbDeviceInfo());
+        return updateDeviceInfo((UsbManager) context.getSystemService(Context.USB_SERVICE), usbDevice, new UsbDeviceInfo());
     }
 
     public static UsbDeviceInfo updateDeviceInfo(UsbManager usbManager, UsbDevice usbDevice, UsbDeviceInfo usbDeviceInfo) {

@@ -1,7 +1,6 @@
 package com.gizthon.camera.application;
 
 import com.jieli.stream.dv.running2.ui.MainApplication;
-import com.tencent.bugly.crashreport.CrashReport;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -12,7 +11,6 @@ public class CameraApplication extends MainApplication {
     @Override // com.jieli.stream.dv.running2.ui.MainApplication, android.app.Application
     public void onCreate() {
         super.onCreate();
-        CrashReport.initCrashReport(getApplicationContext(), "319a06884a", false);
         closeAndroid10Dialog();
     }
 

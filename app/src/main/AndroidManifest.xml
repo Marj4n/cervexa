@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:versionCode="129"
-    android:versionName="2.9"
-    package="com.marjan.cervexa">
+    android:versionName="2.9">
     <uses-sdk
         android:minSdkVersion="21"
         tools:ignore="GradleOverrides" />
@@ -44,6 +43,7 @@
     <application
         android:theme="@style/AppTheme"
         android:label="@string/appName"
+        tools:replace="android:icon,android:label"
         android:icon="@mipmap/ic_launcher"
         android:name="com.gizthon.camera.application.CameraApplication"
         android:screenOrientation="landscape"
@@ -157,12 +157,6 @@
             android:screenOrientation="fullSensor"
             android:configChanges="screenSize|orientation|keyboardHidden"/>
         <activity android:name="com.jieli.stream.dv.running2.ui.activity.UserAgreementActivity"/>
-        <service
-            android:name="com.baidu.trace.LBSTraceService"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:process=":remote"/>
         <activity
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:name="com.jieli.stream.dv.running2.ui.activity.PlaybackDialogActivity"

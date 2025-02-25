@@ -1,4 +1,4 @@
-package com.tencent.open;
+package tencent.open;
 
 /* compiled from: ProGuard */
 /* loaded from: classes2.dex */

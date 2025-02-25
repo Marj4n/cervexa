@@ -14,6 +14,8 @@ import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+
 /* loaded from: classes.dex */
 public class SlidingTabLayout extends HorizontalScrollView {
     private static final int TAB_VIEW_PADDING_DIPS = 16;
@@ -122,7 +124,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             }
             textView.setText(tabFragmentPagerAdapter.getPageTitle(i));
             view.setOnClickListener(tabClickListener);
-            view.setLayoutParams(new FrameLayout.LayoutParams(count, -2));
+            view.setLayoutParams(new LayoutParams(count, -2));
             this.mTabStrip.addView(view);
         }
     }
@@ -163,6 +165,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 return;
             }
             SlidingTabLayout.this.mTabStrip.onViewPagerPageChanged(i, f);
+            SwipeMenuItem r0 = null;
             SlidingTabLayout.this.scrollToTab(i, SlidingTabLayout.this.mTabStrip.getChildAt(i) != null ? (int) (r0.getWidth() * f) : 0);
             if (SlidingTabLayout.this.mViewPagerPageChangeListener != null) {
                 SlidingTabLayout.this.mViewPagerPageChangeListener.onPageScrolled(i, f, i2);
@@ -189,7 +192,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         }
     }
 
-    private class TabClickListener implements View.OnClickListener {
+    private class TabClickListener implements OnClickListener {
         private TabClickListener() {
         }
 

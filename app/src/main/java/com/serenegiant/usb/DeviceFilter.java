@@ -7,13 +7,14 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbInterface;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.open.SocialConstants;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import tencent.open.SocialConstants;
 
 /* loaded from: classes2.dex */
 public final class DeviceFilter {

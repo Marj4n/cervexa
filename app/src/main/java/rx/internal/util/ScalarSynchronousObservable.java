@@ -1,6 +1,4 @@
 package rx.internal.util;
-
-import com.tencent.bugly.Bugly;
 import java.util.concurrent.atomic.AtomicBoolean;
 import rx.Observable;
 import rx.Producer;
@@ -20,7 +18,7 @@ import rx.plugins.RxJavaPlugins;
 public final class ScalarSynchronousObservable<T> extends Observable<T> {
     final T t;
     static RxJavaObservableExecutionHook hook = RxJavaPlugins.getInstance().getObservableExecutionHook();
-    static final boolean STRONG_MODE = Boolean.valueOf(System.getProperty("rx.just.strong-mode", Bugly.SDK_IS_DEV)).booleanValue();
+    static final boolean STRONG_MODE = Boolean.valueOf(System.getProperty("rx.just.strong-mode")).booleanValue();
 
     static <T> Producer createProducer(Subscriber<? super T> subscriber, T t) {
         if (STRONG_MODE) {

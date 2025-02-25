@@ -1,6 +1,5 @@
 package okhttp3.internal.ws;
 
-import com.tencent.connect.common.Constants;
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.ProtocolException;
@@ -98,7 +97,7 @@ public final class RealWebSocket implements WebSocket, WebSocketReader.FrameCall
     public void connect(OkHttpClient okHttpClient) {
         OkHttpClient build = okHttpClient.newBuilder().protocols(ONLY_HTTP1).build();
         final int pingIntervalMillis = build.pingIntervalMillis();
-        final Request build2 = this.originalRequest.newBuilder().header("Upgrade", "websocket").header("Connection", "Upgrade").header("Sec-WebSocket-Key", this.key).header("Sec-WebSocket-Version", Constants.VIA_REPORT_TYPE_JOININ_GROUP).build();
+        final Request build2 = this.originalRequest.newBuilder().header("Upgrade", "websocket").header("Connection", "Upgrade").header("Sec-WebSocket-Key", this.key).header("Sec-WebSocket-Version", tencent.connect.common.Constants.VIA_REPORT_TYPE_JOININ_GROUP).build();
         Call newWebSocketCall = Internal.instance.newWebSocketCall(build, build2);
         this.call = newWebSocketCall;
         newWebSocketCall.enqueue(new Callback() { // from class: okhttp3.internal.ws.RealWebSocket.2

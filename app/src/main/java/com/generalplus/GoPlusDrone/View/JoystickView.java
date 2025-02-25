@@ -41,6 +41,7 @@ public class JoystickView extends View implements Runnable {
 
     @Override // android.view.View
     protected void onFinishInflate() {
+        super.onFinishInflate();
     }
 
     public JoystickView(Context context) {
@@ -124,8 +125,8 @@ public class JoystickView extends View implements Runnable {
     }
 
     private int measure(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         if (mode == 0) {
             return 200;
         }
@@ -136,6 +137,7 @@ public class JoystickView extends View implements Runnable {
     protected void onDraw(Canvas canvas) {
         this.centerX = getWidth() / 2;
         this.centerY = getHeight() / 2;
+        Object r0 = null;
         canvas.drawCircle((int) this.centerX, (int) r0, this.joystickRadius, this.mainCircle);
         canvas.drawCircle(this.xPosition, this.yPosition, this.buttonRadius, this.button);
     }

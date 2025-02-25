@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +33,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.baidu.mapapi.UIMsg;
 import com.generalplus.GoPlusDrone.Activity.ResolutionAdapter;
-import com.google.android.material.timepicker.TimeModel;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.intercom.IntercomManager;
 import com.jieli.lib.dv.control.model.PictureInfo;
@@ -240,13 +240,18 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     };
     protected Handler handler = new Handler();
     protected Runnable updateTimer = new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.27
+        @SuppressLint({"SetTextI18n", "DefaultLocale"})
         @Override // java.lang.Runnable
         public void run() {
             Long valueOf = Long.valueOf(System.currentTimeMillis() - VideoFragment.this.startTime);
             Long valueOf2 = Long.valueOf(((valueOf.longValue() / 1000) / 60) / 60);
             Long valueOf3 = Long.valueOf(((valueOf.longValue() / 1000) / 60) % 60);
             Long valueOf4 = Long.valueOf((valueOf.longValue() / 1000) % 60);
-            VideoFragment.this.tv_record_time.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf4));
+            VideoFragment.this.tv_record_time.setText(
+                    String.format("%02d", valueOf2) + ":" +
+                            String.format("%02d", valueOf3) + ":" +
+                            String.format("%02d", valueOf4)
+            );
             VideoFragment.this.handler.postDelayed(this, 1000L);
         }
     };

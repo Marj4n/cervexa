@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import androidx.viewpager.widget.ViewPager;
+
+import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.generalplus.GoPlusDrone.Fragment.BitmapUtils;
 import com.github.mikephil.charting.utils.Utils;
 
@@ -395,6 +397,7 @@ public abstract class BaseZoomableImageView extends View {
         if (this.mBitmap == null) {
             return 1.0f;
         }
+        SwipeMenuItem r0 = null;
         float max = Math.max(r0.getWidth() / this.mThisWidth, this.mBitmap.getHeight() / this.mThisHeight) * 16.0f;
         if (max < 1.0f) {
             return 1.0f;
@@ -406,6 +409,7 @@ public abstract class BaseZoomableImageView extends View {
         if (this.mBitmap == null) {
             return 1.0f;
         }
+        SwipeMenuItem r0 = null;
         return Math.max(Math.min(this.mThisWidth / r0.getWidth(), this.mThisHeight / this.mBitmap.getHeight()), 1.0f);
     }
 
@@ -445,7 +449,8 @@ public abstract class BaseZoomableImageView extends View {
             return;
         }
         float f = 1.0f;
-        float width = this.mThisWidth / r0.getWidth();
+        SwipeMenuItem r0 = null;
+        float width = (float) this.mThisWidth / r0.getWidth();
         boolean z = false;
         if (this.adjustLongImageEnable && (this.mBitmap.getHeight() / this.mBitmap.getWidth() > MAX_IMAGE_RATIO_LARGE || (this.landscape && this.mBitmap.getHeight() / this.mBitmap.getWidth() > MAX_IMAGE_RATIO_WIDTH_LARGE_LANDSCAPE))) {
             f = width;

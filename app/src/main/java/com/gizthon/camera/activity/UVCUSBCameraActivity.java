@@ -1,5 +1,6 @@
 package com.gizthon.camera.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,7 +16,6 @@ import com.gizthon.camera.adapter.ResolutionListAdapter;
 import com.gizthon.camera.application.CameraApplication;
 import com.gizthon.camera.core.OnCameraConnectedListener;
 import com.gizthon.camera.databinding.UsbPreviewActivityBinding;
-import com.google.android.material.timepicker.TimeModel;
 import com.jaeger.library.StatusBarUtil;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jiangdg.usbcamera.utils.FileUtils;
@@ -38,13 +38,18 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
     private long startTime;
     protected Handler handler = new Handler();
     protected Runnable updateTimer = new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.14
+        @SuppressLint({"DefaultLocale", "SetTextI18n"})
         @Override // java.lang.Runnable
         public void run() {
             Long valueOf = Long.valueOf(System.currentTimeMillis() - UVCUSBCameraActivity.this.startTime);
             Long valueOf2 = Long.valueOf(((valueOf.longValue() / 1000) / 60) / 60);
             Long valueOf3 = Long.valueOf(((valueOf.longValue() / 1000) / 60) % 60);
             Long valueOf4 = Long.valueOf((valueOf.longValue() / 1000) % 60);
-            UVCUSBCameraActivity.this.binding.tvRecordTime.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf4));
+            UVCUSBCameraActivity.this.binding.tvRecordTime.setText(
+                    String.format("%02d", valueOf2) + ":" +
+                            String.format("%02d", valueOf3) + ":" +
+                            String.format("%02d", valueOf4)
+            );
             UVCUSBCameraActivity.this.handler.postDelayed(this, 1000L);
         }
     };

@@ -8,7 +8,6 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.google.android.material.timepicker.TimeModel;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.util.AppUtils;
@@ -269,7 +268,7 @@ public class PlaybackSeekbar extends View {
 
     private String formatTime(int i) {
         int i2 = i / 1000;
-        return String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, Integer.valueOf(i2 / 60)) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, Integer.valueOf(i2 % 60));
+        return String.format("%02d", i2 / 60) + ":" + String.format("%02d", i2 % 60);
     }
 
     private void drawBrowseRule(Canvas canvas) {

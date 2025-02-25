@@ -1,6 +1,8 @@
 package com.generalplus.GoPlusDrone.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -28,11 +30,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generalplus.GoPlusDrone.Activity.ResolutionAdapter;
 import com.generalplus.GoPlusDrone.R;
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
-import com.google.android.material.timepicker.TimeModel;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.serenegiant.usb.UVCCamera;
 import generalplus.com.GPCamLib.CamWrapper;
@@ -143,13 +143,18 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
     private boolean isDelayStopVideo = false;
     int SendRet = 0;
     protected Runnable updateTimer = new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.18
+        @SuppressLint("DefaultLocale")
         @Override // java.lang.Runnable
         public void run() {
             Long valueOf = Long.valueOf(System.currentTimeMillis() - CameraNewActivity.this.startTime.longValue());
             Long valueOf2 = Long.valueOf(((valueOf.longValue() / 1000) / 60) / 60);
             Long valueOf3 = Long.valueOf(((valueOf.longValue() / 1000) / 60) % 60);
             Long valueOf4 = Long.valueOf((valueOf.longValue() / 1000) % 60);
-            CameraNewActivity.this.tv_record_time.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf4));
+            CameraNewActivity.this.tv_record_time.setText(
+                    String.format("%02d", valueOf2) + ":" +
+                            String.format("%02d", valueOf3) + ":" +
+                            String.format("%02d", valueOf4)
+            );
             CameraNewActivity.this.handler.postDelayed(this, 1000L);
         }
     };
@@ -163,11 +168,13 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
     private float mScale = 1.0f;
     boolean isImgTipShow = false;
     Handler handler = new Handler() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.21
+        @SuppressLint("HandlerLeak")
         @Override // android.os.Handler
         public void handleMessage(Message message) {
             if (message.what == 100 && message.what == -1 && CameraNewActivity.isR) {
                 CameraNewActivity.isR = false;
                 new Thread(new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.21.1
+                    @SuppressLint("HandlerLeak")
                     @Override // java.lang.Runnable
                     public void run() {
                         try {
@@ -264,7 +271,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                     CameraNewActivity cameraNewActivity = CameraNewActivity.this;
                     cameraNewActivity.a--;
                 }
-                WindowManager windowManager = (WindowManager) CameraNewActivity.this.getSystemService("window");
+                WindowManager windowManager = (WindowManager) CameraNewActivity.this.getSystemService(Context.WINDOW_SERVICE);
                 int width = windowManager.getDefaultDisplay().getWidth();
                 int height = windowManager.getDefaultDisplay().getHeight();
                 ViewGroup.LayoutParams layoutParams = CameraNewActivity.this.mSurfaceView.getLayoutParams();
@@ -299,7 +306,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 } else {
                     CameraNewActivity.this.a++;
                 }
-                WindowManager windowManager = (WindowManager) CameraNewActivity.this.getSystemService("window");
+                WindowManager windowManager = (WindowManager) CameraNewActivity.this.getSystemService(Context.WINDOW_SERVICE);
                 int width = windowManager.getDefaultDisplay().getWidth();
                 int height = windowManager.getDefaultDisplay().getHeight();
                 ViewGroup.LayoutParams layoutParams = CameraNewActivity.this.mSurfaceView.getLayoutParams();
@@ -656,7 +663,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
             WifiInfo connectionInfo = wifiManager.getConnectionInfo();
             if (connectionInfo != null) {
                 final Integer valueOf = Integer.valueOf(connectionInfo.getLinkSpeed());
-                final boolean z = false;
+                boolean z = false;
                 if (!this.mIsStart) {
                     int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                     if (ipAddress == 0) {
@@ -685,10 +692,11 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                         z = true;
                     }
                 }
+                boolean finalZ = z;
                 runOnUiThread(new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.13
                     @Override // java.lang.Runnable
                     public void run() {
-                        if (z) {
+                        if (finalZ) {
                             Toast.makeText(CameraNewActivity.this, "Replay.", 0).show();
                         }
                         StringBuilder sb = new StringBuilder();

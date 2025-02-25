@@ -1,6 +1,5 @@
 package org.apache.commons.net.nntp;
 
-import com.tencent.connect.common.Constants;
 
 /* loaded from: classes2.dex */
 public final class NNTPCommand {
@@ -22,7 +21,7 @@ public final class NNTPCommand {
     public static final int STAT = 14;
     public static final int XHDR = 17;
     public static final int XOVER = 16;
-    private static final String[] _commands = {"ARTICLE", "BODY", "GROUP", "HEAD", "HELP", "IHAVE", "LAST", "LIST", "NEWGROUPS", "NEWNEWS", "NEXT", Constants.HTTP_POST, "QUIT", "SLAVE", "STAT", "AUTHINFO", "XOVER", "XHDR"};
+    private static final String[] _commands = {"ARTICLE", "BODY", "GROUP", "HEAD", "HELP", "IHAVE", "LAST", "LIST", "NEWGROUPS", "NEWNEWS", "NEXT", tencent.connect.common.Constants.HTTP_POST, "QUIT", "SLAVE", "STAT", "AUTHINFO", "XOVER", "XHDR"};
 
     private NNTPCommand() {
     }
