@@ -24,7 +24,6 @@ import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.generalplus.GoPlusDrone.R;
-import com.google.android.material.timepicker.TimeModel;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.dv.running2.util.IConstant;
 import generalplus.com.GPCamLib.CamWrapper;
@@ -599,7 +598,7 @@ public class FilesActivity extends Activity {
                                 runOnUiThread(new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.FilesActivity.5
                                     @Override // java.lang.Runnable
                                     public void run() {
-                                        Toast.makeText(FilesActivity.this.m_Context, "Failed. No Storage.", 0).show();
+                                        Toast.makeText(FilesActivity.this.m_Context, "Failed. No Storage.", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 return;
@@ -627,7 +626,7 @@ public class FilesActivity extends Activity {
                                     bIsStopDownload = true;
                                     CamWrapper.getComWrapperInstance().GPCamAbort(this._i32CommandIndex);
                                     CamWrapper.getComWrapperInstance().GPCamSendGetStatus();
-                                    Toast.makeText(this.m_Context, "Getting thumbnail is failed.", 0).show();
+                                    Toast.makeText(this.m_Context, "Getting thumbnail is failed.", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
                                 return;
@@ -733,11 +732,13 @@ public class FilesActivity extends Activity {
                     m_strAryFileName[i11] = CamWrapper.getComWrapperInstance().GPCamGetFileName(i11);
                     m_i32AryFileSize[i11] = CamWrapper.getComWrapperInstance().GPCamGetFileSize(i11);
                     CamWrapper.getComWrapperInstance().GPCamGetFileTime(i11, bArr);
+
                     StringBuilder sb = new StringBuilder();
                     for (int i12 = 0; i12 < 6; i12++) {
-                        sb.append(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, Byte.valueOf(bArr[i12])));
+                        sb.append(String.format("%02d", bArr[i12] & 0xFF)); // Menghindari konversi byte negatif
                     }
                     m_strAryFileTime[i11] = sb.toString();
+
                     if (m_i32AryFileStatus[i11] == FileTag_FileDeviceInit) {
                         m_i32AryFileStatus[i11] = 161;
                     }

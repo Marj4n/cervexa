@@ -1,5 +1,6 @@
 package com.generalplus.GoPlusDrone.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,7 +28,6 @@ import android.widget.Toast;
 import com.generalplus.GoPlusDrone.R;
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
-import com.google.android.material.timepicker.TimeModel;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;
@@ -146,13 +146,18 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
     private boolean isDelayStopVideo = false;
     int SendRet = 0;
     protected Runnable updateTimer = new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.CameraActivity.11
+        @SuppressLint("SetTextI18n")
         @Override // java.lang.Runnable
         public void run() {
             Long valueOf = Long.valueOf(System.currentTimeMillis() - CameraActivity.this.startTime.longValue());
             Long valueOf2 = Long.valueOf(((valueOf.longValue() / 1000) / 60) / 60);
             Long valueOf3 = Long.valueOf(((valueOf.longValue() / 1000) / 60) % 60);
             Long valueOf4 = Long.valueOf((valueOf.longValue() / 1000) % 60);
-            CameraActivity.this.m_tvRecordTime.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, valueOf4));
+            CameraActivity.this.m_tvRecordTime.setText(
+                    String.format("%02d", valueOf2) + ":" +
+                            String.format("%02d", valueOf3) + ":" +
+                            String.format("%02d", valueOf4)
+            );
             CameraActivity.this.handler.postDelayed(this, 1000L);
         }
     };
@@ -573,7 +578,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
             WifiInfo connectionInfo = wifiManager.getConnectionInfo();
             if (connectionInfo != null) {
                 final Integer valueOf = Integer.valueOf(connectionInfo.getLinkSpeed());
-                final boolean z = false;
+                boolean z = false;
                 if (!this.mIsStart) {
                     int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                     if (ipAddress == 0) {
@@ -602,10 +607,11 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                         z = true;
                     }
                 }
+                boolean finalZ = z;
                 runOnUiThread(new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.CameraActivity.6
                     @Override // java.lang.Runnable
                     public void run() {
-                        if (z) {
+                        if (finalZ) {
                             Toast.makeText(CameraActivity.this, "Replay.", 0).show();
                         }
                         StringBuilder sb = new StringBuilder();

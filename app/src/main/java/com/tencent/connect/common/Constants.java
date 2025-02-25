@@ -1,4 +1,4 @@
-package com.tencent.connect.common;
+package tencent.connect.common;
 
 /* compiled from: ProGuard */
 /* loaded from: classes2.dex */

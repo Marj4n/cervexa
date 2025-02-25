@@ -13,7 +13,7 @@ import rx.internal.operators.NotificationLite;
 import rx.subscriptions.Subscriptions;
 
 /* loaded from: classes2.dex */
-final class SubjectSubscriptionManager<T> extends AtomicReference<State<T>> implements Observable.OnSubscribe<T> {
+final class SubjectSubscriptionManager<T> extends AtomicReference<SubjectSubscriptionManager.State<T>> implements Observable.OnSubscribe<T> {
     private static final long serialVersionUID = 6035251036011671568L;
     boolean active;
     volatile Object latest;

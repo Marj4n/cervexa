@@ -1,5 +1,6 @@
 package com.bm.library;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -18,8 +19,10 @@ import android.widget.ImageView;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
+import androidx.appcompat.widget.AppCompatImageView;
+
 /* loaded from: classes.dex */
-public class PhotoView extends ImageView {
+public class PhotoView extends AppCompatImageView {
     private static final int ANIMA_DURING = 340;
     private static final float MAX_SCALE = 2.5f;
     private static final int MIN_ROTATE = 35;
@@ -42,7 +45,7 @@ public class PhotoView extends ImageView {
     private Matrix mAnimaMatrix;
     private Matrix mBaseMatrix;
     private RectF mBaseRect;
-    private View.OnClickListener mClickListener;
+    private OnClickListener mClickListener;
     private Runnable mClickRunnable;
     private RectF mClip;
     private RectF mCommonRect;
@@ -53,9 +56,9 @@ public class PhotoView extends ImageView {
     private GestureDetector.OnGestureListener mGestureListener;
     private float mHalfBaseRectHeight;
     private float mHalfBaseRectWidth;
-    private RectF mImgRect;
+    private static RectF mImgRect;
     private long mInfoTime;
-    private View.OnLongClickListener mLongClick;
+    private OnLongClickListener mLongClick;
     private float mMaxScale;
     private int mMinRotate;
     private PointF mRotateCenter;
@@ -66,7 +69,7 @@ public class PhotoView extends ImageView {
     private PointF mScaleCenter;
     private ScaleGestureDetector mScaleDetector;
     private ScaleGestureDetector.OnScaleGestureListener mScaleListener;
-    private ImageView.ScaleType mScaleType;
+    private ScaleType mScaleType;
     private PointF mScreenCenter;
     private Matrix mSynthesisMatrix;
     private Matrix mTmpMatrix;
@@ -199,6 +202,7 @@ public class PhotoView extends ImageView {
                 if (PhotoView.this.mTranslate.isRuning) {
                     PhotoView.this.mTranslate.stop();
                 }
+                PhotoView r4 = PhotoView.this;
                 if (PhotoView.this.canScrollHorizontallySelf(f)) {
                     if (f < 0.0f && PhotoView.this.mImgRect.left - f > PhotoView.this.mWidgetRect.left) {
                         f = PhotoView.this.mImgRect.left;
@@ -291,6 +295,7 @@ public class PhotoView extends ImageView {
                 PhotoView.this.mTmpMatrix.mapRect(PhotoView.this.mTmpRect, PhotoView.this.mBaseRect);
                 PhotoView photoView = PhotoView.this;
                 photoView.doTranslateReset(photoView.mTmpRect);
+                PhotoView r2 = PhotoView.this;
                 PhotoView.this.isZoonUp = !r2.isZoonUp;
                 PhotoView.this.mTranslate.withScale(f, f2);
                 PhotoView.this.mTranslate.start();
@@ -415,6 +420,7 @@ public class PhotoView extends ImageView {
                 if (PhotoView.this.mTranslate.isRuning) {
                     PhotoView.this.mTranslate.stop();
                 }
+                PhotoView r4 = PhotoView.this;
                 if (PhotoView.this.canScrollHorizontallySelf(f)) {
                     if (f < 0.0f && PhotoView.this.mImgRect.left - f > PhotoView.this.mWidgetRect.left) {
                         f = PhotoView.this.mImgRect.left;
@@ -507,6 +513,7 @@ public class PhotoView extends ImageView {
                 PhotoView.this.mTmpMatrix.mapRect(PhotoView.this.mTmpRect, PhotoView.this.mBaseRect);
                 PhotoView photoView = PhotoView.this;
                 photoView.doTranslateReset(photoView.mTmpRect);
+                PhotoView r2 = PhotoView.this;
                 PhotoView.this.isZoonUp = !r2.isZoonUp;
                 PhotoView.this.mTranslate.withScale(f, f2);
                 PhotoView.this.mTranslate.start();
@@ -631,6 +638,7 @@ public class PhotoView extends ImageView {
                 if (PhotoView.this.mTranslate.isRuning) {
                     PhotoView.this.mTranslate.stop();
                 }
+                PhotoView r4 = PhotoView.this;
                 if (PhotoView.this.canScrollHorizontallySelf(f)) {
                     if (f < 0.0f && PhotoView.this.mImgRect.left - f > PhotoView.this.mWidgetRect.left) {
                         f = PhotoView.this.mImgRect.left;
@@ -723,6 +731,7 @@ public class PhotoView extends ImageView {
                 PhotoView.this.mTmpMatrix.mapRect(PhotoView.this.mTmpRect, PhotoView.this.mBaseRect);
                 PhotoView photoView = PhotoView.this;
                 photoView.doTranslateReset(photoView.mTmpRect);
+                PhotoView r2 = PhotoView.this;
                 PhotoView.this.isZoonUp = !r2.isZoonUp;
                 PhotoView.this.mTranslate.withScale(f, f2);
                 PhotoView.this.mTranslate.start();
@@ -733,9 +742,9 @@ public class PhotoView extends ImageView {
     }
 
     private void init() {
-        super.setScaleType(ImageView.ScaleType.MATRIX);
+        super.setScaleType(ScaleType.MATRIX);
         if (this.mScaleType == null) {
-            this.mScaleType = ImageView.ScaleType.CENTER_INSIDE;
+            this.mScaleType = ScaleType.CENTER_INSIDE;
         }
         this.mRotateDetector = new RotateGestureDetector(this.mRotateListener);
         this.mDetector = new GestureDetector(getContext(), this.mGestureListener);
@@ -751,14 +760,14 @@ public class PhotoView extends ImageView {
     }
 
     @Override // android.view.View
-    public void setOnClickListener(View.OnClickListener onClickListener) {
+    public void setOnClickListener(OnClickListener onClickListener) {
         super.setOnClickListener(onClickListener);
         this.mClickListener = onClickListener;
     }
 
     @Override // android.widget.ImageView
-    public void setScaleType(ImageView.ScaleType scaleType) {
-        if (scaleType == ImageView.ScaleType.MATRIX || scaleType == this.mScaleType) {
+    public void setScaleType(ScaleType scaleType) {
+        if (scaleType == ScaleType.MATRIX || scaleType == this.mScaleType) {
             return;
         }
         this.mScaleType = scaleType;
@@ -768,7 +777,7 @@ public class PhotoView extends ImageView {
     }
 
     @Override // android.view.View
-    public void setOnLongClickListener(View.OnLongClickListener onLongClickListener) {
+    public void setOnLongClickListener(OnLongClickListener onLongClickListener) {
         this.mLongClick = onLongClickListener;
     }
 
@@ -919,34 +928,34 @@ public class PhotoView extends ImageView {
         static final /* synthetic */ int[] $SwitchMap$android$widget$ImageView$ScaleType;
 
         static {
-            int[] iArr = new int[ImageView.ScaleType.values().length];
+            int[] iArr = new int[ScaleType.values().length];
             $SwitchMap$android$widget$ImageView$ScaleType = iArr;
             try {
-                iArr[ImageView.ScaleType.CENTER.ordinal()] = 1;
+                iArr[ScaleType.CENTER.ordinal()] = 1;
             } catch (NoSuchFieldError unused) {
             }
             try {
-                $SwitchMap$android$widget$ImageView$ScaleType[ImageView.ScaleType.CENTER_CROP.ordinal()] = 2;
+                $SwitchMap$android$widget$ImageView$ScaleType[ScaleType.CENTER_CROP.ordinal()] = 2;
             } catch (NoSuchFieldError unused2) {
             }
             try {
-                $SwitchMap$android$widget$ImageView$ScaleType[ImageView.ScaleType.CENTER_INSIDE.ordinal()] = 3;
+                $SwitchMap$android$widget$ImageView$ScaleType[ScaleType.CENTER_INSIDE.ordinal()] = 3;
             } catch (NoSuchFieldError unused3) {
             }
             try {
-                $SwitchMap$android$widget$ImageView$ScaleType[ImageView.ScaleType.FIT_CENTER.ordinal()] = 4;
+                $SwitchMap$android$widget$ImageView$ScaleType[ScaleType.FIT_CENTER.ordinal()] = 4;
             } catch (NoSuchFieldError unused4) {
             }
             try {
-                $SwitchMap$android$widget$ImageView$ScaleType[ImageView.ScaleType.FIT_START.ordinal()] = 5;
+                $SwitchMap$android$widget$ImageView$ScaleType[ScaleType.FIT_START.ordinal()] = 5;
             } catch (NoSuchFieldError unused5) {
             }
             try {
-                $SwitchMap$android$widget$ImageView$ScaleType[ImageView.ScaleType.FIT_END.ordinal()] = 6;
+                $SwitchMap$android$widget$ImageView$ScaleType[ScaleType.FIT_END.ordinal()] = 6;
             } catch (NoSuchFieldError unused6) {
             }
             try {
-                $SwitchMap$android$widget$ImageView$ScaleType[ImageView.ScaleType.FIT_XY.ordinal()] = 7;
+                $SwitchMap$android$widget$ImageView$ScaleType[ScaleType.FIT_XY.ordinal()] = 7;
             } catch (NoSuchFieldError unused7) {
             }
         }
@@ -1066,10 +1075,10 @@ public class PhotoView extends ImageView {
         Drawable drawable = getDrawable();
         int drawableWidth = getDrawableWidth(drawable);
         int drawableHeight = getDrawableHeight(drawable);
-        int size = View.MeasureSpec.getSize(i);
-        int size2 = View.MeasureSpec.getSize(i2);
-        int mode = View.MeasureSpec.getMode(i);
-        int mode2 = View.MeasureSpec.getMode(i2);
+        int size = MeasureSpec.getSize(i);
+        int size2 = MeasureSpec.getSize(i2);
+        int mode = MeasureSpec.getMode(i);
+        int mode2 = MeasureSpec.getMode(i2);
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
         if (layoutParams == null) {
             layoutParams = new ViewGroup.LayoutParams(-2, -2);
@@ -1193,11 +1202,11 @@ public class PhotoView extends ImageView {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void doTranslateReset(RectF rectF) {
-        float f;
-        float f2;
+        float f = 0;
+        float f2 = 0;
         int i;
-        float f3;
-        float f4;
+        float f3 = 0;
+        float f4 = 0;
         int i2 = 0;
         if (rectF.width() <= this.mWidgetRect.width()) {
             if (!isImageCenterWidth(rectF)) {
@@ -1498,6 +1507,8 @@ public class PhotoView extends ImageView {
                 return;
             }
             this.isRuning = false;
+
+            PhotoView r0 = PhotoView.this;
             if (PhotoView.this.imgLargeWidth) {
                 if (PhotoView.this.mImgRect.left > 0.0f) {
                     PhotoView.this.mTranslateX = (int) (r0.mTranslateX - PhotoView.this.mImgRect.left);
@@ -1544,6 +1555,7 @@ public class PhotoView extends ImageView {
     public Info getInfo() {
         RectF rectF = new RectF();
         getLocation(this, new int[2]);
+        float[] r0 = new float[]{this.mImgRect.width()};
         rectF.set(r0[0] + this.mImgRect.left, r0[1] + this.mImgRect.top, r0[0] + this.mImgRect.right, r0[1] + this.mImgRect.bottom);
         return new Info(rectF, this.mImgRect, this.mWidgetRect, this.mBaseRect, this.mScreenCenter, this.mScale, this.mDegrees, this.mScaleType);
     }
@@ -1554,11 +1566,13 @@ public class PhotoView extends ImageView {
         Matrix imageMatrix = imageView.getImageMatrix();
         RectF rectF = new RectF(0.0f, 0.0f, getDrawableWidth(drawable), getDrawableHeight(drawable));
         imageMatrix.mapRect(rectF);
+        float[] r0 = new float[]{mImgRect.width()};
         RectF rectF2 = new RectF(r0[0] + rectF.left, r0[1] + rectF.top, r0[0] + rectF.right, r0[1] + rectF.bottom);
         RectF rectF3 = new RectF(0.0f, 0.0f, imageView.getWidth(), imageView.getHeight());
         return new Info(rectF2, rectF, rectF3, new RectF(rectF3), new PointF(rectF3.width() / 2.0f, rectF3.height() / 2.0f), 1.0f, 0.0f, imageView.getScaleType());
     }
 
+    @SuppressLint("ResourceType")
     private static void getLocation(View view, int[] iArr) {
         iArr[0] = iArr[0] + view.getLeft();
         iArr[1] = iArr[1] + view.getTop();
@@ -1650,7 +1664,7 @@ public class PhotoView extends ImageView {
                 if (height4 > 1.0f) {
                     height4 = 1.0f;
                 }
-                ClipCalculate start = info.mScaleType == ImageView.ScaleType.FIT_START ? new START() : info.mScaleType == ImageView.ScaleType.FIT_END ? new END() : new OTHER();
+                ClipCalculate start = info.mScaleType == ScaleType.FIT_START ? new START() : info.mScaleType == ScaleType.FIT_END ? new END() : new OTHER();
                 this.mTranslate.withClip(width4, height4, 1.0f - width4, 1.0f - height4, this.mAnimaDuring / 3, start);
                 this.mTmpMatrix.setScale(width4, height4, (this.mImgRect.left + this.mImgRect.right) / 2.0f, start.calculateTop());
                 this.mTmpMatrix.mapRect(this.mTranslate.mClipRect, this.mImgRect);
@@ -1686,19 +1700,21 @@ public class PhotoView extends ImageView {
             this.mTranslate.withScale(this.mScale, width2);
             this.mTranslate.withRotate((int) this.mDegrees, (int) info.mDegrees, (this.mAnimaDuring * 2) / 3);
             if (info.mWidgetRect.width() < info.mRect.width() || info.mWidgetRect.height() < info.mRect.height()) {
-                final float width3 = info.mWidgetRect.width() / info.mRect.width();
-                final float height3 = info.mWidgetRect.height() / info.mRect.height();
+                float width3 = info.mWidgetRect.width() / info.mRect.width();
+                float height3 = info.mWidgetRect.height() / info.mRect.height();
                 if (width3 > 1.0f) {
                     width3 = 1.0f;
                 }
                 if (height3 > 1.0f) {
                     height3 = 1.0f;
                 }
-                final ClipCalculate start = info.mScaleType == ImageView.ScaleType.FIT_START ? new START() : info.mScaleType == ImageView.ScaleType.FIT_END ? new END() : new OTHER();
+                final ClipCalculate start = info.mScaleType == ScaleType.FIT_START ? new START() : info.mScaleType == ScaleType.FIT_END ? new END() : new OTHER();
+                float finalHeight = height3;
+                float finalWidth = width3;
                 postDelayed(new Runnable() { // from class: com.bm.library.PhotoView.5
                     @Override // java.lang.Runnable
                     public void run() {
-                        PhotoView.this.mTranslate.withClip(1.0f, 1.0f, width3 - 1.0f, height3 - 1.0f, PhotoView.this.mAnimaDuring / 2, start);
+                        PhotoView.this.mTranslate.withClip(1.0f, 1.0f, finalWidth - 1.0f, finalHeight - 1.0f, PhotoView.this.mAnimaDuring / 2, start);
                     }
                 }, this.mAnimaDuring / 2);
             }

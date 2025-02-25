@@ -5,10 +5,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.opengl.GLES10;
+
+import com.baidu.trace.model.Point;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +29,8 @@ public class BitmapUtils {
     }
 
     public static Bitmap bitmapZoomByHeight(Drawable drawable, float f) {
-        float height = f / r1.getHeight();
+        Point r1 = null;
+        float height = (float) (f / r1.getHeight());
         return bitmapZoomByScale(drawableToBitmap(drawable), height, height);
     }
 
@@ -41,7 +46,7 @@ public class BitmapUtils {
     public static Bitmap drawableToBitmap(Drawable drawable) {
         int intrinsicWidth = drawable.getIntrinsicWidth();
         int intrinsicHeight = drawable.getIntrinsicHeight();
-        Bitmap createBitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, drawable.getOpacity() != -1 ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
+        Bitmap createBitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, drawable.getOpacity() != PixelFormat.UNKNOWN ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(createBitmap);
         drawable.setBounds(0, 0, intrinsicWidth, intrinsicHeight);
         drawable.draw(canvas);

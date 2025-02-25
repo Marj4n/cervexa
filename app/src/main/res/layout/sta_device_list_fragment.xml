@@ -7,8 +7,8 @@
     </RelativeLayout>
     <TextView android:gravity="center" android:id="@id/pull_to_refresh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/pull_down_to_refresh" android:maxLines="1" android:drawableTop="@mipmap/ic_pull_refresh" />
     <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.v4.widget.SwipeRefreshLayout android:orientation="vertical" android:id="@id/swipe_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:orientation="vertical" android:id="@id/swipe_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <ListView android:id="@android:id/list" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@android:color/darker_gray" android:dividerHeight="1.0dip" android:layout_weight="2.0" />
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
 </LinearLayout>

@@ -62,8 +62,6 @@ public class StartCardActivity extends Activity {
                 e3.printStackTrace();
             } catch (InterruptedException e4) {
                 e4.printStackTrace();
-            } catch (UnknownHostException e5) {
-                e5.printStackTrace();
             }
             if (this.bCheckWifiStatus) {
                 CamWrapper.getComWrapperInstance().GPCamConnectToDevice(CamWrapper.COMMAND_URL, CamWrapper.COMMAN_PORT);

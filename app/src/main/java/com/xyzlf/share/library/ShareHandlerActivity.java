@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
-import com.tencent.tauth.Tencent;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.channel.ShareByEmail;
 import com.xyzlf.share.library.channel.ShareByQQ;
@@ -104,7 +103,6 @@ public class ShareHandlerActivity extends ShareBaseActivity implements OnShareLi
     protected void onActivityResult(int i, int i2, Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i == 10103 || i == 10104) {
-            Tencent.onActivityResultData(i, i2, intent, null);
         }
     }
 

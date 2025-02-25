@@ -4,7 +4,6 @@ import android.media.MediaCodecInfo;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.connect.common.Constants;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
@@ -34,17 +33,17 @@ public class IjkMediaCodecInfo {
         }
         switch (i) {
             case 4:
-                return Constants.VIA_REPORT_TYPE_SHARE_TO_QZONE;
+                return tencent.connect.common.Constants.VIA_REPORT_TYPE_SHARE_TO_QZONE;
             case 8:
-                return Constants.VIA_REPORT_TYPE_SET_AVATAR;
+                return tencent.connect.common.Constants.VIA_REPORT_TYPE_SET_AVATAR;
             case 16:
-                return Constants.VIA_REPORT_TYPE_JOININ_GROUP;
+                return tencent.connect.common.Constants.VIA_REPORT_TYPE_JOININ_GROUP;
             case 32:
                 return "2";
             case 64:
-                return Constants.VIA_REPORT_TYPE_QQFAVORITES;
+                return tencent.connect.common.Constants.VIA_REPORT_TYPE_QQFAVORITES;
             case 128:
-                return Constants.VIA_REPORT_TYPE_DATALINE;
+                return tencent.connect.common.Constants.VIA_REPORT_TYPE_DATALINE;
             case 256:
                 return "3";
             case 512:

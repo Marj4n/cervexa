@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.media.AudioAttributes;
 import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import androidx.core.app.NotificationManagerCompat;
@@ -14,7 +15,6 @@ import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.serenegiant.utils.BuildCheck;
 import com.serenegiant.utils.ObjectHelper;
 import com.serenegiant.utils.XmlHelper;
-import com.tencent.open.SocialConstants;
 import java.io.IOException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.Set;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import tencent.open.SocialConstants;
 
 /* loaded from: classes2.dex */
 public class ChannelBuilder {
@@ -79,10 +81,18 @@ public class ChannelBuilder {
     }
 
     public static ChannelBuilder getBuilder(Context context, String str) {
-        NotificationChannel notificationChannel = ((NotificationManager) context.getSystemService("notification")).getNotificationChannel(str);
+        NotificationChannel notificationChannel = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = ((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE)).getNotificationChannel(str);
+        }
         if (notificationChannel != null) {
-            ChannelBuilder channelBuilder = new ChannelBuilder(context, str, notificationChannel.getName(), notificationChannel.getImportance());
-            channelBuilder.setLockscreenVisibility(notificationChannel.getLockscreenVisibility()).setBypassDnd(notificationChannel.canBypassDnd()).setShowBadge(notificationChannel.canShowBadge()).setDescription(notificationChannel.getDescription()).setLightColor(notificationChannel.getLightColor()).setVibrationPattern(notificationChannel.getVibrationPattern()).enableLights(notificationChannel.shouldShowLights()).enableVibration(notificationChannel.shouldVibrate()).setSound(notificationChannel.getSound(), notificationChannel.getAudioAttributes()).setGroup(notificationChannel.getGroup(), null).setCreateIfExists(true);
+            ChannelBuilder channelBuilder = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                channelBuilder = new ChannelBuilder(context, str, notificationChannel.getName(), notificationChannel.getImportance());
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                channelBuilder.setLockscreenVisibility(notificationChannel.getLockscreenVisibility()).setBypassDnd(notificationChannel.canBypassDnd()).setShowBadge(notificationChannel.canShowBadge()).setDescription(notificationChannel.getDescription()).setLightColor(notificationChannel.getLightColor()).setVibrationPattern(notificationChannel.getVibrationPattern()).enableLights(notificationChannel.shouldShowLights()).enableVibration(notificationChannel.shouldVibrate()).setSound(notificationChannel.getSound(), notificationChannel.getAudioAttributes()).setGroup(notificationChannel.getGroup(), null).setCreateIfExists(true);
+            }
             return channelBuilder;
         }
         return new ChannelBuilder(context, str, null, 0);
@@ -548,33 +558,64 @@ public class ChannelBuilder {
     }
 
     protected NotificationChannel createNotificationChannel(Context context) {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService("notification");
-        NotificationChannel notificationChannel = notificationManager.getNotificationChannel(this.channelId);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel notificationChannel = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = notificationManager.getNotificationChannel(this.channelId);
+        }
         if (this.createIfExists || notificationChannel == null) {
             if (this.importance == 0) {
                 this.importance = 3;
             }
             if (notificationChannel == null) {
-                notificationChannel = new NotificationChannel(this.channelId, this.name, this.importance);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    notificationChannel = new NotificationChannel(this.channelId, this.name, this.importance);
+                }
             }
-            notificationChannel.setImportance(this.importance);
-            notificationChannel.setLockscreenVisibility(this.lockscreenVisibility);
-            notificationChannel.setBypassDnd(this.bypassDnd);
-            notificationChannel.setShowBadge(this.showBadge);
-            notificationChannel.setLightColor(this.argb);
-            notificationChannel.enableLights(this.lights);
-            notificationChannel.setVibrationPattern(this.vibrationPattern);
-            notificationChannel.enableVibration(this.vibration);
-            notificationChannel.setSound(this.sound, this.audioAttributes);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setImportance(this.importance);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setLockscreenVisibility(this.lockscreenVisibility);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setBypassDnd(this.bypassDnd);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setShowBadge(this.showBadge);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setLightColor(this.argb);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.enableLights(this.lights);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setVibrationPattern(this.vibrationPattern);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.enableVibration(this.vibration);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setSound(this.sound, this.audioAttributes);
+            }
         }
         if (notificationChannel != null) {
             if (!TextUtils.isEmpty(this.groupId)) {
                 createNotificationChannelGroup(context, this.groupId, this.groupName);
             }
-            notificationChannel.setName(this.name);
-            notificationChannel.setDescription(this.description);
-            notificationChannel.setGroup(this.groupId);
-            notificationManager.createNotificationChannel(setupNotificationChannel(notificationChannel));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setName(this.name);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setDescription(this.description);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel.setGroup(this.groupId);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationManager.createNotificationChannel(setupNotificationChannel(notificationChannel));
+            }
         }
         return notificationChannel;
     }
@@ -583,24 +624,31 @@ public class ChannelBuilder {
         if (TextUtils.isEmpty(str)) {
             return;
         }
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService("notification");
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationChannelGroup notificationChannelGroup = null;
-        Iterator<NotificationChannelGroup> it = notificationManager.getNotificationChannelGroups().iterator();
+        Iterator<NotificationChannelGroup> it = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            it = notificationManager.getNotificationChannelGroups().iterator();
+        }
         while (true) {
             if (!it.hasNext()) {
                 break;
             }
             NotificationChannelGroup next = it.next();
-            if (str.equals(next.getId())) {
-                notificationChannelGroup = next;
-                break;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (str.equals(next.getId())) {
+                    notificationChannelGroup = next;
+                    break;
+                }
             }
         }
         if (notificationChannelGroup == null) {
             if (TextUtils.isEmpty(str2)) {
                 str2 = str;
             }
-            notificationManager.createNotificationChannelGroup(setupNotificationChannelGroup(new NotificationChannelGroup(str, str2)));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationManager.createNotificationChannelGroup(setupNotificationChannelGroup(new NotificationChannelGroup(str, str2)));
+            }
         }
     }
 }
