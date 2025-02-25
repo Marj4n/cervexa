@@ -45,8 +45,9 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.media)
     implementation(libs.volley)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
     //noinspection DuplicatePlatformClasses
-    implementation(libs.httpclient)
     implementation(libs.constraintlayout.solver)
     implementation(libs.util)
     implementation(libs.api.explorer.sdk)
@@ -55,6 +56,7 @@ dependencies {
     implementation(libs.preference)
     implementation(libs.library)
     implementation(libs.core)
+    implementation(libs.nineoldandroids.library)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

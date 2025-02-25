@@ -3,6 +3,7 @@ package com.jieli.stream.dv.running2.data;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.TextUtils;
+
 import com.generalplus.GoPlusDrone.Fragment.BitmapUtils;
 import com.generalplus.GoPlusDrone.Fragment.ThreadUtils;
 import com.jieli.media.codec.FrameCodec;
@@ -10,6 +11,7 @@ import com.jieli.media.codec.bean.MediaMeta;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.util.AppUtils;
 import com.jieli.stream.dv.running2.util.Dbug;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -24,9 +26,9 @@ public class VideoCapture {
     private int mRetryTime = 0;
     private final FrameCodec.OnFrameCodecListener mOnFrameCodecListener = new FrameCodec.OnFrameCodecListener() { // from class: com.jieli.stream.dv.running2.data.VideoCapture.3
         @Override // com.jieli.media.codec.FrameCodec.OnFrameCodecListener
-        public void onCompleted(byte[] bArr, MediaMeta mediaMeta) {
+        public void onCompleted(byte[] bArr, MediaMeta mediaMeta) throws Throwable {
             String str = AppUtils.splicingFilePath("MergeCamera", "Media", "Photo", "Screen") + File.separator + AppUtils.getLocalPhotoName();
-            boolean bytesToFile = (bArr == null || TextUtils.isEmpty(str)) ? false : AppUtils.bytesToFile(bArr, str);
+            boolean bytesToFile = bArr != null && !TextUtils.isEmpty(str) && AppUtils.bytesToFile(bArr, str);
             Dbug.w(VideoCapture.this.tag, "result " + bytesToFile + ", outPath " + str);
         }
 
@@ -74,7 +76,11 @@ public class VideoCapture {
                 if (TextUtils.isEmpty(str)) {
                     return;
                 }
-                AppUtils.bytesToFile(bArr, str);
+                try {
+                    AppUtils.bytesToFile(bArr, str);
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
                 saveFile(str, this.width, this.height, splicingFilePath + File.separator + AppUtils.getLocalPhotoName());
                 return;
             }
@@ -120,7 +126,11 @@ public class VideoCapture {
                 if (TextUtils.isEmpty(str2)) {
                     return;
                 }
-                AppUtils.bytesToFile(bArr, str2);
+                try {
+                    AppUtils.bytesToFile(bArr, str2);
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
                 isReady = true;
                 return;
             }
@@ -167,7 +177,8 @@ public class VideoCapture {
 
     public void saveFile(final String str, final int i, final int i2, final String str2) {
         ThreadUtils.executeByIoWithDelay(new ThreadUtils.SimpleTask<Integer>() { // from class: com.jieli.stream.dv.running2.data.VideoCapture.4
-            @Override // com.generalplus.GoPlusDrone.Fragment.ThreadUtils.SimpleTask, com.generalplus.GoPlusDrone.Fragment.ThreadUtils.Task
+            @Override
+            // com.generalplus.GoPlusDrone.Fragment.ThreadUtils.SimpleTask, com.generalplus.GoPlusDrone.Fragment.ThreadUtils.Task
             public void onFail(Throwable th) {
             }
 

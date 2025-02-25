@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.fragment.browse;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.util.IConstant;
 import com.jieli.stream.dv.running2.util.ImageLoader;
 import java.io.File;
+import java.io.OptionalDataException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +83,7 @@ public class PhotoViewFragment extends BaseFragment implements ViewPager.OnPageC
     }
 
     private void setCounter(int i, int i2) {
-        String string = getString(R.string.counter_format, Integer.valueOf(i + 1), Integer.valueOf(i2));
+        @SuppressLint({"StringFormatInvalid", "LocalSuppress"}) String string = getString(R.string.counter_format, Integer.valueOf(i + 1), Integer.valueOf(i2));
         TextView textView = this.tvCounter;
         if (textView != null) {
             textView.setText(string);
@@ -102,6 +104,7 @@ public class PhotoViewFragment extends BaseFragment implements ViewPager.OnPageC
         if (!str.contains(File.separator)) {
             return str;
         }
+        OptionalDataException r2 = null;
         return str.split(File.separator)[r2.length - 1];
     }
 

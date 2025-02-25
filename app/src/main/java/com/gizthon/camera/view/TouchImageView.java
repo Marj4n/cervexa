@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.ImageView;
+
 import androidx.appcompat.widget.AppCompatImageView;
 
 /* loaded from: classes.dex */
@@ -122,8 +123,8 @@ public class TouchImageView extends AppCompatImageView {
         this.matrix = matrix;
         this.m = new float[9];
         setImageMatrix(matrix);
-        setScaleType(ImageView.ScaleType.MATRIX);
-        setOnTouchListener(new View.OnTouchListener() { // from class: com.gizthon.camera.view.TouchImageView.1
+        setScaleType(ScaleType.MATRIX);
+        setOnTouchListener(new OnTouchListener() { // from class: com.gizthon.camera.view.TouchImageView.1
             @Override // android.view.View.OnTouchListener
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 TouchImageView.this.mScaleDetector.onTouchEvent(motionEvent);
@@ -163,7 +164,9 @@ public class TouchImageView extends AppCompatImageView {
                 } else if (TouchImageView.this.mode == 1) {
                     float f = pointF.x - TouchImageView.this.last.x;
                     float f2 = pointF.y - TouchImageView.this.last.y;
-                    TouchImageView.this.matrix.postTranslate(TouchImageView.this.getFixDragTrans(f, r1.viewWidth, TouchImageView.this.fOrigWidth * TouchImageView.this.saveScale), TouchImageView.this.getFixDragTrans(f2, r1.viewHeight, TouchImageView.this.fOrigHeight * TouchImageView.this.saveScale));
+                    Object r1 = null;
+                    TouchImageView.this.matrix.postTranslate(TouchImageView.this.getFixDragTrans(f, TouchImageView.this.viewWidth, TouchImageView.this.fOrigWidth * TouchImageView.this.saveScale), TouchImageView.this.getFixDragTrans(f2, TouchImageView.this.viewHeight, TouchImageView.this.fOrigHeight * TouchImageView.this.saveScale));
+                    TouchImageView.this.fixTrans();
                     TouchImageView.this.fixTrans();
                     TouchImageView.this.last.set(pointF.x, pointF.y);
                 }
@@ -215,8 +218,8 @@ public class TouchImageView extends AppCompatImageView {
         int i3;
         int i4;
         super.onMeasure(i, i2);
-        this.viewWidth = View.MeasureSpec.getSize(i);
-        int size = View.MeasureSpec.getSize(i2);
+        this.viewWidth = MeasureSpec.getSize(i);
+        int size = MeasureSpec.getSize(i2);
         this.viewHeight = size;
         int i5 = this.oldMeasuredHeight;
         if ((i5 == this.viewWidth && i5 == size) || (i3 = this.viewWidth) == 0 || (i4 = this.viewHeight) == 0) {
@@ -251,13 +254,15 @@ public class TouchImageView extends AppCompatImageView {
         private ScaleListener() {
         }
 
-        @Override // android.view.ScaleGestureDetector.SimpleOnScaleGestureListener, android.view.ScaleGestureDetector.OnScaleGestureListener
+        @Override
+        // android.view.ScaleGestureDetector.SimpleOnScaleGestureListener, android.view.ScaleGestureDetector.OnScaleGestureListener
         public boolean onScaleBegin(ScaleGestureDetector scaleGestureDetector) {
             TouchImageView.this.mode = 2;
             return true;
         }
 
-        @Override // android.view.ScaleGestureDetector.SimpleOnScaleGestureListener, android.view.ScaleGestureDetector.OnScaleGestureListener
+        @Override
+        // android.view.ScaleGestureDetector.SimpleOnScaleGestureListener, android.view.ScaleGestureDetector.OnScaleGestureListener
         public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
             float f;
             float scaleFactor = scaleGestureDetector.getScaleFactor();

@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
 import androidx.core.app.NotificationManagerCompat;
+
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.ui.widget.BrightnessToast;
@@ -24,7 +26,9 @@ import com.jieli.stream.dv.running2.util.Dbug;
 import com.jieli.stream.dv.running2.util.IConstant;
 import com.jieli.stream.dv.running2.util.TimeFormate;
 import com.jieli.stream.dv.running2.util.ToastUtil;
+
 import java.io.File;
+
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
@@ -76,7 +80,8 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
                         if (message.arg1 == VideoPlayerFragment.this.videoView.getDuration()) {
                             VideoPlayerFragment.this.ivPlayOrPause.setImageResource(R.drawable.drawable_btn_play);
                         }
-                        int floor = (int) Math.floor(r5 / 1000.0f);
+                        int duration = VideoPlayerFragment.this.videoView.getDuration();
+                        int floor = (int) Math.floor(duration / 1000.0f);
                         VideoPlayerFragment.this.sbProgress.setProgress(floor);
                         VideoPlayerFragment.this.tvCurrentTime.setText(TimeFormate.getTimeFormatValue(floor));
                         if (VideoPlayerFragment.this.isPlaying() && VideoPlayerFragment.this.mHandler != null) {
@@ -320,7 +325,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
         if (!str.contains(File.separator)) {
             return str;
         }
-        return str.split(File.separator)[r2.length - 1];
+     return str.split(File.separator)[str.split(File.separator).length - 1];
     }
 
     private void changeOrientation() {

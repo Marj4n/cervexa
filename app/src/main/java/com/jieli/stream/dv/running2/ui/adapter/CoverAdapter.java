@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.ThumbnailInfo;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.util.Dbug;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -67,6 +70,7 @@ public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> 
         if (this.mDataList.size() <= 1 || thumbnailInfo.getStartTime() == null) {
             return;
         }
+        ByteArrayOutputStream r0 = null;
         if (this.mDataList.get(r0.size() - 2).getStartTime().compareTo(thumbnailInfo.getStartTime()) < 0) {
             Collections.sort(this.mDataList, new Comparator<ThumbnailInfo>() { // from class: com.jieli.stream.dv.running2.ui.adapter.CoverAdapter.1
                 @Override // java.util.Comparator
@@ -99,6 +103,7 @@ public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> 
         return new ViewHolder(LayoutInflater.from(this.mContext).inflate(R.layout.cover_flow_item, viewGroup, false));
     }
 
+    @SuppressLint("RestrictedApi")
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         Bitmap bitmap = this.mDataList.get(i).getBitmap();

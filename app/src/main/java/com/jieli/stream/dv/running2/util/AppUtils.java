@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Window;
 import android.view.WindowManager;
+
 import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.dv.running2.R;
@@ -27,9 +28,12 @@ import com.jieli.stream.dv.running2.bean.DeviceDesc;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.bean.ItemBean;
 import com.jieli.stream.dv.running2.bean.SDFileInfo;
+import com.jieli.stream.dv.running2.bean.ServerInfo;
 import com.jieli.stream.dv.running2.ui.MainApplication;
+import com.jieli.stream.dv.running2.ui.base.BaseActivity;
 import com.serenegiant.usb.UVCCamera;
 import com.zh_jieli.juson.netcheck.OuterChecker;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
@@ -46,10 +50,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
+
 import org.apache.commons.net.ftp.FTPReply;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /* loaded from: classes.dex */
@@ -117,7 +123,7 @@ public class AppUtils implements IConstant {
     }
 
     public static boolean isAppInBackground(Context context) {
-        android.app.ActivityManager activityManager = (android.app.ActivityManager) context.getSystemService("activity");
+        ActivityManager activityManager = (ActivityManager) context.getSystemService("activity");
         if (activityManager == null) {
             return false;
         }
@@ -289,8 +295,9 @@ public class AppUtils implements IConstant {
                 e.printStackTrace();
                 return arrayList2;
             }
-        } catch (Exception e2) {
-            e = e2;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return arrayList2;
         }
     }
 
@@ -586,8 +593,8 @@ public class AppUtils implements IConstant {
         return arrayList;
     }
 
-    public static boolean bitmapToFile(Bitmap bitmap, String str, int i) {
-        FileOutputStream fileOutputStream;
+    public static boolean bitmapToFile(Bitmap bitmap, String str, int i) throws Throwable {
+        FileOutputStream fileOutputStream = null;
         boolean z = false;
         if (bitmap == null || TextUtils.isEmpty(str)) {
             return false;
@@ -595,16 +602,12 @@ public class AppUtils implements IConstant {
         FileOutputStream fileOutputStream2 = null;
         try {
             try {
-                try {
-                    fileOutputStream = new FileOutputStream(str);
-                } catch (IOException e) {
-                    e = e;
-                }
-            } catch (Throwable th) {
-                th = th;
+                fileOutputStream = new FileOutputStream(str);
+            } catch (IOException e) {
+                e = e;
             }
-        } catch (IOException e2) {
-            e2.printStackTrace();
+        } catch (Throwable th) {
+            th = th;
         }
         try {
             bitmap.compress(Bitmap.CompressFormat.PNG, i, fileOutputStream);
@@ -612,16 +615,18 @@ public class AppUtils implements IConstant {
             fileOutputStream.flush();
             fileOutputStream.close();
         } catch (IOException e3) {
-            e = e3;
-            fileOutputStream2 = fileOutputStream;
-            e.printStackTrace();
-            if (fileOutputStream2 != null) {
-                fileOutputStream2.flush();
-                fileOutputStream2.close();
+            e3.printStackTrace();
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
             return z;
         } catch (Throwable th2) {
-            th = th2;
+            Throwable th = th2;
             fileOutputStream2 = fileOutputStream;
             if (fileOutputStream2 != null) {
                 try {
@@ -636,20 +641,16 @@ public class AppUtils implements IConstant {
         return z;
     }
 
-    public static boolean bytesToFile(byte[] bArr, String str) {
-        FileOutputStream fileOutputStream;
+    public static boolean bytesToFile(byte[] bArr, String str) throws Throwable {
+        FileOutputStream fileOutputStream = null;
         if (bArr == null || TextUtils.isEmpty(str)) {
             return false;
         }
         FileOutputStream fileOutputStream2 = null;
         try {
-            try {
-                fileOutputStream = new FileOutputStream(str);
-            } catch (Throwable th) {
-                th = th;
-            }
-        } catch (IOException e) {
-            e = e;
+            fileOutputStream = new FileOutputStream(str);
+        } catch (Throwable th) {
+            th = th;
         }
         try {
             fileOutputStream.write(bArr);
@@ -660,21 +661,17 @@ public class AppUtils implements IConstant {
             }
             return true;
         } catch (IOException e3) {
-            e = e3;
-            fileOutputStream2 = fileOutputStream;
-            e.printStackTrace();
-            if (fileOutputStream2 == null) {
-                return false;
+            e3.printStackTrace();
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
-            try {
-                fileOutputStream2.close();
-                return false;
-            } catch (IOException e4) {
-                e4.printStackTrace();
-                return false;
-            }
+            return false;
         } catch (Throwable th2) {
-            th = th2;
+            Throwable th = th2;
             fileOutputStream2 = fileOutputStream;
             if (fileOutputStream2 != null) {
                 try {
@@ -683,7 +680,7 @@ public class AppUtils implements IConstant {
                     e5.printStackTrace();
                 }
             }
-            throw th;
+            throw th2;
         }
     }
 
@@ -693,7 +690,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static void browseFileWithOther(com.jieli.stream.dv.running2.ui.base.BaseActivity r9, java.lang.String r10, java.lang.String r11) {
+    public static void browseFileWithOther(BaseActivity r9, String r10, String r11) {
         /*
             Method dump skipped, instructions count: 327
             To view this dump add '--comments-level debug' option
@@ -706,7 +703,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static java.lang.String getFromRaw(android.content.Context r3, int r4) {
+    public static String getFromRaw(Context r3, int r4) {
         /*
             r0 = 0
             if (r3 != 0) goto L4
@@ -803,7 +800,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static java.lang.String readTxtFile(java.lang.String r8) {
+    public static String readTxtFile(String r8) {
         /*
             java.lang.String r0 = " IOException : "
             java.lang.String r1 = "AppUtils"
@@ -947,9 +944,9 @@ public class AppUtils implements IConstant {
                 JSONObject jSONObject2 = new JSONObject(jSONObject.getString(IConstant.DEV_LIST));
                 if (arrayList.size() > 0) {
                     HashMap hashMap = new HashMap();
-                    for (String str2 : arrayList) {
-                        if (!TextUtils.isEmpty(str2) && jSONObject2.has(str2)) {
-                            String string3 = jSONObject2.getString(str2);
+                    for (Object str2 : arrayList) {
+                        if (!TextUtils.isEmpty((CharSequence) str2) && jSONObject2.has((String) str2)) {
+                            String string3 = jSONObject2.getString((String) str2);
                             if (!TextUtils.isEmpty(string3)) {
                                 JSONArray jSONArray2 = new JSONArray(string3);
                                 ArrayList arrayList2 = new ArrayList();
@@ -1186,7 +1183,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private static com.jieli.stream.dv.running2.bean.ServerInfo parseServerTxtInfo(java.lang.String r9, java.lang.String r10) {
+    private static ServerInfo parseServerTxtInfo(String r9, String r10) {
         /*
             boolean r0 = android.text.TextUtils.isEmpty(r9)
             r1 = 0
@@ -1320,7 +1317,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static java.lang.String checkUpdateFilePath(android.content.Context r14, int r15) {
+    public static String checkUpdateFilePath(Context r14, int r15) {
         /*
             Method dump skipped, instructions count: 724
             To view this dump add '--comments-level debug' option

@@ -18,7 +18,7 @@ public class ViewScrollUtil {
 
     /* JADX WARN: Multi-variable type inference failed */
     public static ScrollGeter getScrollGeter(View view) {
-        if (view == 0) {
+        if (view == null) {
             return null;
         }
         if (view instanceof ScrollGeter) {

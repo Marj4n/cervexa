@@ -29,7 +29,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.intercom.IntercomManager;
 import com.jieli.lib.dv.control.player.OnRealTimeListener;
@@ -78,12 +80,15 @@ import com.jieli.stream.dv.running2.util.ToastUtil;
 import com.jieli.stream.dv.running2.util.json.JSonManager;
 import com.jieli.stream.dv.running2.util.json.listener.OnCompletedListener;
 import com.serenegiant.usb.UVCCamera;
+
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
@@ -312,7 +317,11 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                 if (file.exists()) {
                     return;
                 } else {
-                    AppUtils.bytesToFile(bArr, file.getPath());
+                    try {
+                        AppUtils.bytesToFile(bArr, file.getPath());
+                    } catch (Throwable e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             PlaybackActivity.this.runOnUiThread(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.10.1
@@ -533,7 +542,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         return i;
     }
 
-    @Override // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override
+    // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         Dbug.i(this.tag, "==================CREATE===============");
@@ -599,7 +609,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
             }
         });
         this.mCoverFlowCarousel.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.5
-            @Override // com.jieli.stream.dv.running2.ui.widget.coverflow.CoverFlowLayoutManger.OnSelected
+            @Override
+            // com.jieli.stream.dv.running2.ui.widget.coverflow.CoverFlowLayoutManger.OnSelected
             public void onItemSelected(int i) {
                 if (i < 0 || i >= PlaybackActivity.this.mAdapter.getItemCount() || i >= PlaybackActivity.this.mFileInfoList.size()) {
                     return;
@@ -728,7 +739,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         });
     }
 
-    @Override // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
+    // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onStart() {
         super.onStart();
         registerBroadcast();
@@ -794,7 +806,11 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                 Dbug.w(this.tag, "File exist=" + file.getAbsolutePath());
                 return;
             }
-            AppUtils.bytesToFile(bArr, file.getPath());
+            try {
+                AppUtils.bytesToFile(bArr, file.getPath());
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         }
         runOnUiThread(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.11
             @Override // java.lang.Runnable
@@ -983,6 +999,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
 
     @Override // androidx.activity.ComponentActivity, android.app.Activity
     public void onBackPressed() {
+        super.onBackPressed();
         ClientManager.getClient().unregisterNotifyListener(this.onNotifyListener);
         setResult(-1);
         finish();
@@ -1269,7 +1286,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                         i2 = R.string.lock_file_tip;
                     }
                     this.operationFileDialog = NotifyDialog.newInstance(R.string.dialog_tips, i2, R.string.dialog_cancel, R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.27
-                        @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
+                        @Override
+                        // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                         public void onClick() {
                             if (PlaybackActivity.this.operationFileDialog == null || !PlaybackActivity.this.operationFileDialog.isShowing()) {
                                 return;
@@ -1278,7 +1296,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                             PlaybackActivity.this.operationFileDialog = null;
                         }
                     }, new NotifyDialog.OnPositiveClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.28
-                        @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
+                        @Override
+                        // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
                         public void onClick() {
                             FileInfo fileInfo2;
                             Bundle bundle = PlaybackActivity.this.operationFileDialog.getBundle();
@@ -1299,7 +1318,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                 }
             } else {
                 this.operationFileDialog = NotifyDialog.newInstance(R.string.dialog_warning, R.string.delete_emergency_video_tip, R.string.dialog_cancel, R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.25
-                    @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
+                    @Override
+                    // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                     public void onClick() {
                         if (PlaybackActivity.this.operationFileDialog == null || !PlaybackActivity.this.operationFileDialog.isShowing()) {
                             return;
@@ -1308,7 +1328,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                         PlaybackActivity.this.operationFileDialog = null;
                     }
                 }, new NotifyDialog.OnPositiveClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.26
-                    @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
+                    @Override
+                    // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
                     public void onClick() {
                         Bundle bundle = PlaybackActivity.this.operationFileDialog.getBundle();
                         if (bundle != null) {
@@ -1446,7 +1467,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
+    @Override
+    // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
     protected void onActivityResult(int i, int i2, Intent intent) {
         if (i == 4169 && i2 == -1 && intent != null) {
             ClientManager.getClient().tryToStreamingPush(true, UVCCamera.DEFAULT_PREVIEW_WIDTH, 480, 30, new SendResponse() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.32
@@ -1485,13 +1507,15 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         this.mHandler.removeCallbacks(this.autoPlayRunnable);
     }
 
-    @Override // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
+    // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onStop() {
         super.onStop();
         MainApplication.getApplication().unregisterReceiver(this.mReceiver);
     }
 
-    @Override // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
+    // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
         this.isOnPause = false;
         dismissPopMenu();
@@ -2085,12 +2109,14 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     public void showLocalRecordDialog() {
         if (this.mLocalRecordingDialog == null) {
             NotifyDialog newInstance = NotifyDialog.newInstance(R.string.dialog_tips, R.string.no_card_record_tip, R.string.dialog_cancel, R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.44
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     PlaybackActivity.this.mLocalRecordingDialog.dismiss();
                 }
             }, new NotifyDialog.OnPositiveClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.45
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
                 public void onClick() {
                     PlaybackActivity.this.mLocalRecordingDialog.dismiss();
                     PlaybackActivity.this.startLocalRecording();
@@ -2160,12 +2186,14 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     public void showDeleteFileDialog() {
         if (this.mDeleteFileDialog == null) {
             NotifyDialog newInstance = NotifyDialog.newInstance(R.string.dialog_tips, R.string.sure_to_delete, true, R.string.dialog_cancel, R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.47
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     PlaybackActivity.this.mDeleteFileDialog.dismiss();
                 }
             }, new NotifyDialog.OnPositiveClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.48
-                @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
+                @Override
+                // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnPositiveClickListener
                 public void onClick() {
                     PlaybackActivity.this.mDeleteFileDialog.dismiss();
                     if (PlaybackActivity.this.isChecked) {

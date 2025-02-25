@@ -15,10 +15,13 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+
 import androidx.core.view.GravityCompat;
+
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.util.AppUtils;
 import com.jieli.stream.dv.running2.util.Dbug;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -171,8 +174,9 @@ public class PopupMenu {
     }
 
     private static RectF calculateRectInWindow(View view) {
-        view.getLocationInWindow(new int[2]);
-        return new RectF(r0[0], r0[1], r0[0] + view.getMeasuredWidth(), r0[1] + view.getMeasuredHeight());
+        int[] location = new int[2];
+        view.getLocationInWindow(location);
+        return new RectF(location[0], location[1], location[0] + view.getMeasuredWidth(), location[1] + view.getMeasuredHeight());
     }
 
     public void showAsRight(View view) {

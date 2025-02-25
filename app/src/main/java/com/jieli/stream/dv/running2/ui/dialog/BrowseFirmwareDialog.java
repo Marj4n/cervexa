@@ -44,13 +44,6 @@ public class BrowseFirmwareDialog extends BaseDialogFragment implements IConstan
         this.onSelectResultListener = onSelectedListener;
     }
 
-    @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        setStyle(1, R.style.Theme.Light.NoTitleBar);
-        setCancelable(false);
-    }
-
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View inflate = layoutInflater.inflate(com.jieli.stream.dv.running2.R.layout.dialog_browse_firmware, viewGroup, false);

@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -17,12 +18,16 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
+
 import androidx.core.content.ContextCompat;
+
+import java.util.IllegalFormatWidthException;
 
 /* loaded from: classes.dex */
 public class SwitchButton extends CompoundButton {
@@ -38,7 +43,7 @@ public class SwitchButton extends CompoundButton {
     private float mBackMeasureRatio;
     private float mBackRadius;
     private RectF mBackRectF;
-    private CompoundButton.OnCheckedChangeListener mChildOnCheckedChangeListener;
+    private OnCheckedChangeListener mChildOnCheckedChangeListener;
     private int mClickTimeout;
     private int mCurrBackColor;
     private int mCurrThumbColor;
@@ -250,6 +255,7 @@ public class SwitchButton extends CompoundButton {
     }
 
     private Layout makeLayout(CharSequence charSequence) {
+        TextPaint r2 = null;
         return new StaticLayout(charSequence, this.mTextPaint, (int) Math.ceil(Layout.getDesiredWidth(charSequence, r2)), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
     }
 
@@ -267,13 +273,15 @@ public class SwitchButton extends CompoundButton {
     }
 
     private int measureWidth(int i) {
-        int size = View.MeasureSpec.getSize(i);
-        int mode = View.MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
         int ceil = ceil(this.mThumbSizeF.x * this.mBackMeasureRatio);
         if (this.mIsBackUseDrawable) {
             ceil = Math.max(ceil, this.mBackDrawable.getMinimumWidth());
         }
+        IllegalFormatWidthException r2 = null;
         float width = this.mOnLayout != null ? r2.getWidth() : 0.0f;
+        IllegalFormatWidthException r4 = null;
         float width2 = this.mOffLayout != null ? r4.getWidth() : 0.0f;
         if (width != 0.0f || width2 != 0.0f) {
             this.mTextWidth = Math.max(width, width2) + (this.mTextMarginH * 2.0f);
@@ -293,13 +301,14 @@ public class SwitchButton extends CompoundButton {
     }
 
     private int measureHeight(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         int ceil = ceil(Math.max(this.mThumbSizeF.y, this.mThumbSizeF.y + this.mThumbMargin.top + this.mThumbMargin.right));
-        float height = this.mOnLayout != null ? r2.getHeight() : 0.0f;
-        float height2 = this.mOffLayout != null ? r4.getHeight() : 0.0f;
+        float height = this.mOnLayout != null ? this.mOnLayout.getHeight() : 0.0f;
+        float height2 = this.mOffLayout != null ? this.mOffLayout.getHeight() : 0.0f;
         if (height != 0.0f || height2 != 0.0f) {
             this.mTextHeight = Math.max(height, height2);
+            int r2 = 0;
             ceil = ceil(Math.max(ceil, r2));
         }
         int max = Math.max(ceil, getSuggestedMinimumHeight());
@@ -365,7 +374,7 @@ public class SwitchButton extends CompoundButton {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    protected void onDraw(android.graphics.Canvas r15) {
+    protected void onDraw(Canvas r15) {
         /*
             Method dump skipped, instructions count: 499
             To view this dump add '--comments-level debug' option
@@ -419,7 +428,7 @@ public class SwitchButton extends CompoundButton {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public boolean onTouchEvent(android.view.MotionEvent r10) {
+    public boolean onTouchEvent(MotionEvent r10) {
         /*
             r9 = this;
             boolean r0 = r9.isEnabled()
@@ -598,7 +607,7 @@ public class SwitchButton extends CompoundButton {
     }
 
     @Override // android.widget.CompoundButton
-    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
         super.setOnCheckedChangeListener(onCheckedChangeListener);
         this.mChildOnCheckedChangeListener = onCheckedChangeListener;
     }
@@ -824,8 +833,8 @@ public class SwitchButton extends CompoundButton {
         super.onRestoreInstanceState(savedState.getSuperState());
     }
 
-    static class SavedState extends View.BaseSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() { // from class: com.jieli.stream.dv.running2.ui.widget.SwitchButton.SavedState.1
+    static class SavedState extends BaseSavedState {
+        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() { // from class: com.jieli.stream.dv.running2.ui.widget.SwitchButton.SavedState.1
             /* JADX WARN: Can't rename method to resolve collision */
             @Override // android.os.Parcelable.Creator
             public SavedState createFromParcel(Parcel parcel) {
@@ -851,7 +860,8 @@ public class SwitchButton extends CompoundButton {
             this.offText = (CharSequence) TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(parcel);
         }
 
-        @Override // android.view.View.BaseSavedState, android.view.AbsSavedState, android.os.Parcelable
+        @Override
+        // android.view.View.BaseSavedState, android.view.AbsSavedState, android.os.Parcelable
         public void writeToParcel(Parcel parcel, int i) {
             super.writeToParcel(parcel, i);
             TextUtils.writeToParcel(this.onText, parcel, i);

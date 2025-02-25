@@ -233,7 +233,7 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
         return null;
     }
 
-    private class WifiListAdapter extends BaseAdapter {
+    public class WifiListAdapter extends BaseAdapter {
         private List<WifiBean> wifiList;
 
         @Override // android.widget.Adapter

@@ -14,7 +14,7 @@ import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.impl.Pulla
 public class CanPullUtil {
     /* JADX WARN: Multi-variable type inference failed */
     public static Pullable getPullAble(View view) {
-        if (view == 0) {
+       if (view == null) {
             return null;
         }
         if (view instanceof Pullable) {

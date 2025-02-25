@@ -372,7 +372,7 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
     @Override // android.view.ViewGroup, android.view.ViewParent, androidx.core.view.NestedScrollingParent
     public void onNestedScroll(View view, int i, int i2, int i3, int i4) {
         dispatchNestedScroll(0, i2, 0, i4, new int[2]);
-        moveBy((-i4) - r7[1]);
+        moveBy((-i4) - i2);
     }
 
     @Override // android.view.ViewGroup, android.view.ViewParent, androidx.core.view.NestedScrollingParent

@@ -311,7 +311,7 @@ public class GLCoverFlowView extends GLSurfaceView implements GLSurfaceView.Rend
         while (true) {
             if (width <= i && height <= i) {
                 Bitmap createBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.RGB_565);
-                new Canvas(createBitmap).drawBitmap(decodeResource, r8 / 2, r10 / 2, new Paint());
+                new Canvas(createBitmap).drawBitmap(decodeResource, (i - width) / 2, (i - height) / 2, new Paint());
                 GL10 gl10 = this.mGLContext;
                 int[] iArr = new int[1];
                 gl10.glGenTextures(1, iArr, 0);

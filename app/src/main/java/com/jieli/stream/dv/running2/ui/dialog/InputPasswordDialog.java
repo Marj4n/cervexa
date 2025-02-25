@@ -47,13 +47,6 @@ public class InputPasswordDialog extends BaseDialogFragment implements IConstant
         return inputPasswordDialog;
     }
 
-    @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        setStyle(1, R.style.Theme.Translucent.NoTitleBar.Fullscreen);
-        this.mTextTitle = getArguments().getString("title", null);
-    }
-
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View inflate = layoutInflater.inflate(com.jieli.stream.dv.running2.R.layout.input_password_dialog, viewGroup, false);

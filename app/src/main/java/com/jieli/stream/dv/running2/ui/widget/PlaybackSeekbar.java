@@ -316,6 +316,7 @@ public class PlaybackSeekbar extends View {
         canvas.drawLine(this.browseCursorPos, rectF.bottom, this.browseCursorPos, this.halfHeight - (this.thumbRadio * 2), this.tipBackgroundPaint);
         float f5 = this.browseCursorPos;
         int i3 = this.halfHeight;
+        int r2 = 0;
         canvas.drawCircle(f5, i3 - (r2 * 2), this.thumbRadio, this.tipBackgroundPaint);
     }
 
@@ -326,6 +327,7 @@ public class PlaybackSeekbar extends View {
         if (x < i) {
             f = i;
         } else {
+            float r2 = 0;
             f = x < ((float) (this.mWidth - i)) ? x : r2 - i;
         }
         this.browseCursorPos = f;
@@ -473,8 +475,8 @@ public class PlaybackSeekbar extends View {
     }
 
     private int measureWidth(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         if (mode == Integer.MIN_VALUE || mode == 1073741824) {
             return size;
         }
@@ -482,8 +484,8 @@ public class PlaybackSeekbar extends View {
     }
 
     private int measureHeight(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         if (mode == Integer.MIN_VALUE || mode == 1073741824) {
             return size;
         }

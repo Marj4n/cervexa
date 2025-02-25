@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -226,7 +225,7 @@ public class LocalVideoFragment extends BaseFragment implements BaseFooterView.O
                             localVideoFragment3.startActivityForResult(Intent.createChooser(intent2, localVideoFragment3.getString(R.string.tab_share)), IConstant.CODE_SHARE_FILES);
                             break;
                         } else {
-                            ArrayList<? extends Parcelable> arrayList = new ArrayList<>();
+                            ArrayList<Uri> arrayList = new ArrayList<>();
                             Iterator it = LocalVideoFragment.this.selectedList.iterator();
                             while (it.hasNext()) {
                                 arrayList.add(Uri.parse(((FileInfo) it.next()).getPath()));
