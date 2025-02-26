@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
-import com.jieli.stream.dv.running2.util.IConstant;
+
 import com.serenegiant.glutils.EGLBase;
 import com.serenegiant.glutils.GLDrawer2D;
 import com.serenegiant.glutils.es1.GLHelper;
@@ -56,7 +56,7 @@ public class UVCCameraTextureView extends AspectRatioTextureView implements Text
             RenderHandler createHandler = RenderHandler.createHandler(this.mFpsCounter, super.getSurfaceTexture(), getWidth(), getHeight());
             this.mRenderHandler = createHandler;
             if (createHandler == null) {
-                str = IConstant.DEFAULT_PATH;
+                str = "default_path";
             } else {
                 str = "不空" + this.mRenderHandler.getPreviewTexture().toString();
             }

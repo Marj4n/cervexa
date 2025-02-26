@@ -5,8 +5,7 @@ import androidx.core.view.PointerIconCompat;
 import com.baidu.mapapi.UIMsg;
 import com.baidu.trace.model.StatusCodes;
 import com.hoho.android.usbserial.driver.UsbId;
-import com.jieli.stream.dv.running2.BuildConfig;
-import com.jieli.stream.dv.running2.util.IConstant;
+import com.marjan.cervexa.BuildConfig;
 
 /* loaded from: classes2.dex */
 public class USBVendorId {
@@ -582,7 +581,7 @@ public class USBVendorId {
         IDS.put(3779, "Axell Corporation");
         IDS.put(3782, "InnoVISION Multimedia Limited");
         IDS.put(3790, "TaiSol Electronics Co., Ltd.");
-        IDS.put(IConstant.ERROR_DEVICE_OFFLINE, "Sunrich Technology (H.K.) Ltd.");
+        IDS.put(3791, "ShenZhen Litkconn Technology Co., Ltd.");
         IDS.put(3868, "Funai Electric Co., Ltd.");
         IDS.put(3873, "IOI Technology Corporation");
         IDS.put(3890, "YFC-BonEagle Electric Co., Ltd.");
@@ -599,7 +598,7 @@ public class USBVendorId {
         IDS.put(4096, "Speed Tech Corp.");
         IDS.put(4100, "LG Electronics Inc.");
         IDS.put(4101, "Apacer Technology Inc.");
-        IDS.put(IConstant.CODE_SHARE_FILES, "Newly Corporation");
+        IDS.put(4102, "WinChipHead");
         IDS.put(4168, "Targus Group International");
         IDS.put(4172, "AMCO TEC International Inc.");
         IDS.put(4183, "ON Semiconductor");
@@ -689,7 +688,7 @@ public class USBVendorId {
         IDS.put(6626, "Solomon Systech Limited");
         IDS.put(6639, "Pak Heng Technology (Shenzhen) Co., Ltd.");
         IDS.put(6655, "Best Buy China Ltd.");
-        IDS.put(IConstant.RTP_VIDEO_PORT1, "USB-IF non-workshop");
+        IDS.put(6665, "Shenzhen Zhengtong Electronics Co., Ltd.");
         IDS.put(6709, "Artesyn Technologies Inc.");
         IDS.put(6720, "TERMINUS TECHNOLOGY INC.");
         IDS.put(6766, "Global Unichip Corp.");

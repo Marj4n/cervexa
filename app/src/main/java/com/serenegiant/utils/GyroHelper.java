@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import com.gizthon.camera.BuildConfig;
+import com.marjan.cervexa.BuildConfig;
 import java.lang.ref.WeakReference;
 import java.util.List;
 

@@ -25,7 +25,6 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.generalplus.GoPlusDrone.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
-import com.jieli.stream.dv.running2.util.IConstant;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;
 import java.io.FileInputStream;
@@ -86,7 +85,7 @@ public class FilesActivity extends Activity {
     private int _i32SelectedFirstItem = -1;
     private int _firstVisibleItem = 0;
     private int _scrollState = 0;
-    private CharSequence[] CharSequenceItemsDefault = {"Play", IConstant.DIR_DOWNLOAD, "Info"};
+private CharSequence[] CharSequenceItemsDefault = {"Play", "Download", "Info"};
     private CharSequence[] CharSequenceItemsDelete = {"Play", "Delete", "Info"};
     private Handler m_FromWrapperHandler = new Handler() { // from class: com.generalplus.GoPlusDrone.Activity.FilesActivity.4
         @Override // android.os.Handler
@@ -238,7 +237,7 @@ public class FilesActivity extends Activity {
                             builder2.show();
                             return;
                         }
-                        if (AnonymousClass2.this.SetCharSequenceItems[i2].toString().contentEquals(IConstant.DIR_DOWNLOAD)) {
+                        if (AnonymousClass2.this.SetCharSequenceItems[i2].toString().contentEquals("DIR_DOWNLOAD")) {
                             boolean unused3 = FilesActivity.bIsStopDownload = false;
                             boolean unused4 = FilesActivity.m_bPendingGetThumbnail = true;
                             if (FilesActivity.m_DownloadDialog == null) {

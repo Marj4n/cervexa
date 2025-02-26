@@ -4,15 +4,15 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
+
 import com.hoho.android.usbserial.driver.UsbSerialPort;
-import com.jieli.stream.dv.running2.util.IConstant;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import kotlin.jvm.internal.ByteCompanionObject;
 
 /* loaded from: classes.dex */
 public class Cp21xxSerialDriver implements UsbSerialDriver {
@@ -133,7 +133,8 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
             }
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public void setParameters(int i, int i2, int i3, int i4) throws IOException {
             int i5;
             if (i <= 0) {
@@ -163,7 +164,7 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
                 if (this.mIsRestrictedPort) {
                     throw new UnsupportedOperationException("Unsupported data bits: " + i2);
                 }
-                i5 = IConstant.RES_HD_WIDTH;
+                i5 = 1280;
             }
             if (i4 != 0) {
                 if (i4 == 1) {
@@ -201,49 +202,58 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
             setConfigSingle(3, i5);
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public boolean getCD() throws IOException {
-            return (getStatus() & ByteCompanionObject.MIN_VALUE) != 0;
+            return (getStatus() & Byte.MIN_VALUE) != 0;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public boolean getCTS() throws IOException {
             return (getStatus() & 16) != 0;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public boolean getDSR() throws IOException {
             return (getStatus() & 32) != 0;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public boolean getDTR() throws IOException {
             return this.dtr;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public void setDTR(boolean z) throws IOException {
             this.dtr = z;
             setConfigSingle(7, z ? 257 : 256);
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public boolean getRI() throws IOException {
             return (getStatus() & 64) != 0;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public boolean getRTS() throws IOException {
             return this.rts;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public void setRTS(boolean z) throws IOException {
             this.rts = z;
             setConfigSingle(7, z ? 514 : 512);
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public EnumSet<UsbSerialPort.ControlLine> getControlLines() throws IOException {
             byte status = getStatus();
             EnumSet<UsbSerialPort.ControlLine> noneOf = EnumSet.noneOf(UsbSerialPort.ControlLine.class);
@@ -259,7 +269,7 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
             if ((status & 32) != 0) {
                 noneOf.add(UsbSerialPort.ControlLine.DSR);
             }
-            if ((status & ByteCompanionObject.MIN_VALUE) != 0) {
+            if ((status & Byte.MIN_VALUE) != 0) {
                 noneOf.add(UsbSerialPort.ControlLine.CD);
             }
             if ((status & 64) != 0) {
@@ -268,12 +278,14 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
             return noneOf;
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public EnumSet<UsbSerialPort.ControlLine> getSupportedControlLines() throws IOException {
             return EnumSet.allOf(UsbSerialPort.ControlLine.class);
         }
 
-        @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
+        @Override
+        // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
         public void purgeHwBuffers(boolean z, boolean z2) throws IOException {
             int i = (z2 ? 10 : 0) | (z ? 5 : 0);
             if (i != 0) {

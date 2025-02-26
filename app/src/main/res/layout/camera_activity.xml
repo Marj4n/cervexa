@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/relativeLayout" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/container" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/flSurfaceView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.generalplus.ffmpegLib.ZoomableSurfaceView android:id="@id/surfaceView" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
-    <ImageButton android:id="@id/btnSwitch" android:background="@drawable/switch_button" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="40.0dip" android:layout_alignParentRight="true" />
-    <ImageButton android:id="@id/btnLeftMenu" android:background="@drawable/navigation_return_button" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/imgTip" android:background="@drawable/shizi" android:layout_width="150.0dip" android:layout_height="150.0dip" android:layout_centerInParent="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/camera_video_dot" android:background="@drawable/cicle" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" />
-    <TextView android:textColor="#ffff0000" android:layout_gravity="bottom|center|left" android:id="@id/tvRecordTime" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:text="00:00:00" />
-    <ImageView android:id="@id/ivBroken" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/broken" android:layout_centerInParent="true" />
-    <TextView android:textColor="#ff000000" android:id="@id/tvSpeed" android:background="#ffffffff" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
-    <RelativeLayout android:id="@id/rlRightMenu" android:visibility="gone" android:layout_width="200.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-        <LinearLayout android:orientation="vertical" android:background="#ffd7dfe8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/text" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language15" />
-            <TextView android:background="#ffffffaa" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-            <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/textMenu12" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language12" />
-            <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
-            <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/textMenu13" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language13" />
-            <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
-            <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
-            <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/textMenu14" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/language14" />
-            <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
-            <TextView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.20000005dip" />
-            <TextView android:background="#ffffffaa" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-            <TextView android:background="#ffffffaa" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:tag="layout/camera_activity" android:background="@mipmap/icon_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingLeft="19.0dip" android:paddingTop="19.0dip" android:paddingRight="19.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="3.0">
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.9">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_btn1_bg" android:layout_centerInParent="true" />
+            <TextView android:textSize="21.0sp" android:textColor="#fffefbff" android:gravity="center" android:id="@id/tv_camera" android:tag="binding_1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/myphoto" android:drawableTop="@mipmap/icon_gallery" android:drawablePadding="13.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.1">
+            <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@mipmap/icon_btn2_bg" android:layout_centerInParent="true" />
+            <TextView android:textSize="30.0sp" android:textColor="#fffefbff" android:gravity="center" android:id="@id/tv_connect" android:tag="binding_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/camera" android:drawableTop="@mipmap/icon_xiangji" android:drawablePadding="5.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.9">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_btn3_bg" android:layout_centerInParent="true" />
+            <TextView android:textSize="21.0sp" android:textColor="#fffefbff" android:gravity="center" android:id="@id/tv_help" android:tag="binding_3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/helcenter" android:drawableTop="@mipmap/icon_help" android:drawablePadding="13.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.serenegiant.usb.widget.UVCCameraTextureView android:layout_gravity="center" android:id="@id/camera_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

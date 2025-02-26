@@ -11,7 +11,6 @@ import com.xyzlf.share.library.channel.ShareByQZone;
 import com.xyzlf.share.library.channel.ShareBySms;
 import com.xyzlf.share.library.channel.ShareBySystem;
 import com.xyzlf.share.library.channel.ShareByWeibo2;
-import com.xyzlf.share.library.channel.ShareByWeixin;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
 
@@ -19,7 +18,6 @@ import com.xyzlf.share.library.interfaces.ShareConstant;
 public class ShareHandlerActivity extends ShareBaseActivity implements OnShareListener {
     protected ShareEntity data;
     protected ShareByWeibo2 shareByWeibo;
-    protected ShareByWeixin shareByWeixin;
     private String tag = getClass().getSimpleName();
     protected boolean isInit = true;
 
@@ -39,54 +37,6 @@ public class ShareHandlerActivity extends ShareBaseActivity implements OnShareLi
             return;
         }
         this.data = (ShareEntity) parcelable;
-        if (bundle == null) {
-            ShareByWeixin shareByWeixin = this.shareByWeixin;
-            if (shareByWeixin != null) {
-                shareByWeixin.unregisterWeixinReceiver();
-                this.shareByWeixin = null;
-            }
-            int i = this.channel;
-            if (i == 1) {
-                ShareByWeixin shareByWeixin2 = new ShareByWeixin(this, 1);
-                this.shareByWeixin = shareByWeixin2;
-                shareByWeixin2.registerWeixinReceiver();
-                this.shareByWeixin.share(this.data, this);
-                Log.w(this.tag, "Share wx friend");
-                return;
-            }
-            if (i == 2) {
-                ShareByWeixin shareByWeixin3 = new ShareByWeixin(this, 2);
-                this.shareByWeixin = shareByWeixin3;
-                shareByWeixin3.registerWeixinReceiver();
-                this.shareByWeixin.share(this.data, this);
-                return;
-            }
-            if (i == 4) {
-                ShareByWeibo2 shareByWeibo2 = new ShareByWeibo2(this);
-                this.shareByWeibo = shareByWeibo2;
-                shareByWeibo2.share(this.data, this);
-                return;
-            }
-            if (i == 8) {
-                new ShareByQQ(this).share(this.data, this);
-                return;
-            }
-            if (i == 16) {
-                new ShareByQZone(this).share(this.data, this);
-                return;
-            }
-            if (i == 32) {
-                new ShareBySms(this).share(this.data, this);
-                return;
-            }
-            if (i == 64) {
-                new ShareByEmail(this).share(this.data, this);
-            } else if (i == 1024) {
-                new ShareBySystem(this).share(this.data, this);
-            } else {
-                finishWithResult(this.channel, 4);
-            }
-        }
     }
 
     @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
@@ -114,9 +64,5 @@ public class ShareHandlerActivity extends ShareBaseActivity implements OnShareLi
     @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
         super.onDestroy();
-        ShareByWeixin shareByWeixin = this.shareByWeixin;
-        if (shareByWeixin != null) {
-            shareByWeixin.unregisterWeixinReceiver();
         }
-    }
 }

@@ -14,7 +14,6 @@ import com.generalplus.GoPlusDrone.Activity.FullImageActivity;
 import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.generalplus.GoPlusDrone.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
-import com.jieli.stream.dv.running2.util.IConstant;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,7 +108,7 @@ public class PhotoListFragment extends BaseFragment {
                     }
                 }
                 Intent intent = new Intent();
-                intent.putExtra(IConstant.KEY_POSITION, i);
+                intent.putExtra("position", i);
                 intent.putStringArrayListExtra("FilePath", PhotoListFragment.this.m_ayFilePath);
                 intent.setClass(PhotoListFragment.this.getActivity(), FullImageActivity.class);
                 PhotoListFragment.this.startActivity(intent);

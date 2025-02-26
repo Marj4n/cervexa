@@ -5,9 +5,10 @@ import android.media.MediaCrypto;
 import android.media.MediaFormat;
 import android.util.Log;
 import android.view.Surface;
-import com.jieli.stream.dv.running2.util.IConstant;
+
 import java.io.IOException;
 import java.util.Locale;
+
 import tv.danmaku.ijk.media.player.IjkMediaMeta;
 
 /* loaded from: classes2.dex */
@@ -22,13 +23,11 @@ public class MediaVideoEncoder extends MediaEncoder implements ISurfaceEncoder {
     private int mVideoWidth;
 
     public MediaVideoEncoder(MediaMovieRecorder mediaMovieRecorder, IMediaCodecCallback iMediaCodecCallback) {
-        this(IConstant.RES_HD_WIDTH, IConstant.RES_HD_HEIGHT, mediaMovieRecorder, iMediaCodecCallback);
+        this(640, 480, mediaMovieRecorder, iMediaCodecCallback);
     }
 
     public MediaVideoEncoder(int i, int i2, MediaMovieRecorder mediaMovieRecorder, IMediaCodecCallback iMediaCodecCallback) {
         super(false, mediaMovieRecorder, iMediaCodecCallback);
-        this.mVideoWidth = IConstant.RES_HD_WIDTH;
-        this.mVideoHeight = IConstant.RES_HD_HEIGHT;
         this.mVideoWidth = i;
         this.mVideoHeight = i2;
     }
@@ -55,7 +54,8 @@ public class MediaVideoEncoder extends MediaEncoder implements ISurfaceEncoder {
         callOnPrepared();
     }
 
-    @Override // com.serenegiant.media.MediaEncoder, com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
+    @Override
+    // com.serenegiant.media.MediaEncoder, com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
     public void release() {
         Surface surface = this.mSurface;
         if (surface != null) {
