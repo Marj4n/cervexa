@@ -13,8 +13,8 @@ import java.util.List;
 /* loaded from: classes2.dex */
 public final class a implements IDiffDevOAuth {
     private d d;
-    private Handler handler = null;
-    private List<OAuthListener> c = new ArrayList();
+    Handler handler = null;
+    List<OAuthListener> c = new ArrayList();
     private OAuthListener e = new b(this);
 
     static /* synthetic */ d c(a aVar) {

@@ -14,7 +14,9 @@ import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.view.View;
+
 import androidx.core.view.ViewCompat;
+
 import com.github.mikephil.charting.utils.Utils;
 import com.serenegiant.graphics.BitmapHelper;
 import com.serenegiant.graphics.ShaderDrawable;
@@ -203,8 +205,8 @@ public class ColorPickerView extends View {
         }
         this.center_x = (width - i6) >>> 1;
         this.center_y = (height - (this.mShowAlphaSlider ? this.slider_width : 0)) >>> 1;
-        int i8 = this.center_x;
-        int sqrt = ((int) Math.sqrt((i8 * i8) + (r0 * r0))) - this.radius;
+        int i8 = this.center_y;
+        int sqrt = ((int) Math.sqrt((i8 * i8) + (this.center_x * this.center_x))) - this.radius;
         float f = -sqrt;
         float f2 = sqrt;
         this.mSelectionRect.set(f, f, f2, f2);

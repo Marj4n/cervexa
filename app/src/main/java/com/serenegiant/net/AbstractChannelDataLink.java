@@ -417,7 +417,7 @@ public abstract class AbstractChannelDataLink {
                     } else {
                         callOnReceive(ChannelHelper.readDoubleArray(this.mChannel));
                     }
-                } catch (SocketException | ClosedChannelException | IOException unused) {
+                } catch (IOException unused) {
                     return;
                 }
             }
@@ -481,9 +481,6 @@ public abstract class AbstractChannelDataLink {
                 return false;
             }
             try {
-            } catch (SocketException unused) {
-            } catch (IOException e) {
-                callOnError(e);
             } catch (Exception e2) {
                 Log.w(AbstractChannelDataLink.TAG, e2);
             }
@@ -493,13 +490,25 @@ public abstract class AbstractChannelDataLink {
             }
             int i = message.what;
             if (i == 0) {
-                ChannelHelper.write(this.mChannel, 0);
+                try {
+                    ChannelHelper.write(this.mChannel, 0);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 return true;
             }
             if (i == 1) {
                 if (message.obj instanceof ByteBuffer) {
-                    ChannelHelper.write(this.mChannel, 1);
-                    ChannelHelper.write(this.mChannel, (ByteBuffer) message.obj);
+                    try {
+                        ChannelHelper.write(this.mChannel, 1);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        ChannelHelper.write(this.mChannel, (ByteBuffer) message.obj);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                 return true;
             }
@@ -511,22 +520,46 @@ public abstract class AbstractChannelDataLink {
                                 switch (i) {
                                     case 10:
                                         if (message.obj instanceof Boolean) {
-                                            ChannelHelper.write(this.mChannel, 10);
-                                            ChannelHelper.write(this.mChannel, ((Boolean) message.obj).booleanValue());
+                                            try {
+                                                ChannelHelper.write(this.mChannel, 10);
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                            try {
+                                                ChannelHelper.write(this.mChannel, ((Boolean) message.obj).booleanValue());
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
                                             return true;
                                         }
                                         break;
                                     case 11:
                                         if (message.obj instanceof Integer) {
-                                            ChannelHelper.write(this.mChannel, 11);
-                                            ChannelHelper.write(this.mChannel, ((Integer) message.obj).intValue());
+                                            try {
+                                                ChannelHelper.write(this.mChannel, 11);
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                            try {
+                                                ChannelHelper.write(this.mChannel, ((Integer) message.obj).intValue());
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
                                             return true;
                                         }
                                         break;
                                     case 12:
                                         if (message.obj instanceof Long) {
-                                            ChannelHelper.write(this.mChannel, 12);
-                                            ChannelHelper.write(this.mChannel, ((Long) message.obj).longValue());
+                                            try {
+                                                ChannelHelper.write(this.mChannel, 12);
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                            try {
+                                                ChannelHelper.write(this.mChannel, ((Long) message.obj).longValue());
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
                                             return true;
                                         }
                                         break;
@@ -534,57 +567,129 @@ public abstract class AbstractChannelDataLink {
                                         switch (i) {
                                             case 30:
                                                 if (message.obj instanceof byte[]) {
-                                                    ChannelHelper.write(this.mChannel, 30);
-                                                    ChannelHelper.write(this.mChannel, (byte[]) message.obj);
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, 30);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, (byte[]) message.obj);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
                                                     return true;
                                                 }
                                                 break;
                                             case 31:
                                                 if (message.obj instanceof boolean[]) {
-                                                    ChannelHelper.write(this.mChannel, 31);
-                                                    ChannelHelper.write(this.mChannel, (boolean[]) message.obj);
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, 31);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, (boolean[]) message.obj);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
                                                     return true;
                                                 }
                                                 break;
                                             case 32:
                                                 if (message.obj instanceof int[]) {
-                                                    ChannelHelper.write(this.mChannel, 32);
-                                                    ChannelHelper.write(this.mChannel, (int[]) message.obj);
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, 32);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, (int[]) message.obj);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
                                                     return true;
                                                 }
                                                 break;
                                             case 33:
                                                 if (message.obj instanceof long[]) {
-                                                    ChannelHelper.write(this.mChannel, 33);
-                                                    ChannelHelper.write(this.mChannel, (long[]) message.obj);
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, 33);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
+                                                    try {
+                                                        ChannelHelper.write(this.mChannel, (long[]) message.obj);
+                                                    } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
                                                     return true;
                                                 }
                                                 break;
                                         }
                                 }
                             } else if (message.obj instanceof double[]) {
-                                ChannelHelper.write(this.mChannel, 41);
-                                ChannelHelper.write(this.mChannel, (double[]) message.obj);
+                                try {
+                                    ChannelHelper.write(this.mChannel, 41);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                try {
+                                    ChannelHelper.write(this.mChannel, (double[]) message.obj);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 return true;
                             }
                         } else if (message.obj instanceof float[]) {
-                            ChannelHelper.write(this.mChannel, 40);
-                            ChannelHelper.write(this.mChannel, (float[]) message.obj);
+                            try {
+                                ChannelHelper.write(this.mChannel, 40);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            try {
+                                ChannelHelper.write(this.mChannel, (float[]) message.obj);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                             return true;
                         }
                     } else if (message.obj instanceof Double) {
-                        ChannelHelper.write(this.mChannel, 21);
-                        ChannelHelper.write(this.mChannel, ((Double) message.obj).doubleValue());
+                        try {
+                            ChannelHelper.write(this.mChannel, 21);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        try {
+                            ChannelHelper.write(this.mChannel, ((Double) message.obj).doubleValue());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         return true;
                     }
                 } else if (message.obj instanceof Float) {
-                    ChannelHelper.write(this.mChannel, 20);
-                    ChannelHelper.write(this.mChannel, ((Float) message.obj).floatValue());
+                    try {
+                        ChannelHelper.write(this.mChannel, 20);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        ChannelHelper.write(this.mChannel, ((Float) message.obj).floatValue());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     return true;
                 }
             } else if (message.obj instanceof String) {
-                ChannelHelper.write(this.mChannel, 2);
-                ChannelHelper.write(this.mChannel, (String) message.obj);
+                try {
+                    ChannelHelper.write(this.mChannel, 2);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    ChannelHelper.write(this.mChannel, (String) message.obj);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 return true;
             }
             return false;

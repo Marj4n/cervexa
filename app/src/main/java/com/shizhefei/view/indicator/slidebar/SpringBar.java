@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.view.View;
+
 import com.shizhefei.view.indicator.slidebar.ScrollBar;
 
 /* loaded from: classes2.dex */
@@ -110,7 +111,7 @@ public class SpringBar extends View implements ScrollBar {
         this.head.setX(getOffsetX(f) - (f2 * getPositionDistance(i)));
         if (f < this.footMoveOffset) {
             float f7 = this.acceleration;
-            f3 = (float) ((Math.atan((((f / r12) * f7) * 2.0f) - f7) + Math.atan(this.acceleration)) / (Math.atan(this.acceleration) * 2.0d));
+            f3 = (float) ((Math.atan((((f / this.footMoveOffset) * f7) * 2.0f) - f7) + Math.atan(this.acceleration)) / (Math.atan(this.acceleration) * 2.0d));
         }
         this.foot.setX(getOffsetX(f) - (f3 * getPositionDistance(i)));
     }

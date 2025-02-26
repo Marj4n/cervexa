@@ -289,18 +289,18 @@ public class TwoPainViewGroup extends FrameLayout {
     private void callChildMeasure(View view, int i, int i2, int i3, int i4) {
         int makeMeasureSpec;
         int makeMeasureSpec2;
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) view.getLayoutParams();
         if (marginLayoutParams.width == -1) {
-            makeMeasureSpec = View.MeasureSpec.makeMeasureSpec(Math.min(i, (((getMeasuredWidth() - getPaddingLeft()) - getPaddingRight()) - marginLayoutParams.leftMargin) - marginLayoutParams.rightMargin), BasicMeasure.EXACTLY);
+            makeMeasureSpec = MeasureSpec.makeMeasureSpec(Math.min(i, (((getMeasuredWidth() - getPaddingLeft()) - getPaddingRight()) - marginLayoutParams.leftMargin) - marginLayoutParams.rightMargin), MeasureSpec.EXACTLY);
         } else {
             int childMeasureSpec = getChildMeasureSpec(i3, getPaddingLeft() + getPaddingRight() + marginLayoutParams.leftMargin + marginLayoutParams.rightMargin, marginLayoutParams.width);
-            makeMeasureSpec = View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(childMeasureSpec), i), View.MeasureSpec.getMode(childMeasureSpec));
+            makeMeasureSpec = MeasureSpec.makeMeasureSpec(Math.min(MeasureSpec.getSize(childMeasureSpec), i), MeasureSpec.getMode(childMeasureSpec));
         }
         if (marginLayoutParams.height == -1) {
-            makeMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(Math.min(i2, (((getMeasuredHeight() - getPaddingTop()) - getPaddingBottom()) - marginLayoutParams.topMargin) - marginLayoutParams.bottomMargin), BasicMeasure.EXACTLY);
+            makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(Math.min(i2, (((getMeasuredHeight() - getPaddingTop()) - getPaddingBottom()) - marginLayoutParams.topMargin) - marginLayoutParams.bottomMargin), MeasureSpec.EXACTLY);
         } else {
             int childMeasureSpec2 = getChildMeasureSpec(i4, getPaddingTop() + getPaddingBottom() + marginLayoutParams.topMargin + marginLayoutParams.bottomMargin, marginLayoutParams.height);
-            makeMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(childMeasureSpec2), i2), View.MeasureSpec.getMode(childMeasureSpec2));
+            makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(Math.min(MeasureSpec.getSize(childMeasureSpec2), i2), MeasureSpec.getMode(childMeasureSpec2));
         }
         view.measure(makeMeasureSpec, makeMeasureSpec2);
     }
@@ -416,8 +416,8 @@ public class TwoPainViewGroup extends FrameLayout {
     private void callChildLayout(View view, boolean z, int i, int i2, int i3, int i4) {
         int i5;
         int i6;
-        int i7;
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view.getLayoutParams();
+        int i7 = 0;
+        LayoutParams layoutParams = (LayoutParams) view.getLayoutParams();
         int measuredWidth = view.getMeasuredWidth();
         int measuredHeight = view.getMeasuredHeight();
         int i8 = layoutParams.gravity;

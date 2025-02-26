@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.LruCache;
-
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.lib.dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
@@ -16,13 +15,11 @@ import com.jieli.media.codec.bean.MediaMeta;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.interfaces.OnAviThumbListener;
 import com.jieli.stream.dv.running2.ui.MainApplication;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

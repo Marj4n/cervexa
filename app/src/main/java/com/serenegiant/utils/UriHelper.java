@@ -197,8 +197,12 @@ public final class UriHelper {
             }
             return null;
         } catch (Throwable th2) {
-            th = th2;
+            Throwable th = th2;
+            if (cursor != null) {
+                cursor.close();
+            }
         }
+        return str;
     }
 
     public static boolean isExternalStorageDocument(Uri uri) {

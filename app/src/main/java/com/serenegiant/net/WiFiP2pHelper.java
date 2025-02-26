@@ -220,7 +220,7 @@ public class WiFiP2pHelper {
     }
 
     public synchronized boolean isWiFiP2pEnabled() {
-        boolean z;
+        boolean z = false;
         if (this.mChannel != null) {
             z = this.mIsWifiP2pEnabled;
         }
@@ -246,7 +246,7 @@ public class WiFiP2pHelper {
     }
 
     public synchronized boolean isConnected() {
-        boolean z;
+        boolean z = false;
         if (this.mWifiP2pDevice != null) {
             z = this.mWifiP2pDevice.status == 0;
         }

@@ -8,10 +8,12 @@ import android.opengl.Matrix;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Surface;
+
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.serenegiant.glutils.EGLBase;
 import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.utils.BuildCheck;
+
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -102,7 +104,7 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                 AbstractRendererHolder.this.setupCaptureDrawer(gLDrawer2D);
             }
 
-            private final void captureLoopGLES2() {
+            private final void captureLoopGLES2() throws IOException {
                 int i5 = -1;
                 ByteBuffer byteBuffer = null;
                 int i6 = -1;
@@ -160,7 +162,11 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                                     Log.w(AbstractRendererHolder.TAG, "failed to save file", e);
                                 }
                             } catch (Throwable th) {
-                                AbstractRendererHolder.this.mCaptureStream.close();
+                                try {
+                                    AbstractRendererHolder.this.mCaptureStream.close();
+                                } catch (IOException e) {
+                                    Log.w(AbstractRendererHolder.TAG, "failed to close stream", e);
+                                }
                                 throw th;
                             }
                         }
@@ -173,7 +179,7 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                 }
             }
 
-            private final void captureLoopGLES3() {
+            private final void captureLoopGLES3() throws IOException {
                 int i5 = -1;
                 ByteBuffer byteBuffer = null;
                 int i6 = -1;
@@ -231,7 +237,11 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                                     Log.w(AbstractRendererHolder.TAG, "failed to save file", e);
                                 }
                             } catch (Throwable th) {
-                                AbstractRendererHolder.this.mCaptureStream.close();
+                                try {
+                                    AbstractRendererHolder.this.mCaptureStream.close();
+                                } catch (IOException e) {
+                                    Log.w(AbstractRendererHolder.TAG, "failed to close stream", e);
+                                }
                                 throw th;
                             }
                         }

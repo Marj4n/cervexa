@@ -83,13 +83,6 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
         this.onSelectResultListener = onSelectResultListener;
     }
 
-    @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.Theme_Light_NoTitleBar);
-        setCancelable(false);
-    }
-
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View inflate = layoutInflater.inflate(R.layout.dialog_browse_file, viewGroup, false);

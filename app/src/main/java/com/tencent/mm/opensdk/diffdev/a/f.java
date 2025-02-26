@@ -8,8 +8,10 @@ import com.tencent.mm.opensdk.diffdev.OAuthListener;
 import com.tencent.mm.opensdk.utils.Log;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 /* loaded from: classes2.dex */
-final class f extends AsyncTask<Void, Void, a> {
+final class f extends AsyncTask<Void, Void, f.a> {
     private OAuthListener l;
     private String o;
     private int u;
@@ -87,7 +89,7 @@ final class f extends AsyncTask<Void, Void, a> {
     }
 
     @Override // android.os.AsyncTask
-    protected final /* synthetic */ a doInBackground(Void[] voidArr) {
+    protected final /* synthetic */ a doInBackground(Void... voidArr) {
         a aVar;
         OAuthErrCode oAuthErrCode;
         String str;
@@ -108,7 +110,12 @@ final class f extends AsyncTask<Void, Void, a> {
                 sb.append(str);
                 String sb2 = sb.toString();
                 long currentTimeMillis = System.currentTimeMillis();
-                byte[] a2 = e.a(sb2, UsbId.SILABS_CP2102);
+                byte[] a2 = null;
+                try {
+                    a2 = e.a(sb2, UsbId.SILABS_CP2102);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 long currentTimeMillis2 = System.currentTimeMillis();
                 a b = a.b(a2);
                 Log.d("MicroMsg.SDK.NoopingTask", String.format("nooping, url = %s, errCode = %s, uuidStatusCode = %d, time consumed = %d(ms)", sb2, b.n.toString(), Integer.valueOf(b.w), Long.valueOf(currentTimeMillis2 - currentTimeMillis)));

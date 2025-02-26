@@ -3367,7 +3367,6 @@ public final class R {
         public static final int Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = 0x7f1202d7;
         public static final int Widget_MaterialComponents_Toolbar = 0x7f1202df;
         public static final int Widget_Support_CoordinatorLayout = 0x7f1202e4;
-        public static int Theme_Light_NoTitleBar;
 
         private style() {
         }

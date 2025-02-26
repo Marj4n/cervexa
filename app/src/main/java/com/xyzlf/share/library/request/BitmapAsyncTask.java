@@ -54,7 +54,7 @@ public class BitmapAsyncTask extends AbstractAsyncTask<Bitmap> {
 
     static void calculateInSampleSize(int i, int i2, int i3, int i4, BitmapFactory.Options options, boolean z) {
         int min;
-        double floor;
+        double floor = 0;
         if (i4 > i2 || i3 > i) {
             if (i2 == 0) {
                 floor = Math.floor(i3 / i);
@@ -79,7 +79,7 @@ public class BitmapAsyncTask extends AbstractAsyncTask<Bitmap> {
 
     @Override // com.xyzlf.share.library.request.AbstractAsyncTask
     public void onSuccess(Bitmap bitmap) {
-        super.onSuccess((BitmapAsyncTask) bitmap);
+       super.onSuccess(bitmap);
         OnBitmapListener onBitmapListener = this.listener;
         if (onBitmapListener != null) {
             onBitmapListener.onSuccess(bitmap);

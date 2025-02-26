@@ -23,7 +23,7 @@ public class SocketChannelDataLink extends AbstractChannelDataLink {
     public SocketChannelDataLink() {
     }
 
-    public SocketChannelDataLink(AbstractChannelDataLink.Callback callback) {
+    public SocketChannelDataLink(Callback callback) {
         super(callback);
     }
 
@@ -56,11 +56,11 @@ public class SocketChannelDataLink extends AbstractChannelDataLink {
         start(DEFAULT_SERVER_PORT, null);
     }
 
-    public void start(AbstractChannelDataLink.Callback callback) throws IllegalStateException {
+    public void start(Callback callback) throws IllegalStateException {
         start(DEFAULT_SERVER_PORT, callback);
     }
 
-    public synchronized void start(int i, AbstractChannelDataLink.Callback callback) throws IllegalStateException {
+    public synchronized void start(int i, Callback callback) throws IllegalStateException {
         add(callback);
         if (this.mServerTask == null) {
             this.mServerTask = new ServerTask(i);
@@ -77,7 +77,7 @@ public class SocketChannelDataLink extends AbstractChannelDataLink {
         }
     }
 
-    public static class Client extends AbstractChannelDataLink.AbstractClient {
+    public static class Client extends AbstractClient {
         private String mAddr;
         private int mPort;
 
@@ -107,7 +107,7 @@ public class SocketChannelDataLink extends AbstractChannelDataLink {
         }
 
         public synchronized boolean isConnected() {
-            boolean z;
+            boolean z = false;
             if (this.mChannel instanceof SocketChannel) {
                 z = ((SocketChannel) this.mChannel).isConnected();
             }

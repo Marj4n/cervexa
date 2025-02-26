@@ -12,7 +12,7 @@ public interface IMediaCodec {
 
     void prepare() throws IOException;
 
-    void release();
+    void release() throws IOException;
 
     void start();
 

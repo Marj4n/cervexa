@@ -61,7 +61,7 @@ public abstract class Pool<T> {
     public void recycle(Collection<T> collection) {
         for (T t : collection) {
             if (t != null) {
-                recycle((Pool<T>) t);
+                recycle((T) t);
             }
         }
     }
@@ -69,7 +69,7 @@ public abstract class Pool<T> {
     public void recycle(T[] tArr) {
         for (T t : tArr) {
             if (t != null) {
-                recycle((Pool<T>) t);
+                recycle((T) t);
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.serenegiant.media;
 
+import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaFormat;
 import android.os.Handler;
@@ -8,6 +9,9 @@ import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.view.Surface;
+
+import androidx.documentfile.provider.DocumentFile;
+
 import com.serenegiant.media.IRecorder;
 import com.serenegiant.utils.BuildCheck;
 import java.io.IOException;
@@ -20,7 +24,7 @@ public abstract class Recorder implements IRecorder {
     private static final String TAG = Recorder.class.getSimpleName();
     protected Encoder mAudioEncoder;
     private volatile boolean mAudioStarted;
-    private final IRecorder.RecorderCallback mCallback;
+    private final RecorderCallback mCallback;
     private volatile int mEncoderCount;
     private EosHandler mEosHandler;
     protected IMuxer mMuxer;
@@ -33,7 +37,7 @@ public abstract class Recorder implements IRecorder {
 
     protected abstract boolean check();
 
-    public Recorder(IRecorder.RecorderCallback recorderCallback) {
+    public Recorder(RecorderCallback recorderCallback) {
         this.mCallback = recorderCallback;
         synchronized (this) {
             this.mState = 0;
@@ -149,7 +153,7 @@ public abstract class Recorder implements IRecorder {
 
     @Override // com.serenegiant.media.IRecorder
     public synchronized boolean isStarted() {
-        boolean z;
+        boolean z = false;
         if (!this.mReleased) {
             z = this.mState == 4;
         }
@@ -298,7 +302,7 @@ public abstract class Recorder implements IRecorder {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public synchronized boolean start(com.serenegiant.media.Encoder r7) {
+    public synchronized boolean start(Encoder r7) {
         /*
             r6 = this;
             monitor-enter(r6)
@@ -441,7 +445,7 @@ public abstract class Recorder implements IRecorder {
     }
 
     protected void callOnPrepared() {
-        IRecorder.RecorderCallback recorderCallback = this.mCallback;
+        RecorderCallback recorderCallback = this.mCallback;
         if (recorderCallback != null) {
             try {
                 recorderCallback.onPrepared(this);
@@ -452,7 +456,7 @@ public abstract class Recorder implements IRecorder {
     }
 
     protected void callOnStarted() {
-        IRecorder.RecorderCallback recorderCallback = this.mCallback;
+        RecorderCallback recorderCallback = this.mCallback;
         if (recorderCallback != null) {
             try {
                 recorderCallback.onStarted(this);
@@ -463,7 +467,7 @@ public abstract class Recorder implements IRecorder {
     }
 
     protected void callOnStopped() {
-        IRecorder.RecorderCallback recorderCallback = this.mCallback;
+        RecorderCallback recorderCallback = this.mCallback;
         if (recorderCallback != null) {
             try {
                 recorderCallback.onStopped(this);
@@ -474,7 +478,7 @@ public abstract class Recorder implements IRecorder {
     }
 
     protected void callOnError(Exception exc) {
-        IRecorder.RecorderCallback recorderCallback;
+        RecorderCallback recorderCallback;
         if (this.mReleased || (recorderCallback = this.mCallback) == null) {
             return;
         }
@@ -623,7 +627,7 @@ public abstract class Recorder implements IRecorder {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    protected static com.serenegiant.media.IMuxer createMuxer(android.content.Context r5, androidx.documentfile.provider.DocumentFile r6) throws java.io.IOException {
+    protected static IMuxer createMuxer(Context r5, DocumentFile r6) throws IOException {
         /*
             boolean r0 = com.serenegiant.media.VideoConfig.sUseMediaMuxer
             java.lang.String r1 = "rw"

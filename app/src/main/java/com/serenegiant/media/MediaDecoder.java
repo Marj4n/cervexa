@@ -242,7 +242,7 @@ public abstract class MediaDecoder implements IMediaCodec {
 
     @Override // com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
     public void prepare() throws IOException {
-        int handlePrepare;
+        int handlePrepare = 0;
         MediaExtractor mediaExtractor = this.mMediaExtractor;
         if (mediaExtractor == null) {
             IllegalStateException illegalStateException = new IllegalStateException("DataSource not set yet");
@@ -381,7 +381,7 @@ public abstract class MediaDecoder implements IMediaCodec {
     }
 
     @Override // com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
-    public void release() {
+    public void release() throws IOException {
         if (this.mState != 0) {
             stop();
             this.mState = 0;
@@ -390,7 +390,7 @@ public abstract class MediaDecoder implements IMediaCodec {
         internal_release();
     }
 
-    private void internal_release() {
+    private void internal_release() throws IOException {
         MediaCodec mediaCodec = this.mMediaCodec;
         if (mediaCodec != null) {
             mediaCodec.release();
@@ -430,7 +430,7 @@ public abstract class MediaDecoder implements IMediaCodec {
 
     protected void internal_HandleInput() {
         boolean z;
-        int dequeueInputBuffer;
+        int dequeueInputBuffer = 0;
         if (!this.mInputDone) {
             if (this.presentationTimeUs < 0) {
                 this.presentationTimeUs = this.mMediaExtractor.getSampleTime();

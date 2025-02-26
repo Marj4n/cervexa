@@ -9,6 +9,7 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
+
 import com.serenegiant.common.R;
 import com.serenegiant.glutils.IRendererCommon;
 
@@ -108,7 +109,7 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public boolean onTouchEvent(android.view.MotionEvent r6) {
+    public boolean onTouchEvent(MotionEvent r6) {
         /*
             r5 = this;
             boolean r0 = r5.mHandleTouchEvent
@@ -211,13 +212,15 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
         throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.widget.ZoomAspectScaledTextureView.onTouchEvent(android.view.MotionEvent):boolean");
     }
 
-    @Override // com.serenegiant.widget.AspectScaledTextureView, android.view.TextureView.SurfaceTextureListener
+    @Override
+    // com.serenegiant.widget.AspectScaledTextureView, android.view.TextureView.SurfaceTextureListener
     public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int i, int i2) {
         super.onSurfaceTextureAvailable(surfaceTexture, i, i2);
         setMirror(0);
     }
 
-    @Override // com.serenegiant.widget.AspectScaledTextureView, android.view.TextureView.SurfaceTextureListener
+    @Override
+    // com.serenegiant.widget.AspectScaledTextureView, android.view.TextureView.SurfaceTextureListener
     public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i2) {
         super.onSurfaceTextureSizeChanged(surfaceTexture, i, i2);
         applyMirrorMode();
@@ -298,7 +301,7 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private final boolean processDrag(android.view.MotionEvent r17) {
+    private final boolean processDrag(MotionEvent r17) {
         /*
             Method dump skipped, instructions count: 613
             To view this dump add '--comments-level debug' option
@@ -314,6 +317,7 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
             this.mSecondaryId = motionEvent.getPointerId(1);
             this.mSecondX = motionEvent.getX(1);
             this.mSecondY = motionEvent.getY(1);
+            double r5 = 0;
             float hypot = (float) Math.hypot(this.mSecondX - this.mPrimaryX, r5 - this.mPrimaryY);
             if (hypot < MIN_DISTANCE) {
                 return;
@@ -396,7 +400,11 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
         if (findPointerIndex < 0 || findPointerIndex2 < 0) {
             return 0.0f;
         }
-        return ((float) Math.acos(dotProduct(r2, r3, r4, r1) / Math.sqrt(((r2 * r2) + (r3 * r3)) * ((r4 * r4) + (r1 * r1))))) * 57.29578f * Math.signum(crossProduct(this.mSecondX - this.mPrimaryX, this.mSecondY - this.mPrimaryY, motionEvent.getX(findPointerIndex2) - motionEvent.getX(findPointerIndex), motionEvent.getY(findPointerIndex2) - motionEvent.getY(findPointerIndex)));
+        float r2x = this.mSecondX - this.mPrimaryX;
+        float r2y = this.mSecondY - this.mPrimaryY;
+        float r1x = motionEvent.getX(findPointerIndex2) - motionEvent.getX(findPointerIndex);
+        float r1y = motionEvent.getY(findPointerIndex2) - motionEvent.getY(findPointerIndex);
+        return ((float) Math.acos(dotProduct(r2x, r2y, r1x, r1y) / Math.sqrt(((r2x * r2x) + (r2y * r2y)) * ((r1x * r1x) + (r1y * r1y))))) * 57.29578f * Math.signum(crossProduct(r2x, r2y, r1x, r1y));
     }
 
     private static final float crossProduct(Vector vector, Vector vector2) {

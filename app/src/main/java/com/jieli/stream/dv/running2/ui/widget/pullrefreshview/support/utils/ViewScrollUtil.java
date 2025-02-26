@@ -3,6 +3,7 @@ package com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +37,8 @@ public class ViewScrollUtil {
     private static class AbsListViewScrollGeter implements ScrollGeter {
         AbsListView absListView;
 
-        @Override // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
+        @Override
+        // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
         public int getScrollX() {
             return 0;
         }
@@ -45,7 +47,8 @@ public class ViewScrollUtil {
             this.absListView = absListView;
         }
 
-        @Override // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
+        @Override
+        // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
         public int getScrollY() {
             int firstVisiblePosition = this.absListView.getFirstVisiblePosition();
             View childAt = this.absListView.getChildAt(0);
@@ -60,7 +63,8 @@ public class ViewScrollUtil {
         LinearLayoutManager layoutManager;
         RecyclerView recyclerView;
 
-        @Override // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
+        @Override
+        // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
         public int getScrollX() {
             return 0;
         }
@@ -75,7 +79,8 @@ public class ViewScrollUtil {
             }
         }
 
-        @Override // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
+        @Override
+        // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.ViewScrollUtil.ScrollGeter
         public int getScrollY() {
             int findFirstVisibleItemPosition;
             View findViewByPosition;

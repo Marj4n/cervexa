@@ -206,15 +206,6 @@ public class DialogPreferenceV7 extends Preference implements DialogInterface.On
         onDialogClosed(this.mWhichButtonClicked == -1);
     }
 
-    public void onAttached() {
-        super.onAttached();
-    }
-
-    public void onDetached() {
-        onActivityDestroy();
-        super.onDetached();
-    }
-
     public Dialog getDialog() {
         return this.mDialog;
     }

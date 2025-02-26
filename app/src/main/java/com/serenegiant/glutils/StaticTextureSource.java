@@ -79,19 +79,19 @@ public class StaticTextureSource {
         }
     }
 
-    public void addSurface(int i, Object obj, boolean z) {
+    public void addSurface(int i, Object obj, boolean z) throws InterruptedException {
         synchronized (this.mSync) {
             this.mRendererTask.addSurface(i, obj);
         }
     }
 
-    public void addSurface(int i, Object obj, boolean z, int i2) {
+    public void addSurface(int i, Object obj, boolean z, int i2) throws InterruptedException {
         synchronized (this.mSync) {
             this.mRendererTask.addSurface(i, obj, i2);
         }
     }
 
-    public void removeSurface(int i) {
+    public void removeSurface(int i) throws InterruptedException {
         synchronized (this.mSync) {
             this.mRendererTask.removeSurface(i);
         }
@@ -209,11 +209,11 @@ public class StaticTextureSource {
             return null;
         }
 
-        public void addSurface(int i, Object obj) {
+        public void addSurface(int i, Object obj) throws InterruptedException {
             addSurface(i, obj, -1);
         }
 
-        public void addSurface(int i, Object obj, int i2) {
+        public void addSurface(int i, Object obj, int i2) throws InterruptedException {
             checkFinished();
             if (!(obj instanceof SurfaceTexture) && !(obj instanceof Surface) && !(obj instanceof SurfaceHolder)) {
                 throw new IllegalArgumentException("Surface should be one of Surface, SurfaceTexture or SurfaceHolder");
@@ -231,7 +231,7 @@ public class StaticTextureSource {
             }
         }
 
-        public void removeSurface(int i) {
+        public void removeSurface(int i) throws InterruptedException {
             synchronized (this.mClientSync) {
                 if (this.mClients.get(i) != null) {
                     while (!offer(4, i)) {

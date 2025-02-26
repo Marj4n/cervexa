@@ -1,5 +1,6 @@
 package com.shizhefei.view.indicator;
 
+import android.app.assist.AssistStructure;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -15,15 +16,17 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
+
 import com.shizhefei.view.indicator.Indicator;
 import com.shizhefei.view.indicator.slidebar.ScrollBar;
 
 /* loaded from: classes2.dex */
 public class ScrollIndicatorView extends HorizontalScrollView implements Indicator {
     private Drawable customShadowDrawable;
-    private Indicator.DataSetObserver dataSetObserver;
+    private DataSetObserver dataSetObserver;
     private Paint defaultShadowPaint;
     private SFixedIndicatorView fixedIndicatorView;
     private boolean isPinnedTabView;
@@ -42,7 +45,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         this.isPinnedTabView = false;
         this.defaultShadowPaint = null;
         this.state = 0;
-        this.dataSetObserver = new Indicator.DataSetObserver() { // from class: com.shizhefei.view.indicator.ScrollIndicatorView.1
+        this.dataSetObserver = new DataSetObserver() { // from class: com.shizhefei.view.indicator.ScrollIndicatorView.1
             @Override // com.shizhefei.view.indicator.Indicator.DataSetObserver
             public void onChange() {
                 if (ScrollIndicatorView.this.mTabSelector != null) {
@@ -62,7 +65,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         this.unScrollPosition = -1;
         SFixedIndicatorView sFixedIndicatorView = new SFixedIndicatorView(context);
         this.fixedIndicatorView = sFixedIndicatorView;
-        addView(sFixedIndicatorView, new FrameLayout.LayoutParams(-2, -1));
+        addView(sFixedIndicatorView, new LayoutParams(-2, -1));
         setHorizontalScrollBarEnabled(false);
         setSplitAuto(true);
         Paint paint = new Paint();
@@ -91,7 +94,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
     }
 
     @Override // com.shizhefei.view.indicator.Indicator
-    public void setAdapter(Indicator.IndicatorAdapter indicatorAdapter) {
+    public void setAdapter(IndicatorAdapter indicatorAdapter) {
         if (getIndicatorAdapter() != null) {
             getIndicatorAdapter().unRegistDataSetObserver(this.dataSetObserver);
         }
@@ -101,21 +104,21 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
     }
 
     @Override // com.shizhefei.view.indicator.Indicator
-    public void setOnItemSelectListener(Indicator.OnItemSelectedListener onItemSelectedListener) {
+    public void setOnItemSelectListener(OnItemSelectedListener onItemSelectedListener) {
         this.proxyOnItemSelectListener.setOnItemSelectedListener(onItemSelectedListener);
     }
 
-    private class ProxyOnItemSelectListener implements Indicator.OnItemSelectedListener {
-        private Indicator.OnItemSelectedListener onItemSelectedListener;
+    private class ProxyOnItemSelectListener implements OnItemSelectedListener {
+        private OnItemSelectedListener onItemSelectedListener;
 
         private ProxyOnItemSelectListener() {
         }
 
-        public void setOnItemSelectedListener(Indicator.OnItemSelectedListener onItemSelectedListener) {
+        public void setOnItemSelectedListener(OnItemSelectedListener onItemSelectedListener) {
             this.onItemSelectedListener = onItemSelectedListener;
         }
 
-        public Indicator.OnItemSelectedListener getOnItemSelectedListener() {
+        public OnItemSelectedListener getOnItemSelectedListener() {
             return this.onItemSelectedListener;
         }
 
@@ -124,7 +127,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
             if (ScrollIndicatorView.this.state == 0) {
                 ScrollIndicatorView.this.animateToTab(i);
             }
-            Indicator.OnItemSelectedListener onItemSelectedListener = this.onItemSelectedListener;
+            OnItemSelectedListener onItemSelectedListener = this.onItemSelectedListener;
             if (onItemSelectedListener != null) {
                 onItemSelectedListener.onItemSelected(view, i, i2);
             }
@@ -132,7 +135,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
     }
 
     @Override // com.shizhefei.view.indicator.Indicator
-    public Indicator.IndicatorAdapter getIndicatorAdapter() {
+    public IndicatorAdapter getIndicatorAdapter() {
         return this.fixedIndicatorView.getIndicatorAdapter();
     }
 
@@ -193,7 +196,8 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         }
     }
 
-    @Override // android.widget.HorizontalScrollView, android.widget.FrameLayout, android.view.ViewGroup, android.view.View
+    @Override
+    // android.widget.HorizontalScrollView, android.widget.FrameLayout, android.view.ViewGroup, android.view.View
     protected void onLayout(boolean z, int i, int i2, int i3, int i4) {
         View childAt;
         int left;
@@ -264,15 +268,18 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         if (this.isPinnedTabView) {
             float x = motionEvent.getX();
             float y = motionEvent.getY();
-            if (this.pinnedTabView != null && y >= r2.getTop() && y <= this.pinnedTabView.getBottom() && x > this.pinnedTabView.getLeft() && x < this.pinnedTabView.getRight()) {
-                if (motionEvent.getAction() == 0) {
-                    this.mActionDownHappened = true;
-                } else if (motionEvent.getAction() == 1 && this.mActionDownHappened) {
-                    this.pinnedTabView.performClick();
-                    invalidate(new Rect(0, 0, this.pinnedTabView.getMeasuredWidth(), this.pinnedTabView.getMeasuredHeight()));
-                    this.mActionDownHappened = false;
+            AssistStructure.ViewNode r2 = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (this.pinnedTabView != null && y >= r2.getTop() && y <= this.pinnedTabView.getBottom() && x > this.pinnedTabView.getLeft() && x < this.pinnedTabView.getRight()) {
+                    if (motionEvent.getAction() == 0) {
+                        this.mActionDownHappened = true;
+                    } else if (motionEvent.getAction() == 1 && this.mActionDownHappened) {
+                        this.pinnedTabView.performClick();
+                        invalidate(new Rect(0, 0, this.pinnedTabView.getMeasuredWidth(), this.pinnedTabView.getMeasuredHeight()));
+                        this.mActionDownHappened = false;
+                    }
+                    return true;
                 }
-                return true;
             }
         }
         return super.dispatchTouchEvent(motionEvent);
@@ -284,17 +291,17 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
     }
 
     @Override // com.shizhefei.view.indicator.Indicator
-    public Indicator.OnItemSelectedListener getOnItemSelectListener() {
+    public OnItemSelectedListener getOnItemSelectListener() {
         return this.proxyOnItemSelectListener.getOnItemSelectedListener();
     }
 
     @Override // com.shizhefei.view.indicator.Indicator
-    public void setOnTransitionListener(Indicator.OnTransitionListener onTransitionListener) {
+    public void setOnTransitionListener(OnTransitionListener onTransitionListener) {
         this.fixedIndicatorView.setOnTransitionListener(onTransitionListener);
     }
 
     @Override // com.shizhefei.view.indicator.Indicator
-    public Indicator.OnTransitionListener getOnTransitionListener() {
+    public OnTransitionListener getOnTransitionListener() {
         return this.fixedIndicatorView.getOnTransitionListener();
     }
 
@@ -309,7 +316,9 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         if (this.fixedIndicatorView.getChildAt(i) == null) {
             return;
         }
-        scrollTo((int) ((r0.getLeft() - ((getWidth() - r0.getWidth()) / 2)) + (((r0.getWidth() + (this.fixedIndicatorView.getChildAt(i + 1) == null ? r0.getWidth() : r1.getWidth())) / 2) * f)), 0);
+        View currentView = this.fixedIndicatorView.getChildAt(i);
+        View nextView = this.fixedIndicatorView.getChildAt(i + 1);
+        scrollTo((int) ((currentView.getLeft() - ((getWidth() - currentView.getWidth()) / 2)) + (((currentView.getWidth() + (nextView == null ? currentView.getWidth() : nextView.getWidth())) / 2) * f)), 0);
         this.fixedIndicatorView.onPageScrolled(i, f, i2);
     }
 
@@ -485,7 +494,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         }
 
         private int measureChildWidth(View view, int i, int i2) {
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) view.getLayoutParams();
+            LayoutParams layoutParams = (LayoutParams) view.getLayoutParams();
             view.measure(ViewGroup.getChildMeasureSpec(i, getPaddingLeft() + getPaddingRight(), -2), ViewGroup.getChildMeasureSpec(i2, getPaddingTop() + getPaddingBottom(), layoutParams.height));
             return view.getMeasuredWidth() + layoutParams.leftMargin + layoutParams.rightMargin;
         }

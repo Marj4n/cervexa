@@ -85,7 +85,7 @@ public class MediaMoviePlayer {
         public final void run() {
             boolean z;
             int i;
-            boolean processStop;
+            boolean processStop = false;
             try {
                 synchronized (MediaMoviePlayer.this.mSync) {
                     z = MediaMoviePlayer.this.mIsRunning = true;
@@ -118,7 +118,11 @@ public class MediaMoviePlayer {
                     }
                 }
             } finally {
-                MediaMoviePlayer.this.handleStop();
+                try {
+                    MediaMoviePlayer.this.handleStop();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     };
@@ -327,7 +331,7 @@ public class MediaMoviePlayer {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public final boolean processPrepared(int r3) throws java.lang.InterruptedException {
+    public final boolean processPrepared(int r3) throws InterruptedException {
         /*
             r2 = this;
             r0 = 2
@@ -387,7 +391,7 @@ public class MediaMoviePlayer {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public final boolean processPlaying(int i) {
+    public final boolean processPlaying(int i) throws IOException {
         boolean z;
         boolean z2;
         if (i != 9) {
@@ -420,7 +424,7 @@ public class MediaMoviePlayer {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public final boolean processPaused(int i) throws InterruptedException {
+    public final boolean processPaused(int i) throws InterruptedException, IOException {
         boolean z;
         boolean z2 = true;
         if (i == 1 || i == 2) {
@@ -644,7 +648,7 @@ public class MediaMoviePlayer {
     }
 
     protected MediaCodec internal_start_video(MediaExtractor mediaExtractor, int i) {
-        MediaCodec createDecoderByType;
+        MediaCodec createDecoderByType = null;
         MediaCodec mediaCodec = null;
         if (i < 0) {
             return null;
@@ -655,20 +659,13 @@ public class MediaMoviePlayer {
         } catch (IOException e) {
             e = e;
         }
-        try {
-            createDecoderByType.configure(trackFormat, this.mOutputSurface, (MediaCrypto) null, 0);
-            createDecoderByType.start();
-            return createDecoderByType;
-        } catch (IOException e2) {
-            e = e2;
-            mediaCodec = createDecoderByType;
-            Log.w(this.TAG, e);
-            return mediaCodec;
-        }
+        createDecoderByType.configure(trackFormat, this.mOutputSurface, (MediaCrypto) null, 0);
+        createDecoderByType.start();
+        return createDecoderByType;
     }
 
     protected MediaCodec internal_start_audio(MediaExtractor mediaExtractor, int i) {
-        MediaCodec createDecoderByType;
+        MediaCodec createDecoderByType = null;
         MediaCodec mediaCodec = null;
         if (i < 0) {
             return null;
@@ -679,21 +676,14 @@ public class MediaMoviePlayer {
         } catch (IOException e) {
             e = e;
         }
-        try {
-            createDecoderByType.configure(trackFormat, (Surface) null, (MediaCrypto) null, 0);
-            createDecoderByType.start();
-            int capacity = createDecoderByType.getOutputBuffers()[0].capacity();
-            if (capacity <= 0) {
-                capacity = this.mAudioInputBufSize;
-            }
-            this.mAudioOutTempBuf = new byte[capacity];
-            return createDecoderByType;
-        } catch (IOException e2) {
-            e = e2;
-            mediaCodec = createDecoderByType;
-            Log.w(this.TAG, e);
-            return mediaCodec;
+        createDecoderByType.configure(trackFormat, (Surface) null, (MediaCrypto) null, 0);
+        createDecoderByType.start();
+        int capacity = createDecoderByType.getOutputBuffers()[0].capacity();
+        if (capacity <= 0) {
+            capacity = this.mAudioInputBufSize;
         }
+        this.mAudioOutTempBuf = new byte[capacity];
+        return createDecoderByType;
     }
 
     private final void handleSeek(long j) {
@@ -711,7 +701,7 @@ public class MediaMoviePlayer {
         this.mRequestTime = -1L;
     }
 
-    private final void handleLoop(IFrameCallback iFrameCallback) {
+    private final void handleLoop(IFrameCallback iFrameCallback) throws IOException {
         synchronized (this.mSync) {
             try {
                 this.mSync.wait();
@@ -884,7 +874,7 @@ public class MediaMoviePlayer {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public final void handleStop() {
+    public final void handleStop() throws IOException {
         synchronized (this.mVideoTask) {
             internal_stop_video();
             this.mVideoTrackIndex = -1;
