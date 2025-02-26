@@ -237,6 +237,7 @@ public class SAFUtils {
     }
 
     public static Uri requestStorageAccess(androidx.fragment.app.Fragment fragment, int i) {
+        Uri r1 = null;
         if (BuildCheck.isLollipop()) {
             FragmentActivity activity = fragment.getActivity();
             r1 = activity != null ? getStorageUri(activity, i) : null;

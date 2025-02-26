@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -18,13 +17,11 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
-
 import androidx.core.content.ContextCompat;
 
 import java.util.IllegalFormatWidthException;
@@ -43,7 +40,7 @@ public class SwitchButton extends CompoundButton {
     private float mBackMeasureRatio;
     private float mBackRadius;
     private RectF mBackRectF;
-    private OnCheckedChangeListener mChildOnCheckedChangeListener;
+    private CompoundButton.OnCheckedChangeListener mChildOnCheckedChangeListener;
     private int mClickTimeout;
     private int mCurrBackColor;
     private int mCurrThumbColor;
@@ -273,8 +270,8 @@ public class SwitchButton extends CompoundButton {
     }
 
     private int measureWidth(int i) {
-        int size = MeasureSpec.getSize(i);
-        int mode = MeasureSpec.getMode(i);
+        int size = View.MeasureSpec.getSize(i);
+        int mode = View.MeasureSpec.getMode(i);
         int ceil = ceil(this.mThumbSizeF.x * this.mBackMeasureRatio);
         if (this.mIsBackUseDrawable) {
             ceil = Math.max(ceil, this.mBackDrawable.getMinimumWidth());
@@ -301,8 +298,8 @@ public class SwitchButton extends CompoundButton {
     }
 
     private int measureHeight(int i) {
-        int mode = MeasureSpec.getMode(i);
-        int size = MeasureSpec.getSize(i);
+        int mode = View.MeasureSpec.getMode(i);
+        int size = View.MeasureSpec.getSize(i);
         int ceil = ceil(Math.max(this.mThumbSizeF.y, this.mThumbSizeF.y + this.mThumbMargin.top + this.mThumbMargin.right));
         float height = this.mOnLayout != null ? this.mOnLayout.getHeight() : 0.0f;
         float height2 = this.mOffLayout != null ? this.mOffLayout.getHeight() : 0.0f;
@@ -374,7 +371,7 @@ public class SwitchButton extends CompoundButton {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    protected void onDraw(Canvas r15) {
+    protected void onDraw(android.graphics.Canvas r15) {
         /*
             Method dump skipped, instructions count: 499
             To view this dump add '--comments-level debug' option
@@ -428,7 +425,7 @@ public class SwitchButton extends CompoundButton {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public boolean onTouchEvent(MotionEvent r10) {
+    public boolean onTouchEvent(android.view.MotionEvent r10) {
         /*
             r9 = this;
             boolean r0 = r9.isEnabled()
@@ -607,7 +604,7 @@ public class SwitchButton extends CompoundButton {
     }
 
     @Override // android.widget.CompoundButton
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
         super.setOnCheckedChangeListener(onCheckedChangeListener);
         this.mChildOnCheckedChangeListener = onCheckedChangeListener;
     }
@@ -833,8 +830,8 @@ public class SwitchButton extends CompoundButton {
         super.onRestoreInstanceState(savedState.getSuperState());
     }
 
-    static class SavedState extends BaseSavedState {
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() { // from class: com.jieli.stream.dv.running2.ui.widget.SwitchButton.SavedState.1
+    static class SavedState extends View.BaseSavedState {
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() { // from class: com.jieli.stream.dv.running2.ui.widget.SwitchButton.SavedState.1
             /* JADX WARN: Can't rename method to resolve collision */
             @Override // android.os.Parcelable.Creator
             public SavedState createFromParcel(Parcel parcel) {
@@ -860,8 +857,7 @@ public class SwitchButton extends CompoundButton {
             this.offText = (CharSequence) TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(parcel);
         }
 
-        @Override
-        // android.view.View.BaseSavedState, android.view.AbsSavedState, android.os.Parcelable
+        @Override // android.view.View.BaseSavedState, android.view.AbsSavedState, android.os.Parcelable
         public void writeToParcel(Parcel parcel, int i) {
             super.writeToParcel(parcel, i);
             TextUtils.writeToParcel(this.onText, parcel, i);

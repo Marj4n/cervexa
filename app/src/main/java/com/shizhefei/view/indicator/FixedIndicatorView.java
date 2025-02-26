@@ -10,11 +10,15 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
+
 import androidx.core.view.ViewCompat;
+
 import com.shizhefei.view.indicator.Indicator;
 import com.shizhefei.view.indicator.slidebar.ScrollBar;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import tv.danmaku.ijk.media.player.IjkMediaCodecInfo;
 
 /* loaded from: classes2.dex */
@@ -343,7 +347,7 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
             if (this.state == 0) {
                 updateTabSelectState(i);
                 if (z && getMeasuredWidth() != 0 && getItemOutView(i).getMeasuredWidth() != 0 && (i2 = this.mPreSelectedTabIndex) >= 0 && i2 < getTabCountInLayout()) {
-                    this.inRun.startScroll(getItemOutView(this.mPreSelectedTabIndex).getLeft(), getItemOutView(i).getLeft(), Math.min((int) (((Math.abs(r0 - r4) / getItemOutView(i).getMeasuredWidth()) + 1.0f) * 100.0f), IjkMediaCodecInfo.RANK_LAST_CHANCE));
+                    this.inRun.startScroll(getItemOutView(this.mPreSelectedTabIndex).getLeft(), getItemOutView(i).getLeft(), Math.min((int) (((Math.abs(getItemOutView(this.mPreSelectedTabIndex).getLeft() - getItemOutView(i).getLeft()) / getItemOutView(i).getMeasuredWidth()) + 1.0f) * 100.0f), IjkMediaCodecInfo.RANK_LAST_CHANCE));
                     return;
                 }
                 notifyPageScrolled(i, 0.0f, 0);

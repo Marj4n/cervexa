@@ -10,12 +10,9 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ProgressBar;
-
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.core.view.ViewCompat;
-
 import com.jieli.stream.dv.running2.R;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -250,8 +247,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         if (this.mMethodSetProgressFromUser != null) {
             try {
                 this.mMethodSetProgressFromUser.invoke(this, Integer.valueOf(i), Boolean.valueOf(z));
-            } catch (IllegalAccessException | IllegalArgumentException |
-                     InvocationTargetException unused2) {
+            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException unused2) {
             }
         } else {
             super.setProgress(i);
@@ -283,8 +279,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         }
     }
 
-    @Override
-    // androidx.appcompat.widget.AppCompatSeekBar, android.widget.AbsSeekBar, android.widget.ProgressBar, android.view.View
+    @Override // androidx.appcompat.widget.AppCompatSeekBar, android.widget.AbsSeekBar, android.widget.ProgressBar, android.view.View
     protected synchronized void onDraw(Canvas canvas) {
         if (!useViewRotation()) {
             int i = this.mRotationAngle;

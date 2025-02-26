@@ -31,6 +31,7 @@ class MiscUtils {
     }
 
     protected static int getScreenWidth(Context context) {
+        DisplayMetrics r1 = null;
         return (int) (r1.widthPixels / context.getResources().getDisplayMetrics().density);
     }
 

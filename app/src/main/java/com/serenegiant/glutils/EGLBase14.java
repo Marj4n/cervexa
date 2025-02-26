@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
 import com.serenegiant.glutils.EGLBase;
 import com.serenegiant.utils.BuildCheck;
 
@@ -138,16 +139,15 @@ class EGLBase14 extends EGLBase {
         this.mContext = EGL_NO_CONTEXT;
     }
 
-    @Override // com.serenegiant.glutils.EGLBase
     public EglSurface createFromSurface(Object obj) {
-        EglSurface eglSurface = new EglSurface(obj);
+        EglSurface eglSurface = new EglSurface(this, obj);
         eglSurface.makeCurrent();
         return eglSurface;
     }
 
     @Override // com.serenegiant.glutils.EGLBase
     public EglSurface createOffscreen(int i, int i2) {
-        EglSurface eglSurface = new EglSurface(i, i2);
+        EglSurface eglSurface = new EglSurface(this, i, i2);
         eglSurface.makeCurrent();
         return eglSurface;
     }

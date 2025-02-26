@@ -7,7 +7,7 @@ import com.jieli.lib.dv.control.connect.listener.OnConnectStateListener;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.CmdInfo;
 import com.jieli.lib.dv.control.json.bean.RequestCmd;
-import com.jieli.lib.dv.control.json.bean.settingCmd;
+import com.jieli.lib.dv.control.json.bean.SettingCmd;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Operation;
 import com.jieli.lib.dv.control.utils.Topic;
@@ -117,7 +117,7 @@ public class DeviceClient implements IClient {
         return getAddress();
     }
 
-    public void tryToPut(settingCmd settingCmd, SendResponse sendResponse) {
+    public void tryToPut(SettingCmd settingCmd, SendResponse sendResponse) {
         if (TextUtils.isEmpty(settingCmd.getOperation())) {
             settingCmd.setOperation(Operation.TYPE_PUT);
         }
@@ -132,7 +132,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToRecordVideo(boolean z, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_CTRL);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -153,14 +153,14 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToTakePhoto(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.PHOTO_CTRL);
         settingCmd.setOperation(Operation.TYPE_PUT);
         tryToPut(settingCmd, sendResponse);
     }
 
     public void tryToOpenRTStream(int i, int i2, int i3, int i4, int i5, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         if (i == 2) {
             settingCmd.setTopic(Topic.OPEN_REAR_RTS);
         } else {
@@ -177,7 +177,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToCloseRTStream(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(i == 2 ? Topic.CLOSE_PULL_RT_STREAM : Topic.CLOSE_RT_STREAM);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams("status", "1");
@@ -185,13 +185,13 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToKeepAlive(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.KEEP_ALIVE);
         tryToPut(settingCmd, sendResponse);
     }
 
     public void tryToAccessDevice(String str, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.APP_ACCESS);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams("type", "0", TopicKey.VERSION, str);
@@ -199,7 +199,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToRequestMediaFiles(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         if (i == 2) {
             settingCmd.setTopic(Topic.REAR_MEDIA_FILE_LIST);
         } else {
@@ -215,7 +215,7 @@ public class DeviceClient implements IClient {
             tryToRequestMediaFiles(i, sendResponse);
             return;
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         if (i == 2) {
             settingCmd.setTopic(Topic.REAR_MEDIA_FILE_LIST);
         } else {
@@ -227,7 +227,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToRequestPictureFiles(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         if (i == 2) {
             settingCmd.setTopic(Topic.REAR_MEDIA_FILE_LIST);
         } else {
@@ -239,7 +239,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToRequestVideoFiles(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         if (i == 2) {
             settingCmd.setTopic(Topic.REAR_MEDIA_FILE_LIST);
         } else {
@@ -261,7 +261,7 @@ public class DeviceClient implements IClient {
         if (TextUtils.isEmpty(str)) {
             return;
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.DATE_TIME);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.KEY_DATE, str);
@@ -276,14 +276,14 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToFormatTFCard(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.FORMAT_TF_CARD);
         settingCmd.setOperation(Operation.TYPE_PUT);
         tryToPut(settingCmd, sendResponse);
     }
 
     public void tryToRequestTFCardCapacity(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.TF_CARD_CAPACITY);
         settingCmd.setOperation("GET");
         tryToPut(settingCmd, sendResponse);
@@ -315,7 +315,7 @@ public class DeviceClient implements IClient {
             i3 = 1;
         }
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_CONTENT_THUMBNAILS);
         settingCmd.setOperation(Operation.TYPE_PUT);
         arrayMap.put(TopicKey.PATH, str);
@@ -330,7 +330,7 @@ public class DeviceClient implements IClient {
         if (i != 0) {
             i = 1;
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_THUMBNAILS_CTRL);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams("status", String.valueOf(i));
@@ -345,7 +345,7 @@ public class DeviceClient implements IClient {
         for (int i = 0; i < list.size(); i++) {
             arrayMap.put(TopicKey.FILE_NUM + i, list.get(i));
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.FILES_DELETE);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(arrayMap);
@@ -359,7 +359,7 @@ public class DeviceClient implements IClient {
         if (i < 0) {
             i = 0;
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.PLAYBACK);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -370,7 +370,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToChangePlaybackState(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.PLAYBACK_CTRL);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams("status", String.valueOf(i));
@@ -378,7 +378,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToFastForward(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.PLAYBACK_FAST_FORWARD);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.LEVEL, String.valueOf(i));
@@ -386,7 +386,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToResetDev(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.RESET);
         settingCmd.setOperation(Operation.TYPE_PUT);
         tryToPut(settingCmd, sendResponse);
@@ -397,7 +397,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetLanguage(String str, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.LANGUAGE);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.LAG, str);
@@ -405,7 +405,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetVideoMic(boolean z, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_MIC);
         settingCmd.setOperation(Operation.TYPE_PUT);
         if (z) {
@@ -420,7 +420,7 @@ public class DeviceClient implements IClient {
         if (TextUtils.isEmpty(str2)) {
             str2 = "";
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.AP_SSID_INFO);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -432,7 +432,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetSTAAccount(String str, String str2, boolean z, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.STA_SSID_INFO);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -445,7 +445,7 @@ public class DeviceClient implements IClient {
 
     @Deprecated
     public void tryToScreenShotTask(boolean z, int i, int i2, int i3, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.APP_SET_PROJECTION);
         settingCmd.setOperation(Operation.TYPE_PUT);
         if (z) {
@@ -464,7 +464,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToStreamingPush(boolean z, int i, int i2, int i3, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.NET_SCR);
         settingCmd.setOperation(Operation.TYPE_PUT);
         if (z) {
@@ -483,7 +483,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetPhotoQuality(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.PHOTO_QUALITY);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.QUA, String.valueOf(i));
@@ -491,7 +491,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetVideoParkCar(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_PAR_CAR);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.PAR, String.valueOf(i));
@@ -499,7 +499,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetGravitySenor(int i, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.GRA_SEN);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.GRA, String.valueOf(i));
@@ -507,7 +507,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetTimeWatermark(boolean z, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_DATE);
         settingCmd.setOperation(Operation.TYPE_PUT);
         if (z) {
@@ -519,14 +519,14 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToCollisionVideo(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.COLLISION_DETECTION_VIDEO);
         settingCmd.setOperation(Operation.TYPE_PUT);
         tryToPut(settingCmd, sendResponse);
     }
 
     public void tryToRTIntercom(boolean z, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.RT_TALK_CTL);
         settingCmd.setOperation(Operation.TYPE_PUT);
         if (z) {
@@ -538,7 +538,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetRecordParam(int i, int i2, int i3, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_PARAM);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -553,7 +553,7 @@ public class DeviceClient implements IClient {
         if (TextUtils.isEmpty(str)) {
             return;
         }
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.FILE_LOCK);
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.PATH, str, "status", z ? "1" : "0");
@@ -568,7 +568,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetFrontVideoParams(int i, int i2, int i3, int i4, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.VIDEO_PARAM);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -581,7 +581,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSetRearVideoParams(int i, int i2, int i3, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.PULL_VIDEO_PARAM);
         settingCmd.setOperation(Operation.TYPE_PUT);
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
@@ -593,14 +593,14 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToSaveCycVideo(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.CYC_SAVE_VIDEO);
         settingCmd.setOperation(Operation.TYPE_PUT);
         tryToPut(settingCmd, sendResponse);
     }
 
     public void tryToResetSystem(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic("SYSTEM_DEFAULT");
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.DEF, String.valueOf(1));
@@ -608,7 +608,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToToggleBootSound(boolean z, SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic(Topic.BOARD_VOICE);
         settingCmd.setOperation(Operation.TYPE_PUT);
         if (z) {
@@ -620,7 +620,7 @@ public class DeviceClient implements IClient {
     }
 
     public void tryToFactoryReset(SendResponse sendResponse) {
-        settingCmd settingCmd = new settingCmd();
+        SettingCmd settingCmd = new SettingCmd();
         settingCmd.setTopic("SYSTEM_DEFAULT");
         settingCmd.setOperation(Operation.TYPE_PUT);
         settingCmd.setParams(TopicKey.DEF, "1");

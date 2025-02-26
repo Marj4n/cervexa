@@ -104,7 +104,7 @@ public class ReentrantReadWriteWeakRef<T> {
     }
 
     public T swap(ReentrantReadWriteWeakRef<T> reentrantReadWriteWeakRef) {
-        return set((ReentrantReadWriteWeakRef) reentrantReadWriteWeakRef);
+        return (T) set((ReentrantReadWriteWeakRef) reentrantReadWriteWeakRef);
     }
 
     public boolean isEmpty() {

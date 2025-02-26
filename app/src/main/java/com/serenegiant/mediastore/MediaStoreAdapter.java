@@ -56,7 +56,7 @@ public class MediaStoreAdapter extends CursorAdapter {
         this.mInflater = LayoutInflater.from(context);
         this.mCr = context.getContentResolver();
         this.mQueryHandler = new MyAsyncQueryHandler(this.mCr, this);
-        this.mMemClass = ((ActivityManager) context.getSystemService("activity")).getMemoryClass();
+        this.mMemClass = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
         this.mLayoutId = i;
         onContentChanged();
     }
@@ -307,7 +307,7 @@ public class MediaStoreAdapter extends CursorAdapter {
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final Bitmap getImageThumbnail(ContentResolver contentResolver, long j, long j2, int i, int i2) throws IOException {
-        Bitmap image;
+        Bitmap image = null;
         String key = getKey(j, j2);
         Bitmap bitmap = sThumbnailCache.get(key);
         if (bitmap == null) {
@@ -375,12 +375,8 @@ public class MediaStoreAdapter extends CursorAdapter {
         }
 
         @Override // com.serenegiant.mediastore.MediaStoreHelper.ImageLoader
-        protected Bitmap loadBitmap(ContentResolver contentResolver, int i, int i2, long j, int i3, int i4) {
+        protected Bitmap loadBitmap(ContentResolver contentResolver, int i, int i2, long j, int i3, int i4) throws IOException {
             Bitmap bitmap = null;
-            try {
-            } catch (IOException e) {
-                Log.w(MediaStoreAdapter.TAG, e);
-            }
             if (i != 1) {
                 if (i == 3) {
                     bitmap = MediaStoreAdapter.getVideoThumbnail(contentResolver, i2, j, i3, i4);

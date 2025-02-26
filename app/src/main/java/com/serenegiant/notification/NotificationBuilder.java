@@ -82,262 +82,262 @@ public abstract class NotificationBuilder extends NotificationCompat.Builder {
     public static void showNotification(Context context, String str, int i, String str2, String str3, String str4, int i2, final IntentFactory intentFactory) {
         NotificationBuilder notificationBuilder = new NotificationBuilder(context, str2, i2) { // from class: com.serenegiant.notification.NotificationBuilder.1
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder addAction(int i3, CharSequence charSequence, PendingIntent pendingIntent) {
+            public /* bridge */ /* synthetic */ NotificationBuilder addAction(int i3, CharSequence charSequence, PendingIntent pendingIntent) {
                 return super.addAction(i3, charSequence, pendingIntent);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder addAction(NotificationCompat.Action action) {
+            public /* bridge */ /* synthetic */ NotificationBuilder addAction(NotificationCompat.Action action) {
                 return super.addAction(action);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder addExtras(Bundle bundle) {
+            public /* bridge */ /* synthetic */ NotificationBuilder addExtras(Bundle bundle) {
                 return super.addExtras(bundle);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder addPerson(String str5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder addPerson(String str5) {
                 return super.addPerson(str5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder extend(NotificationCompat.Extender extender) {
+            public /* bridge */ /* synthetic */ NotificationBuilder extend(NotificationCompat.Extender extender) {
                 return super.extend(extender);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setAutoCancel(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setAutoCancel(boolean z) {
                 return super.setAutoCancel(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setBadgeIconType(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setBadgeIconType(int i3) {
                 return super.setBadgeIconType(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setCategory(String str5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setCategory(String str5) {
                 return super.setCategory(str5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setChannelId(String str5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setChannelId(String str5) {
                 return super.setChannelId(str5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setColor(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setColor(int i3) {
                 return super.setColor(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setColorized(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setColorized(boolean z) {
                 return super.setColorized(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setContent(RemoteViews remoteViews) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setContent(RemoteViews remoteViews) {
                 return super.setContent(remoteViews);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setContentInfo(CharSequence charSequence) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setContentInfo(CharSequence charSequence) {
                 return super.setContentInfo(charSequence);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setContentIntent(PendingIntent pendingIntent) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setContentIntent(PendingIntent pendingIntent) {
                 return super.setContentIntent(pendingIntent);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setContentText(CharSequence charSequence) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setContentText(CharSequence charSequence) {
                 return super.setContentText(charSequence);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setContentTitle(CharSequence charSequence) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setContentTitle(CharSequence charSequence) {
                 return super.setContentTitle(charSequence);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setCustomBigContentView(RemoteViews remoteViews) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setCustomBigContentView(RemoteViews remoteViews) {
                 return super.setCustomBigContentView(remoteViews);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setCustomContentView(RemoteViews remoteViews) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setCustomContentView(RemoteViews remoteViews) {
                 return super.setCustomContentView(remoteViews);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setCustomHeadsUpContentView(RemoteViews remoteViews) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setCustomHeadsUpContentView(RemoteViews remoteViews) {
                 return super.setCustomHeadsUpContentView(remoteViews);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setDefaults(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setDefaults(int i3) {
                 return super.setDefaults(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setDeleteIntent(PendingIntent pendingIntent) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setDeleteIntent(PendingIntent pendingIntent) {
                 return super.setDeleteIntent(pendingIntent);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setExtras(Bundle bundle) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setExtras(Bundle bundle) {
                 return super.setExtras(bundle);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setFullScreenIntent(PendingIntent pendingIntent, boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setFullScreenIntent(PendingIntent pendingIntent, boolean z) {
                 return super.setFullScreenIntent(pendingIntent, z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setGroup(String str5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setGroup(String str5) {
                 return super.setGroup(str5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setGroupAlertBehavior(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setGroupAlertBehavior(int i3) {
                 return super.setGroupAlertBehavior(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setGroupSummary(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setGroupSummary(boolean z) {
                 return super.setGroupSummary(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setLargeIcon(Bitmap bitmap) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setLargeIcon(Bitmap bitmap) {
                 return super.setLargeIcon(bitmap);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setLights(int i3, int i4, int i5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setLights(int i3, int i4, int i5) {
                 return super.setLights(i3, i4, i5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setLocalOnly(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setLocalOnly(boolean z) {
                 return super.setLocalOnly(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setNumber(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setNumber(int i3) {
                 return super.setNumber(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setOngoing(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setOngoing(boolean z) {
                 return super.setOngoing(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setOnlyAlertOnce(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setOnlyAlertOnce(boolean z) {
                 return super.setOnlyAlertOnce(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setPriority(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setPriority(int i3) {
                 return super.setPriority(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setProgress(int i3, int i4, boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setProgress(int i3, int i4, boolean z) {
                 return super.setProgress(i3, i4, z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setPublicVersion(Notification notification) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setPublicVersion(Notification notification) {
                 return super.setPublicVersion(notification);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setRemoteInputHistory(CharSequence[] charSequenceArr) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setRemoteInputHistory(CharSequence[] charSequenceArr) {
                 return super.setRemoteInputHistory(charSequenceArr);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setShortcutId(String str5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setShortcutId(String str5) {
                 return super.setShortcutId(str5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setShowWhen(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setShowWhen(boolean z) {
                 return super.setShowWhen(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setSmallIcon(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setSmallIcon(int i3) {
                 return super.setSmallIcon(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setSmallIcon(int i3, int i4) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setSmallIcon(int i3, int i4) {
                 return super.setSmallIcon(i3, i4);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setSortKey(String str5) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setSortKey(String str5) {
                 return super.setSortKey(str5);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setSound(Uri uri) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setSound(Uri uri) {
                 return super.setSound(uri);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setSound(Uri uri, int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setSound(Uri uri, int i3) {
                 return super.setSound(uri, i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setStyle(NotificationCompat.Style style) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setStyle(NotificationCompat.Style style) {
                 return super.setStyle(style);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setSubText(CharSequence charSequence) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setSubText(CharSequence charSequence) {
                 return super.setSubText(charSequence);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setTicker(CharSequence charSequence) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setTicker(CharSequence charSequence) {
                 return super.setTicker(charSequence);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setTicker(CharSequence charSequence, RemoteViews remoteViews) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setTicker(CharSequence charSequence, RemoteViews remoteViews) {
                 return super.setTicker(charSequence, remoteViews);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setTimeoutAfter(long j) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setTimeoutAfter(long j) {
                 return super.setTimeoutAfter(j);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setUsesChronometer(boolean z) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setUsesChronometer(boolean z) {
                 return super.setUsesChronometer(z);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setVibrate(long[] jArr) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setVibrate(long[] jArr) {
                 return super.setVibrate(jArr);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setVisibility(int i3) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setVisibility(int i3) {
                 return super.setVisibility(i3);
             }
 
             @Override // com.serenegiant.notification.NotificationBuilder, androidx.core.app.NotificationCompat.Builder
-            public /* bridge */ /* synthetic */ NotificationCompat.Builder setWhen(long j) {
+            public /* bridge */ /* synthetic */ NotificationBuilder setWhen(long j) {
                 return super.setWhen(j);
             }
 

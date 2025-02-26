@@ -123,12 +123,12 @@ public class BluetoothManager {
         if (defaultAdapter == null || !defaultAdapter.isEnabled()) {
             throw new IllegalStateException("bluetoothに対応していないか無効になっている");
         }
-        if (defaultAdapter.getScanMode() != 23) {
+        if (defaultAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
             Intent intent = new Intent("android.bluetooth.adapter.action.REQUEST_DISCOVERABLE");
             intent.putExtra("android.bluetooth.adapter.extra.DISCOVERABLE_DURATION", i);
             activity.startActivity(intent);
         }
-        return defaultAdapter.getScanMode() == 23;
+        return defaultAdapter.getScanMode() == BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE;
     }
 
     public static boolean requestDiscoverable(Fragment fragment, int i) throws IllegalStateException {
@@ -136,14 +136,14 @@ public class BluetoothManager {
         if (defaultAdapter == null || !defaultAdapter.isEnabled()) {
             throw new IllegalStateException("bluetoothに対応していないか無効になっている");
         }
-        if (defaultAdapter.getScanMode() != 23) {
+        if (defaultAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
             Intent intent = new Intent("android.bluetooth.adapter.action.REQUEST_DISCOVERABLE");
             if (i > 0 && i <= 300) {
                 intent.putExtra("android.bluetooth.adapter.extra.DISCOVERABLE_DURATION", i);
             }
             fragment.startActivity(intent);
         }
-        return defaultAdapter.getScanMode() == 23;
+        return defaultAdapter.getScanMode() == BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE;
     }
 
     public BluetoothManager(Context context, String str, UUID uuid, BluetoothManagerCallback bluetoothManagerCallback) {
@@ -608,8 +608,8 @@ public class BluetoothManager {
     }
 
     private class ReceiverThread extends BluetoothSocketThread {
-        private final InputStream mmInStream;
-        private final OutputStream mmOutStream;
+        private InputStream mmInStream = null;
+        private OutputStream mmOutStream = null;
 
         public ReceiverThread(BluetoothSocket bluetoothSocket) {
             super("ReceiverThread:" + BluetoothManager.this.mName, bluetoothSocket);
@@ -624,13 +624,17 @@ public class BluetoothManager {
             try {
                 outputStream = bluetoothSocket.getOutputStream();
             } catch (IOException e2) {
-                e = e2;
+                IOException e = e2;
                 Log.e(BluetoothManager.TAG, "temp sockets not created", e);
                 this.mmInStream = inputStream;
                 this.mmOutStream = outputStream;
             }
-            this.mmInStream = inputStream;
-            this.mmOutStream = outputStream;
+            if (this.mmInStream == null) {
+                this.mmInStream = inputStream;
+            }
+            if (this.mmOutStream == null) {
+                this.mmOutStream = outputStream;
+            }
         }
 
         @Override // java.lang.Thread, java.lang.Runnable

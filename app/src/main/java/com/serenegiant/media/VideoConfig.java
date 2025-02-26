@@ -62,6 +62,7 @@ public class VideoConfig {
             f = 1.0f;
         } else {
             try {
+                float r0 = 0;
                 f = (float) Math.ceil(IFI / r0);
             } catch (Exception unused) {
                 f = IFRAME_INTERVAL;

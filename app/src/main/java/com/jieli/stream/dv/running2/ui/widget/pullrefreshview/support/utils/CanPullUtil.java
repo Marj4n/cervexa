@@ -5,16 +5,18 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.ScrollView;
+
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.impl.Pullable;
 
 /* loaded from: classes.dex */
 public class CanPullUtil {
     /* JADX WARN: Multi-variable type inference failed */
     public static Pullable getPullAble(View view) {
-       if (view == null) {
+        if (view == null) {
             return null;
         }
         if (view instanceof Pullable) {

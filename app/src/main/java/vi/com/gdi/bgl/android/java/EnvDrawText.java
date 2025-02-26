@@ -31,7 +31,7 @@ public class EnvDrawText {
             } else {
                 pt.reset();
             }
-            String phoneType = SysOSUtil.getPhoneType();
+            String phoneType = SysOSUtil.getDeviceID();
             int i7 = (phoneType == null || !phoneType.equals("vivo X3L")) ? i2 : 0;
             if (i7 == 1) {
                 create = Typeface.create(Typeface.DEFAULT, 1);
@@ -148,6 +148,7 @@ public class EnvDrawText {
                 int i11 = 0;
                 int i12 = 92;
                 int i13 = 0;
+                int r11 = 0;
                 while (true) {
                     int indexOf3 = str.indexOf(i12, i11);
                     if (indexOf3 <= 0) {
@@ -203,7 +204,7 @@ public class EnvDrawText {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static short[] getTextSize(java.lang.String r5, int r6, int r7) {
+    public static short[] getTextSize(String r5, int r6, int r7) {
         /*
             int r0 = r5.length()
             if (r0 != 0) goto L8

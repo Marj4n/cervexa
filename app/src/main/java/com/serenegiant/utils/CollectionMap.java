@@ -11,12 +11,6 @@ import java.util.Set;
 public class CollectionMap<K, V> implements Map<K, Collection<V>> {
     private final Map<K, Collection<V>> contents = createContentsMap();
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.Map
-    public /* bridge */ /* synthetic */ Object put(Object obj, Object obj2) {
-        return put((CollectionMap<K, V>) obj, (Collection) obj2);
-    }
-
     protected Map<K, Collection<V>> createContentsMap() {
         return new HashMap();
     }

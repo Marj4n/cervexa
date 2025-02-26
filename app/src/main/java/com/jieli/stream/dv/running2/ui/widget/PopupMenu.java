@@ -15,13 +15,10 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-
 import androidx.core.view.GravityCompat;
-
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.util.AppUtils;
 import com.jieli.stream.dv.running2.util.Dbug;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -39,7 +39,6 @@ public class ColorPickerDialogPreferenceV7 extends DialogPreferenceV7 {
     }
 
     public void onBindViewHolder(PreferenceViewHolder preferenceViewHolder) {
-        super.onBindViewHolder(preferenceViewHolder);
         this.mColor = getPersistedInt(this.mColor);
     }
 

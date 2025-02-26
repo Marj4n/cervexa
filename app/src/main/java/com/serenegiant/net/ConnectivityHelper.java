@@ -213,7 +213,7 @@ public class ConnectivityHelper {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void updateActiveNetwork(Network network) {
-        int i;
+        int i = 0;
         ConnectivityManager requireConnectivityManager = requireConnectivityManager();
         NetworkCapabilities networkCapabilities = requireConnectivityManager.getNetworkCapabilities(network);
         NetworkInfo networkInfo = requireConnectivityManager.getNetworkInfo(network);
@@ -430,7 +430,7 @@ public class ConnectivityHelper {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private static boolean isNetworkReachable(android.net.NetworkCapabilities r5, android.net.NetworkInfo r6) {
+    private static boolean isNetworkReachable(NetworkCapabilities r5, NetworkInfo r6) {
         /*
             android.net.NetworkInfo$DetailedState r6 = r6.getDetailedState()
             android.net.NetworkInfo$DetailedState r0 = android.net.NetworkInfo.DetailedState.CONNECTED

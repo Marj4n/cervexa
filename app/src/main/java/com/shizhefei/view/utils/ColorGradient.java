@@ -24,8 +24,7 @@ public class ColorGradient {
         while (true) {
             if (i2 < this.color2Values.length) {
                 int[] iArr2 = this.color1Values;
-                iArr[i2] = (int) (iArr2[i2] + ((((r3[i2] - iArr2[i2]) * 1.0d) / this.count) * i));
-                i2++;
+                iArr[i2] = (int) (iArr2[i2] + ((((this.color2Values[i2] - iArr2[i2]) * 1.0d) / this.count) * i));
             } else {
                 return Color.argb(iArr[0], iArr[1], iArr[2], iArr[3]);
             }

@@ -62,6 +62,7 @@ public final class ItemPicker extends LinearLayout {
             public void run() {
                 if (!ItemPicker.this.mIncrement) {
                     if (ItemPicker.this.mDecrement) {
+                        ItemPicker r0 = null;
                         ItemPicker.this.changeCurrent(r0.mCurrentValue - 1);
                         ItemPicker.this.mHandler.postDelayed(this, ItemPicker.this.mSpeed);
                         return;
@@ -90,7 +91,7 @@ public final class ItemPicker extends LinearLayout {
         int i4 = obtainStyledAttributes.getInt(R.styleable.ItemPicker_ItemPickerCurrentItemValue, -1);
         int i5 = obtainStyledAttributes.getInt(R.styleable.ItemPicker_ItemPickerSpeed, -1);
         obtainStyledAttributes.recycle();
-        View.OnClickListener onClickListener = new View.OnClickListener() { // from class: com.serenegiant.widget.ItemPicker.2
+        OnClickListener onClickListener = new OnClickListener() { // from class: com.serenegiant.widget.ItemPicker.2
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 ItemPicker itemPicker = ItemPicker.this;
@@ -102,11 +103,12 @@ public final class ItemPicker extends LinearLayout {
                     ItemPicker itemPicker2 = ItemPicker.this;
                     itemPicker2.changeCurrent(itemPicker2.mCurrentValue + 1);
                 } else if (R.id.decrement == view.getId()) {
+                    ItemPicker r3 = null;
                     ItemPicker.this.changeCurrent(r3.mCurrentValue - 1);
                 }
             }
         };
-        View.OnFocusChangeListener onFocusChangeListener = new View.OnFocusChangeListener() { // from class: com.serenegiant.widget.ItemPicker.3
+        OnFocusChangeListener onFocusChangeListener = new OnFocusChangeListener() { // from class: com.serenegiant.widget.ItemPicker.3
             @Override // android.view.View.OnFocusChangeListener
             public void onFocusChange(View view, boolean z) {
                 if (z) {
@@ -115,7 +117,7 @@ public final class ItemPicker extends LinearLayout {
                 ItemPicker.this.validateInput(view);
             }
         };
-        View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() { // from class: com.serenegiant.widget.ItemPicker.4
+        OnLongClickListener onLongClickListener = new OnLongClickListener() { // from class: com.serenegiant.widget.ItemPicker.4
             @Override // android.view.View.OnLongClickListener
             public boolean onLongClick(View view) {
                 ItemPicker.this.mText.clearFocus();
@@ -188,7 +190,7 @@ public final class ItemPicker extends LinearLayout {
     }
 
     @Override // android.view.View
-    public void setOnKeyListener(View.OnKeyListener onKeyListener) {
+    public void setOnKeyListener(OnKeyListener onKeyListener) {
         super.setOnKeyListener(onKeyListener);
         this.mIncrementButton.setOnKeyListener(onKeyListener);
         this.mDecrementButton.setOnKeyListener(onKeyListener);

@@ -411,7 +411,7 @@ public class UdpBeacon {
 
         @Override // java.lang.Runnable
         public void run() {
-            int receive;
+            int receive = 0;
             ByteBuffer allocateDirect = ByteBuffer.allocateDirect(256);
             UdpSocket udpSocket = this.mUdpSocket;
             long elapsedRealtime = SystemClock.elapsedRealtime();

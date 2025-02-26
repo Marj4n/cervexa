@@ -300,23 +300,17 @@ public class MediaStoreImageAdapter extends PagerAdapter {
             try {
                 bitmap = MediaStoreHelper.getImage(contentResolver, j, i3, i4);
                 if (bitmap != null) {
-                    try {
-                        int width = bitmap.getWidth();
-                        int height = bitmap.getHeight();
-                        Rect rect = new Rect();
-                        this.mParent.copyBounds(rect);
-                        int centerX = rect.centerX();
-                        int centerY = rect.centerY();
-                        rect.set(centerX - (width / 2), centerY - (height / width), centerX + (width / 2), centerY + (height / 2));
-                        this.mParent.onBoundsChange(rect);
-                    } catch (IOException e) {
-                        e = e;
-                        Log.w(MediaStoreImageAdapter.TAG, e);
-                        return bitmap;
-                    }
+                    int width = bitmap.getWidth();
+                    int height = bitmap.getHeight();
+                    Rect rect = new Rect();
+                    this.mParent.copyBounds(rect);
+                    int centerX = rect.centerX();
+                    int centerY = rect.centerY();
+                    rect.set(centerX - (width / 2), centerY - (height / width), centerX + (width / 2), centerY + (height / 2));
+                    this.mParent.onBoundsChange(rect);
                 }
             } catch (IOException e2) {
-                e = e2;
+                IOException e = e2;
                 bitmap = null;
             }
             return bitmap;

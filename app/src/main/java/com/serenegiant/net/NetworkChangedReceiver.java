@@ -91,7 +91,7 @@ public class NetworkChangedReceiver extends BroadcastReceiver {
         }
     }
 
-    public static NetworkChangedReceiver registerLocal(Context context, OnNetworkChangedListener onNetworkChangedListener) {
+    public NetworkChangedReceiver registerLocal(Context context, OnNetworkChangedListener onNetworkChangedListener) {
         Handler handler;
         final int i;
         final int i2;

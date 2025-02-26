@@ -84,6 +84,7 @@ public class AudioSampler extends IAudioSampler {
             while (AudioSampler.this.mIsCapturing && i2 > 0) {
                 AudioRecord createAudioRecord = IAudioSampler.createAudioRecord(AudioSampler.this.AUDIO_SOURCE, AudioSampler.this.SAMPLING_RATE, AudioSampler.this.CHANNEL_COUNT, 2, AudioSampler.this.BUFFER_SIZE);
                 if (createAudioRecord != null) {
+                    Throwable e;
                     try {
                         try {
                             if (AudioSampler.this.mIsCapturing) {
@@ -152,12 +153,12 @@ public class AudioSampler extends IAudioSampler {
                                                             i++;
                                                             AudioSampler.this.recycle(obtain);
                                                         }
-                                                    } catch (Exception e) {
-                                                        Log.e(AudioSampler.TAG, "AudioRecord#read failed:" + e);
+                                                    } catch (Exception e2) {
+                                                        Log.e(AudioSampler.TAG, "AudioRecord#read failed:" + e2);
                                                         i++;
                                                         i2 += -1;
                                                         AudioSampler.this.recycle(obtain);
-                                                        AudioSampler.this.callOnError(e);
+                                                        AudioSampler.this.callOnError(e2);
                                                     }
                                                 }
                                             }
@@ -165,26 +166,11 @@ public class AudioSampler extends IAudioSampler {
                                                 break;
                                             }
                                         } catch (Throwable th2) {
-                                            th = th2;
+                                            Throwable th = th2;
+                                            i = 0;
+                                            createAudioRecord.stop();
+                                            throw th;
                                         }
-                                    }
-                                }
-                                i2--;
-                                try {
-                                    createAudioRecord.stop();
-                                } catch (Exception e2) {
-                                    e = e2;
-                                    i2--;
-                                    AudioSampler.this.callOnError(e);
-                                    if (AudioSampler.this.mIsCapturing) {
-                                        while (AudioSampler.this.mIsCapturing) {
-                                            try {
-                                                Thread.sleep(100L);
-                                            } catch (InterruptedException unused) {
-                                            }
-                                        }
-                                    } else {
-                                        continue;
                                     }
                                 }
                             } else {
@@ -193,13 +179,17 @@ public class AudioSampler extends IAudioSampler {
                         } finally {
                             createAudioRecord.release();
                         }
-                    } catch (Exception e3) {
+                    } catch (Throwable e3) {
                         e = e3;
                         i = 0;
                     }
                     if (AudioSampler.this.mIsCapturing && i > 0 && i2 > 0) {
                         for (int i3 = 0; AudioSampler.this.mIsCapturing && i3 < 5; i3++) {
-                            Thread.sleep(100L);
+                            try {
+                                Thread.sleep(100L);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                         }
                     }
                 } else {

@@ -1,5 +1,6 @@
 package com.serenegiant.mediastore;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.database.Cursor;
@@ -95,6 +96,7 @@ public class MediaStoreHelper {
 
         protected abstract ImageLoader createThumbnailLoader();
 
+        @SuppressLint("RestrictedApi")
         public LoaderDrawable(ContentResolver contentResolver, int i, int i2) {
             this.mContentResolver = contentResolver;
             this.mDebugPaint.setColor(SupportMenu.CATEGORY_MASK);
@@ -220,7 +222,7 @@ public class MediaStoreHelper {
         protected final LoaderDrawable mParent;
         private final FutureTask<Bitmap> mTask = new FutureTask<>(this, null);
 
-        protected abstract Bitmap loadBitmap(ContentResolver contentResolver, int i, int i2, long j, int i3, int i4);
+        protected abstract Bitmap loadBitmap(ContentResolver contentResolver, int i, int i2, long j, int i3, int i4) throws IOException;
 
         public ImageLoader(LoaderDrawable loaderDrawable) {
             this.mParent = loaderDrawable;
@@ -249,7 +251,11 @@ public class MediaStoreHelper {
                 j = this.mId;
             }
             if (!this.mTask.isCancelled()) {
-                this.mBitmap = loadBitmap(this.mParent.mContentResolver, i, i2, j, this.mParent.mWidth, this.mParent.mHeight);
+                try {
+                    this.mBitmap = loadBitmap(this.mParent.mContentResolver, i, i2, j, this.mParent.mWidth, this.mParent.mHeight);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
             if (this.mTask.isCancelled() || j != this.mId || this.mBitmap == null) {
                 return;

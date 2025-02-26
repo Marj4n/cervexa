@@ -60,20 +60,16 @@ public class JSONHelper {
         }
     }
 
-    public static int optInt(JSONObject jSONObject, String str, int i) {
+    public static int optInt(JSONObject jSONObject, String str, int i) throws JSONException {
         if (!jSONObject.has(str)) {
             return i;
         }
         try {
             try {
-                try {
-                    return jSONObject.getInt(str);
-                } catch (Exception e) {
-                    Log.w(TAG, e);
-                    return i;
-                }
-            } catch (JSONException unused) {
-                return Integer.parseInt(jSONObject.getString(str));
+                return jSONObject.getInt(str);
+            } catch (Exception e) {
+                Log.w(TAG, e);
+                return i;
             }
         } catch (Exception unused2) {
             return jSONObject.getBoolean(str) ? 1 : 0;
@@ -87,12 +83,6 @@ public class JSONHelper {
         try {
             return jSONObject.getBoolean(str);
         } catch (Exception unused) {
-            try {
-            } catch (JSONException unused2) {
-                if (jSONObject.getDouble(str) != Utils.DOUBLE_EPSILON) {
-                    return true;
-                }
-            }
             return jSONObject.getInt(str) != 0;
         }
     }

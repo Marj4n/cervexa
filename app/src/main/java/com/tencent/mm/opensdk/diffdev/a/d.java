@@ -9,8 +9,10 @@ import com.tencent.mm.opensdk.diffdev.OAuthListener;
 import com.tencent.mm.opensdk.utils.Log;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 /* loaded from: classes2.dex */
-public final class d extends AsyncTask<Void, Void, a> {
+public final class d extends AsyncTask<Void, Void, d.a> {
     private static final String h = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/oauth_qrcode.png";
     private static String i;
     private String appId;
@@ -34,7 +36,7 @@ public final class d extends AsyncTask<Void, Void, a> {
         }
 
         public static a a(byte[] bArr) {
-            OAuthErrCode oAuthErrCode;
+            OAuthErrCode oAuthErrCode = null;
             String format;
             a aVar = new a();
             if (bArr == null || bArr.length == 0) {
@@ -108,11 +110,16 @@ public final class d extends AsyncTask<Void, Void, a> {
     }
 
     @Override // android.os.AsyncTask
-    protected final /* synthetic */ a doInBackground(Void[] voidArr) {
+    protected final /* synthetic */ a doInBackground(Void... voidArr) {
         Log.i("MicroMsg.SDK.GetQRCodeTask", "external storage available = false");
         String format = String.format(i, this.appId, this.j, this.k, this.scope, this.signature);
         long currentTimeMillis = System.currentTimeMillis();
-        byte[] a2 = e.a(format, -1);
+        byte[] a2 = null;
+        try {
+            a2 = e.a(format, -1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Log.d("MicroMsg.SDK.GetQRCodeTask", String.format("doInBackground, url = %s, time consumed = %d(ms)", format, Long.valueOf(System.currentTimeMillis() - currentTimeMillis)));
         return a.a(a2);
     }

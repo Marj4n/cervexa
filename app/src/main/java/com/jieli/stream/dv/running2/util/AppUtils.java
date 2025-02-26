@@ -19,7 +19,6 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.dv.running2.R;
@@ -28,12 +27,10 @@ import com.jieli.stream.dv.running2.bean.DeviceDesc;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.bean.ItemBean;
 import com.jieli.stream.dv.running2.bean.SDFileInfo;
-import com.jieli.stream.dv.running2.bean.ServerInfo;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.ui.base.BaseActivity;
 import com.serenegiant.usb.UVCCamera;
 import com.zh_jieli.juson.netcheck.OuterChecker;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
@@ -50,12 +47,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
-
 import org.apache.commons.net.ftp.FTPReply;
+import org.apache.hadoop.hbase.protobuf.generated.AdminProtos;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /* loaded from: classes.dex */
@@ -89,15 +85,8 @@ public class AppUtils implements IConstant {
         return iArr;
     }
 
-    public static int getResourceId(Context context, String str, String str2) {
-        if (context == null || TextUtils.isEmpty(str) || TextUtils.isEmpty(str2)) {
-            return 0;
-        }
-        return context.getResources().getIdentifier(str2, str, context.getPackageName());
-    }
-
     public static int[] getWindowParams(Context context) {
-        WindowManager windowManager = (WindowManager) context.getSystemService("window");
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(displayMetrics);
         int[] iArr = new int[3];
@@ -108,11 +97,11 @@ public class AppUtils implements IConstant {
     }
 
     public static int getScreenWidth(Context context) {
-        return ((WindowManager) context.getSystemService("window")).getDefaultDisplay().getWidth();
+        return ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
     }
 
     public static int getScreenHeight(Context context) {
-        return ((WindowManager) context.getSystemService("window")).getDefaultDisplay().getHeight();
+        return ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getHeight();
     }
 
     public static int dp2px(Context context, int i) {
@@ -123,7 +112,7 @@ public class AppUtils implements IConstant {
     }
 
     public static boolean isAppInBackground(Context context) {
-        ActivityManager activityManager = (ActivityManager) context.getSystemService("activity");
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         if (activityManager == null) {
             return false;
         }
@@ -680,7 +669,7 @@ public class AppUtils implements IConstant {
                     e5.printStackTrace();
                 }
             }
-            throw th2;
+            throw th;
         }
     }
 
@@ -1183,7 +1172,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private static ServerInfo parseServerTxtInfo(String r9, String r10) {
+    private static AdminProtos.ServerInfo parseServerTxtInfo(String r9, String r10) {
         /*
             boolean r0 = android.text.TextUtils.isEmpty(r9)
             r1 = 0

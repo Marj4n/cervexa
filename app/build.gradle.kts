@@ -42,12 +42,10 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
-    implementation(libs.constraintlayout)
     implementation(libs.media)
     implementation(libs.volley)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-    //noinspection DuplicatePlatformClasses
     implementation(libs.constraintlayout.solver)
     implementation(libs.util)
     implementation(libs.api.explorer.sdk)
@@ -64,4 +62,8 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
     implementation(libs.mpandroidchart)
+
+    implementation("com.sun.jersey:jersey-server:1.9") {
+        exclude(group = "com.sun.jersey", module = "jersey-core")
+    }
 }

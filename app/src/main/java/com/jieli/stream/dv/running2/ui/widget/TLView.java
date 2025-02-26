@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,15 +19,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.InputDeviceCompat;
-
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.util.Dbug;
 import com.jieli.stream.dv.running2.util.IConstant;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -171,9 +169,10 @@ public class TLView extends ViewGroup implements IConstant {
         this(context, null);
     }
 
+    @SuppressLint("RestrictedApi")
     private void init() {
         this.mDensity = getResources().getDisplayMetrics().density;
-        Display defaultDisplay = ((WindowManager) getContext().getSystemService("window")).getDefaultDisplay();
+        Display defaultDisplay = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         Point point = new Point();
         defaultDisplay.getSize(point);
         this.mDeviceWidth = point.x;
@@ -265,7 +264,7 @@ public class TLView extends ViewGroup implements IConstant {
             if (childAt.getVisibility() == 8) {
                 return;
             }
-            childAt.measure(View.MeasureSpec.makeMeasureSpec(i5, Integer.MIN_VALUE), View.MeasureSpec.makeMeasureSpec(measuredHeight, Integer.MIN_VALUE));
+            childAt.measure(View.MeasureSpec.makeMeasureSpec(i5, MeasureSpec.AT_MOST), View.MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.AT_MOST));
             int measuredWidth2 = childAt.getMeasuredWidth();
             int measuredHeight2 = childAt.getMeasuredHeight();
             if (i6 + measuredWidth2 >= measuredWidth) {

@@ -7,9 +7,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
 
+import java.io.IOException;
+
 /* loaded from: classes2.dex */
 public final class e {
-    public static byte[] a(String str, int i) {
+    public static byte[] a(String str, int i) throws IOException {
         String str2;
         StringBuilder sb;
         String message;
