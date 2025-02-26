@@ -10,11 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
+
 import androidx.core.app.NotificationManagerCompat;
+
 import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.serenegiant.utils.BuildCheck;
 import com.serenegiant.utils.ObjectHelper;
 import com.serenegiant.utils.XmlHelper;
+
 import java.io.IOException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -25,10 +28,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-
-import tencent.open.SocialConstants;
 
 /* loaded from: classes2.dex */
 public class ChannelBuilder {
@@ -172,7 +174,7 @@ public class ChannelBuilder {
                                     c = 65535;
                                     break;
                                 case -1724546052:
-                                    if (attributeName.equals(SocialConstants.PARAM_COMMENT)) {
+                                    if (attributeName.equals("description")) {
                                         c = 5;
                                         break;
                                     }
@@ -287,7 +289,7 @@ public class ChannelBuilder {
                                     str4 = str9;
                                     channelBuilder = channelBuilder3;
                                     str2 = null;
-                                    channelBuilder.setDescription(XmlHelper.getAttribute(context, xmlPullParser, (String) null, SocialConstants.PARAM_COMMENT, channelBuilder.getDescription()));
+                                    channelBuilder.setDescription(XmlHelper.getAttribute(context, xmlPullParser, (String) null, "description", channelBuilder.getDescription()));
                                     str3 = str4;
                                     break;
                                 case 6:

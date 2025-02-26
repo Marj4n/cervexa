@@ -11,7 +11,6 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
-import com.jieli.stream.dv.running2.ui.widget.verticalseekbar.VerticalSeekBar;
 import com.serenegiant.utils.BitsHelper;
 import com.serenegiant.utils.UriHelper;
 import java.io.ByteArrayOutputStream;
@@ -262,7 +261,7 @@ public final class BitmapHelper {
             if (attributeInt != 8) {
                 return 0;
             }
-            return VerticalSeekBar.ROTATION_ANGLE_CW_270;
+            return 270;
         } catch (Exception unused) {
             return 0;
         }

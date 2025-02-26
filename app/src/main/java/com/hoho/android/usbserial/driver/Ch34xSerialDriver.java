@@ -4,8 +4,6 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
-import com.hoho.android.usbserial.driver.UsbSerialPort;
-import com.jieli.stream.dv.running2.util.IConstant;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -128,7 +126,7 @@ public class Ch34xSerialDriver implements UsbSerialDriver {
         }
 
         private void setControlLines() throws IOException {
-            if (controlOut(IConstant.OP_DELETE_FILES, ~((this.dtr ? 32 : 0) | (this.rts ? 64 : 0)), 0) < 0) {
+            if (controlOut(161, (this.dtr ? 32 : 0) | (this.rts ? 64 : 0), 0) < 0) {
                 throw new IOException("Failed to set control lines");
             }
         }
@@ -143,7 +141,7 @@ public class Ch34xSerialDriver implements UsbSerialDriver {
 
         private void initialize() throws IOException {
             checkState("init #1", 95, 0, new int[]{-1, 0});
-            if (controlOut(IConstant.OP_ENTER_EDIT_MODE, 0, 0) < 0) {
+            if (controlOut(161, 0, 0) < 0) {
                 throw new IOException("Init failed: #2");
             }
             setBaudRate(9600);
@@ -152,7 +150,7 @@ public class Ch34xSerialDriver implements UsbSerialDriver {
                 throw new IOException("Init failed: #5");
             }
             checkState("init #6", 149, 1798, new int[]{-1, -1});
-            if (controlOut(IConstant.OP_ENTER_EDIT_MODE, 20511, 55562) < 0) {
+            if (controlOut(161, 0, 0) < 0) {
                 throw new IOException("Init failed: #7");
             }
             setBaudRate(9600);

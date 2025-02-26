@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 import com.generalplus.GoPlusDrone.R;
-import com.jieli.stream.dv.running2.util.IConstant;
 import java.util.ArrayList;
 
 /* loaded from: classes.dex */
@@ -22,7 +21,7 @@ public class VideoViewActivity extends Activity {
         this.m_videoView = (VideoView) findViewById(R.id.videoView);
         this.m_mediaController = new MediaController(this);
         Intent intent = getIntent();
-        int i = intent.getExtras().getInt(IConstant.KEY_POSITION);
+        int i = intent.getExtras().getInt("position");
         ArrayList<String> stringArrayListExtra = intent.getStringArrayListExtra("FilePath");
         this.m_ayFilePath = stringArrayListExtra;
         this.m_videoView.setVideoPath(stringArrayListExtra.get(i));

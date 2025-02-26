@@ -3,7 +3,6 @@ package tv.danmaku.ijk.media.player.misc;
 import android.media.MediaFormat;
 import android.media.MediaPlayer;
 import android.os.Build;
-import com.jieli.stream.dv.running2.util.IConstant;
 
 /* loaded from: classes2.dex */
 public class AndroidTrackInfo implements ITrackInfo {
@@ -63,7 +62,7 @@ public class AndroidTrackInfo implements ITrackInfo {
         if (trackInfo != null) {
             sb.append(trackInfo.toString());
         } else {
-            sb.append(IConstant.DEFAULT_PATH);
+            sb.append("null");
         }
         sb.append('}');
         return sb.toString();
@@ -72,6 +71,6 @@ public class AndroidTrackInfo implements ITrackInfo {
     @Override // tv.danmaku.ijk.media.player.misc.ITrackInfo
     public String getInfoInline() {
         MediaPlayer.TrackInfo trackInfo = this.mTrackInfo;
-        return trackInfo != null ? trackInfo.toString() : IConstant.DEFAULT_PATH;
+        return trackInfo != null ? trackInfo.toString() : "null";
     }
 }

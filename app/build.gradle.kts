@@ -30,7 +30,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
-        viewBinding = true
         dataBinding = true
     }
 }
@@ -48,4 +47,8 @@ dependencies {
     implementation(libs.swiperefreshlayout)
     implementation(libs.core)
     implementation(libs.glide)
+    implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.constraintlayout.solver)
 }

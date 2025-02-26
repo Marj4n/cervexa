@@ -10,7 +10,6 @@ import android.opengl.GLES30;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
 import android.util.Log;
-import com.jieli.stream.dv.running2.util.IConstant;
 import com.serenegiant.glutils.ShaderConst;
 import com.serenegiant.utils.BuildCheck;
 import javax.microedition.khronos.opengles.GL10;
@@ -25,7 +24,7 @@ public final class GLHelper {
             return "no error";
         }
         switch (i) {
-            case IConstant.RES_HD_WIDTH /* 1280 */:
+            case 1280:
                 return "invalid enum";
             case 1281:
                 return "invalid value";

@@ -2,7 +2,6 @@ package com.roughike.bottombar;
 
 import android.content.Context;
 import android.content.res.Resources;
-import com.jieli.stream.dv.running2.util.IConstant;
 
 /* loaded from: classes.dex */
 final class NavbarUtils {
@@ -13,7 +12,7 @@ final class NavbarUtils {
 
     static int getNavbarHeight(Context context) {
         Resources resources = context.getResources();
-        int identifier = resources.getIdentifier("navigation_bar_height", "dimen", IConstant.ANDROID_DIR);
+        int identifier = resources.getIdentifier("navigation_bar_height", "dimen", "android");
         if (identifier != 0) {
             return resources.getDimensionPixelSize(identifier);
         }

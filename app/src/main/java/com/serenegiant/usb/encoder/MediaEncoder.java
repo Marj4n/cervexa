@@ -5,7 +5,6 @@ import android.os.Build;
 import android.util.Log;
 import com.baidu.trace.model.StatusCodes;
 import com.jiangdg.usbcamera.utils.FileUtils;
-import com.jieli.stream.dv.running2.util.IConstant;
 import com.serenegiant.media.AbstractAudioEncoder;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -13,7 +12,7 @@ import java.nio.ByteBuffer;
 
 /* loaded from: classes2.dex */
 public abstract class MediaEncoder implements Runnable {
-    public static final int[] AUDIO_SAMPLING_RATES = {96000, 88200, AbstractAudioEncoder.DEFAULT_BIT_RATE, 48000, 44100, 32000, 24000, 22050, StatusCodes.BOS_UNINITIALIZED, StatusCodes.START_GATHER_REQUEST_FAILED, 11025, IConstant.AUDIO_SAMPLE_RATE_DEFAULT, 7350, -1, -1, -1};
+public static final int[] AUDIO_SAMPLING_RATES = {96000, 88200, AbstractAudioEncoder.DEFAULT_BIT_RATE, 48000, 44100, 32000, 24000, 22050, StatusCodes.BOS_UNINITIALIZED, StatusCodes.START_GATHER_REQUEST_FAILED, 11025, 44100, 7350, -1, -1, -1};
     private static final boolean DEBUG = true;
     protected static final int MSG_FRAME_AVAILABLE = 1;
     protected static final int MSG_STOP_RECORDING = 9;

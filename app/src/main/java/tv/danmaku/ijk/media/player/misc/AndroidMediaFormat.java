@@ -1,7 +1,6 @@
 package tv.danmaku.ijk.media.player.misc;
 
 import android.media.MediaFormat;
-import com.jieli.stream.dv.running2.util.IConstant;
 
 /* loaded from: classes2.dex */
 public class AndroidMediaFormat implements IMediaFormat {
@@ -37,7 +36,7 @@ public class AndroidMediaFormat implements IMediaFormat {
         if (mediaFormat != null) {
             sb.append(mediaFormat.toString());
         } else {
-            sb.append(IConstant.DEFAULT_PATH);
+            sb.append("null");
         }
         sb.append('}');
         return sb.toString();

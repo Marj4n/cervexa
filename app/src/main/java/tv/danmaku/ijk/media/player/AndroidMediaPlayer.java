@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.view.Surface;
 import android.view.SurfaceHolder;
-import com.jieli.stream.dv.running2.util.IConstant;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -277,9 +276,9 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
     public MediaInfo getMediaInfo() {
         if (sMediaInfo == null) {
             MediaInfo mediaInfo = new MediaInfo();
-            mediaInfo.mVideoDecoder = IConstant.ANDROID_DIR;
+            mediaInfo.mVideoDecoder =  "HW";
             mediaInfo.mVideoDecoderImpl = "HW";
-            mediaInfo.mAudioDecoder = IConstant.ANDROID_DIR;
+            mediaInfo.mAudioDecoder = "HW";
             mediaInfo.mAudioDecoderImpl = "HW";
             sMediaInfo = mediaInfo;
         }

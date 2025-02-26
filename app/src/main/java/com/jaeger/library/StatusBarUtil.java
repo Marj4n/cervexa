@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import com.jieli.stream.dv.running2.util.IConstant;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -402,7 +401,7 @@ public class StatusBarUtil {
     private static void setTransparentForWindow(Activity activity) {
         if (Build.VERSION.SDK_INT >= 21) {
             activity.getWindow().setStatusBarColor(0);
-            activity.getWindow().getDecorView().setSystemUiVisibility(IConstant.RES_HD_WIDTH);
+            activity.getWindow().getDecorView().setSystemUiVisibility(1280);
         } else if (Build.VERSION.SDK_INT >= 19) {
             activity.getWindow().setFlags(67108864, 67108864);
         }
@@ -428,6 +427,6 @@ public class StatusBarUtil {
     }
 
     private static int getStatusBarHeight(Context context) {
-        return context.getResources().getDimensionPixelSize(context.getResources().getIdentifier("status_bar_height", "dimen", IConstant.ANDROID_DIR));
+        return context.getResources().getDimensionPixelSize(context.getResources().getIdentifier("status_bar_height", "dimen", "android"));
     }
 }

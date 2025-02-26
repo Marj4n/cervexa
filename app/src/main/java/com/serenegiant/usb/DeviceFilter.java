@@ -7,14 +7,14 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbInterface;
 import android.text.TextUtils;
 import android.util.Log;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-
-import tencent.open.SocialConstants;
 
 /* loaded from: classes2.dex */
 public final class DeviceFilter {
@@ -94,7 +94,8 @@ public final class DeviceFilter {
                 attributeValue = attributeValue.substring(2);
             }
             return Integer.parseInt(attributeValue, i2);
-        } catch (Resources.NotFoundException | NullPointerException | NumberFormatException unused) {
+        } catch (Resources.NotFoundException | NullPointerException |
+                 NumberFormatException unused) {
             return i;
         }
     }
@@ -118,7 +119,8 @@ public final class DeviceFilter {
                 attributeValue = attributeValue.substring(2);
             }
             return Integer.parseInt(attributeValue, i) != 0;
-        } catch (Resources.NotFoundException | NullPointerException | NumberFormatException unused) {
+        } catch (Resources.NotFoundException | NullPointerException |
+                 NumberFormatException unused) {
             return z;
         }
     }
@@ -136,7 +138,8 @@ public final class DeviceFilter {
                 }
             }
             return attributeValue;
-        } catch (Resources.NotFoundException | NullPointerException | NumberFormatException unused) {
+        } catch (Resources.NotFoundException | NullPointerException |
+                 NumberFormatException unused) {
             return str3;
         }
     }
@@ -185,7 +188,7 @@ public final class DeviceFilter {
                         attributeString3 = getAttributeString(context, xmlPullParser, null, "serial", null);
                     }
                     str3 = attributeString3;
-                    z2 = getAttributeBoolean(context, xmlPullParser, null, SocialConstants.PARAM_EXCLUDE, false);
+                    z2 = getAttributeBoolean(context, xmlPullParser, null, "exclude", false);
                     z = true;
                 } else if (eventType == 3 && z) {
                     return new DeviceFilter(i, i2, i3, i4, i5, str, str2, str3, z2);

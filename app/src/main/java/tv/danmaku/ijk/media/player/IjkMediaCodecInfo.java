@@ -33,17 +33,17 @@ public class IjkMediaCodecInfo {
         }
         switch (i) {
             case 4:
-                return tencent.connect.common.Constants.VIA_REPORT_TYPE_SHARE_TO_QZONE;
+                return "11";
             case 8:
-                return tencent.connect.common.Constants.VIA_REPORT_TYPE_SET_AVATAR;
+                return "12";
             case 16:
-                return tencent.connect.common.Constants.VIA_REPORT_TYPE_JOININ_GROUP;
+                return "13";
             case 32:
                 return "2";
             case 64:
-                return tencent.connect.common.Constants.VIA_REPORT_TYPE_QQFAVORITES;
+                return "21";
             case 128:
-                return tencent.connect.common.Constants.VIA_REPORT_TYPE_DATALINE;
+                return "22";
             case 256:
                 return "3";
             case 512:

@@ -1,6 +1,7 @@
 package com.generalplus.GoPlusDrone.Activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.generalplus.GoPlusDrone.R;
 import com.generalplus.GoPlusDrone.View.MultiTouchZoomableImageView;
-import com.jieli.stream.dv.running2.util.IConstant;
 import java.util.ArrayList;
 
 /* loaded from: classes.dex */
@@ -27,7 +27,7 @@ public class FullImageActivity extends Activity {
         setContentView(R.layout.activity_fullscreen_view);
         this.viewPager = (ViewPager) findViewById(R.id.pager);
         Intent intent = getIntent();
-        int i = intent.getExtras().getInt(IConstant.KEY_POSITION);
+        int i = intent.getExtras().getInt("position");
         ArrayList<String> stringArrayListExtra = intent.getStringArrayListExtra("FilePath");
         this.m_ayFilePath = stringArrayListExtra;
         FullImageAdapter fullImageAdapter = new FullImageAdapter(this, stringArrayListExtra);
@@ -58,7 +58,7 @@ public class FullImageActivity extends Activity {
 
         @Override // androidx.viewpager.widget.PagerAdapter
         public Object instantiateItem(ViewGroup viewGroup, int i) {
-            LayoutInflater layoutInflater = (LayoutInflater) this._activity.getSystemService("layout_inflater");
+            LayoutInflater layoutInflater = (LayoutInflater) this._activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             this.inflater = layoutInflater;
             View inflate = layoutInflater.inflate(R.layout.layout_fullscreen_image, viewGroup, false);
             ((MultiTouchZoomableImageView) inflate.findViewById(R.id.imgDisplay)).setImageBitmap(BitmapFactory.decodeFile(this._imagePaths.get(i)));
