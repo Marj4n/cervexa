@@ -1,25 +1,25 @@
 package com.jieli.stream.dv.running2.ui.widget.pullrefreshview.utils;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
+import androidx.core.view.ViewCompat;
 
 /* loaded from: classes.dex */
 public class AnimUtil {
     public static void startRotation(View view, float f) {
-        ObjectAnimator.ofFloat(view, "rotation", ViewHelper.getRotation(view), f).start();
+        ObjectAnimator.ofFloat(view, "rotation", ViewCompat.getRotation(view), f).start();
     }
 
     public static void startRotation(View view, float f, long j, long j2) {
-        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "rotation", ViewHelper.getRotation(view), f).setDuration(j);
+        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "rotation", ViewCompat.getRotation(view), f).setDuration(j);
         duration.setStartDelay(j2);
         duration.start();
     }
 
     public static void startRotation(View view, float f, long j, long j2, int i) {
-        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "rotation", ViewHelper.getRotation(view), f).setDuration(j);
+        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "rotation", ViewCompat.getRotation(view), f).setDuration(j);
         duration.setStartDelay(j2);
         duration.setRepeatCount(i);
         duration.setInterpolator(new LinearInterpolator());
@@ -27,7 +27,7 @@ public class AnimUtil {
     }
 
     public static void startShow(View view, float f, long j, long j2) {
-        ViewHelper.setAlpha(view, f);
+        ViewCompat.setAlpha(view, f);
         view.setVisibility(0);
         ObjectAnimator duration = ObjectAnimator.ofFloat(view, "alpha", f, 1.0f).setDuration(j);
         duration.setStartDelay(j2);
@@ -36,33 +36,33 @@ public class AnimUtil {
 
     public static void startHide(View view, long j, long j2) {
         view.setVisibility(0);
-        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "alpha", ViewHelper.getAlpha(view), 0.0f).setDuration(j);
+        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "alpha", ViewCompat.getAlpha(view), 0.0f).setDuration(j);
         duration.setStartDelay(j2);
         duration.start();
     }
 
     public static void startShow(View view, float f) {
-        ViewHelper.setAlpha(view, f);
+        ViewCompat.setAlpha(view, f);
         view.setVisibility(0);
         ObjectAnimator.ofFloat(view, "alpha", f, 1.0f).start();
     }
 
     public static void startHide(View view) {
         view.setVisibility(0);
-        ObjectAnimator.ofFloat(view, "alpha", ViewHelper.getAlpha(view), 0.0f).start();
+        ObjectAnimator.ofFloat(view, "alpha", ViewCompat.getAlpha(view), 0.0f).start();
     }
 
     public static void startScale(View view, float f) {
-        ObjectAnimator.ofFloat(view, "scaleX", ViewHelper.getScaleX(view), f).start();
-        ObjectAnimator.ofFloat(view, "scaleY", ViewHelper.getScaleY(view), f).start();
+        ObjectAnimator.ofFloat(view, "scaleX", ViewCompat.getScaleX(view), f).start();
+        ObjectAnimator.ofFloat(view, "scaleY", ViewCompat.getScaleY(view), f).start();
     }
 
     public static void startScale(View view, float f, long j, long j2, Interpolator interpolator) {
-        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "scaleX", ViewHelper.getScaleX(view), f).setDuration(j);
+        ObjectAnimator duration = ObjectAnimator.ofFloat(view, "scaleX", ViewCompat.getScaleX(view), f).setDuration(j);
         duration.setStartDelay(j2);
         duration.setInterpolator(interpolator);
         duration.start();
-        ObjectAnimator duration2 = ObjectAnimator.ofFloat(view, "scaleY", ViewHelper.getScaleY(view), f).setDuration(j);
+        ObjectAnimator duration2 = ObjectAnimator.ofFloat(view, "scaleY", ViewCompat.getScaleY(view), f).setDuration(j);
         duration2.setStartDelay(j2);
         duration2.setInterpolator(interpolator);
         duration2.start();
