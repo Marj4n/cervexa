@@ -29,9 +29,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    aaptOptions {
-        noCompress(".*")
-    }
     buildFeatures {
         viewBinding = true
         dataBinding = true
@@ -42,7 +39,6 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
-    implementation(libs.media)
     implementation(libs.volley)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
@@ -54,16 +50,10 @@ dependencies {
     implementation(libs.preference)
     implementation(libs.library)
     implementation(libs.core)
-    implementation(libs.nineoldandroids.library)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.media)
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
     implementation(libs.mpandroidchart)
-
-    implementation("com.sun.jersey:jersey-server:1.9") {
-        exclude(group = "com.sun.jersey", module = "jersey-core")
-    }
 }

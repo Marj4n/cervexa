@@ -17,7 +17,6 @@ import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.impl.Pullable;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.support.utils.CanPullUtil;
-import com.nineoldandroids.view.ViewHelper;
 
 /* loaded from: classes.dex */
 public class FlingLayout extends FrameLayout implements NestedScrollingChild, NestedScrollingParent {
@@ -169,7 +168,7 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
         if (view == null) {
             return;
         }
-        ViewHelper.setTranslationY(view, f);
+        ViewCompat.setTranslationY(view, f);
     }
 
     private void setMoveY(float f) {

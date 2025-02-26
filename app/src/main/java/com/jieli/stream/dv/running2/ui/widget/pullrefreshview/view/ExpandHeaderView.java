@@ -1,16 +1,16 @@
 package com.jieli.stream.dv.running2.ui.widget.pullrefreshview.view;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.core.view.ViewCompat;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.BaseHeaderView;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.PullRefreshLayout;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.utils.AnimUtil;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
 import tv.danmaku.ijk.media.player.IjkMediaCodecInfo;
 
 /* loaded from: classes.dex */
@@ -57,13 +57,13 @@ public class ExpandHeaderView extends BaseHeaderView {
     @Override // com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.BaseHeaderView
     protected void onStateChange(int i) {
         this.state = i;
-        ObjectAnimator.clearAllAnimations();
+        ObjectAnimator.ofFloat(this.progress, "rotation", ViewCompat.getRotation(this.progress), 0.0f).start();
         this.stateImg.setVisibility(4);
         this.progress.setVisibility(0);
-        ViewHelper.setAlpha(this.progress, 1.0f);
+        ViewCompat.setAlpha(this.progress, 1.0f);
         if (i == 3) {
             View view = this.progress;
-            AnimUtil.startRotation(view, 359.99f + ViewHelper.getRotation(view), 500L, 0L, -1);
+            AnimUtil.startRotation(view, 359.99f + ViewCompat.getRotation(view), 500L, 0L, -1);
         } else {
             if (i != 4) {
                 return;
@@ -82,7 +82,7 @@ public class ExpandHeaderView extends BaseHeaderView {
     public boolean onScroll(float f) {
         boolean onScroll = super.onScroll(f);
         if (!isLockState()) {
-            ViewHelper.setRotation(this.progress, ((f * f) * 48.0f) / 31250.0f);
+            ViewCompat.setRotation(this.progress, ((f * f) * 48.0f) / 31250.0f);
         }
         return onScroll;
     }
