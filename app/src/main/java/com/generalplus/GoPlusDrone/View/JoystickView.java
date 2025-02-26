@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.github.mikephil.charting.utils.Utils;
 
 /* loaded from: classes.dex */
 public class JoystickView extends View implements Runnable {
@@ -51,8 +50,6 @@ public class JoystickView extends View implements Runnable {
         this.loopInterval = 100L;
         this.xPosition = 0;
         this.yPosition = 0;
-        this.centerX = Utils.DOUBLE_EPSILON;
-        this.centerY = Utils.DOUBLE_EPSILON;
         this.lastAngle = 0;
         this.lastPower = 0;
         this.m_bLeft = true;
@@ -65,8 +62,6 @@ public class JoystickView extends View implements Runnable {
         this.loopInterval = 100L;
         this.xPosition = 0;
         this.yPosition = 0;
-        this.centerX = Utils.DOUBLE_EPSILON;
-        this.centerY = Utils.DOUBLE_EPSILON;
         this.lastAngle = 0;
         this.lastPower = 0;
         this.m_bLeft = true;
@@ -80,8 +75,6 @@ public class JoystickView extends View implements Runnable {
         this.loopInterval = 100L;
         this.xPosition = 0;
         this.yPosition = 0;
-        this.centerX = Utils.DOUBLE_EPSILON;
-        this.centerY = Utils.DOUBLE_EPSILON;
         this.lastAngle = 0;
         this.lastPower = 0;
         this.m_bLeft = true;

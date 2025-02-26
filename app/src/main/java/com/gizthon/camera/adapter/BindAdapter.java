@@ -2,13 +2,9 @@ package com.gizthon.camera.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.gizthon.camera.model.PhotoBean;
 import java.util.List;
 
 /* loaded from: classes.dex */
@@ -57,14 +53,6 @@ public class BindAdapter<T> extends RecyclerView.Adapter<BindAdapter.ViewHolder<
                 this.itemRowBinding.setVariable(10, t);
             }
             this.itemRowBinding.executePendingBindings();
-        }
-    }
-
-    public static void localSrc(ImageView imageView, PhotoBean photoBean) {
-        if (photoBean.getPath().endsWith("avi") || photoBean.getPath().endsWith("mp4")) {
-            Glide.with(imageView.getContext()).load(photoBean.getAviPngName()).into(imageView);
-        } else {
-            Glide.with(imageView.getContext()).setDefaultRequestOptions(new RequestOptions().frame(1L).centerCrop()).load(photoBean.getPath()).into(imageView);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public abstract class SplashActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static SplashActivityBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (SplashActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.splash_activity, viewGroup, z, obj);
@@ -48,6 +50,7 @@ public abstract class SplashActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static SplashActivityBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (SplashActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.splash_activity, null, false, obj);

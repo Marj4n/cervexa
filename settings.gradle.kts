@@ -8,19 +8,20 @@ pluginManagement {
             }
         }
         mavenCentral()
+        maven { setUrl("https://developer.baidu.com/repo") }
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        gradlePluginPortal()
         maven { setUrl("https://jitpack.io") }
+        maven { setUrl("https://developer.baidu.com/repo") }
     }
 }
 
 rootProject.name = "cervexa"
 include(":app")
- 

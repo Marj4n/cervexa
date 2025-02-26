@@ -18,7 +18,6 @@ import com.baidu.mapapi.utils.CoordinateConverter;
 import com.baidu.trace.model.CoordType;
 import com.baidu.trace.model.SortType;
 import com.baidu.trace.model.TraceLocation;
-import com.github.mikephil.charting.utils.Utils;
 import com.jieli.stream.dv.running2.util.Dbug;
 import java.util.Iterator;
 import java.util.List;
@@ -93,7 +92,7 @@ public class MapUtil {
         }
         double latitude = traceLocation.getLatitude();
         double longitude = traceLocation.getLongitude();
-        if (Math.abs(latitude - Utils.DOUBLE_EPSILON) < 1.0E-6d && Math.abs(longitude - Utils.DOUBLE_EPSILON) < 1.0E-6d) {
+        if (Math.abs(latitude - 1.0E-10) < 1.0E-6d && Math.abs(longitude - 1.0E-10) < 1.0E-6d) {
             return null;
         }
         LatLng latLng = new LatLng(latitude, longitude);

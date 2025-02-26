@@ -1,68 +1,39 @@
 [versions]
 agp = "8.8.0"
-bottomBar = "2.3.1"
-colorpicker = "0.0.13"
-commonsBeanutilsCore = "1.8.0"
+commonsNet = "3.9.0"
 core = "3.5.3"
 glide = "4.16.0"
-javaxInject = "2.3.0-b05"
-junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
+hbaseClient = "2.4.9"
 appcompat = "1.6.1"
+httpclient5 = "5.2"
 loggingInterceptor = "4.12.0"
 material = "1.10.0"
 activity = "1.8.0"
-constraintlayout = "2.2.0"
-materialVersion = "1.6.1"
 media = "1.7.0"
-mediaVersion = "1.6.0"
 mpandroidchart = "v3.1.0"
 okhttp = "4.12.0"
 volley = "1.2.1"
-httpclient = "4.5.14"
-constraintlayoutSolver = "2.0.4"
 util = "3.7.1"
-apiExplorerSdk = "1.0.4.1"
-databindingRuntime = "8.8.1"
 swiperefreshlayout = "1.2.0-beta01"
 preference = "1.2.1"
-paletteV7 = "28.0.0"
 library = "1.1"
-libraryVersion = "2.4.0"
 
 [libraries]
-bottom-bar = { module = "com.roughike:bottom-bar", version.ref = "bottomBar" }
-colorpicker = { module = "com.github.QuadFlask:colorpicker", version.ref = "colorpicker" }
-commons-beanutils-core = { module = "commons-beanutils:commons-beanutils-core", version.ref = "commonsBeanutilsCore" }
-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+commons-net = { module = "commons-net:commons-net", version.ref = "commonsNet" }
 core = { module = "com.google.zxing:core", version.ref = "core" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-javax-inject = { module = "org.glassfish.hk2.external:javax.inject", version.ref = "javaxInject" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+hbase-client = { module = "org.apache.hbase:hbase-client", version.ref = "hbaseClient" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "httpclient5" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-material-v161 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 media = { group = "androidx.media", name = "media", version.ref = "media" }
-media-v160 = { module = "androidx.media:media", version.ref = "mediaVersion" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
-volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
-httpclient = { group = "org.apache.httpcomponents", name = "httpclient", version.ref = "httpclient" }
-constraintlayout-solver = { group = "androidx.constraintlayout", name = "constraintlayout-solver", version.ref = "constraintlayoutSolver" }
 util = { group = "com.baidu.mapapi", name = "util", version.ref = "util" }
-api-explorer-sdk = { group = "com.baidubce", name = "api-explorer-sdk", version.ref = "apiExplorerSdk" }
-databinding-runtime = { group = "androidx.databinding", name = "databinding-runtime", version = "8.8.1" }
 swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
-palette-v7 = { group = "com.android.support", name = "palette-v7", version.ref = "paletteV7" }
 library = { group = "com.daimajia", name = "library", version.ref = "library" }
-nineoldandroids-library = { group = "com.nineoldandroids", name = "library", version.ref = "libraryVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

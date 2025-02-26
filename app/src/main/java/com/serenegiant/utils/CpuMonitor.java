@@ -1,7 +1,7 @@
 package com.serenegiant.utils;
 
 import android.util.Log;
-import com.github.mikephil.charting.utils.Utils;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -125,7 +125,7 @@ public final class CpuMonitor {
         }
         double d = (j2 * 100.0d) / j;
         double d2 = this.lastPercentFreq;
-        double d3 = d2 > Utils.DOUBLE_EPSILON ? (d2 + d) * 0.5d : d;
+        double d3 = d2 > 1e-10 ? (d2 + d) * 0.5d : d;
         this.lastPercentFreq = d;
         ProcStat readIdleAndRunTime = readIdleAndRunTime();
         if (readIdleAndRunTime == null) {

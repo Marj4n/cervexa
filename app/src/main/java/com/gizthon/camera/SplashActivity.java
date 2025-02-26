@@ -1,9 +1,14 @@
 package com.gizthon.camera;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+
 import com.gizthon.camera.activity.CameraBaseActivity;
 import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.activity.HelpActivity;
@@ -13,6 +18,7 @@ import com.jaeger.library.StatusBarUtil;
 import permissions.dispatcher.PermissionRequest;
 
 /* loaded from: classes.dex */
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends CameraBaseActivity {
     private String TAG = getClass().getSimpleName();
     private SplashActivityBinding binding;
@@ -60,7 +66,7 @@ public class SplashActivity extends CameraBaseActivity {
     }
 
     @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
-    public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
+    public void onRequestPermissionsResult(int i, @NonNull String[] strArr, @NonNull int[] iArr) {
         super.onRequestPermissionsResult(i, strArr, iArr);
         SplashActivityPermissionsDispatcher.onRequestPermissionsResult(this, i, iArr);
     }
