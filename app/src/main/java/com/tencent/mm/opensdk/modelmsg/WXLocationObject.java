@@ -1,18 +1,11 @@
 package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
-import com.github.mikephil.charting.utils.Utils;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-
 /* loaded from: classes2.dex */
 public class WXLocationObject implements WXMediaMessage.IMediaObject {
     private static final String TAG = "MicroMsg.SDK.WXLocationObject";
     public double lat;
     public double lng;
-
-    public WXLocationObject() {
-        this(Utils.DOUBLE_EPSILON, Utils.DOUBLE_EPSILON);
-    }
 
     public WXLocationObject(double d, double d2) {
         this.lat = d;

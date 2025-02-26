@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
-import com.github.mikephil.charting.utils.Utils;
 import com.serenegiant.common.R;
 
 /* loaded from: classes2.dex */
@@ -37,7 +36,7 @@ public class AspectRatioFrameLayout extends FrameLayout implements IAspectRatioV
     protected void onMeasure(int i, int i2) {
         int i3;
         int i4;
-        if (this.mRequestedAspect > Utils.DOUBLE_EPSILON) {
+        if (this.mRequestedAspect > 1e-10) {
             int size = View.MeasureSpec.getSize(i);
             int size2 = View.MeasureSpec.getSize(i2);
             int paddingLeft = getPaddingLeft() + getPaddingRight();
@@ -48,7 +47,7 @@ public class AspectRatioFrameLayout extends FrameLayout implements IAspectRatioV
             double d2 = i6;
             double d3 = (this.mRequestedAspect / (d / d2)) - 1.0d;
             if (Math.abs(d3) > 0.01d) {
-                if (d3 > Utils.DOUBLE_EPSILON) {
+                if (d3 > 1e-10) {
                     i6 = (int) (d / this.mRequestedAspect);
                 } else {
                     i5 = (int) (d2 * this.mRequestedAspect);

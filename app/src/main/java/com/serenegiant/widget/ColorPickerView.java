@@ -17,7 +17,6 @@ import android.view.View;
 
 import androidx.core.view.ViewCompat;
 
-import com.github.mikephil.charting.utils.Utils;
 import com.serenegiant.graphics.BitmapHelper;
 import com.serenegiant.graphics.ShaderDrawable;
 
@@ -349,7 +348,7 @@ public class ColorPickerView extends View {
         float[] fArr = this.HSV;
         fArr[1] = 1.0f;
         fArr[2] = this.mVal;
-        for (int i2 = 0; f >= Utils.DOUBLE_EPSILON && i2 < length; i2++) {
+        for (int i2 = 0; f >= 0.0000001 && i2 < length; i2++) {
             float[] fArr2 = this.HSV;
             fArr2[0] = f;
             iArr[i2] = Color.HSVToColor(i, fArr2);

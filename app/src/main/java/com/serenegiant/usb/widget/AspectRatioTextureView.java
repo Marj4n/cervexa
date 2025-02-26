@@ -4,9 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.View;
+
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
-import com.github.mikephil.charting.utils.Utils;
-import com.serenegiant.usb.widget.CameraViewInterface;
+
 import com.serenegiant.widget.IAspectRatioView;
 
 /* loaded from: classes2.dex */
@@ -31,7 +31,7 @@ public class AspectRatioTextureView extends TextureView implements IAspectRatioV
 
     @Override // com.serenegiant.widget.IAspectRatioView
     public void setAspectRatio(double d) {
-        if (d < Utils.DOUBLE_EPSILON) {
+        if (d < 1e-10) {
             throw new IllegalArgumentException();
         }
         if (this.mRequestedAspect != d) {
@@ -54,7 +54,7 @@ public class AspectRatioTextureView extends TextureView implements IAspectRatioV
     protected void onMeasure(int i, int i2) {
         int i3;
         int i4;
-        if (this.mRequestedAspect > Utils.DOUBLE_EPSILON) {
+        if (this.mRequestedAspect > 1e-10) {
             int size = View.MeasureSpec.getSize(i);
             int size2 = View.MeasureSpec.getSize(i2);
             int paddingLeft = getPaddingLeft() + getPaddingRight();
@@ -65,7 +65,7 @@ public class AspectRatioTextureView extends TextureView implements IAspectRatioV
             double d2 = i6;
             double d3 = (this.mRequestedAspect / (d / d2)) - 1.0d;
             if (Math.abs(d3) > 0.01d) {
-                if (d3 > Utils.DOUBLE_EPSILON) {
+                if (d3 > 1e-10) {
                     i6 = (int) (d / this.mRequestedAspect);
                 } else {
                     i5 = (int) (d2 * this.mRequestedAspect);

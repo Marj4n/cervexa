@@ -2,7 +2,6 @@ package com.baidu.trace.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.github.mikephil.charting.utils.Utils;
 
 /* loaded from: classes.dex */
 public final class TraceLocation extends BaseResponse implements Parcelable {
@@ -25,10 +24,7 @@ public final class TraceLocation extends BaseResponse implements Parcelable {
         this.b = "";
         this.c = "";
         this.d = "";
-        this.e = Utils.DOUBLE_EPSILON;
-        this.f = Utils.DOUBLE_EPSILON;
         this.g = CoordType.bd09ll;
-        this.h = Utils.DOUBLE_EPSILON;
         this.i = 0.0f;
         this.j = 0.0f;
         this.k = 0;
@@ -41,10 +37,7 @@ public final class TraceLocation extends BaseResponse implements Parcelable {
         this.b = "";
         this.c = "";
         this.d = "";
-        this.e = Utils.DOUBLE_EPSILON;
-        this.f = Utils.DOUBLE_EPSILON;
         this.g = CoordType.bd09ll;
-        this.h = Utils.DOUBLE_EPSILON;
         this.i = 0.0f;
         this.j = 0.0f;
         this.k = 0;
@@ -57,10 +50,7 @@ public final class TraceLocation extends BaseResponse implements Parcelable {
         this.b = "";
         this.c = "";
         this.d = "";
-        this.e = Utils.DOUBLE_EPSILON;
-        this.f = Utils.DOUBLE_EPSILON;
         this.g = CoordType.bd09ll;
-        this.h = Utils.DOUBLE_EPSILON;
         this.i = 0.0f;
         this.j = 0.0f;
         this.k = 0;
@@ -83,10 +73,7 @@ public final class TraceLocation extends BaseResponse implements Parcelable {
         this.b = "";
         this.c = "";
         this.d = "";
-        this.e = Utils.DOUBLE_EPSILON;
-        this.f = Utils.DOUBLE_EPSILON;
         this.g = CoordType.bd09ll;
-        this.h = Utils.DOUBLE_EPSILON;
         this.i = 0.0f;
         this.j = 0.0f;
         this.k = 0;

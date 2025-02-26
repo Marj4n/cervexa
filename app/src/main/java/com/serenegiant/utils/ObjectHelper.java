@@ -1,7 +1,6 @@
 package com.serenegiant.utils;
 
 import android.text.TextUtils;
-import com.github.mikephil.charting.utils.Utils;
 
 /* loaded from: classes2.dex */
 public class ObjectHelper {
@@ -25,10 +24,10 @@ public class ObjectHelper {
             return ((Float) obj).floatValue() != 0.0f;
         }
         if (obj instanceof Double) {
-            return ((Double) obj).doubleValue() != Utils.DOUBLE_EPSILON;
+            return ((Double) obj).doubleValue() != 0.0d;
         }
         if (obj instanceof Number) {
-            return ((Number) obj).doubleValue() != Utils.DOUBLE_EPSILON;
+            return ((Number) obj).doubleValue() != 0.0d;
         }
         if (obj instanceof String) {
             String str = (String) obj;
@@ -43,7 +42,7 @@ public class ObjectHelper {
                 try {
                     try {
                         try {
-                            return Double.parseDouble(str) != Utils.DOUBLE_EPSILON;
+                            return Double.parseDouble(str) != 1e-10;
                         } catch (Exception unused2) {
                             return Integer.parseInt(str, 16) != 0;
                         }
@@ -318,7 +317,7 @@ public class ObjectHelper {
             if (((Boolean) obj).booleanValue()) {
                 return 1.0d;
             }
-            return Utils.DOUBLE_EPSILON;
+            return 1e-10;
         }
         if (obj instanceof Byte) {
             return ((Byte) obj).byteValue();
@@ -360,7 +359,7 @@ public class ObjectHelper {
                     if (Boolean.parseBoolean(str)) {
                         return 1.0d;
                     }
-                    return Utils.DOUBLE_EPSILON;
+                    return 1e-10;
                 }
             }
         }

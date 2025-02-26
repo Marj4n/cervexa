@@ -1,7 +1,6 @@
 package com.serenegiant.utils;
 
 import android.util.Log;
-import com.github.mikephil.charting.utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 

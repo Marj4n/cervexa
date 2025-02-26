@@ -11,12 +11,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import androidx.viewpager.widget.ViewPager;
-
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.generalplus.GoPlusDrone.Fragment.BitmapUtils;
-import com.github.mikephil.charting.utils.Utils;
-
-/* loaded from: classes.dex */
 public abstract class BaseZoomableImageView extends View {
     private static final float MAX_IMAGE_RATIO_LARGE = 5.0f;
     private static final float MAX_IMAGE_RATIO_WIDTH_LARGE_LANDSCAPE = 2.0f;
@@ -69,7 +65,6 @@ public abstract class BaseZoomableImageView extends View {
         this.mThisHeight = -1;
         this.mOnLayoutRunnable = null;
         this.mRefresh = null;
-        this.mLastDraw = Utils.DOUBLE_EPSILON;
         this.mFling = null;
         this.fling = false;
         this.landscape = false;
@@ -88,7 +83,6 @@ public abstract class BaseZoomableImageView extends View {
         this.mThisHeight = -1;
         this.mOnLayoutRunnable = null;
         this.mRefresh = null;
-        this.mLastDraw = Utils.DOUBLE_EPSILON;
         this.mFling = null;
         this.fling = false;
         this.landscape = false;
