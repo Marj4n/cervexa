@@ -23,7 +23,7 @@ public class MediaAudioEncoder extends MediaEncoder implements IAudioEncoder {
     private static final String TAG = "MediaAudioEncoder";
     private AudioThread mAudioThread;
 
-    public MediaAudioEncoder(MediaMuxerWrapper mediaMuxerWrapper, MediaEncoder.MediaEncoderListener mediaEncoderListener) {
+    public MediaAudioEncoder(MediaMuxerWrapper mediaMuxerWrapper, MediaEncoderListener mediaEncoderListener) {
         super(mediaMuxerWrapper, mediaEncoderListener);
         this.mAudioThread = null;
     }

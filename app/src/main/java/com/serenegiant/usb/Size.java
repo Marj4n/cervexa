@@ -6,7 +6,7 @@ import java.util.Locale;
 
 /* loaded from: classes2.dex */
 public class Size implements Parcelable {
-    public static final Parcelable.Creator<Size> CREATOR = new Parcelable.Creator<Size>() { // from class: com.serenegiant.usb.Size.1
+    public static final Creator<Size> CREATOR = new Creator<Size>() { // from class: com.serenegiant.usb.Size.1
         /* JADX WARN: Can't rename method to resolve collision */
         @Override // android.os.Parcelable.Creator
         public Size createFromParcel(Parcel parcel) {

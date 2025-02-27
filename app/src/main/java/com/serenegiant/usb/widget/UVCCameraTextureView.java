@@ -24,7 +24,7 @@ import com.serenegiant.utils.FpsCounter;
 public class UVCCameraTextureView extends AspectRatioTextureView implements TextureView.SurfaceTextureListener, CameraViewInterface {
     private static final boolean DEBUG = true;
     private static final String TAG = "UVCCameraTextureView";
-    private CameraViewInterface.Callback mCallback;
+    private Callback mCallback;
     private final Object mCaptureSync;
     private final FpsCounter mFpsCounter;
     private boolean mHasSurface;
@@ -89,7 +89,7 @@ public class UVCCameraTextureView extends AspectRatioTextureView implements Text
             renderHandler.resize(i, i2);
         }
         this.mHasSurface = true;
-        CameraViewInterface.Callback callback = this.mCallback;
+        Callback callback = this.mCallback;
         if (callback != null) {
             callback.onSurfaceCreated(this, getSurface());
         }
@@ -102,7 +102,7 @@ public class UVCCameraTextureView extends AspectRatioTextureView implements Text
         if (renderHandler != null) {
             renderHandler.resize(i, i2);
         }
-        CameraViewInterface.Callback callback = this.mCallback;
+        Callback callback = this.mCallback;
         if (callback != null) {
             callback.onSurfaceChanged(this, getSurface(), i, i2);
         }
@@ -117,7 +117,7 @@ public class UVCCameraTextureView extends AspectRatioTextureView implements Text
             this.mRenderHandler = null;
         }
         this.mHasSurface = false;
-        CameraViewInterface.Callback callback = this.mCallback;
+        Callback callback = this.mCallback;
         if (callback != null) {
             callback.onSurfaceDestroy(this, getSurface());
         }
@@ -192,7 +192,7 @@ public class UVCCameraTextureView extends AspectRatioTextureView implements Text
     }
 
     @Override // com.serenegiant.usb.widget.CameraViewInterface
-    public void setCallback(CameraViewInterface.Callback callback) {
+    public void setCallback(Callback callback) {
         this.mCallback = callback;
     }
 

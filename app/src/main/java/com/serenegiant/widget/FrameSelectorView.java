@@ -28,8 +28,8 @@ public class FrameSelectorView extends LinearLayout {
     private final ImageButton[] mFrameButtons;
     private TextView mLineWidthTv;
     private final RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener;
-    private final View.OnClickListener mOnColorClickListener;
-    private final View.OnClickListener mOnFrameClickListener;
+    private final OnClickListener mOnColorClickListener;
+    private final OnClickListener mOnFrameClickListener;
     private final SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener;
     private RadioGroup mScaleTypeRadioGroup;
     private SeekBar mSeekBar;
@@ -80,7 +80,7 @@ public class FrameSelectorView extends LinearLayout {
         super(context, attributeSet, i);
         this.mColors = new int[]{SupportMenu.CATEGORY_MASK, -23296, InputDeviceCompat.SOURCE_ANY, -16744448, -16776961, -1, -5131855, ViewCompat.MEASURED_STATE_MASK};
         this.mFrameButtons = new ImageButton[7];
-        this.mOnFrameClickListener = new View.OnClickListener() { // from class: com.serenegiant.widget.FrameSelectorView.2
+        this.mOnFrameClickListener = new OnClickListener() { // from class: com.serenegiant.widget.FrameSelectorView.2
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 if (FrameSelectorView.this.mCallback != null) {
@@ -92,7 +92,7 @@ public class FrameSelectorView extends LinearLayout {
                 }
             }
         };
-        this.mOnColorClickListener = new View.OnClickListener() { // from class: com.serenegiant.widget.FrameSelectorView.3
+        this.mOnColorClickListener = new OnClickListener() { // from class: com.serenegiant.widget.FrameSelectorView.3
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 if (FrameSelectorView.this.mCallback != null) {

@@ -226,6 +226,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
         return SystemClock.uptimeMillis();
     }
 
+    @SuppressLint("WrongViewCast")
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -415,7 +416,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 CameraNewActivity.this.ll_resolution.setVisibility(8);
             }
         });
-        ((ImageView) findViewById(R.id.back)).setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.10
+        ((android.widget.TextView) findViewById(R.id.back)).setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.10
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 CameraNewActivity.this.finish();

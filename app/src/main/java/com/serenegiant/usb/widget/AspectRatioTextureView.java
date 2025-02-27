@@ -55,8 +55,8 @@ public class AspectRatioTextureView extends TextureView implements IAspectRatioV
         int i3;
         int i4;
         if (this.mRequestedAspect > 1e-10) {
-            int size = View.MeasureSpec.getSize(i);
-            int size2 = View.MeasureSpec.getSize(i2);
+            int size = MeasureSpec.getSize(i);
+            int size2 = MeasureSpec.getSize(i2);
             int paddingLeft = getPaddingLeft() + getPaddingRight();
             int paddingTop = getPaddingTop() + getPaddingBottom();
             int i5 = size - paddingLeft;
@@ -70,8 +70,8 @@ public class AspectRatioTextureView extends TextureView implements IAspectRatioV
                 } else {
                     i5 = (int) (d2 * this.mRequestedAspect);
                 }
-                i3 = View.MeasureSpec.makeMeasureSpec(i5 + paddingLeft, BasicMeasure.EXACTLY);
-                i4 = View.MeasureSpec.makeMeasureSpec(i6 + paddingTop, BasicMeasure.EXACTLY);
+                i3 = MeasureSpec.makeMeasureSpec(i5 + paddingLeft, BasicMeasure.EXACTLY);
+                i4 = MeasureSpec.makeMeasureSpec(i6 + paddingTop, BasicMeasure.EXACTLY);
                 super.onMeasure(i3, i4);
             }
         }

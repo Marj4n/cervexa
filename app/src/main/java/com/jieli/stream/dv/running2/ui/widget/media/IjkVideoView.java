@@ -1110,7 +1110,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         this.subtitleDisplay = textView;
         textView.setTextSize(24.0f);
         this.subtitleDisplay.setGravity(17);
-        addView(this.subtitleDisplay, new FrameLayout.LayoutParams(-1, -2, 80));
+        addView(this.subtitleDisplay, new LayoutParams(-1, -2, 80));
     }
 
     public void setRenderView(IRenderView iRenderView) {
@@ -1140,7 +1140,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             iRenderView.setVideoSampleAspectRatio(i4, i);
         }
         View view2 = this.mRenderView.getView();
-        view2.setLayoutParams(new FrameLayout.LayoutParams(-2, -2, 17));
+        view2.setLayoutParams(new LayoutParams(-2, -2, 17));
         addView(view2);
         this.mRenderView.addRenderCallback(this.mSHCallback);
         this.mRenderView.setVideoRotation(this.mVideoRotationDegree);

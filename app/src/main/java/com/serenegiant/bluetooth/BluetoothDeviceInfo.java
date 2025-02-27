@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 /* loaded from: classes.dex */
 public class BluetoothDeviceInfo implements Parcelable {
-    public static final Parcelable.Creator<BluetoothDeviceInfo> CREATOR = new Parcelable.Creator<BluetoothDeviceInfo>() { // from class: com.serenegiant.bluetooth.BluetoothDeviceInfo.1
+    public static final Creator<BluetoothDeviceInfo> CREATOR = new Creator<BluetoothDeviceInfo>() { // from class: com.serenegiant.bluetooth.BluetoothDeviceInfo.1
         /* JADX WARN: Can't rename method to resolve collision */
         @Override // android.os.Parcelable.Creator
         public BluetoothDeviceInfo createFromParcel(Parcel parcel) {

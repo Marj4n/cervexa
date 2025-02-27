@@ -7,7 +7,7 @@ import java.util.Map;
 
 /* loaded from: classes.dex */
 public class CmdInfo implements Parcelable {
-    public static final Parcelable.Creator<CmdInfo> CREATOR = new Parcelable.Creator<CmdInfo>() { // from class: com.jieli.lib.dv.control.json.bean.CmdInfo.1
+    public static final Creator<CmdInfo> CREATOR = new Creator<CmdInfo>() { // from class: com.jieli.lib.dv.control.json.bean.CmdInfo.1
         @Override // android.os.Parcelable.Creator
         /* renamed from: a, reason: merged with bridge method [inline-methods] */
         public CmdInfo createFromParcel(Parcel parcel) {

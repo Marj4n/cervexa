@@ -739,4 +739,5 @@
     <item type="id" name="work_layout" />
     <item type="id" name="zero_corner_chip" />
     <item type="id" name="zh_r_rbtn" />
+    <item name="iv_text" type="id" />
 </resources>

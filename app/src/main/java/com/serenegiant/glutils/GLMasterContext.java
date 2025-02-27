@@ -47,7 +47,7 @@ public class GLMasterContext {
         }
 
         @Override // com.serenegiant.utils.MessageTask
-        protected Object processRequest(int i, int i2, int i3, Object obj) throws MessageTask.TaskBreak {
+        protected Object processRequest(int i, int i2, int i3, Object obj) throws TaskBreak {
             return null;
         }
 

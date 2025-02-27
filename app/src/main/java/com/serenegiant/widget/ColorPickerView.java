@@ -164,18 +164,18 @@ public class ColorPickerView extends View {
 
     @Override // android.view.View
     protected void onMeasure(int i, int i2) {
-        int size = View.MeasureSpec.getSize(i);
-        int size2 = View.MeasureSpec.getSize(i2);
-        int mode = View.MeasureSpec.getMode(i);
-        int mode2 = View.MeasureSpec.getMode(i2);
+        int size = MeasureSpec.getSize(i);
+        int size2 = MeasureSpec.getSize(i2);
+        int mode = MeasureSpec.getMode(i);
+        int mode2 = MeasureSpec.getMode(i2);
         if (mode == 0) {
             size = 100;
         }
-        int makeMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, mode);
+        int makeMeasureSpec = MeasureSpec.makeMeasureSpec(size, mode);
         if (mode2 == 0) {
             size2 = 100;
         }
-        int makeMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(size2, mode2);
+        int makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(size2, mode2);
         setMeasuredDimension(makeMeasureSpec, makeMeasureSpec2);
         super.onMeasure(makeMeasureSpec, makeMeasureSpec2);
     }

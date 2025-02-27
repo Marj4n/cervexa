@@ -23,12 +23,12 @@ public class UVCCameraHandler extends AbstractUVCCameraHandler {
     }
 
     public static final UVCCameraHandler createHandler(Activity activity, CameraViewInterface cameraViewInterface, int i, int i2, int i3, int i4, float f) {
-        AbstractUVCCameraHandler.CameraThread cameraThread = new AbstractUVCCameraHandler.CameraThread(UVCCameraHandler.class, activity, cameraViewInterface, i, i2, i3, i4, f);
+        CameraThread cameraThread = new CameraThread(UVCCameraHandler.class, activity, cameraViewInterface, i, i2, i3, i4, f);
         cameraThread.start();
         return (UVCCameraHandler) cameraThread.getHandler();
     }
 
-    protected UVCCameraHandler(AbstractUVCCameraHandler.CameraThread cameraThread) {
+    protected UVCCameraHandler(CameraThread cameraThread) {
         super(cameraThread);
     }
 
@@ -38,7 +38,7 @@ public class UVCCameraHandler extends AbstractUVCCameraHandler {
     }
 
     @Override // com.serenegiant.usb.common.AbstractUVCCameraHandler
-    public void captureStill(String str, AbstractUVCCameraHandler.OnCaptureListener onCaptureListener) {
+    public void captureStill(String str, OnCaptureListener onCaptureListener) {
         super.captureStill(str, onCaptureListener);
     }
 

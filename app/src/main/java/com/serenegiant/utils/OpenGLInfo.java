@@ -58,7 +58,7 @@ public class OpenGLInfo {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static org.json.JSONObject get() throws org.json.JSONException {
+    public static JSONObject get() throws JSONException {
         /*
             Method dump skipped, instructions count: 602
             To view this dump add '--comments-level debug' option

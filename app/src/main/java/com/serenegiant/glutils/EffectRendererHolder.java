@@ -53,7 +53,7 @@ public class EffectRendererHolder extends AbstractRendererHolder {
     }
 
     @Override // com.serenegiant.glutils.AbstractRendererHolder
-    protected AbstractRendererHolder.RendererTask createRendererTask(int i, int i2, int i3, EGLBase.IContext iContext, int i4) {
+    protected RendererTask createRendererTask(int i, int i2, int i3, EGLBase.IContext iContext, int i4) {
         return new MyRendererTask(this, i, i2, i3, iContext, i4);
     }
 
@@ -83,7 +83,7 @@ public class EffectRendererHolder extends AbstractRendererHolder {
         }
     }
 
-    protected static final class MyRendererTask extends AbstractRendererHolder.RendererTask {
+    protected static final class MyRendererTask extends RendererTask {
         private float[] mCurrentParams;
         private int mEffect;
         private final SparseArray<float[]> mParams;

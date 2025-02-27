@@ -49,7 +49,7 @@ public final class CrashExceptionHandler implements Thread.UncaughtExceptionHand
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public void uncaughtException(java.lang.Thread r5, java.lang.Throwable r6) {
+    public void uncaughtException(Thread r5, Throwable r6) {
         /*
             r4 = this;
             java.lang.ref.WeakReference<android.content.Context> r0 = r4.mWeakContext

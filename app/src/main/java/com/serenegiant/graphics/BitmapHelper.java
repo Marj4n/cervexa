@@ -327,7 +327,7 @@ public final class BitmapHelper {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private static android.graphics.Bitmap transform(android.graphics.Matrix r15, android.graphics.Bitmap r16, int r17, int r18, int r19) {
+    private static Bitmap transform(Matrix r15, Bitmap r16, int r17, int r18, int r19) {
         /*
             Method dump skipped, instructions count: 242
             To view this dump add '--comments-level debug' option

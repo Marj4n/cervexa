@@ -1,15 +1,25 @@
 package com.gizthon.camera.activity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -26,7 +36,9 @@ import com.serenegiant.usb.Size;
 import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.usb.common.AbstractUVCCameraHandler;
 import com.serenegiant.usb.encoder.RecordParams;
+
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +47,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
     private ResolutionListAdapter adapter;
     private UsbPreviewActivityBinding binding;
     private UVCCameraHelper mCameraHelper;
+    private String overlayText = "";
     private int position;
     private long startTime;
     protected Handler handler = new Handler();
@@ -56,15 +69,16 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
     };
 
     public static void start(Context context) {
-        context.startActivity(new Intent(context, (Class<?>) UVCUSBCameraActivity.class));
+        context.startActivity(new Intent(context, UVCUSBCameraActivity.class));
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
     protected void onResume() {
         super.onResume();
     }
 
-    @Override // com.gizthon.camera.activity.CameraBaseActivity, androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override
+    // com.gizthon.camera.activity.CameraBaseActivity, androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         UsbPreviewActivityBinding usbPreviewActivityBinding = (UsbPreviewActivityBinding) DataBindingUtil.setContentView(this, R.layout.usb_preview_activity);
@@ -120,6 +134,37 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 UVCUSBCameraActivity.this.onClickGallery();
             }
         });
+        this.binding.ivText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(UVCUSBCameraActivity.this);
+                builder.setTitle("Masukkan Teks");
+
+                // Tambahkan input field
+                final EditText input = new EditText(UVCUSBCameraActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        overlayText = input.getText().toString();
+                        binding.textOverlay.setText(overlayText);
+                        binding.textOverlay.setVisibility(View.VISIBLE);
+                    }
+                });
+
+                builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+        });
+
         this.binding.takePhoto.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.8
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
@@ -168,14 +213,16 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 recordParams.setRecordDuration(0);
                 recordParams.setSupportOverlay(true);
                 UVCUSBCameraActivity.this.mCameraHelper.startPusher(recordParams, new AbstractUVCCameraHandler.OnEncodeResultListener() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.6.1
-                    @Override // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnEncodeResultListener
+                    @Override
+                    // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnEncodeResultListener
                     public void onEncodeResult(byte[] bArr, int i, int i2, long j, int i3) {
                         if (i3 == 1) {
                             FileUtils.putFileStream(bArr, i, i2);
                         }
                     }
 
-                    @Override // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnEncodeResultListener
+                    @Override
+                    // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnEncodeResultListener
                     public void onRecordResult(final String str2) {
                         if (TextUtils.isEmpty(str2)) {
                             return;
@@ -200,22 +247,41 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
     @Override // com.gizthon.camera.activity.CameraBaseActivity
     public void onClickTakePhoto() {
-        final String str = UVCCameraHelper.ROOT_PATH + CameraApplication.DIRECTORY_NAME + System.currentTimeMillis() + UVCCameraHelper.SUFFIX_JPEG;
-        this.mCameraHelper.capturePicture(str, new AbstractUVCCameraHandler.OnCaptureListener() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.11
-            @Override // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnCaptureListener
-            public void onCaptureResult(String str2) {
-                if (TextUtils.isEmpty(str2)) {
-                    return;
-                }
-                new Handler(UVCUSBCameraActivity.this.getMainLooper()).post(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.11.1
-                    @Override // java.lang.Runnable
-                    public void run() {
-                        Toast.makeText(UVCUSBCameraActivity.this, "保存图片成功" + str, Toast.LENGTH_SHORT).show();
-                        UVCUSBCameraActivity.this.refresh(str);
-                    }
+        if (mCameraHelper == null || !mCameraHelper.isCameraOpened()) {
+            showShortMsg("Kamera tidak tersedia");
+            return;
+        }
+
+        String picPath = UVCCameraHelper.ROOT_PATH + "/MergeCamera/Media/Pictures/" + System.currentTimeMillis() + ".jpg";
+        mCameraHelper.capturePicture(picPath, new AbstractUVCCameraHandler.OnCaptureListener() {
+            @Override
+            public void onCaptureResult(String path) {
+                runOnUiThread(() -> {
+                    Toast.makeText(UVCUSBCameraActivity.this, "Foto Disimpan: " + path, Toast.LENGTH_SHORT).show();
+
+                    // Tambahkan overlay teks pada gambar
+                    addTextToImage(path, overlayText);
                 });
             }
         });
+    }
+
+    private Bitmap addTextToImage(Bitmap bitmap, String text) {
+        Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        Canvas canvas = new Canvas(mutableBitmap);
+        Paint paint = new Paint();
+
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(50);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        paint.setShadowLayer(5.0f, 10.0f, 10.0f, Color.BLACK);
+
+        int x = 50;
+        int y = bitmap.getHeight() - 100;
+
+        canvas.drawText(text, x, y, paint);
+
+        return mutableBitmap;
     }
 
     private void connectService() {
@@ -269,7 +335,8 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         GalleryListActivity.start(this);
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
+    // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
         super.onDestroy();
         FileUtils.releaseFile();

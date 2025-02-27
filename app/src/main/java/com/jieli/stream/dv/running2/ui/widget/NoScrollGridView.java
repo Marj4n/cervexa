@@ -26,7 +26,7 @@ public class NoScrollGridView extends GridView {
     @Override // android.widget.GridView, android.widget.AbsListView, android.view.View
     protected void onMeasure(int i, int i2) {
         this.isMeasure = true;
-        super.onMeasure(i, View.MeasureSpec.makeMeasureSpec(536870911, Integer.MIN_VALUE));
+        super.onMeasure(i, MeasureSpec.makeMeasureSpec(536870911, Integer.MIN_VALUE));
     }
 
     public boolean isMeasure() {

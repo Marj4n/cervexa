@@ -45,7 +45,7 @@ public class CollectionMap<K, V> implements Map<K, Collection<V>> {
     }
 
     @Override // java.util.Map
-    public Set<Map.Entry<K, Collection<V>>> entrySet() {
+    public Set<Entry<K, Collection<V>>> entrySet() {
         return this.contents.entrySet();
     }
 
@@ -83,7 +83,7 @@ public class CollectionMap<K, V> implements Map<K, Collection<V>> {
     }
 
     public void addAll(Map<? extends K, ? extends Collection<V>> map) {
-        for (Map.Entry<? extends K, ? extends Collection<V>> entry : map.entrySet()) {
+        for (Entry<? extends K, ? extends Collection<V>> entry : map.entrySet()) {
             addAll(entry.getKey(), entry.getValue());
         }
     }

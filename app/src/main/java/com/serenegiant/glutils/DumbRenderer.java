@@ -147,7 +147,7 @@ public class DumbRenderer implements IRenderer {
         }
 
         @Override // com.serenegiant.utils.MessageTask
-        protected Object processRequest(int i, int i2, int i3, Object obj) throws MessageTask.TaskBreak {
+        protected Object processRequest(int i, int i2, int i3, Object obj) throws TaskBreak {
             if (i == 1) {
                 handleSetSurface(obj);
                 return null;
