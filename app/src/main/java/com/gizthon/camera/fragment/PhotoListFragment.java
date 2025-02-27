@@ -1,179 +1,97 @@
 package com.gizthon.camera.fragment;
 
-import android.os.AsyncTask;
+import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import androidx.databinding.DataBindingUtil;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-
+import androidx.recyclerview.widget.RecyclerView;
 import com.gizthon.camera.R;
-import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.adapter.PhotoAdapter;
-import com.gizthon.camera.application.CameraApplication;
-import com.gizthon.camera.databinding.GalleryPhotoFragmentBinding;
-import com.gizthon.camera.model.PhotoBean;
-import com.jiangdg.usbcamera.UVCCameraHelper;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-/* loaded from: classes.dex */
-public class PhotoListFragment extends BaseXFragment {
+public class PhotoListFragment extends Fragment {
+    private RecyclerView recyclerView;
     private PhotoAdapter adapter;
-    private GalleryPhotoFragmentBinding binding;
-
-    public static PhotoListFragment newInstance() {
-        Bundle bundle = new Bundle();
-        PhotoListFragment photoListFragment = new PhotoListFragment();
-        photoListFragment.setArguments(bundle);
-        return photoListFragment;
-    }
-
-    @Override // com.gizthon.camera.fragment.BaseXFragment
-    protected void onCreateView(Bundle bundle) {
-        super.onCreateView(bundle);
-        GalleryPhotoFragmentBinding galleryPhotoFragmentBinding = (GalleryPhotoFragmentBinding) DataBindingUtil.inflate(this.inflater, R.layout.gallery_photo_fragment, this.container, false);
-        this.binding = galleryPhotoFragmentBinding;
-        setContentView(galleryPhotoFragmentBinding.getRoot());
-        this.binding.rcPhoto.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        PhotoAdapter photoAdapter = new PhotoAdapter(getPhotoBeans(), R.layout.gallery_photo_item);
-        this.adapter = photoAdapter;
-        photoAdapter.setOnChangeListener(new PhotoAdapter.OnChangeListener() { // from class: com.gizthon.camera.fragment.PhotoListFragment.1
-            @Override // com.gizthon.camera.adapter.PhotoAdapter.OnChangeListener
-            public void onCheck(boolean z) {
-                if (PhotoListFragment.this.getActivity() instanceof GalleryListActivity) {
-                    ((GalleryListActivity) PhotoListFragment.this.getActivity()).onShowDone(z);
-                }
-            }
-        });
-        this.binding.rcPhoto.setAdapter(this.adapter);
-        new DownloadFilesTask().execute(new Void[0]);
-    }
-
-    private class DownloadFilesTask extends AsyncTask<Void, Void, ArrayList<PhotoBean>> {
-        /* JADX INFO: Access modifiers changed from: protected */
-        @Override // android.os.AsyncTask
-        public void onProgressUpdate(Void... voidArr) {
-        }
-
-        private DownloadFilesTask() {
-        }
-
-        /* JADX INFO: Access modifiers changed from: protected */
-        @Override // android.os.AsyncTask
-        public ArrayList<PhotoBean> doInBackground(Void... voidArr) {
-            return PhotoListFragment.this.getPhotoBeans();
-        }
-
-        /* JADX INFO: Access modifiers changed from: protected */
-        @Override // android.os.AsyncTask
-        public void onPostExecute(ArrayList<PhotoBean> arrayList) {
-            PhotoListFragment.this.adapter = new PhotoAdapter(arrayList, R.layout.gallery_photo_item);
-            PhotoListFragment.this.adapter.setOnChangeListener(new PhotoAdapter.OnChangeListener() { // from class: com.gizthon.camera.fragment.PhotoListFragment.DownloadFilesTask.1
-                @Override // com.gizthon.camera.adapter.PhotoAdapter.OnChangeListener
-                public void onCheck(boolean z) {
-                    if (PhotoListFragment.this.getActivity() instanceof GalleryListActivity) {
-                        ((GalleryListActivity) PhotoListFragment.this.getActivity()).onShowDone(z);
-                    }
+    private List<File> photoFiles = new ArrayList<>();
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    loadPhotos();
+                } else {
+                    Toast.makeText(getContext(), "Storage permission is required!", Toast.LENGTH_SHORT).show();
                 }
             });
-            PhotoListFragment.this.binding.rcPhoto.setAdapter(PhotoListFragment.this.adapter);
-        }
+
+    public static PhotoListFragment newInstance() {
+        return new PhotoListFragment();
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    public ArrayList<PhotoBean> getPhotoBeans() {
-        String str = Environment.getExternalStorageDirectory().getPath() + CameraApplication.DIRECTORY_NAME;
-        File file = new File(str);
-        ArrayList<PhotoBean> arrayList = new ArrayList<>();
-        String[] list = file.list();
-        if (list != null) {
-            for (int i = 0; i < list.length; i++) {
-                String str2 = list[i];
-                if (str2.contains(UVCCameraHelper.SUFFIX_JPEG)) {
-                    PhotoBean photoBean = new PhotoBean();
-                    photoBean.setIndex(i);
-                    photoBean.setName(str2);
-                    photoBean.setPath(str + str2);
-                    arrayList.add(photoBean);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_photo_list, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        recyclerView.setHasFixedSize(true);
+
+        adapter = new PhotoAdapter(photoFiles, this::shareImage);
+        recyclerView.setAdapter(adapter);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+        } else {
+            loadPhotos();
+        }
+
+        return view;
+    }
+
+    private void loadPhotos() {
+        File photoDir = new File(Environment.getExternalStorageDirectory(), "MergeCamera/Media/Photo/Screen");
+        if (photoDir.exists() && photoDir.isDirectory()) {
+            File[] files = photoDir.listFiles();
+            if (files != null) {
+                photoFiles.clear();
+
+                // Filter hanya file gambar
+                List<File> imageFiles = new ArrayList<>();
+                for (File file : files) {
+                    if (file.getName().toLowerCase().endsWith(".jpg") || file.getName().toLowerCase().endsWith(".png")) {
+                        imageFiles.add(file);
+                    }
                 }
+
+                // Urutkan file berdasarkan tanggal terbaru
+                Collections.sort(imageFiles, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+
+                photoFiles.addAll(imageFiles);
+                adapter.notifyDataSetChanged();
             }
         }
-        return arrayList;
     }
 
-    public List<PhotoBean> getSelected() {
-        ArrayList arrayList = new ArrayList();
-        int size = this.adapter.dataModelList.size();
-        for (int i = 0; i < size; i++) {
-            PhotoBean photoBean = (PhotoBean) this.adapter.dataModelList.get(i);
-            if (photoBean.isSelected()) {
-                arrayList.add(photoBean);
-            }
-        }
-        return arrayList;
-    }
-
-    public void onRefreshData() {
-        this.adapter.setDataModelList(getPhotoBeans());
-    }
-
-    public void resetStatus(boolean z) {
-        int size = this.adapter.dataModelList.size();
-        for (int i = 0; i < size; i++) {
-            ((PhotoBean) this.adapter.dataModelList.get(i)).setSelected(z);
-        }
-        this.adapter.notifyDataSetChanged();
-    }
-
-    public void resetComplete() {
-        int size = this.adapter.dataModelList.size();
-        for (int i = 0; i < size; i++) {
-            PhotoBean photoBean = (PhotoBean) this.adapter.dataModelList.get(i);
-            if (photoBean.isSelected()) {
-                photoBean.setSelected(false);
-            }
-            photoBean.setSelectedCoverVisible(8);
-        }
-        this.adapter.notifySelectedStatus();
-    }
-
-    public void deleteSelected() {
-        new DeleteFilesTask().execute(getSelected());
-    }
-
-    private class DeleteFilesTask extends AsyncTask<List<PhotoBean>, Void, List<PhotoBean>> {
-        /* JADX INFO: Access modifiers changed from: protected */
-        @Override // android.os.AsyncTask
-        public void onProgressUpdate(Void... voidArr) {
-        }
-
-        private DeleteFilesTask() {
-        }
-
-        /* JADX INFO: Access modifiers changed from: protected */
-        @Override // android.os.AsyncTask
-        public List<PhotoBean> doInBackground(List<PhotoBean>... listArr) {
-            List<PhotoBean> list = listArr[0];
-            for (int i = 0; i < list.size(); i++) {
-                try {
-                    new File(list.get(i).getPath()).delete();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            return list;
-        }
-
-        /* JADX INFO: Access modifiers changed from: protected */
-        @Override // android.os.AsyncTask
-        public void onPostExecute(List<PhotoBean> list) {
-            List<PhotoBean> selected = PhotoListFragment.this.getSelected();
-            for (int i = 0; i < selected.size(); i++) {
-                PhotoListFragment.this.adapter.dataModelList.remove(selected.get(i));
-            }
-            PhotoListFragment.this.adapter.changeSelectedStatus();
-            PhotoListFragment.this.adapter.notifySelectedStatus();
-        }
+    private void shareImage(File file) {
+        Uri uri = FileProvider.getUriForFile(requireContext(), "com.gizthon.camera.fileprovider", file);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(Intent.createChooser(shareIntent, "Share Image"));
     }
 }

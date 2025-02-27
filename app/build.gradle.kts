@@ -50,4 +50,5 @@ dependencies {
     implementation(libs.mpandroidchart)
     implementation(libs.constraintlayout)
     implementation(libs.constraintlayout.solver)
+    implementation(libs.photoview)
 }

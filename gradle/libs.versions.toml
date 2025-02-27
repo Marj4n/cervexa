@@ -1,5 +1,6 @@
 [versions]
 agp = "8.8.0"
+androidImagePicker = "3.0.0"
 common = "1.3.1"
 commonsNet = "3.9.0"
 core = "3.5.3"
@@ -15,6 +16,7 @@ activity = "1.8.0"
 media = "1.7.0"
 mpandroidchart = "v3.1.0"
 okhttp = "4.12.0"
+photoview = "2.3.0"
 uvccamera = "2.0.1"
 uvccameraVersion = "2.0.1"
 volley = "1.2.1"
@@ -24,8 +26,10 @@ preference = "1.2.1"
 library = "1.1"
 constraintlayout = "2.2.0"
 constraintlayoutSolver = "2.0.4"
+zoomlayout = "1.9.0"
 
 [libraries]
+android-image-picker = { module = "com.github.esafirm:android-image-picker", version.ref = "androidImagePicker" }
 common = { module = "com.serenegiant:common", version.ref = "common" }
 commons-net = { module = "commons-net:commons-net", version.ref = "commonsNet" }
 core = { module = "com.google.zxing:core", version.ref = "core" }
@@ -39,6 +43,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 media = { group = "androidx.media", name = "media", version.ref = "media" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
+photoview = { module = "com.github.chrisbanes:PhotoView", version.ref = "photoview" }
 util = { group = "com.baidu.mapapi", name = "util", version.ref = "util" }
 swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
@@ -46,6 +51,7 @@ library = { group = "com.daimajia", name = "library", version.ref = "library" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 constraintlayout-solver = { group = "androidx.constraintlayout", name = "constraintlayout-solver", version.ref = "constraintlayoutSolver" }
 uvccamera = { module = "com.github.saki4510t:UVCCamera", version.ref = "githubUvccamera" }
+zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
