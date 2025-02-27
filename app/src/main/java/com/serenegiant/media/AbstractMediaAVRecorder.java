@@ -27,11 +27,11 @@ public abstract class AbstractMediaAVRecorder extends Recorder {
 
     protected abstract void setupMuxer(String str) throws IOException;
 
-    public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, int i) throws IOException {
+    public AbstractMediaAVRecorder(Context context, RecorderCallback recorderCallback, String str, int i) throws IOException {
         this(context, recorderCallback, (String) null, str, i);
     }
 
-    public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, String str2, int i) throws IOException {
+    public AbstractMediaAVRecorder(Context context, RecorderCallback recorderCallback, String str, String str2, int i) throws IOException {
         super(recorderCallback);
         String str3;
         this.mWeakContext = new WeakReference<>(context);
@@ -59,7 +59,7 @@ public abstract class AbstractMediaAVRecorder extends Recorder {
         }
     }
 
-    public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, int i, String str, String str2) throws IOException {
+    public AbstractMediaAVRecorder(Context context, RecorderCallback recorderCallback, int i, String str, String str2) throws IOException {
         super(recorderCallback);
         DocumentFile storageFile;
         this.mWeakContext = new WeakReference<>(context);
@@ -83,7 +83,7 @@ public abstract class AbstractMediaAVRecorder extends Recorder {
         throw new IOException("path not found/can't write");
     }
 
-    public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, DocumentFile documentFile) throws IOException {
+    public AbstractMediaAVRecorder(Context context, RecorderCallback recorderCallback, DocumentFile documentFile) throws IOException {
         super(recorderCallback);
         this.mWeakContext = new WeakReference<>(context);
         this.mSaveTreeId = 0;
@@ -92,7 +92,7 @@ public abstract class AbstractMediaAVRecorder extends Recorder {
         setupMuxer(context, documentFile);
     }
 
-    public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str) throws IOException {
+    public AbstractMediaAVRecorder(Context context, RecorderCallback recorderCallback, String str) throws IOException {
         super(recorderCallback);
         this.mWeakContext = new WeakReference<>(context);
         this.mSaveTreeId = 0;

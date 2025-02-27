@@ -45,7 +45,7 @@ public class AviThumbUtil {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static void getRecordVideoThumb(java.lang.String r34, com.jieli.stream.dv.running2.interfaces.OnAviThumbListener r35) {
+    public static void getRecordVideoThumb(String r34, OnAviThumbListener r35) {
         /*
             Method dump skipped, instructions count: 646
             To view this dump add '--comments-level debug' option

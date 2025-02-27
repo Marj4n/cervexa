@@ -36,7 +36,7 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         if (childSeekBar != null) {
             int paddingLeft = getPaddingLeft() + getPaddingRight();
             int paddingTop = getPaddingTop() + getPaddingBottom();
-            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) childSeekBar.getLayoutParams();
+            LayoutParams layoutParams = (LayoutParams) childSeekBar.getLayoutParams();
             layoutParams.width = -2;
             int i5 = i2 - paddingTop;
             layoutParams.height = Math.max(0, i5);
@@ -44,7 +44,7 @@ public class VerticalSeekBarWrapper extends FrameLayout {
             childSeekBar.measure(0, 0);
             int measuredWidth = childSeekBar.getMeasuredWidth();
             int i6 = i - paddingLeft;
-            childSeekBar.measure(View.MeasureSpec.makeMeasureSpec(Math.max(0, i6), Integer.MIN_VALUE), View.MeasureSpec.makeMeasureSpec(Math.max(0, i5), BasicMeasure.EXACTLY));
+            childSeekBar.measure(MeasureSpec.makeMeasureSpec(Math.max(0, i6), Integer.MIN_VALUE), MeasureSpec.makeMeasureSpec(Math.max(0, i5), BasicMeasure.EXACTLY));
             layoutParams.gravity = 51;
             layoutParams.leftMargin = (Math.max(0, i6) - measuredWidth) / 2;
             childSeekBar.setLayoutParams(layoutParams);
@@ -55,7 +55,7 @@ public class VerticalSeekBarWrapper extends FrameLayout {
     private void onSizeChangedUseViewRotation(int i, int i2, int i3, int i4) {
         VerticalSeekBar childSeekBar = getChildSeekBar();
         if (childSeekBar != null) {
-            childSeekBar.measure(View.MeasureSpec.makeMeasureSpec(Math.max(0, i2 - (getPaddingTop() + getPaddingBottom())), BasicMeasure.EXACTLY), View.MeasureSpec.makeMeasureSpec(Math.max(0, i - (getPaddingLeft() + getPaddingRight())), Integer.MIN_VALUE));
+            childSeekBar.measure(MeasureSpec.makeMeasureSpec(Math.max(0, i2 - (getPaddingTop() + getPaddingBottom())), BasicMeasure.EXACTLY), MeasureSpec.makeMeasureSpec(Math.max(0, i - (getPaddingLeft() + getPaddingRight())), Integer.MIN_VALUE));
         }
         applyViewRotation(i, i2);
         super.onSizeChanged(i, i2, i3, i4);
@@ -66,15 +66,15 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         int measuredWidth;
         int measuredHeight;
         VerticalSeekBar childSeekBar = getChildSeekBar();
-        int mode = View.MeasureSpec.getMode(i);
-        int mode2 = View.MeasureSpec.getMode(i2);
-        int size = View.MeasureSpec.getSize(i);
-        int size2 = View.MeasureSpec.getSize(i2);
+        int mode = MeasureSpec.getMode(i);
+        int mode2 = MeasureSpec.getMode(i2);
+        int size = MeasureSpec.getSize(i);
+        int size2 = MeasureSpec.getSize(i2);
         if (childSeekBar != null && mode != 1073741824) {
             int paddingLeft = getPaddingLeft() + getPaddingRight();
             int paddingTop = getPaddingTop() + getPaddingBottom();
-            int makeMeasureSpec = View.MeasureSpec.makeMeasureSpec(Math.max(0, size - paddingLeft), mode);
-            int makeMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(Math.max(0, size2 - paddingTop), mode2);
+            int makeMeasureSpec = MeasureSpec.makeMeasureSpec(Math.max(0, size - paddingLeft), mode);
+            int makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(Math.max(0, size2 - paddingTop), mode2);
             if (useViewRotation()) {
                 childSeekBar.measure(makeMeasureSpec2, makeMeasureSpec);
                 measuredWidth = childSeekBar.getMeasuredHeight();

@@ -50,14 +50,14 @@ public class WifiCamera implements ICamera {
 
     @Override // com.gizthon.camera.core.ICamera
     public void initDevice(Activity activity) {
-        WifiManager wifiManager = (WifiManager) activity.getApplicationContext().getSystemService("wifi");
+        WifiManager wifiManager = (WifiManager) activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if (!wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
         }
         WifiInfo connectionInfo = wifiManager.getConnectionInfo();
         String intToIp = intToIp(connectionInfo.getIpAddress());
-        Log.i("TAG", "wifi 的IP地址 " + intToIp);
-        Log.i("TAG", "wifi 的信息 " + connectionInfo.getSSID());
+        Log.i("TAG", "wifi IP " + intToIp);
+        Log.i("TAG", "wifi SSID " + connectionInfo.getSSID());
         String ssid = TextUtils.isEmpty(connectionInfo.getSSID()) ? "" : connectionInfo.getSSID();
         if (TextUtils.equals(intToIp, "192.168.1.2") && ssid.contains("wifi_camera")) {
             this.isWifi = true;

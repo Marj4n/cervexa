@@ -264,7 +264,7 @@ public class TLView extends ViewGroup implements IConstant {
             if (childAt.getVisibility() == 8) {
                 return;
             }
-            childAt.measure(View.MeasureSpec.makeMeasureSpec(i5, MeasureSpec.AT_MOST), View.MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.AT_MOST));
+            childAt.measure(MeasureSpec.makeMeasureSpec(i5, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.AT_MOST));
             int measuredWidth2 = childAt.getMeasuredWidth();
             int measuredHeight2 = childAt.getMeasuredHeight();
             if (i6 + measuredWidth2 >= measuredWidth) {
@@ -543,7 +543,7 @@ public class TLView extends ViewGroup implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    protected void onDraw(android.graphics.Canvas r29) {
+    protected void onDraw(Canvas r29) {
         /*
             Method dump skipped, instructions count: 1853
             To view this dump add '--comments-level debug' option

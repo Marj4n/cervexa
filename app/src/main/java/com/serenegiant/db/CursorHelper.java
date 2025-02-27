@@ -79,7 +79,7 @@ public final class CursorHelper {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static int findPositionFromId(android.database.Cursor r5, long r6) {
+    public static int findPositionFromId(Cursor r5, long r6) {
         /*
             r0 = -1
             if (r5 == 0) goto L2e

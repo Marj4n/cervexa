@@ -27,7 +27,7 @@ public class MediaVideoEncoder extends MediaEncoder implements IVideoEncoder {
     private Surface mSurface;
     private final int mWidth;
 
-    public MediaVideoEncoder(MediaMuxerWrapper mediaMuxerWrapper, int i, int i2, MediaEncoder.MediaEncoderListener mediaEncoderListener) {
+    public MediaVideoEncoder(MediaMuxerWrapper mediaMuxerWrapper, int i, int i2, MediaEncoderListener mediaEncoderListener) {
         super(mediaMuxerWrapper, mediaEncoderListener);
         Log.i(TAG, "MediaVideoEncoder: ");
         this.mRenderHandler = RenderHandler.createHandler(TAG);

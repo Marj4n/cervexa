@@ -653,7 +653,7 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
             Code decompiled incorrectly, please refer to instructions dump.
             To view partially-correct add '--show-bad-code' argument
         */
-        public void addSurface(int r5, java.lang.Object r6, int r7) throws java.lang.IllegalStateException, java.lang.IllegalArgumentException {
+        public void addSurface(int r5, Object r6, int r7) throws IllegalStateException, IllegalArgumentException {
             /*
                 r4 = this;
                 r4.checkFinished()

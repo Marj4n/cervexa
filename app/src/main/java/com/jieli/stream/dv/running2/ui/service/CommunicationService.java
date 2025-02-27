@@ -41,7 +41,7 @@ public class CommunicationService extends Service implements IConstant, IActions
             Code decompiled incorrectly, please refer to instructions dump.
             To view partially-correct add '--show-bad-code' argument
         */
-        public void onNotify(com.jieli.lib.dv.control.json.bean.NotifyInfo r12) {
+        public void onNotify(NotifyInfo r12) {
             /*
                 Method dump skipped, instructions count: 2958
                 To view this dump add '--comments-level debug' option

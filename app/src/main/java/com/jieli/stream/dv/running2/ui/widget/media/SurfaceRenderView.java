@@ -97,7 +97,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
         setMeasuredDimension(this.mMeasureHelper.getMeasuredWidth(), this.mMeasureHelper.getMeasuredHeight());
     }
 
-    private static final class InternalSurfaceHolder implements IRenderView.ISurfaceHolder {
+    private static final class InternalSurfaceHolder implements ISurfaceHolder {
         private SurfaceHolder mSurfaceHolder;
         private SurfaceRenderView mSurfaceView;
 
@@ -142,12 +142,12 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
     }
 
     @Override // com.jieli.stream.dv.running2.ui.widget.media.IRenderView
-    public void addRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+    public void addRenderCallback(IRenderCallback iRenderCallback) {
         this.mSurfaceCallback.addRenderCallback(iRenderCallback);
     }
 
     @Override // com.jieli.stream.dv.running2.ui.widget.media.IRenderView
-    public void removeRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+    public void removeRenderCallback(IRenderCallback iRenderCallback) {
         this.mSurfaceCallback.removeRenderCallback(iRenderCallback);
     }
 
@@ -155,7 +155,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
         private int mFormat;
         private int mHeight;
         private boolean mIsFormatChanged;
-        private Map<IRenderView.IRenderCallback, Object> mRenderCallbackMap = new ConcurrentHashMap();
+        private Map<IRenderCallback, Object> mRenderCallbackMap = new ConcurrentHashMap();
         private SurfaceHolder mSurfaceHolder;
         private WeakReference<SurfaceRenderView> mWeakSurfaceView;
         private int mWidth;
@@ -164,7 +164,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
             this.mWeakSurfaceView = new WeakReference<>(surfaceRenderView);
         }
 
-        public void addRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+        public void addRenderCallback(IRenderCallback iRenderCallback) {
             InternalSurfaceHolder internalSurfaceHolder;
             this.mRenderCallbackMap.put(iRenderCallback, iRenderCallback);
             if (this.mSurfaceHolder != null) {
@@ -181,7 +181,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
             }
         }
 
-        public void removeRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+        public void removeRenderCallback(IRenderCallback iRenderCallback) {
             this.mRenderCallbackMap.remove(iRenderCallback);
         }
 
@@ -193,7 +193,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
             this.mWidth = 0;
             this.mHeight = 0;
             InternalSurfaceHolder internalSurfaceHolder = new InternalSurfaceHolder(this.mWeakSurfaceView.get(), this.mSurfaceHolder);
-            Iterator<IRenderView.IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
+            Iterator<IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
             while (it.hasNext()) {
                 it.next().onSurfaceCreated(internalSurfaceHolder, 0, 0);
             }
@@ -207,7 +207,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
             this.mWidth = 0;
             this.mHeight = 0;
             InternalSurfaceHolder internalSurfaceHolder = new InternalSurfaceHolder(this.mWeakSurfaceView.get(), this.mSurfaceHolder);
-            Iterator<IRenderView.IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
+            Iterator<IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
             while (it.hasNext()) {
                 it.next().onSurfaceDestroyed(internalSurfaceHolder);
             }
@@ -221,7 +221,7 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
             this.mWidth = i2;
             this.mHeight = i3;
             InternalSurfaceHolder internalSurfaceHolder = new InternalSurfaceHolder(this.mWeakSurfaceView.get(), this.mSurfaceHolder);
-            Iterator<IRenderView.IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
+            Iterator<IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
             while (it.hasNext()) {
                 it.next().onSurfaceChanged(internalSurfaceHolder, i, i2, i3);
             }

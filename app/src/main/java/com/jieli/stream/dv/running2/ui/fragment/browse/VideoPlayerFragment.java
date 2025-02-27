@@ -351,7 +351,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public boolean onTouch(android.view.View r11, android.view.MotionEvent r12) {
+    public boolean onTouch(View r11, android.view.MotionEvent r12) {
         /*
             Method dump skipped, instructions count: 243
             To view this dump add '--comments-level debug' option

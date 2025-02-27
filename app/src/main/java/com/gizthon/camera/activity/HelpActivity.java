@@ -19,7 +19,7 @@ public class HelpActivity extends CameraBaseActivity {
         context.startActivity(new Intent(context, (Class<?>) HelpActivity.class));
     }
 
-    @Override // com.gizthon.camera.activity.CameraBaseActivity, androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.binding = (HelpActivityBinding) DataBindingUtil.setContentView(this, R.layout.help_activity);

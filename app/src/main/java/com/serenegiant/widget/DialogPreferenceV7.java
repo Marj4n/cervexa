@@ -242,8 +242,8 @@ public class DialogPreferenceV7 extends Preference implements DialogInterface.On
         }
     }
 
-    private static class SavedState extends Preference.BaseSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() { // from class: com.serenegiant.widget.DialogPreferenceV7.SavedState.1
+    private static class SavedState extends BaseSavedState {
+        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() { // from class: com.serenegiant.widget.DialogPreferenceV7.SavedState.1
             /* JADX WARN: Can't rename method to resolve collision */
             @Override // android.os.Parcelable.Creator
             public SavedState createFromParcel(Parcel parcel) {

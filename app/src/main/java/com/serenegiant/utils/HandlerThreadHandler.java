@@ -18,11 +18,11 @@ public class HandlerThreadHandler extends Handler {
         return new HandlerThreadHandler(handlerThread.getLooper());
     }
 
-    public static final HandlerThreadHandler createHandler(Handler.Callback callback) {
+    public static final HandlerThreadHandler createHandler(Callback callback) {
         return createHandler(TAG, callback);
     }
 
-    public static final HandlerThreadHandler createHandler(String str, Handler.Callback callback) {
+    public static final HandlerThreadHandler createHandler(String str, Callback callback) {
         HandlerThread handlerThread = new HandlerThread(str);
         handlerThread.start();
         return new HandlerThreadHandler(handlerThread.getLooper(), callback);
@@ -32,7 +32,7 @@ public class HandlerThreadHandler extends Handler {
         super(looper);
     }
 
-    private HandlerThreadHandler(Looper looper, Handler.Callback callback) {
+    private HandlerThreadHandler(Looper looper, Callback callback) {
         super(looper, callback);
     }
 }

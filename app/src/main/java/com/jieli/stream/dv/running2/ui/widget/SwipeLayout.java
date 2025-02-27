@@ -92,7 +92,7 @@ public class SwipeLayout extends LinearLayout {
             Code decompiled incorrectly, please refer to instructions dump.
             To view partially-correct add '--show-bad-code' argument
         */
-        public void onViewReleased(android.view.View r5, float r6, float r7) {
+        public void onViewReleased(View r5, float r6, float r7) {
             /*
                 r4 = this;
                 super.onViewReleased(r5, r6, r7)

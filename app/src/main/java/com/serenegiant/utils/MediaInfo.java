@@ -39,7 +39,7 @@ public final class MediaInfo {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private static final org.json.JSONObject getVideo() throws org.json.JSONException {
+    private static final JSONObject getVideo() throws JSONException {
         /*
             Method dump skipped, instructions count: 268
             To view this dump add '--comments-level debug' option

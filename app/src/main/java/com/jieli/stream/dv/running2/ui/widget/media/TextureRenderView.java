@@ -106,11 +106,11 @@ public class TextureRenderView extends TextureView implements IRenderView {
         setMeasuredDimension(this.mMeasureHelper.getMeasuredWidth(), this.mMeasureHelper.getMeasuredHeight());
     }
 
-    public IRenderView.ISurfaceHolder getSurfaceHolder() {
+    public ISurfaceHolder getSurfaceHolder() {
         return new InternalSurfaceHolder(this, this.mSurfaceCallback.mSurfaceTexture, this.mSurfaceCallback);
     }
 
-    private static final class InternalSurfaceHolder implements IRenderView.ISurfaceHolder {
+    private static final class InternalSurfaceHolder implements ISurfaceHolder {
         private SurfaceTexture mSurfaceTexture;
         private ISurfaceTextureHost mSurfaceTextureHost;
         private TextureRenderView mTextureView;
@@ -167,16 +167,16 @@ public class TextureRenderView extends TextureView implements IRenderView {
     }
 
     @Override // com.jieli.stream.dv.running2.ui.widget.media.IRenderView
-    public void addRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+    public void addRenderCallback(IRenderCallback iRenderCallback) {
         this.mSurfaceCallback.addRenderCallback(iRenderCallback);
     }
 
     @Override // com.jieli.stream.dv.running2.ui.widget.media.IRenderView
-    public void removeRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+    public void removeRenderCallback(IRenderCallback iRenderCallback) {
         this.mSurfaceCallback.removeRenderCallback(iRenderCallback);
     }
 
-    private static final class SurfaceCallback implements TextureView.SurfaceTextureListener, ISurfaceTextureHost {
+    private static final class SurfaceCallback implements SurfaceTextureListener, ISurfaceTextureHost {
         private int mHeight;
         private boolean mIsFormatChanged;
         private SurfaceTexture mSurfaceTexture;
@@ -185,7 +185,7 @@ public class TextureRenderView extends TextureView implements IRenderView {
         private boolean mOwnSurfaceTexture = true;
         private boolean mWillDetachFromWindow = false;
         private boolean mDidDetachFromWindow = false;
-        private Map<IRenderView.IRenderCallback, Object> mRenderCallbackMap = new ConcurrentHashMap();
+        private Map<IRenderCallback, Object> mRenderCallbackMap = new ConcurrentHashMap();
 
         @Override // android.view.TextureView.SurfaceTextureListener
         public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
@@ -199,7 +199,7 @@ public class TextureRenderView extends TextureView implements IRenderView {
             this.mOwnSurfaceTexture = z;
         }
 
-        public void addRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+        public void addRenderCallback(IRenderCallback iRenderCallback) {
             InternalSurfaceHolder internalSurfaceHolder;
             this.mRenderCallbackMap.put(iRenderCallback, iRenderCallback);
             if (this.mSurfaceTexture != null) {
@@ -216,7 +216,7 @@ public class TextureRenderView extends TextureView implements IRenderView {
             }
         }
 
-        public void removeRenderCallback(IRenderView.IRenderCallback iRenderCallback) {
+        public void removeRenderCallback(IRenderCallback iRenderCallback) {
             this.mRenderCallbackMap.remove(iRenderCallback);
         }
 
@@ -227,7 +227,7 @@ public class TextureRenderView extends TextureView implements IRenderView {
             this.mWidth = 0;
             this.mHeight = 0;
             InternalSurfaceHolder internalSurfaceHolder = new InternalSurfaceHolder(this.mWeakRenderView.get(), surfaceTexture, this);
-            Iterator<IRenderView.IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
+            Iterator<IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
             while (it.hasNext()) {
                 it.next().onSurfaceCreated(internalSurfaceHolder, 0, 0);
             }
@@ -240,7 +240,7 @@ public class TextureRenderView extends TextureView implements IRenderView {
             this.mWidth = i;
             this.mHeight = i2;
             InternalSurfaceHolder internalSurfaceHolder = new InternalSurfaceHolder(this.mWeakRenderView.get(), surfaceTexture, this);
-            Iterator<IRenderView.IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
+            Iterator<IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
             while (it.hasNext()) {
                 it.next().onSurfaceChanged(internalSurfaceHolder, 0, i, i2);
             }
@@ -253,7 +253,7 @@ public class TextureRenderView extends TextureView implements IRenderView {
             this.mWidth = 0;
             this.mHeight = 0;
             InternalSurfaceHolder internalSurfaceHolder = new InternalSurfaceHolder(this.mWeakRenderView.get(), surfaceTexture, this);
-            Iterator<IRenderView.IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
+            Iterator<IRenderCallback> it = this.mRenderCallbackMap.keySet().iterator();
             while (it.hasNext()) {
                 it.next().onSurfaceDestroyed(internalSurfaceHolder);
             }

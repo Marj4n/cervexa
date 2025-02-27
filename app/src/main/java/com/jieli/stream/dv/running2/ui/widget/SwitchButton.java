@@ -40,7 +40,7 @@ public class SwitchButton extends CompoundButton {
     private float mBackMeasureRatio;
     private float mBackRadius;
     private RectF mBackRectF;
-    private CompoundButton.OnCheckedChangeListener mChildOnCheckedChangeListener;
+    private OnCheckedChangeListener mChildOnCheckedChangeListener;
     private int mClickTimeout;
     private int mCurrBackColor;
     private int mCurrThumbColor;
@@ -270,8 +270,8 @@ public class SwitchButton extends CompoundButton {
     }
 
     private int measureWidth(int i) {
-        int size = View.MeasureSpec.getSize(i);
-        int mode = View.MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
         int ceil = ceil(this.mThumbSizeF.x * this.mBackMeasureRatio);
         if (this.mIsBackUseDrawable) {
             ceil = Math.max(ceil, this.mBackDrawable.getMinimumWidth());
@@ -298,8 +298,8 @@ public class SwitchButton extends CompoundButton {
     }
 
     private int measureHeight(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         int ceil = ceil(Math.max(this.mThumbSizeF.y, this.mThumbSizeF.y + this.mThumbMargin.top + this.mThumbMargin.right));
         float height = this.mOnLayout != null ? this.mOnLayout.getHeight() : 0.0f;
         float height2 = this.mOffLayout != null ? this.mOffLayout.getHeight() : 0.0f;
@@ -604,7 +604,7 @@ public class SwitchButton extends CompoundButton {
     }
 
     @Override // android.widget.CompoundButton
-    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
         super.setOnCheckedChangeListener(onCheckedChangeListener);
         this.mChildOnCheckedChangeListener = onCheckedChangeListener;
     }
@@ -830,8 +830,8 @@ public class SwitchButton extends CompoundButton {
         super.onRestoreInstanceState(savedState.getSuperState());
     }
 
-    static class SavedState extends View.BaseSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() { // from class: com.jieli.stream.dv.running2.ui.widget.SwitchButton.SavedState.1
+    static class SavedState extends BaseSavedState {
+        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() { // from class: com.jieli.stream.dv.running2.ui.widget.SwitchButton.SavedState.1
             /* JADX WARN: Can't rename method to resolve collision */
             @Override // android.os.Parcelable.Creator
             public SavedState createFromParcel(Parcel parcel) {

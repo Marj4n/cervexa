@@ -37,8 +37,8 @@ public abstract class EglTask extends MessageTask {
     }
 
     @Override // com.serenegiant.utils.MessageTask
-    protected MessageTask.Request takeRequest() throws InterruptedException {
-        MessageTask.Request takeRequest = super.takeRequest();
+    protected Request takeRequest() throws InterruptedException {
+        Request takeRequest = super.takeRequest();
         this.mEglHolder.makeCurrent();
         return takeRequest;
     }

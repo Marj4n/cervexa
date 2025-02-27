@@ -45,7 +45,7 @@ public class RelativeRadioGroup extends RelativeLayout {
     }
 
     @Override // android.view.ViewGroup
-    public void setOnHierarchyChangeListener(ViewGroup.OnHierarchyChangeListener onHierarchyChangeListener) {
+    public void setOnHierarchyChangeListener(OnHierarchyChangeListener onHierarchyChangeListener) {
         this.mPassThroughListener.mOnHierarchyChangeListener = onHierarchyChangeListener;
     }
 
@@ -161,7 +161,7 @@ public class RelativeRadioGroup extends RelativeLayout {
             super(layoutParams);
         }
 
-        public LayoutParams(ViewGroup.MarginLayoutParams marginLayoutParams) {
+        public LayoutParams(MarginLayoutParams marginLayoutParams) {
             super(marginLayoutParams);
         }
 
@@ -199,8 +199,8 @@ public class RelativeRadioGroup extends RelativeLayout {
         }
     }
 
-    private class PassThroughHierarchyChangeListener implements ViewGroup.OnHierarchyChangeListener {
-        private ViewGroup.OnHierarchyChangeListener mOnHierarchyChangeListener;
+    private class PassThroughHierarchyChangeListener implements OnHierarchyChangeListener {
+        private OnHierarchyChangeListener mOnHierarchyChangeListener;
 
         private PassThroughHierarchyChangeListener() {
         }
@@ -213,7 +213,7 @@ public class RelativeRadioGroup extends RelativeLayout {
                 }
                 ((RadioButton) view2).setOnCheckedChangeListener(RelativeRadioGroup.this.mChildOnCheckedChangeListener);
             }
-            ViewGroup.OnHierarchyChangeListener onHierarchyChangeListener = this.mOnHierarchyChangeListener;
+            OnHierarchyChangeListener onHierarchyChangeListener = this.mOnHierarchyChangeListener;
             if (onHierarchyChangeListener != null) {
                 onHierarchyChangeListener.onChildViewAdded(view, view2);
             }
@@ -224,7 +224,7 @@ public class RelativeRadioGroup extends RelativeLayout {
             if (view == RelativeRadioGroup.this && (view2 instanceof RadioButton)) {
                 ((RadioButton) view2).setOnCheckedChangeListener(null);
             }
-            ViewGroup.OnHierarchyChangeListener onHierarchyChangeListener = this.mOnHierarchyChangeListener;
+            OnHierarchyChangeListener onHierarchyChangeListener = this.mOnHierarchyChangeListener;
             if (onHierarchyChangeListener != null) {
                 onHierarchyChangeListener.onChildViewRemoved(view, view2);
             }

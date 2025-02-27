@@ -28,7 +28,7 @@ class EGLBase14 extends EGLBase {
     private int mGlVersion = 2;
     private final int[] mSurfaceDimension = new int[2];
 
-    public static class Context extends EGLBase.IContext {
+    public static class Context extends IContext {
         public final EGLContext eglContext;
 
         private Context(EGLContext eGLContext) {
@@ -49,7 +49,7 @@ class EGLBase14 extends EGLBase {
         }
     }
 
-    public static class Config extends EGLBase.IConfig {
+    public static class Config extends IConfig {
         public final EGLConfig eglConfig;
 
         private Config(EGLConfig eGLConfig) {
@@ -57,7 +57,7 @@ class EGLBase14 extends EGLBase {
         }
     }
 
-    public static class EglSurface implements EGLBase.IEglSurface {
+    public static class EglSurface implements IEglSurface {
         private final EGLBase14 mEglBase;
         private EGLSurface mEglSurface;
 
@@ -106,7 +106,7 @@ class EGLBase14 extends EGLBase {
         }
 
         @Override // com.serenegiant.glutils.EGLBase.IEglSurface
-        public EGLBase.IContext getContext() {
+        public IContext getContext() {
             return this.mEglBase.getContext();
         }
 

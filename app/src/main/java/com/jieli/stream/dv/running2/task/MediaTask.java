@@ -159,7 +159,7 @@ public class MediaTask extends HandlerThread implements IConstant, Handler.Callb
                         Code decompiled incorrectly, please refer to instructions dump.
                         To view partially-correct add '--show-bad-code' argument
                     */
-                    public void onResponse(okhttp3.Call r17, okhttp3.Response r18) throws java.io.IOException {
+                    public void onResponse(Call r17, okhttp3.Response r18) throws IOException {
                         /*
                             Method dump skipped, instructions count: 706
                             To view this dump add '--comments-level debug' option

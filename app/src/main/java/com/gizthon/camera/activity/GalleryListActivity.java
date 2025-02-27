@@ -25,13 +25,13 @@ public class GalleryListActivity extends CameraBaseActivity {
     private GalleryViewModel viewModel;
 
     public static void start(Context context) {
-        context.startActivity(new Intent(context, (Class<?>) GalleryListActivity.class));
+        context.startActivity(new Intent(context, GalleryListActivity.class));
     }
 
-    @Override // com.gizthon.camera.activity.CameraBaseActivity, androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.binding = (GalleryActivityBinding) DataBindingUtil.setContentView(this, R.layout.gallery_activity);
+        this.binding = DataBindingUtil.setContentView(this, R.layout.gallery_activity);
         GalleryViewModel galleryViewModel = new GalleryViewModel();
         this.viewModel = galleryViewModel;
         this.binding.setViewModel(galleryViewModel);

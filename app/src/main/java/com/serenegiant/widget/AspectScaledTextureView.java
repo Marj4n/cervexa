@@ -21,10 +21,10 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
     private static final String TAG = AspectScaledTextureView.class.getSimpleName();
     private volatile boolean mHasSurface;
     protected final Matrix mImageMatrix;
-    private final Set<TextureView.SurfaceTextureListener> mListeners;
+    private final Set<SurfaceTextureListener> mListeners;
     private double mRequestedAspect;
     private int mScaleMode;
-    private TextureView.SurfaceTextureListener mSurfaceTextureListener;
+    private SurfaceTextureListener mSurfaceTextureListener;
     private int prevHeight;
     private int prevWidth;
 
@@ -64,8 +64,8 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
         int i3;
         int i4;
         if (this.mRequestedAspect > 1e-10 && this.mScaleMode == 0) {
-            int size = View.MeasureSpec.getSize(i);
-            int size2 = View.MeasureSpec.getSize(i2);
+            int size = MeasureSpec.getSize(i);
+            int size2 = MeasureSpec.getSize(i2);
             int paddingLeft = getPaddingLeft() + getPaddingRight();
             int paddingTop = getPaddingTop() + getPaddingBottom();
             int i5 = size - paddingLeft;
@@ -79,8 +79,8 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
                 } else {
                     i5 = (int) (d2 * this.mRequestedAspect);
                 }
-                i3 = View.MeasureSpec.makeMeasureSpec(i5 + paddingLeft, BasicMeasure.EXACTLY);
-                i4 = View.MeasureSpec.makeMeasureSpec(i6 + paddingTop, BasicMeasure.EXACTLY);
+                i3 = MeasureSpec.makeMeasureSpec(i5 + paddingLeft, BasicMeasure.EXACTLY);
+                i4 = MeasureSpec.makeMeasureSpec(i6 + paddingTop, BasicMeasure.EXACTLY);
                 super.onMeasure(i3, i4);
             }
         }
@@ -105,21 +105,21 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
     }
 
     @Override // android.view.TextureView
-    public final void setSurfaceTextureListener(TextureView.SurfaceTextureListener surfaceTextureListener) {
+    public final void setSurfaceTextureListener(SurfaceTextureListener surfaceTextureListener) {
         unregister(this.mSurfaceTextureListener);
         this.mSurfaceTextureListener = surfaceTextureListener;
         register(surfaceTextureListener);
     }
 
     @Override // com.serenegiant.widget.ITextureView
-    public void register(TextureView.SurfaceTextureListener surfaceTextureListener) {
+    public void register(SurfaceTextureListener surfaceTextureListener) {
         if (surfaceTextureListener != null) {
             this.mListeners.add(surfaceTextureListener);
         }
     }
 
     @Override // com.serenegiant.widget.ITextureView
-    public void unregister(TextureView.SurfaceTextureListener surfaceTextureListener) {
+    public void unregister(SurfaceTextureListener surfaceTextureListener) {
         this.mListeners.remove(surfaceTextureListener);
     }
 
@@ -127,7 +127,7 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
     public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int i, int i2) {
         this.mHasSurface = true;
         init();
-        for (TextureView.SurfaceTextureListener surfaceTextureListener : this.mListeners) {
+        for (SurfaceTextureListener surfaceTextureListener : this.mListeners) {
             try {
                 surfaceTextureListener.onSurfaceTextureAvailable(surfaceTexture, i, i2);
             } catch (Exception e) {
@@ -139,7 +139,7 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
 
     @Override // android.view.TextureView.SurfaceTextureListener
     public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i2) {
-        for (TextureView.SurfaceTextureListener surfaceTextureListener : this.mListeners) {
+        for (SurfaceTextureListener surfaceTextureListener : this.mListeners) {
             try {
                 surfaceTextureListener.onSurfaceTextureSizeChanged(surfaceTexture, i, i2);
             } catch (Exception e) {
@@ -152,7 +152,7 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
     @Override // android.view.TextureView.SurfaceTextureListener
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
         this.mHasSurface = false;
-        for (TextureView.SurfaceTextureListener surfaceTextureListener : this.mListeners) {
+        for (SurfaceTextureListener surfaceTextureListener : this.mListeners) {
             try {
                 surfaceTextureListener.onSurfaceTextureDestroyed(surfaceTexture);
             } catch (Exception e) {
@@ -165,7 +165,7 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
 
     @Override // android.view.TextureView.SurfaceTextureListener
     public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
-        for (TextureView.SurfaceTextureListener surfaceTextureListener : this.mListeners) {
+        for (SurfaceTextureListener surfaceTextureListener : this.mListeners) {
             try {
                 surfaceTextureListener.onSurfaceTextureUpdated(surfaceTexture);
             } catch (Exception e) {

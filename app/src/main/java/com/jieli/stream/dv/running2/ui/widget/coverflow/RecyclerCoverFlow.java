@@ -64,7 +64,7 @@ public class RecyclerCoverFlow extends RecyclerView {
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView
-    public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
+    public void setLayoutManager(LayoutManager layoutManager) {
         if (!(layoutManager instanceof CoverFlowLayoutManger)) {
             throw new IllegalArgumentException("The layout manager must be CoverFlowLayoutManger");
         }
@@ -111,7 +111,7 @@ public class RecyclerCoverFlow extends RecyclerView {
     }
 
     public void setSelectPositionByScroll(int i) {
-        getCoverFlowLayout().smoothScrollToPosition(this, new RecyclerView.State(), i);
+        getCoverFlowLayout().smoothScrollToPosition(this, new State(), i);
     }
 
     public void setSelectPosition(int i) {

@@ -29,7 +29,7 @@ class EGLBase10 extends EGLBase {
     private int mGlVersion = 2;
     private Context mContext = EGL_NO_CONTEXT;
 
-    public static class Context extends EGLBase.IContext {
+    public static class Context extends IContext {
         public final EGLContext eglContext;
 
         @Override // com.serenegiant.glutils.EGLBase.IContext
@@ -47,7 +47,7 @@ class EGLBase10 extends EGLBase {
         }
     }
 
-    public static class Config extends EGLBase.IConfig {
+    public static class Config extends IConfig {
         public final EGLConfig eglConfig;
 
         private Config(EGLConfig eGLConfig) {
@@ -59,7 +59,7 @@ class EGLBase10 extends EGLBase {
         private final Surface surface;
 
         @Override // android.view.SurfaceHolder
-        public void addCallback(SurfaceHolder.Callback callback) {
+        public void addCallback(Callback callback) {
         }
 
         @Override // android.view.SurfaceHolder
@@ -83,7 +83,7 @@ class EGLBase10 extends EGLBase {
         }
 
         @Override // android.view.SurfaceHolder
-        public void removeCallback(SurfaceHolder.Callback callback) {
+        public void removeCallback(Callback callback) {
         }
 
         @Override // android.view.SurfaceHolder
@@ -120,7 +120,7 @@ class EGLBase10 extends EGLBase {
         }
     }
 
-    public static class EglSurface implements EGLBase.IEglSurface {
+    public static class EglSurface implements IEglSurface {
         private final EGLBase10 mEglBase;
         private EGLSurface mEglSurface;
 
@@ -173,7 +173,7 @@ class EGLBase10 extends EGLBase {
         }
 
         @Override // com.serenegiant.glutils.EGLBase.IEglSurface
-        public EGLBase.IContext getContext() {
+        public IContext getContext() {
             return this.mEglBase.getContext();
         }
 

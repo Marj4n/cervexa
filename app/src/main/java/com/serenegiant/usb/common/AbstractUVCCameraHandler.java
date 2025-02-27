@@ -38,6 +38,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -875,76 +877,39 @@ public abstract class AbstractUVCCameraHandler extends Handler {
             To view partially-correct add '--show-bad-code' argument
         */
         public void run() {
-            /*
-                r6 = this;
-                android.os.Looper.prepare()
-                r0 = 0
-                r1 = 1
-                java.lang.Class<? extends com.serenegiant.usb.common.AbstractUVCCameraHandler> r2 = r6.mHandlerClass     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                java.lang.Class[] r3 = new java.lang.Class[r1]     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                java.lang.Class<com.serenegiant.usb.common.AbstractUVCCameraHandler$CameraThread> r4 = com.serenegiant.usb.common.AbstractUVCCameraHandler.CameraThread.class
-                r5 = 0
-                r3[r5] = r4     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                java.lang.reflect.Constructor r2 = r2.getDeclaredConstructor(r3)     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                java.lang.Object[] r3 = new java.lang.Object[r1]     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                r3[r5] = r6     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                java.lang.Object r2 = r2.newInstance(r3)     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                com.serenegiant.usb.common.AbstractUVCCameraHandler r2 = (com.serenegiant.usb.common.AbstractUVCCameraHandler) r2     // Catch: java.lang.reflect.InvocationTargetException -> L1d java.lang.InstantiationException -> L24 java.lang.IllegalAccessException -> L2b java.lang.NoSuchMethodException -> L32
-                goto L39
-            L1d:
-                r2 = move-exception
-                java.lang.String r3 = "AbsUVCCameraHandler"
-                android.util.Log.w(r3, r2)
-                goto L38
-            L24:
-                r2 = move-exception
-                java.lang.String r3 = "AbsUVCCameraHandler"
-                android.util.Log.w(r3, r2)
-                goto L38
-            L2b:
-                r2 = move-exception
-                java.lang.String r3 = "AbsUVCCameraHandler"
-                android.util.Log.w(r3, r2)
-                goto L38
-            L32:
-                r2 = move-exception
-                java.lang.String r3 = "AbsUVCCameraHandler"
-                android.util.Log.w(r3, r2)
-            L38:
-                r2 = r0
-            L39:
-                if (r2 == 0) goto L54
-                java.lang.Object r3 = r6.mSync
-                monitor-enter(r3)
-                r6.mHandler = r2     // Catch: java.lang.Throwable -> L51
-                java.lang.Object r2 = r6.mSync     // Catch: java.lang.Throwable -> L51
-                r2.notifyAll()     // Catch: java.lang.Throwable -> L51
-                monitor-exit(r3)     // Catch: java.lang.Throwable -> L51
-                android.os.Looper.loop()
-                com.serenegiant.usb.common.AbstractUVCCameraHandler r2 = r6.mHandler
-                if (r2 == 0) goto L54
-                com.serenegiant.usb.common.AbstractUVCCameraHandler.access$902(r2, r1)
-                goto L54
-            L51:
-                r0 = move-exception
-                monitor-exit(r3)     // Catch: java.lang.Throwable -> L51
-                throw r0
-            L54:
-                java.util.Set<com.serenegiant.usb.common.AbstractUVCCameraHandler$CameraCallback> r1 = r6.mCallbacks
-                r1.clear()
-                java.lang.Object r1 = r6.mSync
-                monitor-enter(r1)
-                r6.mHandler = r0     // Catch: java.lang.Throwable -> L65
-                java.lang.Object r0 = r6.mSync     // Catch: java.lang.Throwable -> L65
-                r0.notifyAll()     // Catch: java.lang.Throwable -> L65
-                monitor-exit(r1)     // Catch: java.lang.Throwable -> L65
-                return
-            L65:
-                r0 = move-exception
-                monitor-exit(r1)     // Catch: java.lang.Throwable -> L65
-                throw r0
-            */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.usb.common.AbstractUVCCameraHandler.CameraThread.run():void");
+            Looper.prepare();
+            AbstractUVCCameraHandler handler = null;
+            try {
+                final Constructor<? extends AbstractUVCCameraHandler> constructor = mHandlerClass.getDeclaredConstructor(CameraThread.class);
+                handler = constructor.newInstance(this);
+            } catch (final NoSuchMethodException e) {
+                Log.w(TAG, e);
+            } catch (final IllegalAccessException e) {
+                Log.w(TAG, e);
+            } catch (final InstantiationException e) {
+                Log.w(TAG, e);
+            } catch (final InvocationTargetException e) {
+                Log.w(TAG, e);
+            }
+            if (handler != null) {
+                synchronized (mSync) {
+                    mHandler = handler;
+                    mSync.notifyAll();
+                }
+                Looper.loop();
+//				if (mSoundPool != null) {
+//					mSoundPool.release();
+//					mSoundPool = null;
+//				}
+                if (mHandler != null) {
+                    mHandler.mReleased = true;
+                }
+            }
+            mCallbacks.clear();
+            synchronized (mSync) {
+                mHandler = null;
+                mSync.notifyAll();
+            }
         }
 
         private void callOnOpen() {

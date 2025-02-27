@@ -475,8 +475,8 @@ public class PlaybackSeekbar extends View {
     }
 
     private int measureWidth(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         if (mode == Integer.MIN_VALUE || mode == 1073741824) {
             return size;
         }
@@ -484,8 +484,8 @@ public class PlaybackSeekbar extends View {
     }
 
     private int measureHeight(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
+        int mode = MeasureSpec.getMode(i);
+        int size = MeasureSpec.getSize(i);
         if (mode == Integer.MIN_VALUE || mode == 1073741824) {
             return size;
         }

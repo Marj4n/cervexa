@@ -173,7 +173,7 @@ public class FTPClientUtil implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public void downloadTxt(java.util.List<java.lang.String> r18, boolean r19) {
+    public void downloadTxt(java.util.List<String> r18, boolean r19) {
         /*
             Method dump skipped, instructions count: 432
             To view this dump add '--comments-level debug' option
@@ -198,7 +198,7 @@ public class FTPClientUtil implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public java.util.List<java.lang.String> downLoadUpdateFile(java.lang.String r18, int r19, int r20, android.os.Handler r21) {
+    public java.util.List<String> downLoadUpdateFile(String r18, int r19, int r20, android.os.Handler r21) {
         /*
             Method dump skipped, instructions count: 717
             To view this dump add '--comments-level debug' option
@@ -218,7 +218,7 @@ public class FTPClientUtil implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public boolean uploadFile(java.lang.String r13, java.lang.String r14, android.os.Handler r15) {
+    public boolean uploadFile(String r13, String r14, android.os.Handler r15) {
         /*
             Method dump skipped, instructions count: 328
             To view this dump add '--comments-level debug' option

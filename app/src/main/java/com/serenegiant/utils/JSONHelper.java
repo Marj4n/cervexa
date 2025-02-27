@@ -92,7 +92,7 @@ public class JSONHelper {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public static boolean optBoolean(org.json.JSONObject r4, java.lang.String r5, boolean r6) {
+    public static boolean optBoolean(JSONObject r4, String r5, boolean r6) {
         /*
             boolean r0 = r4.has(r5)
             if (r0 == 0) goto L28

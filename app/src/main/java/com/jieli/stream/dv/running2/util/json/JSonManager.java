@@ -70,7 +70,7 @@ public class JSonManager {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public synchronized void parseJSon(com.jieli.stream.dv.running2.util.json.listener.OnCompletedListener<java.lang.Boolean> r17) {
+    public synchronized void parseJSon(OnCompletedListener<Boolean> r17) {
         /*
             Method dump skipped, instructions count: 516
             To view this dump add '--comments-level debug' option

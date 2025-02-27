@@ -28,12 +28,12 @@ public class UVCCameraHandlerMultiSurface extends AbstractUVCCameraHandler {
     }
 
     public static final UVCCameraHandlerMultiSurface createHandler(Activity activity, CameraViewInterface cameraViewInterface, int i, int i2, int i3, int i4, float f) {
-        AbstractUVCCameraHandler.CameraThread cameraThread = new AbstractUVCCameraHandler.CameraThread(UVCCameraHandlerMultiSurface.class, activity, cameraViewInterface, i, i2, i3, i4, f);
+        CameraThread cameraThread = new CameraThread(UVCCameraHandlerMultiSurface.class, activity, cameraViewInterface, i, i2, i3, i4, f);
         cameraThread.start();
         return (UVCCameraHandlerMultiSurface) cameraThread.getHandler();
     }
 
-    protected UVCCameraHandlerMultiSurface(AbstractUVCCameraHandler.CameraThread cameraThread) {
+    protected UVCCameraHandlerMultiSurface(CameraThread cameraThread) {
         super(cameraThread);
         this.mRendererHolder = new RendererHolder(cameraThread.getWidth(), cameraThread.getHeight(), null);
     }
@@ -76,7 +76,7 @@ public class UVCCameraHandlerMultiSurface extends AbstractUVCCameraHandler {
     }
 
     @Override // com.serenegiant.usb.common.AbstractUVCCameraHandler
-    public void captureStill(final String str, AbstractUVCCameraHandler.OnCaptureListener onCaptureListener) {
+    public void captureStill(final String str, OnCaptureListener onCaptureListener) {
         checkReleased();
         post(new Runnable() { // from class: com.serenegiant.usb.common.UVCCameraHandlerMultiSurface.1
             @Override // java.lang.Runnable

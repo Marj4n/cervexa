@@ -17,7 +17,7 @@ public class DataCache<K, E> {
             private static final long serialVersionUID = -9165777183357349715L;
 
             @Override // java.util.LinkedHashMap
-            protected boolean removeEldestEntry(Map.Entry<K, E> entry) {
+            protected boolean removeEldestEntry(Entry<K, E> entry) {
                 if (size() <= DataCache.this.mCapacity) {
                     return false;
                 }

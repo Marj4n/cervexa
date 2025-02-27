@@ -144,7 +144,7 @@ public final class VideoMuxer implements IMuxer {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    public void writeSampleData(int r12, java.nio.ByteBuffer r13, android.media.MediaCodec.BufferInfo r14) {
+    public void writeSampleData(int r12, ByteBuffer r13, android.media.MediaCodec.BufferInfo r14) {
         /*
             r11 = this;
             boolean r0 = r11.mReleased

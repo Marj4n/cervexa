@@ -13,7 +13,7 @@ import com.serenegiant.common.R;
 public class RecycleViewWithEmptyView extends RecyclerView {
     private static final boolean DEBUG = false;
     private static final String TAG = RecycleViewWithEmptyView.class.getSimpleName();
-    private final RecyclerView.AdapterDataObserver mAdapterDataObserver;
+    private final AdapterDataObserver mAdapterDataObserver;
     private View mEmptyView;
 
     public RecycleViewWithEmptyView(Context context) {
@@ -26,7 +26,7 @@ public class RecycleViewWithEmptyView extends RecyclerView {
 
     public RecycleViewWithEmptyView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
-        this.mAdapterDataObserver = new RecyclerView.AdapterDataObserver() { // from class: com.serenegiant.widget.RecycleViewWithEmptyView.2
+        this.mAdapterDataObserver = new AdapterDataObserver() { // from class: com.serenegiant.widget.RecycleViewWithEmptyView.2
             @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
             public void onChanged() {
                 super.onChanged();
@@ -63,7 +63,7 @@ public class RecycleViewWithEmptyView extends RecyclerView {
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView
-    public void setAdapter(RecyclerView.Adapter adapter) {
+    public void setAdapter(Adapter adapter) {
         if (getAdapter() != adapter) {
             try {
                 if (getAdapter() != null) {
@@ -88,12 +88,12 @@ public class RecycleViewWithEmptyView extends RecyclerView {
 
     protected void updateEmptyView() {
         if (this.mEmptyView != null) {
-            final RecyclerView.Adapter adapter = getAdapter();
+            final Adapter adapter = getAdapter();
             post(new Runnable() { // from class: com.serenegiant.widget.RecycleViewWithEmptyView.1
                 @Override // java.lang.Runnable
                 public void run() {
                     View view = RecycleViewWithEmptyView.this.mEmptyView;
-                    RecyclerView.Adapter adapter2 = adapter;
+                    Adapter adapter2 = adapter;
                     view.setVisibility((adapter2 == null || adapter2.getItemCount() == 0) ? 0 : 8);
                 }
             });
