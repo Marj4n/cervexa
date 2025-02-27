@@ -1,81 +1,65 @@
 package com.gizthon.camera.adapter;
 
-import android.text.TextUtils;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.gizthon.camera.activity.PreviewPhotoActivity;
-import com.gizthon.camera.activity.PreviewVideoActivity;
-import com.gizthon.camera.model.PhotoBean;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import com.gizthon.camera.R;
+import com.gizthon.camera.activity.ZoomableImageActivity;
+
+import java.io.File;
 import java.util.List;
 
-/* loaded from: classes.dex */
-public class PhotoAdapter extends BindAdapter<PhotoBean> {
-    private boolean isSelectedStatus;
-    private OnChangeListener onChangeListener;
+public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> {
+    private List<File> photoFiles;
+    private OnPhotoClickListener listener;
 
-    public interface OnChangeListener {
-        void onCheck(boolean z);
+    public interface OnPhotoClickListener {
+        void onShareClick(File file);
     }
 
-    public PhotoAdapter(List<PhotoBean> list, int i) {
-        super(list, i);
-        this.isSelectedStatus = false;
+    public PhotoAdapter(List<File> photoFiles, OnPhotoClickListener listener) {
+        this.photoFiles = photoFiles;
+        this.listener = listener;
     }
 
-    public void onClickPicture(View view, PhotoBean photoBean) {
-        if (this.isSelectedStatus) {
-            photoBean.setSelected(!photoBean.isSelected());
-            notifySelectedStatus();
-            return;
-        }
-        ArrayList arrayList = new ArrayList();
-        int i = 0;
-        for (int i2 = 0; i2 < this.dataModelList.size(); i2++) {
-            PhotoBean photoBean2 = (PhotoBean) this.dataModelList.get(i2);
-            arrayList.add(photoBean2.getPath());
-            if (TextUtils.equals(photoBean.getPath(), photoBean2.getPath())) {
-                i = i2;
-            }
-        }
-        if (photoBean.getVideoVisible() == 0) {
-            PreviewVideoActivity.start(view.getContext(), photoBean.getPath());
-        } else {
-            PreviewPhotoActivity.start(view.getContext(), arrayList, i);
-        }
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo, parent, false);
+        return new ViewHolder(view);
     }
 
-    public boolean onLongClickPicture(View view, PhotoBean photoBean) {
-        photoBean.setSelected(!photoBean.isSelected());
-        notifySelectedStatus();
-        return true;
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        File file = photoFiles.get(position);
+        Glide.with(holder.imageView.getContext()).load(file).into(holder.imageView);
+
+        holder.imageView.setOnClickListener(v -> {
+            Uri imageUri = FileProvider.getUriForFile(holder.imageView.getContext(), "com.gizthon.camera.fileprovider", file);
+            Intent intent = new Intent(holder.imageView.getContext(), ZoomableImageActivity.class);
+            intent.setData(imageUri);
+            holder.imageView.getContext().startActivity(intent);
+        });
     }
 
-    public void notifySelectedStatus() {
-        boolean z = false;
-        for (int i = 0; i < this.dataModelList.size(); i++) {
-            if (((PhotoBean) this.dataModelList.get(i)).isSelected()) {
-                z = true;
-            }
-        }
-        for (int i2 = 0; i2 < this.dataModelList.size(); i2++) {
-            ((PhotoBean) this.dataModelList.get(i2)).setSelectedCoverVisible(z ? 0 : 8);
-        }
-        this.isSelectedStatus = z;
-        this.onChangeListener.onCheck(z);
+    @Override
+    public int getItemCount() {
+        return photoFiles.size();
     }
 
-    public void changeSelectedStatus() {
-        for (int i = 0; i < this.dataModelList.size(); i++) {
-            PhotoBean photoBean = (PhotoBean) this.dataModelList.get(i);
-            if (photoBean.isSelected()) {
-                photoBean.setSelected(false);
-            }
-            photoBean.setSelectedCoverVisible(8);
-        }
-        notifyDataSetChanged();
-    }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
 
-    public void setOnChangeListener(OnChangeListener onChangeListener) {
-        this.onChangeListener = onChangeListener;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.imageView);
+        }
     }
 }

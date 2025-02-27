@@ -38,65 +38,19 @@ public class GalleryListActivity extends CameraBaseActivity {
         this.binding.setEventHandler(this);
         ArrayList<Fragment> arrayList = new ArrayList<>();
         this.fragments = arrayList;
+
+        this.binding.back.setOnClickListener(v -> onClickBack());
+
         arrayList.add(PhotoListFragment.newInstance());
         this.fragments.add(VideoListFragment.newInstance());
         this.binding.pager.setAdapter(new PhotoFragmentAdapter(this, this.fragments));
-        new TabLayoutMediator(this.binding.tabLayout, this.binding.pager, new TabLayoutMediator.TabConfigurationStrategy() { // from class: com.gizthon.camera.activity.GalleryListActivity.1
-            @Override // com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
-            public void onConfigureTab(TabLayout.Tab tab, int i) {
-                if (i == 0) {
-                    tab.setText(GalleryListActivity.this.getResources().getString(R.string.photo));
-                } else if (i == 1) {
-                    tab.setText(GalleryListActivity.this.getResources().getString(R.string.video));
-                }
+        new TabLayoutMediator(this.binding.tabLayout, this.binding.pager, (tab, i) -> {
+            if (i == 0) {
+                tab.setText(GalleryListActivity.this.getResources().getString(R.string.photo));
+            } else if (i == 1) {
+                tab.setText(GalleryListActivity.this.getResources().getString(R.string.video));
             }
         }).attach();
         StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#09B0F3"));
-    }
-
-    @Override // com.gizthon.camera.activity.CameraBaseActivity
-    public void onClickBack() {
-        finish();
-    }
-
-    public void onClickDelete() {
-        Fragment fragment = this.fragments.get(this.binding.pager.getCurrentItem());
-        if (fragment instanceof PhotoListFragment) {
-            ((PhotoListFragment) fragment).deleteSelected();
-            onShowDone(false);
-        }
-        if (fragment instanceof VideoListFragment) {
-            ((VideoListFragment) fragment).deleteSelected();
-            onShowDone(false);
-        }
-    }
-
-    public void onClickDone() {
-        Fragment fragment = this.fragments.get(this.binding.pager.getCurrentItem());
-        if (fragment instanceof PhotoListFragment) {
-            ((PhotoListFragment) fragment).resetStatus(this.binding.done.isChecked());
-        }
-        if (fragment instanceof VideoListFragment) {
-            ((VideoListFragment) fragment).resetStatus(this.binding.done.isChecked());
-        }
-    }
-
-    public void onClickComplete() {
-        onShowDone(false);
-        Fragment fragment = this.fragments.get(this.binding.pager.getCurrentItem());
-        if (fragment instanceof PhotoListFragment) {
-            ((PhotoListFragment) fragment).resetComplete();
-        }
-        if (fragment instanceof VideoListFragment) {
-            ((VideoListFragment) fragment).resetComplete();
-        }
-    }
-
-    public void onShowDone(boolean z) {
-        this.viewModel.setEditVisible(z ? 0 : 8);
-        if (z) {
-            return;
-        }
-        this.binding.done.setChecked(false);
     }
 }

@@ -13,6 +13,7 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.usb.host" />
@@ -64,6 +65,20 @@
         tools:ignore="DiscouragedApi"
         tools:replace="android:icon,android:label"
         tools:targetApi="p">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.gizthon.camera.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".activity.ZoomableImageActivity"
+            android:screenOrientation="landscape" />
 
         <activity
             android:name=".SplashActivity"
@@ -123,16 +138,6 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="p8x5iGW6rUAgVw2w7GTmZMabnFApLdC9" />
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.weioa.GoPlusDrone.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
 
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.MainActivity"
