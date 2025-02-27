@@ -8,9 +8,10 @@ import android.widget.TextView;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.SplashActivity;
 import com.serenegiant.usb.widget.UVCCameraTextureView;
-import com.weioa.GoPlusDrone.R;
 
 /* loaded from: classes.dex */
 public abstract class SplashActivityBinding extends ViewDataBinding {
@@ -43,7 +44,7 @@ public abstract class SplashActivityBinding extends ViewDataBinding {
     @SuppressLint("RestrictedApi")
     @Deprecated
     public static SplashActivityBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
-        return (SplashActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.splash_activity, viewGroup, z, obj);
+        return (SplashActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.activity_splash, viewGroup, z, obj);
     }
 
     public static SplashActivityBinding inflate(LayoutInflater layoutInflater) {
@@ -53,7 +54,7 @@ public abstract class SplashActivityBinding extends ViewDataBinding {
     @SuppressLint("RestrictedApi")
     @Deprecated
     public static SplashActivityBinding inflate(LayoutInflater layoutInflater, Object obj) {
-        return (SplashActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.splash_activity, null, false, obj);
+        return (SplashActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.activity_splash, null, false, obj);
     }
 
     public static SplashActivityBinding bind(View view) {
@@ -62,6 +63,6 @@ public abstract class SplashActivityBinding extends ViewDataBinding {
 
     @Deprecated
     public static SplashActivityBinding bind(View view, Object obj) {
-        return (SplashActivityBinding) bind(obj, view, R.layout.splash_activity);
+        return (SplashActivityBinding) bind(obj, view, R.layout.activity_splash);
     }
 }

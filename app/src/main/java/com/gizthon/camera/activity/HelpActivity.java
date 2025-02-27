@@ -6,9 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import androidx.databinding.DataBindingUtil;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.databinding.HelpActivityBinding;
 import com.jaeger.library.StatusBarUtil;
-import com.weioa.GoPlusDrone.R;
 
 /* loaded from: classes.dex */
 public class HelpActivity extends CameraBaseActivity {

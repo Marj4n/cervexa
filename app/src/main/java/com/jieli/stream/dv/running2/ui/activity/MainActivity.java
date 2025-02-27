@@ -16,9 +16,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-
-import androidx.core.content.ContextCompat;
-
 import com.jieli.lib.dv.control.connect.listener.OnConnectStateListener;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.utils.Constants;
@@ -321,7 +318,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IActions.ACTION_DEV_ACCESS);
         intentFilter.addAction(IActions.ACTION_CONNECTION_TIMEOUT);
-        ContextCompat.registerReceiver(getApplicationContext(), this.mainReceiver, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
+        getApplicationContext().registerReceiver(this.mainReceiver, intentFilter);
         this.mWifiHelper.registerOnWifiCallback(this);
         Locale.getDefault().getLanguage();
         changeFragment(R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());
@@ -418,7 +415,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                 Dbug.e(this.tag, "Wi-Fi is disable !!");
                 break;
             case IConstant.ERROR_WIFI_IS_CONNECTED /* 61173 */:
-                ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService("connectivity");
                 NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
                 if (activeNetworkInfo != null) {
                     String extraInfo = activeNetworkInfo.getExtraInfo();

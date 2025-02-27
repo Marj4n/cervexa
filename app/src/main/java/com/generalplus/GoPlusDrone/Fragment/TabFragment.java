@@ -13,9 +13,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.generalplus.GoPlusDrone.R;
+
 import com.generalplus.GoPlusDrone.View.SlidingTabLayout;
 import com.generalplus.GoPlusDrone.View.TabFragmentPagerAdapter;
+import com.gizthon.camera.R;
+
 import java.util.LinkedList;
 
 /* loaded from: classes.dex */

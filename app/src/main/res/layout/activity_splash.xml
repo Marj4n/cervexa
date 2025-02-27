@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="eventHandler"
+            type="com.gizthon.camera.SplashActivity" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@mipmap/icon_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        tools:context=".SplashActivity">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="19dp"
+            android:paddingTop="19dp"
+            android:paddingRight="19dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:onClick="@{() -> eventHandler.onClickGallery()}">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_btn1_bg"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:textSize="21sp"
+                    android:textColor="#fffefbff"
+                    android:gravity="center"
+                    android:id="@+id/tv_camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/myphoto"
+                    android:drawableTop="@mipmap/icon_gallery"
+                    android:drawablePadding="13dp"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1.1"
+                android:onClick="@{() -> eventHandler.onClickUsb()}">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/icon_btn2_bg"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:textSize="30sp"
+                    android:textColor="#fffefbff"
+                    android:gravity="center"
+                    android:id="@+id/tv_connect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/camera"
+                    android:drawableTop="@mipmap/icon_xiangji"
+                    android:drawablePadding="5dp"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:onClick="@{() -> eventHandler.onClickHelp()}">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_btn3_bg"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:textSize="21sp"
+                    android:textColor="#fffefbff"
+                    android:gravity="center"
+                    android:id="@+id/tv_help"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:text="@string/helcenter"
+                    android:drawableTop="@mipmap/icon_help"
+                    android:drawablePadding="13dp"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <com.serenegiant.usb.widget.UVCCameraTextureView
+            android:layout_gravity="center"
+            android:id="@+id/camera_view"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+</layout>

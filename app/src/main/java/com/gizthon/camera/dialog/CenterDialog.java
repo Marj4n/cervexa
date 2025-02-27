@@ -1,5 +1,6 @@
 package com.gizthon.camera.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -14,7 +15,9 @@ import android.view.WindowManager;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
-import com.weioa.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
+
 import java.lang.reflect.Field;
 
 /* loaded from: classes.dex */
@@ -68,6 +71,7 @@ public abstract class CenterDialog extends DialogFragment {
         }
     }
 
+    @SuppressLint("ResourceType")
     protected void initWindowParams(Dialog dialog) {
         Window window = dialog.getWindow();
         if (window != null) {

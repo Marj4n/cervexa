@@ -23,7 +23,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import com.generalplus.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.dv.running2.util.IConstant;
 import generalplus.com.GPCamLib.CamWrapper;

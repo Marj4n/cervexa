@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.usb.UsbDevice;
 import android.os.Environment;
-import com.jiangdg.libusbcamera.R;
+
+import com.gizthon.camera.R;
 import com.serenegiant.usb.DeviceFilter;
 import com.serenegiant.usb.IButtonCallback;
 import com.serenegiant.usb.Size;

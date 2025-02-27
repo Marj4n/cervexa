@@ -1,12 +1,14 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
-import com.weioa.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public abstract class GalleryPhotoFragmentBinding extends ViewDataBinding {
@@ -21,6 +23,7 @@ public abstract class GalleryPhotoFragmentBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static GalleryPhotoFragmentBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (GalleryPhotoFragmentBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.gallery_photo_fragment, viewGroup, z, obj);
@@ -30,6 +33,7 @@ public abstract class GalleryPhotoFragmentBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static GalleryPhotoFragmentBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (GalleryPhotoFragmentBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.gallery_photo_fragment, null, false, obj);

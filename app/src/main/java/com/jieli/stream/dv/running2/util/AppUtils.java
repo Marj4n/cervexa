@@ -107,7 +107,7 @@ public class AppUtils implements IConstant {
         if (context == null) {
             return 0;
         }
-        return (int) TypedValue.applyDimension(1, i, context.getResources().getDisplayMetrics());
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, i, context.getResources().getDisplayMetrics());
     }
 
     public static boolean isAppInBackground(Context context) {

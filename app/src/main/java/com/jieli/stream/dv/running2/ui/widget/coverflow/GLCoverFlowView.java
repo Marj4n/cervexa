@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.animation.AnimationUtils;
+import com.github.mikephil.charting.utils.Utils;
 import com.jieli.stream.dv.running2.bean.ThumbnailInfo;
 import com.serenegiant.glutils.ShaderConst;
 import java.nio.ByteBuffer;
@@ -204,7 +205,7 @@ public class GLCoverFlowView extends GLSurfaceView implements GLSurfaceView.Rend
             return;
         }
         double d2 = (d * d) / 20.0d;
-        if (d < 1e-10) {
+        if (d < Utils.DOUBLE_EPSILON) {
             d2 = -d2;
         }
         double checkValid = checkValid((float) Math.floor(this.mStartOffset + d2 + 0.5d));

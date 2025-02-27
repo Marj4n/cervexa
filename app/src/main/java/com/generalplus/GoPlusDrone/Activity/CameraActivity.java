@@ -25,9 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.generalplus.GoPlusDrone.R;
+
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
+import com.gizthon.camera.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;

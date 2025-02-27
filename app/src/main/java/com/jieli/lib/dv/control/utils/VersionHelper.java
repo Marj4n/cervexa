@@ -1,7 +1,9 @@
 package com.jieli.lib.dv.control.utils;
 
 import android.content.Context;
-import com.jieli.lib.dv.control.R;
+
+import com.gizthon.camera.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 

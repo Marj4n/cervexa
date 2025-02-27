@@ -30,9 +30,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generalplus.GoPlusDrone.R;
+
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
+import com.gizthon.camera.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.serenegiant.usb.UVCCamera;
 import generalplus.com.GPCamLib.CamWrapper;

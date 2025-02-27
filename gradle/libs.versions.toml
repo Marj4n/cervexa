@@ -3,6 +3,7 @@ agp = "8.8.0"
 commonsNet = "3.9.0"
 core = "3.5.3"
 glide = "4.16.0"
+hadoopCommon = "3.3.6"
 hbaseClient = "2.4.9"
 appcompat = "1.6.1"
 httpclient5 = "5.2"
@@ -17,11 +18,14 @@ util = "3.7.1"
 swiperefreshlayout = "1.2.0-beta01"
 preference = "1.2.1"
 library = "1.1"
+constraintlayout = "2.2.0"
+constraintlayoutSolver = "2.0.4"
 
 [libraries]
 commons-net = { module = "commons-net:commons-net", version.ref = "commonsNet" }
 core = { module = "com.google.zxing:core", version.ref = "core" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+hadoop-common = { module = "org.apache.hadoop:hadoop-common", version.ref = "hadoopCommon" }
 hbase-client = { module = "org.apache.hbase:hbase-client", version.ref = "hbaseClient" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "httpclient5" }
@@ -34,6 +38,8 @@ util = { group = "com.baidu.mapapi", name = "util", version.ref = "util" }
 swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 library = { group = "com.daimajia", name = "library", version.ref = "library" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+constraintlayout-solver = { group = "androidx.constraintlayout", name = "constraintlayout-solver", version.ref = "constraintlayoutSolver" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

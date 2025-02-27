@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.util.IConstant;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

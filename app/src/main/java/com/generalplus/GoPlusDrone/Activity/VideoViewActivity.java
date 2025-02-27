@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
-import com.generalplus.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.util.IConstant;
 import java.util.ArrayList;
 

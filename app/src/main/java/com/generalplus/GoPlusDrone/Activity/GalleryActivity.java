@@ -13,7 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTabHost;
 import com.generalplus.GoPlusDrone.Fragment.PhotoListFragment;
 import com.generalplus.GoPlusDrone.Fragment.VideoListFragment;
-import com.generalplus.GoPlusDrone.R;
+import com.gizthon.camera.R;
+
 import java.util.Locale;
 
 /* loaded from: classes.dex */

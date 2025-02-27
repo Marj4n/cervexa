@@ -17,8 +17,9 @@ import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.util.IConstant;
-import com.weioa.GoPlusDrone.R;
 import java.util.Formatter;
 import java.util.Locale;
 
@@ -277,7 +278,7 @@ public class PlayerMediaController extends FrameLayout {
         addView(makeControllerView, -1, -1);
         this.mAnchor.removeView(this);
         this.mAnchor.addView(this, -1, -1);
-        makeControllerView.setVisibility(4);
+        makeControllerView.setVisibility(View.INVISIBLE);
     }
 
     protected View makeControllerView() {
@@ -334,7 +335,7 @@ public class PlayerMediaController extends FrameLayout {
             }
             disableUnsupportedButtons();
             updateFloatingWindowLayout();
-            this.mRoot.setVisibility(0);
+            this.mRoot.setVisibility(View.VISIBLE);
             this.mShowing = true;
         }
         updatePausePlay();
@@ -353,7 +354,7 @@ public class PlayerMediaController extends FrameLayout {
         if (this.mAnchor != null && this.mShowing) {
             try {
                 this.mHandler.removeMessages(2);
-                this.mRoot.setVisibility(8);
+                this.mRoot.setVisibility(View.GONE);
             } catch (IllegalArgumentException unused) {
                 Log.w("MediaController", "already removed");
             }

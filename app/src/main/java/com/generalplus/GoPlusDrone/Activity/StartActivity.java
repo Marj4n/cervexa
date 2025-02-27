@@ -15,8 +15,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
-import com.generalplus.GoPlusDrone.Activity.StartCardActivity;
-import com.generalplus.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
+
 import java.util.Locale;
 
 /* loaded from: classes.dex */

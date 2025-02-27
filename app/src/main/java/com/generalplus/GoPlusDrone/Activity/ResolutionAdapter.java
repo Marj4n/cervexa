@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generalplus.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

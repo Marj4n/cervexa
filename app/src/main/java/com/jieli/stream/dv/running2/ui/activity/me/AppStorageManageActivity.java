@@ -4,11 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.SettingItem;
 import com.jieli.stream.dv.running2.ui.adapter.SettingAdapter;
@@ -32,6 +43,7 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
     private SettingItem cacheSizeItem;
     private NotifyDialog cleanCacheDialog;
     private SettingAdapter mAdapter;
+    private PieChart mChart;
     private ListView settingListView;
     private SettingItem storagePathItem;
     private String tag = getClass().getSimpleName();
@@ -44,17 +56,58 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_app_storage_manage);
+        this.mChart = (PieChart) findViewById(R.id.app_pie_chart);
         ((TextView) findViewById(R.id.app_storage_tv)).setText(AppUtils.getExternalMemorySize(getApplicationContext()));
         ListView listView = (ListView) findViewById(R.id.app_storage_view);
         this.settingListView = listView;
         listView.setOnItemClickListener(this);
         initListView();
+        initChart();
+        setData(AppUtils.getAvailableExternalMemorySize(), AppUtils.getExternalMemorySize() - AppUtils.getAvailableExternalMemorySize());
     }
 
     @Override // com.jieli.stream.dv.running2.ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
         super.onDestroy();
         dismissClearCacheDialog();
+    }
+
+    private void initChart() {
+        this.mChart.getDescription().setEnabled(false);
+        this.mChart.setExtraOffsets(0.0f, 10.0f, 0.0f, 0.0f);
+        this.mChart.setDragDecelerationFrictionCoef(0.95f);
+        this.mChart.setDrawHoleEnabled(false);
+        this.mChart.setRotationAngle(-90.0f);
+        this.mChart.setRotationEnabled(false);
+        this.mChart.animateY(1400, Easing.EaseInOutQuad);
+        this.mChart.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+    }
+
+    private void setData(float f, float f2) {
+        ArrayList arrayList = new ArrayList();
+        PieEntry pieEntry = new PieEntry(f, getString(R.string.remaining_storage));
+        PieEntry pieEntry2 = new PieEntry(f2, getString(R.string.used_storage));
+        arrayList.add(pieEntry);
+        arrayList.add(pieEntry2);
+        PieDataSet pieDataSet = new PieDataSet(arrayList, "");
+        pieDataSet.setSelectionShift(0.0f);
+        ArrayList arrayList2 = new ArrayList();
+        arrayList2.add(Integer.valueOf(getResources().getColor(R.color.bg_pie_chart_rest)));
+        arrayList2.add(Integer.valueOf(getResources().getColor(R.color.bg_pie_chart_used)));
+        pieDataSet.setColors(arrayList2);
+        PieData pieData = new PieData(pieDataSet);
+        pieData.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float f3) {
+                return Formatter.formatFileSize(AppStorageManageActivity.this.getApplicationContext(), (long) f3);
+            }
+        });
+        pieData.setValueTextSize(10.0f);
+        pieData.setValueTextColor(getResources().getColor(R.color.text_white));
+        this.mChart.setEntryLabelTextSize(0.0f);
+        this.mChart.setData(pieData);
+        this.mChart.highlightValues(null);
+        this.mChart.invalidate();
     }
 
     public void returnBtnClick(View view) {

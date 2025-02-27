@@ -13,8 +13,10 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.generalplus.GoPlusDrone.R;
+
 import com.generalplus.ffmpegLib.ffmpegWrapper;
+import com.gizthon.camera.R;
+
 import generalplus.com.GPCamLib.CamWrapper;
 
 /* loaded from: classes.dex */

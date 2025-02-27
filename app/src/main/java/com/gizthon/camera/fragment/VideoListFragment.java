@@ -8,12 +8,13 @@ import android.os.Environment;
 import android.util.Log;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.adapter.PhotoAdapter;
 import com.gizthon.camera.databinding.GalleryPhotoFragmentBinding;
 import com.gizthon.camera.model.PhotoBean;
 import com.jiangdg.usbcamera.UVCCameraHelper;
-import com.weioa.GoPlusDrone.R;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

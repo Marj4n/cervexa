@@ -23,7 +23,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
-import com.generalplus.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
+
 import java.io.File;
 import org.apache.commons.net.ftp.FTPReply;
 

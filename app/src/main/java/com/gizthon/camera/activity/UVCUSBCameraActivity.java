@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.adapter.ResolutionListAdapter;
 import com.gizthon.camera.application.CameraApplication;
 import com.gizthon.camera.core.OnCameraConnectedListener;
@@ -24,7 +26,6 @@ import com.serenegiant.usb.Size;
 import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.usb.common.AbstractUVCCameraHandler;
 import com.serenegiant.usb.encoder.RecordParams;
-import com.weioa.GoPlusDrone.R;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -182,7 +183,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                         new Handler(UVCUSBCameraActivity.this.getMainLooper()).post(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.6.1.1
                             @Override // java.lang.Runnable
                             public void run() {
-                                Toast.makeText(UVCUSBCameraActivity.this, "save videoPath:" + str2, 0).show();
+                                Toast.makeText(UVCUSBCameraActivity.this, "save videoPath:" + str2, Toast.LENGTH_SHORT).show();
                                 UVCUSBCameraActivity.this.refresh(str2);
                             }
                         });
@@ -209,7 +210,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 new Handler(UVCUSBCameraActivity.this.getMainLooper()).post(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.11.1
                     @Override // java.lang.Runnable
                     public void run() {
-                        Toast.makeText(UVCUSBCameraActivity.this, "保存图片成功" + str, 0).show();
+                        Toast.makeText(UVCUSBCameraActivity.this, "保存图片成功" + str, Toast.LENGTH_SHORT).show();
                         UVCUSBCameraActivity.this.refresh(str);
                     }
                 });
@@ -294,7 +295,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void showShortMsg(String str) {
-        Toast.makeText(this, str, 0).show();
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     /* JADX INFO: Access modifiers changed from: private */

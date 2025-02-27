@@ -1,14 +1,16 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.adapter.PhotoAdapter;
 import com.gizthon.camera.model.PhotoBean;
-import com.weioa.GoPlusDrone.R;
 
 /* loaded from: classes.dex */
 public abstract class GalleryPhotoItemBinding extends ViewDataBinding {
@@ -39,6 +41,7 @@ public abstract class GalleryPhotoItemBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static GalleryPhotoItemBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (GalleryPhotoItemBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.gallery_photo_item, viewGroup, z, obj);
@@ -48,6 +51,7 @@ public abstract class GalleryPhotoItemBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static GalleryPhotoItemBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (GalleryPhotoItemBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.gallery_photo_item, null, false, obj);
