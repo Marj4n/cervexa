@@ -10,8 +10,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.generalplus.GoPlusDrone.R;
+
 import com.generalplus.GoPlusDrone.View.MultiTouchZoomableImageView;
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.util.IConstant;
 import java.util.ArrayList;
 

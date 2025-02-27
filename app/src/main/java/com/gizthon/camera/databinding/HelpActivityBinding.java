@@ -1,5 +1,6 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import com.weioa.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public abstract class HelpActivityBinding extends ViewDataBinding {
@@ -35,6 +37,7 @@ public abstract class HelpActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static HelpActivityBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (HelpActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.help_activity, viewGroup, z, obj);
@@ -44,6 +47,7 @@ public abstract class HelpActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static HelpActivityBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (HelpActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.help_activity, null, false, obj);

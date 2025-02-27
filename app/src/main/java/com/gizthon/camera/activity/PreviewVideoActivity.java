@@ -8,10 +8,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.MediaController;
 import androidx.core.content.FileProvider;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.view.AndroidMediaController;
 import com.gizthon.camera.view.IjkVideoView;
 import com.jieli.stream.dv.running2.util.IConstant;
-import com.weioa.GoPlusDrone.R;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class PreviewVideoActivity extends Activity {
         } else {
             fromFile = Uri.fromFile(file);
         }
-        intent.setFlags(1);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(fromFile, "video/*");
         context.startActivity(intent);
     }

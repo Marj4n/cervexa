@@ -1,5 +1,6 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,11 @@ import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.model.GalleryViewModel;
 import com.google.android.material.tabs.TabLayout;
-import com.weioa.GoPlusDrone.R;
 
 /* loaded from: classes.dex */
 public abstract class GalleryActivityBinding extends ViewDataBinding {
@@ -53,6 +55,7 @@ public abstract class GalleryActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static GalleryActivityBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (GalleryActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.gallery_activity, viewGroup, z, obj);
@@ -62,6 +65,7 @@ public abstract class GalleryActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static GalleryActivityBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (GalleryActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.gallery_activity, null, false, obj);

@@ -1,12 +1,14 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.view.IjkVideoView;
-import com.weioa.GoPlusDrone.R;
 
 /* loaded from: classes.dex */
 public abstract class PreviewVideoActivityBinding extends ViewDataBinding {
@@ -21,6 +23,7 @@ public abstract class PreviewVideoActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static PreviewVideoActivityBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (PreviewVideoActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.preview_video_activity, viewGroup, z, obj);
@@ -30,6 +33,7 @@ public abstract class PreviewVideoActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static PreviewVideoActivityBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (PreviewVideoActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.preview_video_activity, null, false, obj);

@@ -1,5 +1,6 @@
 package com.serenegiant.usb;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,7 +17,9 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import com.jiangdg.libusbcamera.R;
+
+import com.gizthon.camera.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,7 @@ public class CameraDialog extends DialogFragment {
     private static final String TAG = CameraDialog.class.getSimpleName();
     private DeviceListAdapter mDeviceListAdapter;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() { // from class: com.serenegiant.usb.CameraDialog.1
+        @SuppressLint("ResourceType")
         @Override // android.view.View.OnClickListener
         public void onClick(View view) {
             if (view.getId() != 16908315) {

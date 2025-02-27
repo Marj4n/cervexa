@@ -7,7 +7,8 @@ import android.util.DisplayMetrics;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import com.generalplus.GoPlusDrone.Fragment.TabFragment;
-import com.generalplus.GoPlusDrone.R;
+import com.gizthon.camera.R;
+
 import java.util.Locale;
 
 /* loaded from: classes.dex */

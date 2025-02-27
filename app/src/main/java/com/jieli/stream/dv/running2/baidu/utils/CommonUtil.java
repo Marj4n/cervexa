@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Process;
 import com.baidu.mapapi.model.LatLng;
+import com.github.mikephil.charting.utils.Utils;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -18,7 +19,7 @@ public class CommonUtil {
 
     public static String getCurProcessName(Context context) {
         int myPid = Process.myPid();
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager) context.getSystemService("activity")).getRunningAppProcesses()) {
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses()) {
             if (runningAppProcessInfo.pid == myPid) {
                 return runningAppProcessInfo.processName;
             }
@@ -31,7 +32,7 @@ public class CommonUtil {
     }
 
     public static boolean isEqualToZero(double d) {
-        return Math.abs(d - 1.0E-10) < 0.01d;
+        return Math.abs(d - Utils.DOUBLE_EPSILON) < 0.01d;
     }
 
     public static boolean isZeroPoint(double d, double d2) {
@@ -96,10 +97,10 @@ public class CommonUtil {
     public static double getAngle(LatLng latLng, LatLng latLng2) {
         double slope = getSlope(latLng, latLng2);
         if (slope != Double.MAX_VALUE) {
-            return (((Math.atan(slope) / 3.141592653589793d) * 180.0d) + ((latLng2.latitude - latLng.latitude) * slope < 1.0E-10 ? 180.0f : 0.0f)) - 90.0d;
+            return (((Math.atan(slope) / 3.141592653589793d) * 180.0d) + ((latLng2.latitude - latLng.latitude) * slope < Utils.DOUBLE_EPSILON ? 180.0f : 0.0f)) - 90.0d;
         }
         if (latLng2.latitude > latLng.latitude) {
-            return 90.0d;
+            return Utils.DOUBLE_EPSILON;
         }
         return 180.0d;
     }

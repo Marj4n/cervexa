@@ -9,8 +9,9 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.generalplus.GoPlusDrone.R;
+
 import com.generalplus.GoPlusDrone.View.SlidingTabLayout;
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public class SlidingTabsBasicFragment extends Fragment {

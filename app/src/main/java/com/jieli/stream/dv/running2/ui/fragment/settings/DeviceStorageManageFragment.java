@@ -7,6 +7,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.stream.dv.running2.R;
@@ -24,6 +34,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
     private ImageButton delVideoIbtn;
     private Button formatBtn;
     private NotifyDialog formatDialog;
+    private PieChart mChart;
     private NotifyDialog mNotifyDialog;
     private TextView tfCapTextView;
     private String tag = getClass().getSimpleName();
@@ -53,6 +64,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
         this.delVideoIbtn = (ImageButton) inflate.findViewById(R.id.video_del_ibtn);
         this.formatBtn = (Button) inflate.findViewById(R.id.device_storage_format_btn);
         this.tfCapTextView = (TextView) inflate.findViewById(R.id.tf_cap_tv);
+        this.mChart = (PieChart) inflate.findViewById(R.id.pie_chart);
         int leftStorage = this.mApplication.getDeviceSettingInfo().getLeftStorage();
         int totalStorage = this.mApplication.getDeviceSettingInfo().getTotalStorage();
         if (totalStorage > 1024) {
@@ -60,6 +72,8 @@ public class DeviceStorageManageFragment extends BaseFragment {
         } else {
             this.tfCapTextView.setText(totalStorage + "MB");
         }
+        initChart();
+        setData(leftStorage, totalStorage - leftStorage);
         this.formatBtn.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.1
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
@@ -83,6 +97,44 @@ public class DeviceStorageManageFragment extends BaseFragment {
             }
         });
         return inflate;
+    }
+
+    private void initChart() {
+        this.mChart.getDescription().setEnabled(false);
+        this.mChart.setExtraOffsets(0.0f, 10.0f, 0.0f, 0.0f);
+        this.mChart.setDragDecelerationFrictionCoef(0.95f);
+        this.mChart.setDrawHoleEnabled(false);
+        this.mChart.setRotationAngle(-90.0f);
+        this.mChart.setRotationEnabled(false);
+        this.mChart.animateY(1400, Easing.EaseInOutQuad);
+        this.mChart.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void setData(float f, float f2) {
+        this.mChart.clear();
+        ArrayList arrayList = new ArrayList();
+        arrayList.add(new PieEntry(f, getString(R.string.remaining_storage)));
+        arrayList.add(new PieEntry(f2, getString(R.string.used_storage)));
+        PieDataSet pieDataSet = new PieDataSet(arrayList, "");
+        pieDataSet.setSelectionShift(0.0f);
+        ArrayList arrayList2 = new ArrayList();
+        arrayList2.add(Integer.valueOf(getResources().getColor(R.color.bg_pie_chart_rest)));
+        arrayList2.add(Integer.valueOf(getResources().getColor(R.color.bg_pie_chart_used)));
+        pieDataSet.setColors(arrayList2);
+        PieData pieData = new PieData(pieDataSet);
+        pieData.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "";
+            }
+        });
+        pieData.setValueTextSize(10.0f);
+        pieData.setValueTextColor(getResources().getColor(R.color.text_white));
+        this.mChart.setEntryLabelTextSize(0.0f);
+        this.mChart.setData(pieData);
+        this.mChart.highlightValues(null);
+        this.mChart.invalidate();
     }
 
     @Override // androidx.fragment.app.Fragment

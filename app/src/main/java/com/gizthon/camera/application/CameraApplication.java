@@ -1,5 +1,7 @@
 package com.gizthon.camera.application;
 
+import android.annotation.SuppressLint;
+
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -14,6 +16,7 @@ public class CameraApplication extends MainApplication {
         closeAndroid10Dialog();
     }
 
+    @SuppressLint("PrivateApi")
     public void closeAndroid10Dialog() {
         try {
             Class.forName("android.content.pm.PackageParser$Package").getDeclaredConstructor(String.class).setAccessible(true);
@@ -22,10 +25,10 @@ public class CameraApplication extends MainApplication {
         }
         try {
             Class<?> cls = Class.forName("android.app.ActivityThread");
-            Method declaredMethod = cls.getDeclaredMethod("currentActivityThread", new Class[0]);
+            @SuppressLint("DiscouragedPrivateApi") Method declaredMethod = cls.getDeclaredMethod("currentActivityThread");
             declaredMethod.setAccessible(true);
-            Object invoke = declaredMethod.invoke(null, new Object[0]);
-            Field declaredField = cls.getDeclaredField("mHiddenApiWarningShown");
+            Object invoke = declaredMethod.invoke(null);
+            @SuppressLint("SoonBlockedPrivateApi") Field declaredField = cls.getDeclaredField("mHiddenApiWarningShown");
             declaredField.setAccessible(true);
             declaredField.setBoolean(invoke, true);
         } catch (Exception e2) {

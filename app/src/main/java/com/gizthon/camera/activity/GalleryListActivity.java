@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.adapter.PhotoFragmentAdapter;
 import com.gizthon.camera.databinding.GalleryActivityBinding;
 import com.gizthon.camera.fragment.PhotoListFragment;
@@ -14,7 +16,6 @@ import com.gizthon.camera.model.GalleryViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.jaeger.library.StatusBarUtil;
-import com.weioa.GoPlusDrone.R;
 import java.util.ArrayList;
 
 /* loaded from: classes.dex */

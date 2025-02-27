@@ -3,8 +3,9 @@ package com.gizthon.camera.dialog;
 import android.os.Bundle;
 import android.view.View;
 import androidx.databinding.ViewDataBinding;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.databinding.DialogShareBinding;
-import com.weioa.GoPlusDrone.R;
 import java.io.FileNotFoundException;
 
 /* loaded from: classes.dex */

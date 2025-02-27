@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.marjan.cervexa"
+    namespace = "com.gizthon.camera"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.marjan.cervexa"
+        applicationId = "com.gizthon.camera"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -30,7 +30,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
-        viewBinding = true
         dataBinding = true
     }
 }
@@ -48,4 +47,7 @@ dependencies {
     implementation(libs.swiperefreshlayout)
     implementation(libs.core)
     implementation(libs.glide)
+    implementation(libs.mpandroidchart)
+    implementation(libs.constraintlayout)
+    implementation(libs.constraintlayout.solver)
 }

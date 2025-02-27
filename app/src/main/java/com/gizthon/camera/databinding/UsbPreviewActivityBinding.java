@@ -1,5 +1,6 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,10 @@ import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.gizthon.camera.R;
 import com.gizthon.camera.activity.CameraBaseActivity;
 import com.serenegiant.usb.widget.UVCCameraTextureView;
-import com.weioa.GoPlusDrone.R;
 
 /* loaded from: classes.dex */
 public abstract class UsbPreviewActivityBinding extends ViewDataBinding {
@@ -66,6 +68,7 @@ public abstract class UsbPreviewActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static UsbPreviewActivityBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (UsbPreviewActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.usb_preview_activity, viewGroup, z, obj);
@@ -75,6 +78,7 @@ public abstract class UsbPreviewActivityBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static UsbPreviewActivityBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (UsbPreviewActivityBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.usb_preview_activity, null, false, obj);

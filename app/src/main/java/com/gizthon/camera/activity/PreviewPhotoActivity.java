@@ -19,9 +19,9 @@ import android.widget.Toast;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.generalplus.GoPlusDrone.View.MultiTouchZoomableImageView;
+import com.gizthon.camera.R;
 import com.gizthon.camera.dialog.ShareDialog;
 import com.jieli.stream.dv.running2.util.IConstant;
-import com.weioa.GoPlusDrone.R;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -82,7 +82,7 @@ public class PreviewPhotoActivity extends Activity {
                             PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
                             return;
                         }
-                        Toast.makeText(PreviewPhotoActivity.this, "您需要安装微信客户端", 1).show();
+                        Toast.makeText(PreviewPhotoActivity.this, "您需要安装微信客户端", Toast.LENGTH_LONG).show();
                     }
 
                     @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener
@@ -106,7 +106,7 @@ public class PreviewPhotoActivity extends Activity {
                             PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
                             return;
                         }
-                        Toast.makeText(PreviewPhotoActivity.this, "您需要安装QQ客户端", 1).show();
+                        Toast.makeText(PreviewPhotoActivity.this, "您需要安装QQ客户端", Toast.LENGTH_LONG).show();
                     }
 
                     @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener

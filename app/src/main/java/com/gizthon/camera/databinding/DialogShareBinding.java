@@ -1,5 +1,6 @@
 package com.gizthon.camera.databinding;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,7 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import com.weioa.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public abstract class DialogShareBinding extends ViewDataBinding {
@@ -32,6 +34,7 @@ public abstract class DialogShareBinding extends ViewDataBinding {
         return inflate(layoutInflater, viewGroup, z, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static DialogShareBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z, Object obj) {
         return (DialogShareBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.dialog_share, viewGroup, z, obj);
@@ -41,6 +44,7 @@ public abstract class DialogShareBinding extends ViewDataBinding {
         return inflate(layoutInflater, DataBindingUtil.getDefaultComponent());
     }
 
+    @SuppressLint("RestrictedApi")
     @Deprecated
     public static DialogShareBinding inflate(LayoutInflater layoutInflater, Object obj) {
         return (DialogShareBinding) ViewDataBinding.inflateInternal(layoutInflater, R.layout.dialog_share, null, false, obj);

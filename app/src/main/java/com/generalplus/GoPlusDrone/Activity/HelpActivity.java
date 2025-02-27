@@ -7,7 +7,8 @@ import android.text.Html;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.generalplus.GoPlusDrone.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public class HelpActivity extends Activity {

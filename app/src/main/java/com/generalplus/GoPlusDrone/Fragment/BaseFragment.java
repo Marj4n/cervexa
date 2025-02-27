@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import com.generalplus.GoPlusDrone.Activity.GalleryActivity;
-import com.generalplus.GoPlusDrone.R;
+import com.gizthon.camera.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;
