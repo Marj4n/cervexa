@@ -37,6 +37,7 @@ import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.usb.common.AbstractUVCCameraHandler;
 import com.serenegiant.usb.encoder.RecordParams;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -194,15 +195,14 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         this.binding.rcResolution.setAdapter(this.adapter);
     }
 
-    /* renamed from: com.gizthon.camera.activity.UVCUSBCameraActivity$6, reason: invalid class name */
     class AnonymousClass6 implements View.OnClickListener {
         AnonymousClass6() {
         }
 
-        @Override // android.view.View.OnClickListener
+        @Override
         public void onClick(View view) {
             if (UVCUSBCameraActivity.this.mCameraHelper == null || !UVCUSBCameraActivity.this.mCameraHelper.isCameraOpened()) {
-                UVCUSBCameraActivity.this.showShortMsg("sorry,camera open failed");
+                UVCUSBCameraActivity.this.showShortMsg("sorry, camera open failed");
                 return;
             }
             if (!UVCUSBCameraActivity.this.mCameraHelper.isPushing()) {
@@ -211,24 +211,36 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 recordParams.setRecordPath(str);
                 recordParams.setVoiceClose(true);
                 recordParams.setRecordDuration(0);
-                recordParams.setSupportOverlay(true);
-                UVCUSBCameraActivity.this.mCameraHelper.startPusher(recordParams, new AbstractUVCCameraHandler.OnEncodeResultListener() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.6.1
+                recordParams.setSupportOverlay(true); // Pastikan overlay diaktifkan
+
+                UVCUSBCameraActivity.this.mCameraHelper.startPusher(recordParams, new AbstractUVCCameraHandler.OnEncodeResultListener() {
                     @Override
-                    // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnEncodeResultListener
                     public void onEncodeResult(byte[] bArr, int i, int i2, long j, int i3) {
                         if (i3 == 1) {
-                            FileUtils.putFileStream(bArr, i, i2);
+                            Bitmap frameBitmap = BitmapFactory.decodeByteArray(bArr, 0, bArr.length);
+                            Bitmap overlayBitmap;
+                            if (frameBitmap != null) {
+                                if (!overlayText.isEmpty()) {
+                                    overlayBitmap = addTextToBitmap(frameBitmap, overlayText);
+                                } else {
+                                    overlayBitmap = frameBitmap;
+                                }
+                                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                overlayBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                                byte[] overlayBytes = outputStream.toByteArray();
+
+                                FileUtils.putFileStream(overlayBytes, i, i2);
+                            }
                         }
                     }
 
                     @Override
-                    // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnEncodeResultListener
                     public void onRecordResult(final String str2) {
                         if (TextUtils.isEmpty(str2)) {
                             return;
                         }
-                        new Handler(UVCUSBCameraActivity.this.getMainLooper()).post(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.6.1.1
-                            @Override // java.lang.Runnable
+                        new Handler(UVCUSBCameraActivity.this.getMainLooper()).post(new Runnable() {
+                            @Override
                             public void run() {
                                 Toast.makeText(UVCUSBCameraActivity.this, "save videoPath:" + str2, Toast.LENGTH_SHORT).show();
                                 UVCUSBCameraActivity.this.refresh(str2);
@@ -236,6 +248,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                         });
                     }
                 });
+
                 UVCUSBCameraActivity.this.showVideoUI();
                 return;
             }
@@ -257,14 +270,38 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
             @Override
             public void onCaptureResult(String path) {
                 runOnUiThread(() -> {
+                    Bitmap bitmap = BitmapFactory.decodeFile(path);
+                    if (!overlayText.isEmpty()) {
+                        addTextToImage(bitmap, overlayText);
+                    }
                     Toast.makeText(UVCUSBCameraActivity.this, "Foto Disimpan: " + path, Toast.LENGTH_SHORT).show();
-
-                    // Tambahkan overlay teks pada gambar
-                    addTextToImage(path, overlayText);
                 });
             }
         });
     }
+
+    private Bitmap addTextToBitmap(Bitmap bitmap, String text) {
+        if (bitmap == null || TextUtils.isEmpty(text)) {
+            return bitmap;
+        }
+
+        Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        Canvas canvas = new Canvas(mutableBitmap);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE); // Warna teks
+        paint.setTextSize(50); // Ukuran teks
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        paint.setAntiAlias(true);
+
+        float x = 20; // Jarak dari kiri
+        float y = mutableBitmap.getHeight() - 50; // Jarak dari bawah
+
+        canvas.drawText(text, x, y, paint);
+
+        return mutableBitmap;
+    }
+
 
     private Bitmap addTextToImage(Bitmap bitmap, String text) {
         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
