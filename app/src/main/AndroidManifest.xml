@@ -13,7 +13,8 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.usb.host" />
@@ -58,7 +59,6 @@
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
@@ -76,14 +76,11 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name=".activity.ZoomableImageActivity"
-            android:screenOrientation="landscape" />
+        <activity android:name=".activity.ZoomableImageActivity" />
 
         <activity
             android:name=".SplashActivity"
-            android:exported="true"
-            android:screenOrientation="landscape">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -107,27 +104,13 @@
 
         <activity
             android:name=".activity.UVCUSBCameraActivity"
-            android:hardwareAccelerated="true"
-            android:screenOrientation="landscape" />
+            android:hardwareAccelerated="true" />
         <activity
             android:name=".activity.GalleryListActivity"
-            android:exported="true"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.PreviewPhotoActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.PreviewVideoActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.HelpActivity"
-            android:screenOrientation="landscape" />
+            android:exported="true" />
+        <activity android:name=".activity.PreviewPhotoActivity" />
+        <activity android:name=".activity.PreviewVideoActivity" />
+        <activity android:name=".activity.HelpActivity" />
 
         <meta-data
             android:name="tencent_qq_appid"
@@ -141,8 +124,7 @@
 
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.MainActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.FlashActivity"
             android:configChanges="screenSize|orientation|keyboardHidden"
@@ -182,51 +164,40 @@
         <activity android:name="com.jieli.stream.dv.running2.ui.activity.UserAgreementActivity" />
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.PlaybackDialogActivity"
-            android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
         <activity
             android:name="com.jieli.stream.dv.running2.ui.activity.CameraActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.MenuActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.CameraActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.CameraNewActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.MainOldActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.HelpActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.VideoViewActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.FullImageActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.GalleryActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.FilesActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.generalplus.GoPlusDrone.Activity.FileViewController"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:configChanges="screenSize|orientation|keyboardHidden" />
         <activity
             android:name="com.xyzlf.share.library.ShareDialogActivity"
             android:configChanges="orientation|keyboardHidden"
