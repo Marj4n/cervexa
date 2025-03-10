@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.fragment.settings;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,13 +8,14 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Code;
 import com.jieli.lib.dv.control.utils.Topic;
 import com.jieli.lib.dv.control.utils.TopicKey;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.util.ClientManager;
 import com.jieli.stream.dv.running2.util.Dbug;
@@ -46,6 +48,7 @@ public class DevicePhotoQualityFragment extends BaseFragment {
         }
     };
 
+    @SuppressLint("StringFormatInvalid")
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View inflate = layoutInflater.inflate(R.layout.fragment_device_setting_photo_qulity, viewGroup, false);

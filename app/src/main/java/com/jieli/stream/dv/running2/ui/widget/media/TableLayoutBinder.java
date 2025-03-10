@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public class TableLayoutBinder {

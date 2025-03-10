@@ -19,8 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.mssdp.Discovery;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.DeviceBean;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.ui.activity.MainActivity;

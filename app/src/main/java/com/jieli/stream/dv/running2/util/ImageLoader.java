@@ -6,7 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.LruCache;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public class ImageLoader {

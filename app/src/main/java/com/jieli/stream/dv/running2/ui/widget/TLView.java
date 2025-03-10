@@ -21,7 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.InputDeviceCompat;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.util.Dbug;
 import com.jieli.stream.dv.running2.util.IConstant;

@@ -29,10 +29,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.baidu.mapapi.UIMsg;
 import com.generalplus.GoPlusDrone.Activity.ResolutionAdapter;
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.intercom.IntercomManager;
 import com.jieli.lib.dv.control.model.PictureInfo;
@@ -45,7 +48,6 @@ import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
 import com.jieli.media.codec.bean.MediaMeta;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.audio.AudioRecordManager;
 import com.jieli.stream.dv.running2.bean.DeviceSettingInfo;
 import com.jieli.stream.dv.running2.bean.FileInfo;
@@ -697,7 +699,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     public void zoom(boolean z, View view) {
-        WindowManager windowManager = (WindowManager) getContext().getSystemService("window");
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         int width = windowManager.getDefaultDisplay().getWidth();
         int height = windowManager.getDefaultDisplay().getHeight();
         ViewGroup.LayoutParams layoutParams = this.mVideoView.getLayoutParams();
@@ -736,7 +738,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     @Override // androidx.fragment.app.Fragment
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        PowerManager powerManager = (PowerManager) getActivity().getSystemService("power");
+        PowerManager powerManager = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
         if (powerManager != null) {
             this.wakeLock = powerManager.newWakeLock(6, this.tag);
         }
@@ -776,7 +778,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IActions.ACTION_FORMAT_TF_CARD);
         intentFilter.addAction(IActions.ACTION_LANGUAAGE_CHANGE);
-        MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);
+        ContextCompat.registerReceiver(MainApplication.getApplication(), this.mReceiver, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -1507,7 +1509,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (getActivity() == null) {
             return;
         }
-        AudioManager audioManager = (AudioManager) getActivity().getSystemService("audio");
+        AudioManager audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         int streamVolume = audioManager != null ? audioManager.getStreamVolume(4) : 0;
         Dbug.i(this.tag, "volume=:" + streamVolume);
         if (streamVolume != 0) {

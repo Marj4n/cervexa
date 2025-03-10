@@ -1,5 +1,6 @@
 package com.jieli.stream.dv.running2.ui.fragment.browse;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +21,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.task.MediaTask;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.ui.dialog.NotifyDialog;
@@ -69,6 +71,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
         private BrowseBroadcast() {
         }
 
+        @SuppressLint("StringFormatInvalid")
         @Override // android.content.BroadcastReceiver
         public void onReceive(Context context, Intent intent) {
             if (BrowseFileFragment.this.getActivity() == null || context == null || intent == null) {

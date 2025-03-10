@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.base.BaseActivity;
 import com.jieli.stream.dv.running2.ui.dialog.NotifyDialog;
 import com.jieli.stream.dv.running2.util.Dbug;

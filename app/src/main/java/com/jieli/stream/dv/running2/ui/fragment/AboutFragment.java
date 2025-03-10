@@ -17,20 +17,19 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Code;
 import com.jieli.lib.dv.control.utils.Topic;
 import com.jieli.lib.dv.control.utils.VersionHelper;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.SettingItem;
 import com.jieli.stream.dv.running2.interfaces.OnSelectedListener;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.ui.activity.GenericActivity;
 import com.jieli.stream.dv.running2.ui.adapter.SettingAdapter;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
-import com.jieli.stream.dv.running2.ui.dialog.BrowseFirmwareDialog;
 import com.jieli.stream.dv.running2.ui.dialog.NotifyDialog;
 import com.jieli.stream.dv.running2.ui.dialog.WaitingDialog;
 import com.jieli.stream.dv.running2.util.AppUtils;
@@ -131,16 +130,6 @@ public class AboutFragment extends BaseFragment {
                     AboutFragment.this.mCheckAppUpgrade.execute(new Void[0]);
                     return;
                 }
-                return;
-            }
-            if (AboutFragment.this.getString(R.string.upload_firmware).equals(name)) {
-                if (ClientManager.getClient().isConnected()) {
-                    BrowseFirmwareDialog browseFirmwareDialog = new BrowseFirmwareDialog();
-                    browseFirmwareDialog.setOnSelectedListener(AboutFragment.this.onSelectedFileListener);
-                    browseFirmwareDialog.show(AboutFragment.this.getFragmentManager(), "browse_firmware_file_dialog");
-                    return;
-                }
-                ToastUtil.showToastShort(AboutFragment.this.getString(R.string.please_connect_device_to_use));
             }
         }
     };

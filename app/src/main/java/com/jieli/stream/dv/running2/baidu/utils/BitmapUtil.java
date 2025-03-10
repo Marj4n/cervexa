@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.jieli.stream.dv.running2.R;
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public class BitmapUtil {

@@ -9,11 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.jieli.stream.dv.running2.bean.SettingItem;
 import com.jieli.stream.dv.running2.ui.adapter.SettingAdapter;
 import com.jieli.stream.dv.running2.ui.base.BaseActivity;
-import com.jieli.stream.dv.running2.ui.widget.SwitchButton;
 import com.jieli.stream.dv.running2.util.IConstant;
 import com.jieli.stream.dv.running2.util.PreferencesHelper;
 import java.util.ArrayList;
@@ -34,13 +35,13 @@ public class APPAdvancedSettingActivity extends BaseActivity {
     };
     private SettingItem.OnSwitchListener usingHardCodecListener = new SettingItem.OnSwitchListener() { // from class: com.jieli.stream.dv.running2.ui.activity.me.APPAdvancedSettingActivity.2
         @Override // com.jieli.stream.dv.running2.bean.SettingItem.OnSwitchListener
-        public void onSwitchListener(SwitchButton switchButton, SettingItem<Boolean> settingItem, boolean z) {
+        public void onSwitchListener(MaterialSwitch switchButton, SettingItem<Boolean> settingItem, boolean z) {
             PreferencesHelper.putBooleanValue(APPAdvancedSettingActivity.this.getApplicationContext(), IConstant.KEY_HARD_CODEC, z);
         }
     };
     private SettingItem.OnSwitchListener openDebugOnSwitchListener = new SettingItem.OnSwitchListener() { // from class: com.jieli.stream.dv.running2.ui.activity.me.APPAdvancedSettingActivity.3
         @Override // com.jieli.stream.dv.running2.bean.SettingItem.OnSwitchListener
-        public void onSwitchListener(SwitchButton switchButton, SettingItem<Boolean> settingItem, boolean z) {
+        public void onSwitchListener(MaterialSwitch switchButton, SettingItem<Boolean> settingItem, boolean z) {
             PreferencesHelper.putBooleanValue(APPAdvancedSettingActivity.this.getApplicationContext(), IConstant.KEY_OPEN_DEBUG, z);
         }
     };

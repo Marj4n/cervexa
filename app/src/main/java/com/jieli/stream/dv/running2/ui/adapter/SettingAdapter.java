@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.jieli.stream.dv.running2.bean.SettingItem;
-import com.jieli.stream.dv.running2.ui.widget.SwitchButton;
+
 import java.util.List;
 
 /* loaded from: classes.dex */
@@ -92,7 +94,7 @@ public class SettingAdapter extends BaseAdapter {
                 view.setPadding(0, settingItem.getMarginTop(), 0, 0);
                 viewHelper1 = new ViewHelper1();
                 viewHelper1.tv1 = (TextView) view.findViewById(R.id.item_setting_three_tv1);
-                viewHelper1.switchButton = (SwitchButton) view.findViewById(R.id.item_setting_three_icon);
+                viewHelper1.switchButton = (MaterialSwitch) view.findViewById(R.id.item_setting_three_icon);
                 view.setTag(viewHelper1);
                 viewHelper1.switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: com.jieli.stream.dv.running2.ui.adapter.SettingAdapter.1
                     @Override // android.widget.CompoundButton.OnCheckedChangeListener
@@ -108,7 +110,6 @@ public class SettingAdapter extends BaseAdapter {
             }
             if (!TextUtils.isEmpty(settingItem.getName())) {
                 viewHelper1.tv1.setText(settingItem.getName());
-                viewHelper1.switchButton.setCheckedImmediatelyNoEvent(((Boolean) settingItem.getValue()).booleanValue());
             }
         } else if (itemViewType == 2) {
             if (view == null) {
@@ -138,7 +139,7 @@ public class SettingAdapter extends BaseAdapter {
     }
 
     private class ViewHelper1 {
-        private SwitchButton switchButton;
+        private MaterialSwitch switchButton;
         private TextView tv1;
 
         private ViewHelper1() {

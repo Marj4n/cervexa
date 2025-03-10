@@ -8,11 +8,12 @@ import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.LruCache;
+
+import com.gizthon.camera.R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.lib.dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
 import com.jieli.media.codec.bean.MediaMeta;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.interfaces.OnAviThumbListener;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import java.io.File;

@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.view.SurfaceView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Code;
 import com.jieli.lib.dv.control.utils.Topic;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.camera.SurfaceViewCallback;
 import com.jieli.stream.dv.running2.ui.base.BaseActivity;
 import com.jieli.stream.dv.running2.util.ClientManager;

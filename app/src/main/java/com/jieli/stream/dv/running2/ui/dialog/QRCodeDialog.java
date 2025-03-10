@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.base.BaseDialogFragment;
 import com.jieli.stream.dv.running2.util.QRCode;
 import com.jieli.stream.dv.running2.util.json.listener.OnCompletedListener;

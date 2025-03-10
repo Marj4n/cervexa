@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.jieli.stream.dv.running2.R;
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.bean.ThumbnailInfo;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.util.Dbug;

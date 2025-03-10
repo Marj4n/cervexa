@@ -3,8 +3,9 @@ package com.jieli.stream.dv.running2.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.listener.OnConnectStateListener;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.ui.base.BaseActivity;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
