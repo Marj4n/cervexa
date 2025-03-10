@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.intercom.IntercomManager;
 import com.jieli.lib.dv.control.player.OnRealTimeListener;
@@ -42,7 +43,6 @@ import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
 import com.jieli.media.codec.bean.MediaMeta;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.audio.AudioRecordManager;
 import com.jieli.stream.dv.running2.bean.DeviceDesc;
 import com.jieli.stream.dv.running2.bean.DeviceSettingInfo;
@@ -82,7 +82,6 @@ import com.jieli.stream.dv.running2.util.json.listener.OnCompletedListener;
 import com.serenegiant.usb.UVCCamera;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -15,12 +15,13 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Topic;
 import com.jieli.lib.dv.control.utils.TopicKey;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.bean.ItemBean;
 import com.jieli.stream.dv.running2.bean.MediaTaskInfo;

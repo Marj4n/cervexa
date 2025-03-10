@@ -8,7 +8,6 @@ import android.hardware.Camera;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import com.jieli.lib.dv.control.projection.StreamingPush;
-import com.jieli.stream.dv.running2.ui.widget.verticalseekbar.VerticalSeekBar;
 import com.jieli.stream.dv.running2.util.ClientManager;
 import com.jieli.stream.dv.running2.util.Dbug;
 import com.jieli.stream.dv.running2.util.IConstant;
@@ -132,7 +131,6 @@ public class CameraPresenter implements ICamera, Camera.PreviewCallback {
             } else if (i == 2) {
                 i3 = 180;
             } else if (i == 3) {
-                i3 = VerticalSeekBar.ROTATION_ANGLE_CW_270;
             }
         }
         if (cameraInfo.facing == 1) {

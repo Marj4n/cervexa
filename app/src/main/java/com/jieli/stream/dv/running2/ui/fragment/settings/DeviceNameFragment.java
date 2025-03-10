@@ -13,13 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.dv.control.utils.Code;
 import com.jieli.lib.dv.control.utils.Topic;
 import com.jieli.lib.dv.control.utils.TopicKey;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.ui.dialog.NotifyDialog;
 import com.jieli.stream.dv.running2.ui.dialog.WaitingDialog;

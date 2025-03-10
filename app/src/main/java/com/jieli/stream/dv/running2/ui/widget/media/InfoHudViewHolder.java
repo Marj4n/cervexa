@@ -7,7 +7,8 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.TableLayout;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.task.DebugHelper;
 import java.util.Locale;
 import tv.danmaku.ijk.media.player.IMediaPlayer;

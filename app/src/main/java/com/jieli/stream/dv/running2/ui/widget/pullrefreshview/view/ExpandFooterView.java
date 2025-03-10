@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.core.view.ViewCompat;
 
-import com.jieli.stream.dv.running2.R;
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.BaseFooterView;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.layout.PullRefreshLayout;
 import com.jieli.stream.dv.running2.ui.widget.pullrefreshview.utils.AnimUtil;

@@ -114,4 +114,5 @@
         <item>@string/upgrade_step_5</item>
         <item>@string/upgrade_step_6</item>
     </string-array>
+    <string-array name="photo_qulity">photo_qulity</string-array>
 </resources>

@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 
 /* loaded from: classes.dex */

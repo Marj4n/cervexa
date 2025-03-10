@@ -14,8 +14,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.util.ClientManager;

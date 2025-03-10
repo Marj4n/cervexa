@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.MainApplication;
 import com.jieli.stream.dv.running2.ui.service.CommunicationService;
 import com.jieli.stream.dv.running2.util.AppUtils;

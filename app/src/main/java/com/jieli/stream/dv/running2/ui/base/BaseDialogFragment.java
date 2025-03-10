@@ -7,7 +7,8 @@ import android.view.WindowManager;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 
 /* loaded from: classes.dex */
 public class BaseDialogFragment extends DialogFragment {

@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.bean.FileInfo;
 import com.jieli.stream.dv.running2.bean.ItemBean;
 import com.jieli.stream.dv.running2.bean.MediaTaskInfo;

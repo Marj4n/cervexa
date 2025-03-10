@@ -16,15 +16,17 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+
+import androidx.core.content.ContextCompat;
+
+import com.gizthon.camera.R;
 import com.jieli.lib.dv.control.connect.listener.OnConnectStateListener;
 import com.jieli.lib.dv.control.connect.response.SendResponse;
 import com.jieli.lib.dv.control.utils.Constants;
-import com.jieli.stream.dv.running2.R;
 import com.jieli.stream.dv.running2.interfaces.OnWifiCallBack;
 import com.jieli.stream.dv.running2.ui.base.BaseActivity;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.ui.fragment.DeviceListFragment;
-import com.jieli.stream.dv.running2.ui.fragment.SettingFragment;
 import com.jieli.stream.dv.running2.ui.fragment.StaDeviceListFragment;
 import com.jieli.stream.dv.running2.ui.fragment.VideoFragment;
 import com.jieli.stream.dv.running2.ui.fragment.browse.BrowseFileFragment;
@@ -213,10 +215,6 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
             Dbug.e(MainActivity.this.tag, "Disconnect with device!!! Code=" + num);
             BaseFragment baseFragment = (BaseFragment) MainActivity.this.getSupportFragmentManager().findFragmentById(R.id.container);
             Dbug.e(MainActivity.this.tag, "normal disconnected fragment=" + baseFragment);
-            if ((baseFragment instanceof BrowseFileFragment) || (baseFragment instanceof SettingFragment)) {
-                Dbug.w(MainActivity.this.tag, "Stay!!");
-                return;
-            }
             if (((BaseFragment) MainActivity.this.getSupportFragmentManager().findFragmentByTag(DeviceListFragment.class.getSimpleName())) == null) {
                 new DeviceListFragment();
             }
@@ -318,7 +316,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IActions.ACTION_DEV_ACCESS);
         intentFilter.addAction(IActions.ACTION_CONNECTION_TIMEOUT);
-        getApplicationContext().registerReceiver(this.mainReceiver, intentFilter);
+        ContextCompat.registerReceiver(getApplicationContext(), this.mainReceiver, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
         this.mWifiHelper.registerOnWifiCallback(this);
         Locale.getDefault().getLanguage();
         changeFragment(R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());

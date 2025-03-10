@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.bm.library.PhotoView;
-import com.jieli.stream.dv.running2.R;
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
 import com.jieli.stream.dv.running2.util.IConstant;
 import com.jieli.stream.dv.running2.util.ImageLoader;

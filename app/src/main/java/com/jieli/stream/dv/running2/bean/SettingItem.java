@@ -1,6 +1,6 @@
 package com.jieli.stream.dv.running2.bean;
 
-import com.jieli.stream.dv.running2.ui.widget.SwitchButton;
+import com.google.android.material.materialswitch.MaterialSwitch;
 
 /* loaded from: classes.dex */
 public class SettingItem<T> {
@@ -11,7 +11,7 @@ public class SettingItem<T> {
     private T value;
 
     public interface OnSwitchListener {
-        void onSwitchListener(SwitchButton switchButton, SettingItem<Boolean> settingItem, boolean z);
+        void onSwitchListener(MaterialSwitch switchButton, SettingItem<Boolean> settingItem, boolean z);
     }
 
     public String getName() {

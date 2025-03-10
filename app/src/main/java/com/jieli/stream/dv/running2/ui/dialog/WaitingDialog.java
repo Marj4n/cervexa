@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.ui.base.BaseDialogFragment;
 
 /* loaded from: classes.dex */

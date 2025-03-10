@@ -15,7 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.dv.running2.R;
+
+import com.gizthon.camera.R;
 import com.jieli.stream.dv.running2.bean.WifiBean;
 import com.jieli.stream.dv.running2.interfaces.OnWifiCallBack;
 import com.jieli.stream.dv.running2.ui.base.BaseFragment;
